@@ -1,0 +1,35 @@
+@startuml
+
+par
+  loop
+    UnityPlugin <- Unity : getSensorData()
+    activate UnityPlugin
+    return : sensorData
+    deactivate UnityPlugin
+  end
+  loop Unity.Update()
+    Unity -> gRPCManager : AddFrame()
+    activate gRPCManager
+    deactivate gRPCManager
+    Unity -> gRPCManager : SendFrameAsync()
+    activate gRPCManager
+    gRPCManager -> gRPCManager : search gRPC channel pool
+    note right : params:\n* pool size (default 4)\n* time interval (default 100ms) 
+    alt no available channel
+        gRPCManager -> Unity : drop
+    else channel available
+        gRPCManager -> SolARCloudProxy : send frame (async)
+        activate SolARCloudProxy
+        gRPCManager <-- SolARCloudProxy
+        gRPCManager --> Unity
+        deactivate gRPCManager
+        SolARCloudProxy --> gRPCManager : end of task
+        deactivate SolARCloudProxy
+        activate gRPCManager
+        gRPCManager -> Unity : poseReceivedCallback()
+        deactivate gRPCManager
+    end
+
+  end
+end
+@enduml

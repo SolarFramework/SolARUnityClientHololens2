@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &747794893107280971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 747794893107280970}
+  - component: {fileID: 747794893107280973}
+  m_Layer: 0
+  m_Name: SolArCloudHololens2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &747794893107280970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747794893107280971}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &747794893107280973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 747794893107280971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adba2cf5a4df5da4f9aa2016f8c922eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontendIp: http://192.168.137.1
+  frontendBasePort: 5000
+  solarScene: {fileID: 0}
+  advancedGrpcSettings:
+    channelPoolSize: 6
+    useUniquePort: 0
+    delayBetweenFramesInMs: 20
+    compressionEnabled: 1
+  selectedSensor: 1
+  pvParameters:
+    name: PV
+    id: 0
+    type: 0
+    width: 760
+    height: 428
+    focalX: 592.085
+    focalY: 592.085
+    centerX: 371.296
+    centerY: 203.017
+    distK1: -0.0626
+    distK2: 0.7265
+    distP1: -0.006169
+    distP2: -0.008975
+    distK3: 0
+  leftFrontParameters:
+    name: LEFT_FRONT
+    id: 0
+    type: 1
+    width: 640
+    height: 480
+    focalX: 366.189452
+    focalY: 366.47809
+    centerX: 320
+    centerY: 240
+    distK1: -0.009463
+    distK2: 0.003013
+    distP1: -0.006169
+    distP2: -0.008975
+    distK3: 0
+  selectedCameraParameter:
+    name: LEFT_FRONT
+    id: 0
+    type: 1
+    width: 640
+    height: 480
+    focalX: 366.189452
+    focalY: 366.47809
+    centerX: 320
+    centerY: 240
+    distK1: -0.009463
+    distK2: 0.003013
+    distP1: -0.006169
+    distP2: -0.008975
+    distK3: 0
