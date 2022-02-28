@@ -1,13 +1,14 @@
 # SolARUnityClientHololens2
 [![License](https://img.shields.io/github/license/SolARFramework/SolARUnityPlugin?style=flat-square&label=License)](https://www.apache.org/licenses/LICENSE-2.0)
 
-Unity client to use SolAR Services
 
 ## Presentation
 
-SolARUnityClientHololens2 is a Unity project containing the following elements:
+SolARUnityClientHololens2 is a Unity client to use SolAR Services containing the following elements:
 * A Unity prefab that encapsulates all the logic responsible for fetching from the Hololens 2 all the data required by the SolAR relocalization and mapping service as well as the logic to call those services.
 * 2 sample scenes that demontrate how to use this prefab to create AR application that rely on SolAR cloud services. One debug scene, which can display the data retrieved from the sensors, and one sample scene which offer a much cleaner and simple interface. Only the latter is meant to be shipped in project releases.
+
+Currently, the SolAR cloud service version supported is: **v0.11.0**.
 
 ## Architecture overview
 
