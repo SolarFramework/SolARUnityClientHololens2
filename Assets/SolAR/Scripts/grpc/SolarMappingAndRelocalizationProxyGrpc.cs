@@ -53,17 +53,18 @@ namespace Com.Bcom.Solar.Gprc {
       return parser.ParseFrom(context.PayloadAsNewBuffer());
     }
 
+    static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.PipelineModeValue> __Marshaller_com_bcom_solar_gprc_PipelineModeValue = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Empty> __Marshaller_com_bcom_solar_gprc_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Empty.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.CameraParameters> __Marshaller_com_bcom_solar_gprc_CameraParameters = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.CameraParameters.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Frame> __Marshaller_com_bcom_solar_gprc_Frame = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Frame.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.RelocalizationResult> __Marshaller_com_bcom_solar_gprc_RelocalizationResult = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Message> __Marshaller_com_bcom_solar_gprc_Message = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Message.Parser));
 
-    static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty> __Method_Init = new grpc::Method<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(
+    static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.PipelineModeValue, global::Com.Bcom.Solar.Gprc.Empty> __Method_Init = new grpc::Method<global::Com.Bcom.Solar.Gprc.PipelineModeValue, global::Com.Bcom.Solar.Gprc.Empty>(
         grpc::MethodType.Unary,
         __ServiceName,
         "Init",
-        __Marshaller_com_bcom_solar_gprc_Empty,
+        __Marshaller_com_bcom_solar_gprc_PipelineModeValue,
         __Marshaller_com_bcom_solar_gprc_Empty);
 
     static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty> __Method_Start = new grpc::Method<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(
@@ -118,7 +119,7 @@ namespace Com.Bcom.Solar.Gprc {
     [grpc::BindServiceMethod(typeof(SolARMappingAndRelocalizationProxy), "BindService")]
     public abstract partial class SolARMappingAndRelocalizationProxyBase
     {
-      public virtual global::System.Threading.Tasks.Task<global::Com.Bcom.Solar.Gprc.Empty> Init(global::Com.Bcom.Solar.Gprc.Empty request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Com.Bcom.Solar.Gprc.Empty> Init(global::Com.Bcom.Solar.Gprc.PipelineModeValue request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -178,19 +179,19 @@ namespace Com.Bcom.Solar.Gprc {
       {
       }
 
-      public virtual global::Com.Bcom.Solar.Gprc.Empty Init(global::Com.Bcom.Solar.Gprc.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Com.Bcom.Solar.Gprc.Empty Init(global::Com.Bcom.Solar.Gprc.PipelineModeValue request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Init(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::Com.Bcom.Solar.Gprc.Empty Init(global::Com.Bcom.Solar.Gprc.Empty request, grpc::CallOptions options)
+      public virtual global::Com.Bcom.Solar.Gprc.Empty Init(global::Com.Bcom.Solar.Gprc.PipelineModeValue request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_Init, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.Empty> InitAsync(global::Com.Bcom.Solar.Gprc.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.Empty> InitAsync(global::Com.Bcom.Solar.Gprc.PipelineModeValue request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return InitAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.Empty> InitAsync(global::Com.Bcom.Solar.Gprc.Empty request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.Empty> InitAsync(global::Com.Bcom.Solar.Gprc.PipelineModeValue request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_Init, null, options, request);
       }
@@ -317,7 +318,7 @@ namespace Com.Bcom.Solar.Gprc {
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
     public static void BindService(grpc::ServiceBinderBase serviceBinder, SolARMappingAndRelocalizationProxyBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_Init, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Init));
+      serviceBinder.AddMethod(__Method_Init, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.PipelineModeValue, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Init));
       serviceBinder.AddMethod(__Method_Start, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Start));
       serviceBinder.AddMethod(__Method_Stop, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Stop));
       serviceBinder.AddMethod(__Method_SetCameraParameters, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.CameraParameters, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.SetCameraParameters));

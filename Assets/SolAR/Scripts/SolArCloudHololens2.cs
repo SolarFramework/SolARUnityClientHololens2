@@ -58,6 +58,9 @@ SolARHololens2ResearchMode researchMode;
         GameObject solarScene = null;
         Matrix4x4 solarSceneInitPose;
 
+        [Tooltip("Allow the pipeline to only perform mapping or enable relocalization as well")]
+        public SolARRpc.PipelineMode pipelineMode = SolARRpc.PipelineMode.RelocalizationAndMapping;
+
         [Serializable]
         public struct GrpcSettings
         {
@@ -177,8 +180,6 @@ SolARHololens2ResearchMode researchMode;
         [HideInInspector]
         public CameraParameters selectedCameraParameter;
 
-        private Cloud.Rpc.Pose receivedPose;
-
         private bool sensorsStarted = false;
 
         SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager relocAndMappingProxy = null;
@@ -236,6 +237,10 @@ SolARHololens2ResearchMode researchMode;
             bool /* sensorsStarted */,
             bool /* gRpcOk */> OnStart;
         public event Action OnStop;
+
+        public event Action<
+            SolARRpc.PipelineMode /* old mode */,
+            SolARRpc.PipelineMode /* new mode */> OnPipelineModeChanged;
 
         // TODO(jmhenaff): rename toLog ?
         public event Action<string> OnGrpcError;
@@ -296,6 +301,9 @@ SolARHololens2ResearchMode researchMode;
             => OnStart?.Invoke(sensorsStarted, gRpcOk);
         private void NotifyOnStop()
             => OnStop?.Invoke();
+
+        private void NotifyOnPipelineModeChanged(SolARRpc.PipelineMode oldMode, SolARRpc.PipelineMode newMode)
+            => OnPipelineModeChanged?.Invoke(oldMode, newMode);
 
         private void NotifyOnGrpcError(string message)
             => OnGrpcError?.Invoke(message);
@@ -434,6 +442,36 @@ SolARHololens2ResearchMode researchMode;
         }
 
         #region Button Events
+
+        public void TogglePipelineMode()
+        {
+            if (sensorsStarted)
+            {
+                NotifyOnUnityAppError("Pipeline mode cannot be changed while running");
+                return;
+            }
+
+            SolARRpc.PipelineMode oldMode = pipelineMode;
+            switch (pipelineMode)
+            {
+                case SolARRpc.PipelineMode.RelocalizationAndMapping:
+                    {
+                        pipelineMode = SolARRpc.PipelineMode.RelocalizationOnly;
+                        break;
+                    }
+                case SolARRpc.PipelineMode.RelocalizationOnly:
+                    {
+                        pipelineMode = SolARRpc.PipelineMode.RelocalizationAndMapping;
+                        break;
+                    }
+                default:
+                    {
+                        throw new ArgumentException("Unkown pipeline mode was selected");
+                    }
+            }
+
+            NotifyOnPipelineModeChanged(oldMode, pipelineMode);
+        }
 
         public void ToggleSensorCatpure()
         {
