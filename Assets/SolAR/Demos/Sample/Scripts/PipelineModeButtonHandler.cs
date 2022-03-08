@@ -48,7 +48,7 @@ public class PipelineModeButtonHandler : MonoBehaviour
 
     private string buildButtonLabel(SolARRpc.PipelineMode mode)
     {
-        return mode == SolARRpc.PipelineMode.RelocalizationAndMapping ? "Reloc + Map" : "Map Only";
+        return mode == SolARRpc.PipelineMode.RelocalizationAndMapping ? "Reloc + Map" : "Reloc Only";
     }
 
 }
