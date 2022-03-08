@@ -471,6 +471,8 @@ SolARHololens2ResearchMode researchMode;
             }
 
             NotifyOnPipelineModeChanged(oldMode, pipelineMode);
+
+            relocAndMappingProxyInitialized = false;
         }
 
         public void ToggleSensorCatpure()
@@ -536,8 +538,7 @@ SolARHololens2ResearchMode researchMode;
 
                 if (!relocAndMappingProxyInitialized)
                 {
-                    // TODO(jmhenaff): update plugin to get these hard coded values
-                    var res = relocAndMappingProxy.Init();
+                    var res = relocAndMappingProxy.Init(pipelineMode);
                     relocAndMappingProxyInitialized = res.success;
                     if (!relocAndMappingProxyInitialized)
                     {
