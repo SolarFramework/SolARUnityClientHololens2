@@ -8,20 +8,26 @@ It will start the Hololens 2 camera sensor and send this date to the SolAR servi
 
 ## How to install the app bundle
 
-### Ensure Device Portal is enabled
+### Enable Device Portal
 In the Hololens 2:
 1. Go to **Settings -> Update -> For developers -> Enable Developer Mode**
 2. Scroll down and enable **Device Portal**
 
 Reference: [Setting up HoloLens to use Windows Device Portal](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/advanced-concepts/using-the-windows-device-portal#setting-up-hololens-to-use-windows-device-portal)
 
-### Install the app bundle (sideloading)
+### How to access the Device Portal
 1. Go to **Settings -> Update -> For developers**
-2. Scroll down to the Device Portal section and note the **Device Portal** IP address either the Wifi one, or, if the Hololens 2 is connected via USB, the Ethernet one.
-3. Open the address in your browser. When using the Wifi IP, be sure that your machine and the Hololens are both on the same wifi network.
-4. In the Device Portal, navigate to **Views->Apps**
-5. In the **Deploy Apps section**, select the **Local Storage tab**, and click on **Choose File**.
-6. Select the **appxbundle** file in this directory, and click on **Install**.
+2. Scroll down to the Device Portal section and note the **Device Portal** IP address either the Wi-Fi one, or, if the Hololens 2 is connected via USB, the Ethernet one.
+3. Open the address in your browser. When using the Wi-Fi IP, be sure that your machine and the Hololens are both on the same Wi-Fi network.
+
+### Enable ResearchMode
+1. In the Device Portal, navigate to **System->ResearchMode**
+2. Check **Allow access to sensor streams**
+### Install the app bundle (sideloading)
+
+1. In the Device Portal, navigate to **Views->Apps**
+2. In the **Deploy Apps section**, select the **Local Storage tab**, and click on **Choose File**.
+3. Select the **appxbundle** file in this directory, and click on **Install**.
 
 Reference: [Installing an app](https://docs.microsoft.com/en-us/windows/mixed-reality/develop/advanced-concepts/using-the-windows-device-portal#installing-an-app)
 
