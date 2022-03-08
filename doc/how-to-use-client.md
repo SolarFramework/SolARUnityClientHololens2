@@ -133,14 +133,15 @@ Basic setting:
 1. Frontend IP: address of SolAR frontend for cloud services
 2. Frontend Base Port: port where the SolAR frontend listens to. If Use Unique Port option is disabled, this is the first port number that will be used, then consecutive numbers will be used for each gRPC channel in the channel pool (i.e. port nummber will be in [\<base port\>..<base port> + \<nb channels\>]). Otherwise, this unique port number will be used for all channels
 3. SolAR scene: a Unity GameObject which is the root of the 3D scene which will receive the pose correction from the SolAR cloud relocalization and mapping services. The origin of the scene will be placed at the origin of the SolAR coordinate system.
+4. Pipeline Mode: select whether the pipeline performs relocalization only or relocalization and mapping.
 
 Advanced settings:
 
-4. Channel Pool Size: amount of reusable gRPC channels in the pool. Each channel will be used to transmit one gRPC call at a time.
-5. Use Unique Port: the port specified in Frontend Base Port will be shared among all channels of the pool.
-6. Delay between Frames: time to wait between sending of frames.
-7. Compression Enabled: toggles compression of sensor images to PNG to save bandwith when sending images to the cloud services.
-8. Selected Sensor: pick a sensor camera. Currently only PV (color front facing camera) and LEFT_FRONT (one of the VLC greyscale tracking cameras available in Reasearch Mode) are supported. Default values for intrinsics are editable, allowing a calibration step to refine the values for a particular device. The Reset button can restore default values.
+5. Channel Pool Size: amount of reusable gRPC channels in the pool. Each channel will be used to transmit one gRPC call at a time.
+6. Use Unique Port: the port specified in Frontend Base Port will be shared among all channels of the pool.
+7. Delay between Frames: time to wait between sending of frames.
+8. Compression Enabled: toggles compression of sensor images to PNG to save bandwith when sending images to the cloud services.
+9. Selected Sensor: pick a sensor camera. Currently only PV (color front facing camera) and LEFT_FRONT (one of the VLC greyscale tracking cameras available in Reasearch Mode) are supported. Default values for intrinsics are editable, allowing a calibration step to refine the values for a particular device. The Reset button can restore default values.
 
 ## Control client execution
 
