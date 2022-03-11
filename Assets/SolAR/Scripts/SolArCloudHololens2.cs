@@ -510,28 +510,19 @@ SolARHololens2ResearchMode researchMode;
         {
             try
             {
-                // Warning: Undocumented behavior
                 string _frontEndIp = frontendIp;
                 int _frontendBasePort = frontendBasePort;
 
+                string[] splittedString = frontendIp.Split(':');
+                if (splittedString.Length > 2)
                 {
-                    int portSeparatorIndex = frontendIp.IndexOf(':');
-                    if (portSeparatorIndex != -1)
-                    {
-                        int tryParsedPort = -1;
-                        if (Int32.TryParse(frontendIp.Substring(portSeparatorIndex + 1), out tryParsedPort))
-                        {
-                            _frontendBasePort = tryParsedPort;
-                            NotifyOnUnityAppError("Warning: given frontend URL overrides original base port '"
-                                + frontendBasePort + "' with '" + _frontendBasePort + "'");
-                        }
-                        else
-                        {
-                            NotifyOnUnityAppError("Could not parse URL port: '" + frontendIp.Substring(portSeparatorIndex + 1)
-                                + "', keeping base port specified at build time: '" + frontendBasePort + "'");
-                        }
+                    _frontEndIp = frontendIp.Substring(0, frontendIp.LastIndexOf(':'));
 
-                        _frontEndIp = frontendIp.Substring(0, portSeparatorIndex);
+                    if (!Int32.TryParse(frontendIp.Substring(frontendIp.LastIndexOf(':') + 1), out _frontendBasePort))
+                    {
+                        NotifyOnUnityAppError("Ill-formed URL: '" + frontendIp + "'");
+                        // best effort
+                        _frontendBasePort = frontendBasePort;
                     }
                 }
 
@@ -547,7 +538,7 @@ SolARHololens2ResearchMode researchMode;
             }
             catch (Exception e)
             {
-                NotifyOnGrpcError("Error while testing RPC connection: " + e.Message);
+                NotifyOnGrpcError("Error while starting client: " + e.Message);
             }
 
             if (!rpcAvailable)
