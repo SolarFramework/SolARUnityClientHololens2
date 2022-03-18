@@ -797,6 +797,7 @@ PlayerSettings:
       VideosLibrary: False
       BackgroundMediaPlayback: False
       Objects3D: False
+      Proximity: False
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -818,7 +819,6 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
-      Proximity: False
       InternetClient: True
       CodeGeneration: False
       EnterpriseAuthentication: False

@@ -58,6 +58,9 @@ SolARHololens2ResearchMode researchMode;
         GameObject solarScene = null;
         Matrix4x4 solarSceneInitPose;
 
+        [Tooltip("Allow the pipeline to only perform mapping or enable relocalization as well")]
+        public SolARRpc.PipelineMode pipelineMode = SolARRpc.PipelineMode.RelocalizationAndMapping;
+
         [Serializable]
         public struct GrpcSettings
         {
@@ -177,8 +180,6 @@ SolARHololens2ResearchMode researchMode;
         [HideInInspector]
         public CameraParameters selectedCameraParameter;
 
-        private Cloud.Rpc.Pose receivedPose;
-
         private bool sensorsStarted = false;
 
         SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager relocAndMappingProxy = null;
@@ -236,6 +237,10 @@ SolARHololens2ResearchMode researchMode;
             bool /* sensorsStarted */,
             bool /* gRpcOk */> OnStart;
         public event Action OnStop;
+
+        public event Action<
+            SolARRpc.PipelineMode /* old mode */,
+            SolARRpc.PipelineMode /* new mode */> OnPipelineModeChanged;
 
         // TODO(jmhenaff): rename toLog ?
         public event Action<string> OnGrpcError;
@@ -296,6 +301,9 @@ SolARHololens2ResearchMode researchMode;
             => OnStart?.Invoke(sensorsStarted, gRpcOk);
         private void NotifyOnStop()
             => OnStop?.Invoke();
+
+        private void NotifyOnPipelineModeChanged(SolARRpc.PipelineMode oldMode, SolARRpc.PipelineMode newMode)
+            => OnPipelineModeChanged?.Invoke(oldMode, newMode);
 
         private void NotifyOnGrpcError(string message)
             => OnGrpcError?.Invoke(message);
@@ -435,6 +443,38 @@ SolARHololens2ResearchMode researchMode;
 
         #region Button Events
 
+        public void TogglePipelineMode()
+        {
+            if (sensorsStarted)
+            {
+                NotifyOnUnityAppError("Pipeline mode cannot be changed while running");
+                return;
+            }
+
+            SolARRpc.PipelineMode oldMode = pipelineMode;
+            switch (pipelineMode)
+            {
+                case SolARRpc.PipelineMode.RelocalizationAndMapping:
+                    {
+                        pipelineMode = SolARRpc.PipelineMode.RelocalizationOnly;
+                        break;
+                    }
+                case SolARRpc.PipelineMode.RelocalizationOnly:
+                    {
+                        pipelineMode = SolARRpc.PipelineMode.RelocalizationAndMapping;
+                        break;
+                    }
+                default:
+                    {
+                        throw new ArgumentException("Unkown pipeline mode was selected");
+                    }
+            }
+
+            NotifyOnPipelineModeChanged(oldMode, pipelineMode);
+
+            relocAndMappingProxyInitialized = false;
+        }
+
         public void ToggleSensorCatpure()
         {
             if (!sensorsStarted)
@@ -470,11 +510,26 @@ SolARHololens2ResearchMode researchMode;
         {
             try
             {
+                string _frontEndIp = frontendIp;
+                int _frontendBasePort = frontendBasePort;
+
+                string[] splittedString = frontendIp.Split(':');
+                if (splittedString.Length > 2)
+                {
+                    _frontEndIp = frontendIp.Substring(0, frontendIp.LastIndexOf(':'));
+
+                    if (!Int32.TryParse(frontendIp.Substring(frontendIp.LastIndexOf(':') + 1), out _frontendBasePort))
+                    {
+                        NotifyOnUnityAppError("Ill-formed URL: '" + frontendIp + "'");
+                        // best effort
+                        _frontendBasePort = frontendBasePort;
+                    }
+                }
+
                 // New instance to force creation of new reusable channels and clients with potentially a different address
-                // relocAndMappingProxy = new SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager(SolARServicesFrontEndIpAddress);
                 relocAndMappingProxy = new SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.Builder()
-                                        .SetServiceAddress(frontendIp)
-                                        .SetPortBase(frontendBasePort)
+                                        .SetServiceAddress(_frontEndIp)
+                                        .SetPortBase(_frontendBasePort)
                                         .SetClientPoolSize(advancedGrpcSettings.channelPoolSize)
                                         .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
                                         .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
@@ -483,7 +538,7 @@ SolARHololens2ResearchMode researchMode;
             }
             catch (Exception e)
             {
-                NotifyOnGrpcError("Error while testing RPC connection: " + e.Message);
+                NotifyOnGrpcError("Error while starting client: " + e.Message);
             }
 
             if (!rpcAvailable)
@@ -498,8 +553,7 @@ SolARHololens2ResearchMode researchMode;
 
                 if (!relocAndMappingProxyInitialized)
                 {
-                    // TODO(jmhenaff): update plugin to get these hard coded values
-                    var res = relocAndMappingProxy.Init();
+                    var res = relocAndMappingProxy.Init(pipelineMode);
                     relocAndMappingProxyInitialized = res.success;
                     if (!relocAndMappingProxyInitialized)
                     {
