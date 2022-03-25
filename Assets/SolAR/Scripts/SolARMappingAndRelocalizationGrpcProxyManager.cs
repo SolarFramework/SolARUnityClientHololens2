@@ -494,6 +494,11 @@ namespace Com.Bcom.Solar.Gprc
 
         public ResultStatus Init()
         {
+            return Init(PipelineMode.RelocalizationAndMapping);
+        }
+
+        public ResultStatus Init(PipelineMode pipelineMode)
+        {
             SolARMappingAndRelocalizationProxyClient client = null;
             try
             {
@@ -503,8 +508,11 @@ namespace Com.Bcom.Solar.Gprc
                     return new ResultStatus(false, "Cannot call Init(): no gRPC client available");
                 }
 
-                client.Init(EMPTY,
-                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+                client.Init(new PipelineModeValue()
+                            {
+                                PipelineMode = pipelineMode
+                            },
+                            deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
                 clientPool.ReleaseClient(client);
             }

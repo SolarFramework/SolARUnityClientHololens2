@@ -128,7 +128,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 0.2.0
   preloadedAssets:
   - {fileID: 0}
   - {fileID: 0}
@@ -254,9 +254,6 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8098013011867456620, guid: 892250fbfc1442f49a66d62b6c348e31, type: 2}
-  - {fileID: 2256912601668067897, guid: bc86b981421586743bee1b33317fbc8a, type: 2}
   - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -748,7 +745,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: SolARDemo
-  metroPackageVersion: 1.0.0.0
+  metroPackageVersion: 0.2.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany

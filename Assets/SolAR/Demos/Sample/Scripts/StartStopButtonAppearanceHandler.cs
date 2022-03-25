@@ -35,9 +35,9 @@ public class StartStopButtonAppearanceHandler : MonoBehaviour
     {
     }
 
-    public void OnClick()
+    public void ToggleSensorCatpure()
     {
-
+        solArCloudHololens2.ToggleSensorCatpure();
     }
 
     private void OnStart(bool sensorsStarted, bool gRpcOk)
