@@ -142,7 +142,7 @@ namespace Com.Bcom.Solar.Gprc
             }
 
             public void SetFrame(int sensorId, ulong timestamp, ImageLayout imLayout,
-                uint imWidth, uint imHeight, byte[] imData, double[] pose, bool compressionEnabled)
+                uint imWidth, uint imHeight, byte[] imData, double[] pose, ImageCompression imageCompression)
             {
 
                 // System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
@@ -165,7 +165,7 @@ namespace Com.Bcom.Solar.Gprc
                         Height = imHeight,
                         Data = ByteString.CopyFrom(imDataPng),
                         // Data = UnsafeByteOperations.UnsafeWrap(imDataPng),
-                        ImageCompression = compressionEnabled ? ImageCompression.Png : ImageCompression.None
+                        ImageCompression = imageCompression
                     },
                     Pose = new Matrix4x4
                     {
@@ -676,7 +676,7 @@ namespace Com.Bcom.Solar.Gprc
             );
         }
 
-        private byte[] convertToPNG(ImageLayout imLayout, uint imWidth, uint imHeight, byte[] imData)
+        private byte[] applyCompression(ImageLayout imLayout, uint imWidth, uint imHeight, byte[] imData, ImageCompression imageCompression)
         {
             GraphicsFormat format;
             switch (imLayout)
@@ -687,7 +687,14 @@ namespace Com.Bcom.Solar.Gprc
                 default: throw new ArgumentException("Unkown image layout");
             }
 
-            return UnityEngine.ImageConversion.EncodeArrayToPNG(imData, format, imWidth, imHeight);
+            switch(imageCompression)
+            {
+                case ImageCompression.Png: return UnityEngine.ImageConversion.EncodeArrayToPNG(imData, format, imWidth, imHeight);
+                case ImageCompression.Jpg: return UnityEngine.ImageConversion.EncodeArrayToJPG(imData, format, imWidth, imHeight);
+                case ImageCompression.None: throw new ArgumentException("None should not be used here"); // return imData;
+                default: throw new ArgumentException("Unknown image compression");
+
+            }           
         }
 
         private RelocAndMappingResult RelocalizeAndMap(Frame frame)
@@ -710,8 +717,15 @@ namespace Com.Bcom.Solar.Gprc
                             break;
                         }
                     case ImageCompression.Png:
+                    case ImageCompression.Jpg:
                         {
-                            frame.Image.Data = ByteString.CopyFrom(convertToPNG(frame.Image.Layout, frame.Image.Width, frame.Image.Height, frame.Image.Data.ToByteArray()));
+                            frame.Image.Data = ByteString.CopyFrom(
+                                applyCompression(
+                                    frame.Image.Layout, 
+                                    frame.Image.Width,
+                                    frame.Image.Height,
+                                    frame.Image.Data.ToByteArray(),
+                                    frame.Image.ImageCompression));
                             break;
                         }
                     default:

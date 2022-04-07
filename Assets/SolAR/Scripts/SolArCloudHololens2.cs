@@ -70,8 +70,8 @@ SolARHololens2ResearchMode researchMode;
             public bool useUniquePort;
             [Tooltip("Delay in ms before sending each frame")]
             public int delayBetweenFramesInMs;
-            [Tooltip("Enable compression of frame image buffer in PNG to save bandwidth")]
-            public bool compressionEnabled;
+            [Tooltip("Select compression method of frame image buffer to save bandwidth")]
+            public SolARRpc.ImageCompression imageCompression;
         }
 
         [SerializeField]
@@ -80,7 +80,7 @@ SolARHololens2ResearchMode researchMode;
             channelPoolSize = 6,
             useUniquePort = false,
             delayBetweenFramesInMs = 20,
-            compressionEnabled = true
+            imageCompression = SolARRpc.ImageCompression.None
         };
 
 
@@ -744,7 +744,7 @@ SolARHololens2ResearchMode researchMode;
                             if (rpcAvailable)
                             {
                                 relocAndMappingFrameSender.SetFrame(0, ts, SolARRpc.ImageLayout.Grey16,
-                                    _width, _height, depthData, cam2WorldTransform, /* compression = */ false);
+                                    _width, _height, depthData, cam2WorldTransform, SolARRpc.ImageCompression.None);
                             }
                             NotifyOnDepthFrame(depthData, depthABData, ts, cam2WorldTransform, _width,
                                 _height, _fx, _fy, _pixelBufferSize);
@@ -808,7 +808,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                     byte[] vclBufferData = null;
 #if ENABLE_WINMD_SUPPORT
-			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.compressionEnabled);
+			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
 #endif
                     if (vclBufferData != null)
                     {
@@ -827,7 +827,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                                      _height,
                                      vclBufferData,
                                      cam2WorldTransform,
-                                     advancedGrpcSettings.compressionEnabled);
+                                     advancedGrpcSettings.imageCompression);
                             }
                         }
                         else
@@ -878,7 +878,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     double[] _PVtoWorldtransform = null;
                     byte[] frameTexture = null;
 #if ENABLE_WINMD_SUPPORT
-			    frameTexture = researchMode.GetPvData(out _timestamp, out _PVtoWorldtransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.compressionEnabled);
+			    frameTexture = researchMode.GetPvData(out _timestamp, out _PVtoWorldtransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
 #endif
                     if (frameTexture != null)
                     {
@@ -890,7 +890,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                             {
                                 relocAndMappingFrameSender.SetFrame(/* sensor id PV */ 0, _timestamp,
                                     SolARRpc.ImageLayout.Rgb24, _width, _height, frameTexture,
-                                    _PVtoWorldtransform, advancedGrpcSettings.compressionEnabled);
+                                    _PVtoWorldtransform, advancedGrpcSettings.imageCompression);
                             }
                         }
                     }
