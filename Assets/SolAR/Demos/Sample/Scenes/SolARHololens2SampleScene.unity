@@ -1030,6 +1030,11 @@ PrefabInstance:
       propertyPath: gRpcDelayBetweenFramesInMs
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: advancedGrpcSettings.imageCompression
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e688a6d483c98df4ebcb4627f077e80c, type: 3}
 --- !u!114 &287962944 stripped

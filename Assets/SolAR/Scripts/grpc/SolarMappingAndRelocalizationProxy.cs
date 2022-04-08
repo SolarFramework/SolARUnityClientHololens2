@@ -58,21 +58,21 @@ namespace Com.Bcom.Solar.Gprc {
             "Tl9PTkxZEAEqHwoKQ2FtZXJhVHlwZRIHCgNSR0IQABIICgRHUkFZEAEqRgoY",
             "UmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEgsKB05PX1BPU0UQABIMCghORVdf",
             "UE9TRRABEg8KC0xBVEVTVF9QT1NFEAIqMgoLSW1hZ2VMYXlvdXQSCgoGUkdC",
-            "XzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKiUKEEltYWdlQ29tcHJl",
-            "c3Npb24SCAoETk9ORRAAEgcKA1BORxABMsgECiJTb2xBUk1hcHBpbmdBbmRS",
-            "ZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQSJi5jb20uYmNvbS5zb2xhci5n",
-            "cHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29tLmJjb20uc29sYXIuZ3ByYy5F",
-            "bXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHkaGi5j",
-            "b20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej4KBFN0b3ASGi5jb20uYmNvbS5z",
-            "b2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJY",
-            "ChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29tLmJjb20uc29sYXIuZ3ByYy5D",
-            "YW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJZ",
-            "ChBSZWxvY2FsaXplQW5kTWFwEhouY29tLmJjb20uc29sYXIuZ3ByYy5GcmFt",
-            "ZRopLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25SZXN1bHQS",
-            "VwoOR2V0M0RUcmFuc2Zvcm0SGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5",
-            "GikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlvblJlc3VsdBJH",
-            "CgtTZW5kTWVzc2FnZRIcLmNvbS5iY29tLnNvbGFyLmdwcmMuTWVzc2FnZRoa",
-            "LmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHliBnByb3RvMw=="));
+            "XzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKi4KEEltYWdlQ29tcHJl",
+            "c3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMsgECiJTb2xBUk1h",
+            "cHBpbmdBbmRSZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQSJi5jb20uYmNv",
+            "bS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29tLmJjb20uc29s",
+            "YXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNvbGFyLmdwcmMu",
+            "RW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej4KBFN0b3ASGi5j",
+            "b20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20uc29sYXIuZ3By",
+            "Yy5FbXB0eRJYChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29tLmJjb20uc29s",
+            "YXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20uc29sYXIuZ3By",
+            "Yy5FbXB0eRJZChBSZWxvY2FsaXplQW5kTWFwEhouY29tLmJjb20uc29sYXIu",
+            "Z3ByYy5GcmFtZRopLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRp",
+            "b25SZXN1bHQSVwoOR2V0M0RUcmFuc2Zvcm0SGi5jb20uYmNvbS5zb2xhci5n",
+            "cHJjLkVtcHR5GikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlv",
+            "blJlc3VsdBJHCgtTZW5kTWVzc2FnZRIcLmNvbS5iY29tLnNvbGFyLmdwcmMu",
+            "TWVzc2FnZRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHliBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -117,6 +117,7 @@ namespace Com.Bcom.Solar.Gprc {
   public enum ImageCompression {
     [pbr::OriginalName("NONE")] None = 0,
     [pbr::OriginalName("PNG")] Png = 1,
+    [pbr::OriginalName("JPG")] Jpg = 2,
   }
 
   #endregion

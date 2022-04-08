@@ -660,7 +660,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                              _height,
                              vclBufferData,
                              cam2WorldTransform,
-                             /* compression = */ false);
+                             SolARRpc.ImageCompression.None);
                     }
 
 
@@ -785,7 +785,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                             _height,
                             frameTexture,
                             _PVtoWorldtransform,
-                            /* compression = */ false);
+                            SolARRpc.ImageCompression.None);
                     }
 
 
