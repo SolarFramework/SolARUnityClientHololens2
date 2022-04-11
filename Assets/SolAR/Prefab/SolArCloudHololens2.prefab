@@ -46,6 +46,7 @@ MonoBehaviour:
   frontendIp: http://192.168.137.1
   frontendBasePort: 5000
   solarScene: {fileID: 0}
+  pipelineMode: 0
   advancedGrpcSettings:
     channelPoolSize: 6
     useUniquePort: 0
