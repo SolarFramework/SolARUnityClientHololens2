@@ -1027,13 +1027,68 @@ PrefabInstance:
       objectReference: {fileID: 183285884}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
-      propertyPath: gRpcDelayBetweenFramesInMs
-      value: 20
+      propertyPath: selectedSensor
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
-      propertyPath: advancedGrpcSettings.imageCompression
+      propertyPath: pvParameters.id
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.name
+      value: RIGHT_FRONT
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.width
+      value: 641
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.distK1
+      value: -0.009463
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.distK2
+      value: 0.003013
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.focalX
+      value: 366.189452
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.focalY
+      value: 366.47809
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.height
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.centerX
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: pvParameters.centerY
+      value: 240
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: gRpcDelayBetweenFramesInMs
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e688a6d483c98df4ebcb4627f077e80c, type: 3}

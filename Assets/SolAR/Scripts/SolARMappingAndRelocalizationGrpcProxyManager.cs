@@ -578,6 +578,66 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
+        [Serializable]
+        public struct CameraParameters
+        {
+            public string name;
+            public uint id;
+            public SolARRpc.CameraType type;
+            public uint width;
+            public uint height;
+            public double focalX;
+            public double focalY;
+            public double centerX;
+            public double centerY;
+            public double distK1;
+            public double distK2;
+            public double distP1;
+            public double distP2;
+            public double distK3;
+
+            public CameraParameters(CameraParameters other)
+            {
+                name = other.name;
+                id = other.id;
+                type = other.type;
+                width = other.width;
+                height = other.height;
+                focalX = other.focalX;
+                focalY = other.focalY;
+                centerX = other.centerX;
+                centerY = other.centerY;
+                distK1 = other.distK1;
+                distK2 = other.distK2;
+                distP1 = other.distP1;
+                distP2 = other.distP2;
+                distK3 = other.distK3;
+            }
+        }
+
+        public struct RectificationParameters
+        {
+            Matrix3x3 rotation;
+            Matrix3x4 projection;
+            StereoType stereo_type;
+            float baselise;
+        }
+
+        public class StereoRigParameters
+        {
+            CameraParameters leftCcameraParameters;
+            CameraParameters rightCcameraParameters;
+            Matrix4x4 transform3d;
+
+
+
+            map<uint32, CameraIdPair> camera_ids_pair = 2;
+            map<uint32, Matrix4x4> transformations_3d = 3;
+            map<uint32, RectificationParametersPair> rectification_parameters = 4;
+        }
+
+
+
         public ResultStatus SetCameraParameters(string camName, uint camId, CameraType camType,
             uint width, uint height, double[] intrisincs, float distortion_k1, float distortion_k2,
             float distortion_p1, float distortion_p2, float distortion_k3)

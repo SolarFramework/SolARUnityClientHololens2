@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adba2cf5a4df5da4f9aa2016f8c922eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontendIp: http://192.168.137.1
+  frontendIp: 192.168.137.1
   frontendBasePort: 5000
   solarScene: {fileID: 0}
   pipelineMode: 0
@@ -51,23 +51,8 @@ MonoBehaviour:
     channelPoolSize: 6
     useUniquePort: 0
     delayBetweenFramesInMs: 20
-    compressionEnabled: 1
-  selectedSensor: 1
-  pvParameters:
-    name: PV
-    id: 0
-    type: 0
-    width: 760
-    height: 428
-    focalX: 592.085
-    focalY: 592.085
-    centerX: 371.296
-    centerY: 203.017
-    distK1: -0.0626
-    distK2: 0.7265
-    distP1: -0.006169
-    distP2: -0.008975
-    distK3: 0
+    imageCompression: 1
+  selectedSensor: 0
   leftFrontParameters:
     name: LEFT_FRONT
     id: 0
@@ -83,9 +68,9 @@ MonoBehaviour:
     distP1: -0.006169
     distP2: -0.008975
     distK3: 0
-  selectedCameraParameter:
-    name: LEFT_FRONT
-    id: 0
+  rightFrontParameters:
+    name: RIGHT_FRONT
+    id: 1
     type: 1
     width: 640
     height: 480
@@ -97,4 +82,19 @@ MonoBehaviour:
     distK2: 0.003013
     distP1: -0.006169
     distP2: -0.008975
+    distK3: 0
+  selectedCameraParameter:
+    name: 
+    id: 0
+    type: 0
+    width: 0
+    height: 0
+    focalX: 0
+    focalY: 0
+    centerX: 0
+    centerY: 0
+    distK1: 0
+    distK2: 0
+    distP1: 0
+    distP2: 0
     distK3: 0

@@ -22,8 +22,8 @@ using UnityEngine;
 public class SolARCloudHololens2Editor : Editor
 {
     private SerializedProperty selectedSensorProp;
-    private SerializedProperty pvParameters;
     private SerializedProperty leftFrontParameters;
+    private SerializedProperty rightFrontParameters;
 
     new SolArCloudHololens2 target => (SolArCloudHololens2)base.target;
 
@@ -32,8 +32,8 @@ public class SolARCloudHololens2Editor : Editor
     void OnEnable()
     {
         selectedSensorProp = serializedObject.FindProperty("selectedSensor");
-        pvParameters = serializedObject.FindProperty("pvParameters");
         leftFrontParameters = serializedObject.FindProperty("leftFrontParameters");
+        rightFrontParameters = serializedObject.FindProperty("rightFrontParameters");
     }
 
     public override void OnInspectorGUI()
@@ -46,30 +46,26 @@ public class SolARCloudHololens2Editor : Editor
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
+            SolArCloudHololens2.Hl2SensorTypeEditor selectedSensor =
+                (SolArCloudHololens2.Hl2SensorTypeEditor)selectedSensorProp.enumValueIndex;
+
             if (GUILayout.Button("Reset"))
             {
-                ResetDefaultCameraParameters(target.GetPvDefaultParameters(),
-                                             pvParameters);
+                //ResetDefaultCameraParameters(target.GetPvDefaultParameters(),
+                //                             pvParameters);
                 ResetDefaultCameraParameters(target.GetLeftFrontDefaultParameters(),
                                              leftFrontParameters);
+                ResetDefaultCameraParameters(target.GetRightFrontDefaultParameters(),
+                                             rightFrontParameters);
             }
 
             EditorGUILayout.PropertyField(selectedSensorProp);
 
-            SolArCloudHololens2.Hl2SensorTypeEditor selectedSensor =
-                (SolArCloudHololens2.Hl2SensorTypeEditor)selectedSensorProp.enumValueIndex;
-
-            switch (selectedSensor)
+            updateCameraParameters(leftFrontParameters);
+            if (selectedSensor == SolArCloudHololens2.Hl2SensorTypeEditor.STEREO)
             {
-                case SolArCloudHololens2.Hl2SensorTypeEditor.PV:
-                    updateCameraParameters(pvParameters);
-                    target.selectedCameraParameter = target.pvParameters;
-                    break;
-
-                case SolArCloudHololens2.Hl2SensorTypeEditor.RM_LEFT_FRONT:
-                    updateCameraParameters(leftFrontParameters);
-                    target.selectedCameraParameter = target.leftFrontParameters;
-                    break;
+                EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+                updateCameraParameters(rightFrontParameters);
             }
         }
 
@@ -82,6 +78,8 @@ public class SolARCloudHololens2Editor : Editor
     private void updateCameraParameters(SerializedProperty camParametersObject)
     {
         GUI.enabled = false;
+        OnGuiStringCamParamProperty(camParametersObject, "name");
+        OnGuiIntCamParamProperty(camParametersObject, "id");
         OnGuiIntCamParamProperty(camParametersObject, "width");
         OnGuiIntCamParamProperty(camParametersObject, "height");
         GUI.enabled = true;
@@ -113,6 +111,15 @@ public class SolARCloudHololens2Editor : Editor
             camParametersObject.FindPropertyRelative(propName).doubleValue);
 
         camParametersObject.FindPropertyRelative(propName).doubleValue = value;
+    }
+
+    private void OnGuiStringCamParamProperty(SerializedProperty camParametersObject,
+                                         string propName)
+    {
+        string value = EditorGUILayout.DelayedTextField(propName,
+            camParametersObject.FindPropertyRelative(propName).stringValue);
+
+        camParametersObject.FindPropertyRelative(propName).stringValue = value;
     }
 
     public void ResetDefaultCameraParameters(

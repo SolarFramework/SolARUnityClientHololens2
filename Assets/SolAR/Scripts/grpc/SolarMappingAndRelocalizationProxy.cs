@@ -33,59 +33,103 @@ namespace Com.Bcom.Solar.Gprc {
             "cHJjLkNhbWVyYVR5cGUSDQoFd2lkdGgYBCABKA0SDgoGaGVpZ2h0GAUgASgN",
             "EjIKCmludHJpbnNpY3MYBiABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1h",
             "dHJpeDN4MxI5CgpkaXN0b3J0aW9uGAcgASgLMiUuY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5DYW1lcmFEaXN0b3J0aW9uIlMKEENhbWVyYURpc3RvcnRpb24SCwoD",
-            "S18xGAEgASgCEgsKA0tfMhgCIAEoAhILCgNQXzEYAyABKAISCwoDUF8yGAQg",
-            "ASgCEgsKA0tfMxgFIAEoAiKcAQoUUmVsb2NhbGl6YXRpb25SZXN1bHQSQgoL",
-            "cG9zZV9zdGF0dXMYASABKA4yLS5jb20uYmNvbS5zb2xhci5ncHJjLlJlbG9j",
-            "YWxpemF0aW9uUG9zZVN0YXR1cxIsCgRwb3NlGAIgASgLMh4uY29tLmJjb20u",
-            "c29sYXIuZ3ByYy5NYXRyaXg0eDQSEgoKY29uZmlkZW5jZRgDIAEoAiKnAQoF",
-            "SW1hZ2USDQoFd2lkdGgYASABKA0SDgoGaGVpZ2h0GAIgASgNEgwKBGRhdGEY",
-            "AyABKAwSMAoGbGF5b3V0GAQgASgOMiAuY29tLmJjb20uc29sYXIuZ3ByYy5J",
-            "bWFnZUxheW91dBI/ChBpbWFnZUNvbXByZXNzaW9uGAUgASgOMiUuY29tLmJj",
-            "b20uc29sYXIuZ3ByYy5JbWFnZUNvbXByZXNzaW9uIoYBCgVGcmFtZRIRCglz",
-            "ZW5zb3JfaWQYASABKAUSKQoFaW1hZ2UYAiABKAsyGi5jb20uYmNvbS5zb2xh",
-            "ci5ncHJjLkltYWdlEhEKCXRpbWVzdGFtcBgDIAEoBBIsCgRwb3NlGAQgASgL",
-            "Mh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXg0eDQi2wEKCU1hdHJpeDR4",
-            "NBILCgNtMTEYASABKAISCwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNt",
-            "MTQYBCABKAISCwoDbTIxGAUgASgCEgsKA20yMhgGIAEoAhILCgNtMjMYByAB",
-            "KAISCwoDbTI0GAggASgCEgsKA20zMRgJIAEoAhILCgNtMzIYCiABKAISCwoD",
-            "bTMzGAsgASgCEgsKA20zNBgMIAEoAhILCgNtNDEYDSABKAISCwoDbTQyGA4g",
-            "ASgCEgsKA200MxgPIAEoAhILCgNtNDQYECABKAIigAEKCU1hdHJpeDN4MxIL",
-            "CgNtMTEYASABKAISCwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNtMjEY",
-            "BCABKAISCwoDbTIyGAUgASgCEgsKA20yMxgGIAEoAhILCgNtMzEYByABKAIS",
-            "CwoDbTMyGAggASgCEgsKA20zMxgJIAEoAipHCgxQaXBlbGluZU1vZGUSHgoa",
-            "UkVMT0NBTElaQVRJT05fQU5EX01BUFBJTkcQABIXChNSRUxPQ0FMSVpBVElP",
-            "Tl9PTkxZEAEqHwoKQ2FtZXJhVHlwZRIHCgNSR0IQABIICgRHUkFZEAEqRgoY",
-            "UmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEgsKB05PX1BPU0UQABIMCghORVdf",
-            "UE9TRRABEg8KC0xBVEVTVF9QT1NFEAIqMgoLSW1hZ2VMYXlvdXQSCgoGUkdC",
-            "XzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKi4KEEltYWdlQ29tcHJl",
-            "c3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMsgECiJTb2xBUk1h",
-            "cHBpbmdBbmRSZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQSJi5jb20uYmNv",
-            "bS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29tLmJjb20uc29s",
-            "YXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNvbGFyLmdwcmMu",
-            "RW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej4KBFN0b3ASGi5j",
-            "b20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20uc29sYXIuZ3By",
-            "Yy5FbXB0eRJYChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29tLmJjb20uc29s",
-            "YXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20uc29sYXIuZ3By",
-            "Yy5FbXB0eRJZChBSZWxvY2FsaXplQW5kTWFwEhouY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5GcmFtZRopLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRp",
-            "b25SZXN1bHQSVwoOR2V0M0RUcmFuc2Zvcm0SGi5jb20uYmNvbS5zb2xhci5n",
-            "cHJjLkVtcHR5GikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlv",
-            "blJlc3VsdBJHCgtTZW5kTWVzc2FnZRIcLmNvbS5iY29tLnNvbGFyLmdwcmMu",
-            "TWVzc2FnZRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHliBnByb3RvMw=="));
+            "Z3ByYy5DYW1lcmFEaXN0b3J0aW9uIjIKDENhbWVyYUlkUGFpchIQCghjYW1l",
+            "cmFfMRgBIAEoDRIQCghjYW1lcmFfMhgCIAEoDSLHAQoXUmVjdGlmaWNhdGlv",
+            "blBhcmFtZXRlcnMSMAoIcm90YXRpb24YASABKAsyHi5jb20uYmNvbS5zb2xh",
+            "ci5ncHJjLk1hdHJpeDN4MxIyCgpwcm9qZWN0aW9uGAIgASgLMh4uY29tLmJj",
+            "b20uc29sYXIuZ3ByYy5NYXRyaXgzeDQSNAoLc3RlcmVvX3R5cGUYAyABKA4y",
+            "Hy5jb20uYmNvbS5zb2xhci5ncHJjLlN0ZXJlb1R5cGUSEAoIYmFzZWxpc2UY",
+            "BCABKAIiwQEKG1JlY3RpZmljYXRpb25QYXJhbWV0ZXJzUGFpchJQChpyZWN0",
+            "aWZpY2F0aW9uX3BhcmFtZXRlcnNfMRgBIAEoCzIsLmNvbS5iY29tLnNvbGFy",
+            "LmdwcmMuUmVjdGlmaWNhdGlvblBhcmFtZXRlcnMSUAoacmVjdGlmaWNhdGlv",
+            "bl9wYXJhbWV0ZXJzXzIYAiABKAsyLC5jb20uYmNvbS5zb2xhci5ncHJjLlJl",
+            "Y3RpZmljYXRpb25QYXJhbWV0ZXJzIpEGChNDYW1lcmFSaWdQYXJhbWV0ZXJz",
+            "ElkKEWNhbWVyYV9wYXJhbWV0ZXJzGAEgAygLMj4uY29tLmJjb20uc29sYXIu",
+            "Z3ByYy5DYW1lcmFSaWdQYXJhbWV0ZXJzLkNhbWVyYVBhcmFtZXRlcnNFbnRy",
+            "eRJUCg9jYW1lcmFfaWRzX3BhaXIYAiADKAsyOy5jb20uYmNvbS5zb2xhci5n",
+            "cHJjLkNhbWVyYVJpZ1BhcmFtZXRlcnMuQ2FtZXJhSWRzUGFpckVudHJ5ElsK",
+            "EnRyYW5zZm9ybWF0aW9uc18zZBgDIAMoCzI/LmNvbS5iY29tLnNvbGFyLmdw",
+            "cmMuQ2FtZXJhUmlnUGFyYW1ldGVycy5UcmFuc2Zvcm1hdGlvbnMzZEVudHJ5",
+            "EmcKGHJlY3RpZmljYXRpb25fcGFyYW1ldGVycxgEIAMoCzJFLmNvbS5iY29t",
+            "LnNvbGFyLmdwcmMuQ2FtZXJhUmlnUGFyYW1ldGVycy5SZWN0aWZpY2F0aW9u",
+            "UGFyYW1ldGVyc0VudHJ5Gl4KFUNhbWVyYVBhcmFtZXRlcnNFbnRyeRILCgNr",
+            "ZXkYASABKA0SNAoFdmFsdWUYAiABKAsyJS5jb20uYmNvbS5zb2xhci5ncHJj",
+            "LkNhbWVyYVBhcmFtZXRlcnM6AjgBGlcKEkNhbWVyYUlkc1BhaXJFbnRyeRIL",
+            "CgNrZXkYASABKA0SMAoFdmFsdWUYAiABKAsyIS5jb20uYmNvbS5zb2xhci5n",
+            "cHJjLkNhbWVyYUlkUGFpcjoCOAEaWAoWVHJhbnNmb3JtYXRpb25zM2RFbnRy",
+            "eRILCgNrZXkYASABKA0SLQoFdmFsdWUYAiABKAsyHi5jb20uYmNvbS5zb2xh",
+            "ci5ncHJjLk1hdHJpeDR4NDoCOAEacAocUmVjdGlmaWNhdGlvblBhcmFtZXRl",
+            "cnNFbnRyeRILCgNrZXkYASABKA0SPwoFdmFsdWUYAiABKAsyMC5jb20uYmNv",
+            "bS5zb2xhci5ncHJjLlJlY3RpZmljYXRpb25QYXJhbWV0ZXJzUGFpcjoCOAEi",
+            "UwoQQ2FtZXJhRGlzdG9ydGlvbhILCgNLXzEYASABKAISCwoDS18yGAIgASgC",
+            "EgsKA1BfMRgDIAEoAhILCgNQXzIYBCABKAISCwoDS18zGAUgASgCIpwBChRS",
+            "ZWxvY2FsaXphdGlvblJlc3VsdBJCCgtwb3NlX3N0YXR1cxgBIAEoDjItLmNv",
+            "bS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEiwK",
+            "BHBvc2UYAiABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1hdHJpeDR4NBIS",
+            "Cgpjb25maWRlbmNlGAMgASgCIqcBCgVJbWFnZRINCgV3aWR0aBgBIAEoDRIO",
+            "CgZoZWlnaHQYAiABKA0SDAoEZGF0YRgDIAEoDBIwCgZsYXlvdXQYBCABKA4y",
+            "IC5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdlTGF5b3V0Ej8KEGltYWdlQ29t",
+            "cHJlc3Npb24YBSABKA4yJS5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdlQ29t",
+            "cHJlc3Npb24ihgEKBUZyYW1lEhEKCXNlbnNvcl9pZBgBIAEoBRIpCgVpbWFn",
+            "ZRgCIAEoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1hZ2USEQoJdGltZXN0",
+            "YW1wGAMgASgEEiwKBHBvc2UYBCABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJj",
+            "Lk1hdHJpeDR4NCI0CgZGcmFtZXMSKgoGZnJhbWVzGAEgAygLMhouY29tLmJj",
+            "b20uc29sYXIuZ3ByYy5GcmFtZSLbAQoJTWF0cml4NHg0EgsKA20xMRgBIAEo",
+            "AhILCgNtMTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20xNBgEIAEoAhILCgNt",
+            "MjEYBSABKAISCwoDbTIyGAYgASgCEgsKA20yMxgHIAEoAhILCgNtMjQYCCAB",
+            "KAISCwoDbTMxGAkgASgCEgsKA20zMhgKIAEoAhILCgNtMzMYCyABKAISCwoD",
+            "bTM0GAwgASgCEgsKA200MRgNIAEoAhILCgNtNDIYDiABKAISCwoDbTQzGA8g",
+            "ASgCEgsKA200NBgQIAEoAiKAAQoJTWF0cml4M3gzEgsKA20xMRgBIAEoAhIL",
+            "CgNtMTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20yMRgEIAEoAhILCgNtMjIY",
+            "BSABKAISCwoDbTIzGAYgASgCEgsKA20zMRgHIAEoAhILCgNtMzIYCCABKAIS",
+            "CwoDbTMzGAkgASgCIqcBCglNYXRyaXgzeDQSCwoDbTExGAEgASgCEgsKA20x",
+            "MhgCIAEoAhILCgNtMTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20yMRgFIAEo",
+            "AhILCgNtMjIYBiABKAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEoAhILCgNt",
+            "MzEYCSABKAISCwoDbTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNtMzQYDCAB",
+            "KAIqRwoMUGlwZWxpbmVNb2RlEh4KGlJFTE9DQUxJWkFUSU9OX0FORF9NQVBQ",
+            "SU5HEAASFwoTUkVMT0NBTElaQVRJT05fT05MWRABKioKClN0ZXJlb1R5cGUS",
+            "DgoKSE9SSVpPTlRBTBAAEgwKCFZFUlRJQ0FMEAEqHwoKQ2FtZXJhVHlwZRIH",
+            "CgNSR0IQABIICgRHUkFZEAEqRgoYUmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVz",
+            "EgsKB05PX1BPU0UQABIMCghORVdfUE9TRRABEg8KC0xBVEVTVF9QT1NFEAIq",
+            "MgoLSW1hZ2VMYXlvdXQSCgoGUkdCXzI0EAASCgoGR1JFWV84EAESCwoHR1JF",
+            "WV8xNhACKi4KEEltYWdlQ29tcHJlc3Npb24SCAoETk9ORRAAEgcKA1BORxAB",
+            "EgcKA0pQRxACMooGCiJTb2xBUk1hcHBpbmdBbmRSZWxvY2FsaXphdGlvblBy",
+            "b3h5EkoKBEluaXQSJi5jb20uYmNvbS5zb2xhci5ncHJjLlBpcGVsaW5lTW9k",
+            "ZVZhbHVlGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIa",
+            "LmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHkaGi5jb20uYmNvbS5zb2xhci5n",
+            "cHJjLkVtcHR5Ej4KBFN0b3ASGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5",
+            "GhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJYChNTZXRDYW1lcmFQYXJh",
+            "bWV0ZXJzEiUuY29tLmJjb20uc29sYXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJz",
+            "GhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJeChZTZXRDYW1lcmFSaWdQ",
+            "YXJhbWV0ZXJzEiguY29tLmJjb20uc29sYXIuZ3ByYy5DYW1lcmFSaWdQYXJh",
+            "bWV0ZXJzGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJZChBSZWxvY2Fs",
+            "aXplQW5kTWFwEhouY29tLmJjb20uc29sYXIuZ3ByYy5GcmFtZRopLmNvbS5i",
+            "Y29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25SZXN1bHQSYAoWUmVsb2Nh",
+            "bGl6ZUFuZE1hcFN0ZXJlbxIbLmNvbS5iY29tLnNvbGFyLmdwcmMuRnJhbWVz",
+            "GikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlvblJlc3VsdBJX",
+            "Cg5HZXQzRFRyYW5zZm9ybRIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHka",
+            "KS5jb20uYmNvbS5zb2xhci5ncHJjLlJlbG9jYWxpemF0aW9uUmVzdWx0EkcK",
+            "C1NlbmRNZXNzYWdlEhwuY29tLmJjb20uc29sYXIuZ3ByYy5NZXNzYWdlGhou",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.StereoType), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Empty), global::Com.Bcom.Solar.Gprc.Empty.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.PipelineModeValue), global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser, new[]{ "PipelineMode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Message), global::Com.Bcom.Solar.Gprc.Message.Parser, new[]{ "Message_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParameters), global::Com.Bcom.Solar.Gprc.CameraParameters.Parser, new[]{ "Name", "Id", "CameraType", "Width", "Height", "Intrinsics", "Distortion" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraIdPair), global::Com.Bcom.Solar.Gprc.CameraIdPair.Parser, new[]{ "Camera1", "Camera2" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParameters), global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser, new[]{ "Rotation", "Projection", "StereoType", "Baselise" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParametersPair), global::Com.Bcom.Solar.Gprc.RectificationParametersPair.Parser, new[]{ "RectificationParameters1", "RectificationParameters2" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraRigParameters), global::Com.Bcom.Solar.Gprc.CameraRigParameters.Parser, new[]{ "CameraParameters", "CameraIdsPair", "Transformations3D", "RectificationParameters" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraDistortion), global::Com.Bcom.Solar.Gprc.CameraDistortion.Parser, new[]{ "K1", "K2", "P1", "P2", "K3" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RelocalizationResult), global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser, new[]{ "PoseStatus", "Pose", "Confidence" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Image), global::Com.Bcom.Solar.Gprc.Image.Parser, new[]{ "Width", "Height", "Data", "Layout", "ImageCompression" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frame), global::Com.Bcom.Solar.Gprc.Frame.Parser, new[]{ "SensorId", "Image", "Timestamp", "Pose" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "Frames_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix4x4), global::Com.Bcom.Solar.Gprc.Matrix4x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34", "M41", "M42", "M43", "M44" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x3), global::Com.Bcom.Solar.Gprc.Matrix3x3.Parser, new[]{ "M11", "M12", "M13", "M21", "M22", "M23", "M31", "M32", "M33" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x3), global::Com.Bcom.Solar.Gprc.Matrix3x3.Parser, new[]{ "M11", "M12", "M13", "M21", "M22", "M23", "M31", "M32", "M33" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x4), global::Com.Bcom.Solar.Gprc.Matrix3x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34" }, null, null, null, null)
           }));
     }
     #endregion
@@ -95,6 +139,11 @@ namespace Com.Bcom.Solar.Gprc {
   public enum PipelineMode {
     [pbr::OriginalName("RELOCALIZATION_AND_MAPPING")] RelocalizationAndMapping = 0,
     [pbr::OriginalName("RELOCALIZATION_ONLY")] RelocalizationOnly = 1,
+  }
+
+  public enum StereoType {
+    [pbr::OriginalName("HORIZONTAL")] Horizontal = 0,
+    [pbr::OriginalName("VERTICAL")] Vertical = 1,
   }
 
   public enum CameraType {
@@ -1009,6 +1058,974 @@ namespace Com.Bcom.Solar.Gprc {
 
   }
 
+  public sealed partial class CameraIdPair : pb::IMessage<CameraIdPair>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<CameraIdPair> _parser = new pb::MessageParser<CameraIdPair>(() => new CameraIdPair());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CameraIdPair> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraIdPair() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraIdPair(CameraIdPair other) : this() {
+      camera1_ = other.camera1_;
+      camera2_ = other.camera2_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraIdPair Clone() {
+      return new CameraIdPair(this);
+    }
+
+    /// <summary>Field number for the "camera_1" field.</summary>
+    public const int Camera1FieldNumber = 1;
+    private uint camera1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Camera1 {
+      get { return camera1_; }
+      set {
+        camera1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "camera_2" field.</summary>
+    public const int Camera2FieldNumber = 2;
+    private uint camera2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public uint Camera2 {
+      get { return camera2_; }
+      set {
+        camera2_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CameraIdPair);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CameraIdPair other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Camera1 != other.Camera1) return false;
+      if (Camera2 != other.Camera2) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Camera1 != 0) hash ^= Camera1.GetHashCode();
+      if (Camera2 != 0) hash ^= Camera2.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Camera1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Camera1);
+      }
+      if (Camera2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Camera2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Camera1 != 0) {
+        output.WriteRawTag(8);
+        output.WriteUInt32(Camera1);
+      }
+      if (Camera2 != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Camera2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (Camera1 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Camera1);
+      }
+      if (Camera2 != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Camera2);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CameraIdPair other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Camera1 != 0) {
+        Camera1 = other.Camera1;
+      }
+      if (other.Camera2 != 0) {
+        Camera2 = other.Camera2;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Camera1 = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Camera2 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Camera1 = input.ReadUInt32();
+            break;
+          }
+          case 16: {
+            Camera2 = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class RectificationParameters : pb::IMessage<RectificationParameters>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<RectificationParameters> _parser = new pb::MessageParser<RectificationParameters>(() => new RectificationParameters());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RectificationParameters> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParameters() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParameters(RectificationParameters other) : this() {
+      rotation_ = other.rotation_ != null ? other.rotation_.Clone() : null;
+      projection_ = other.projection_ != null ? other.projection_.Clone() : null;
+      stereoType_ = other.stereoType_;
+      baselise_ = other.baselise_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParameters Clone() {
+      return new RectificationParameters(this);
+    }
+
+    /// <summary>Field number for the "rotation" field.</summary>
+    public const int RotationFieldNumber = 1;
+    private global::Com.Bcom.Solar.Gprc.Matrix3x3 rotation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.Matrix3x3 Rotation {
+      get { return rotation_; }
+      set {
+        rotation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "projection" field.</summary>
+    public const int ProjectionFieldNumber = 2;
+    private global::Com.Bcom.Solar.Gprc.Matrix3x4 projection_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.Matrix3x4 Projection {
+      get { return projection_; }
+      set {
+        projection_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "stereo_type" field.</summary>
+    public const int StereoTypeFieldNumber = 3;
+    private global::Com.Bcom.Solar.Gprc.StereoType stereoType_ = global::Com.Bcom.Solar.Gprc.StereoType.Horizontal;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.StereoType StereoType {
+      get { return stereoType_; }
+      set {
+        stereoType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "baselise" field.</summary>
+    public const int BaseliseFieldNumber = 4;
+    private float baselise_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Baselise {
+      get { return baselise_; }
+      set {
+        baselise_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RectificationParameters);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RectificationParameters other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Rotation, other.Rotation)) return false;
+      if (!object.Equals(Projection, other.Projection)) return false;
+      if (StereoType != other.StereoType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Baselise, other.Baselise)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (rotation_ != null) hash ^= Rotation.GetHashCode();
+      if (projection_ != null) hash ^= Projection.GetHashCode();
+      if (StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) hash ^= StereoType.GetHashCode();
+      if (Baselise != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Baselise);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (rotation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Rotation);
+      }
+      if (projection_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Projection);
+      }
+      if (StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) StereoType);
+      }
+      if (Baselise != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Baselise);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (rotation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Rotation);
+      }
+      if (projection_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Projection);
+      }
+      if (StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) StereoType);
+      }
+      if (Baselise != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Baselise);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (rotation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Rotation);
+      }
+      if (projection_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Projection);
+      }
+      if (StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) StereoType);
+      }
+      if (Baselise != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RectificationParameters other) {
+      if (other == null) {
+        return;
+      }
+      if (other.rotation_ != null) {
+        if (rotation_ == null) {
+          Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+        }
+        Rotation.MergeFrom(other.Rotation);
+      }
+      if (other.projection_ != null) {
+        if (projection_ == null) {
+          Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+        }
+        Projection.MergeFrom(other.Projection);
+      }
+      if (other.StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        StereoType = other.StereoType;
+      }
+      if (other.Baselise != 0F) {
+        Baselise = other.Baselise;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (rotation_ == null) {
+              Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+            }
+            input.ReadMessage(Rotation);
+            break;
+          }
+          case 18: {
+            if (projection_ == null) {
+              Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+            }
+            input.ReadMessage(Projection);
+            break;
+          }
+          case 24: {
+            StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
+            break;
+          }
+          case 37: {
+            Baselise = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (rotation_ == null) {
+              Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+            }
+            input.ReadMessage(Rotation);
+            break;
+          }
+          case 18: {
+            if (projection_ == null) {
+              Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+            }
+            input.ReadMessage(Projection);
+            break;
+          }
+          case 24: {
+            StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
+            break;
+          }
+          case 37: {
+            Baselise = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class RectificationParametersPair : pb::IMessage<RectificationParametersPair>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<RectificationParametersPair> _parser = new pb::MessageParser<RectificationParametersPair>(() => new RectificationParametersPair());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RectificationParametersPair> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[6]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParametersPair() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParametersPair(RectificationParametersPair other) : this() {
+      rectificationParameters1_ = other.rectificationParameters1_ != null ? other.rectificationParameters1_.Clone() : null;
+      rectificationParameters2_ = other.rectificationParameters2_ != null ? other.rectificationParameters2_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParametersPair Clone() {
+      return new RectificationParametersPair(this);
+    }
+
+    /// <summary>Field number for the "rectification_parameters_1" field.</summary>
+    public const int RectificationParameters1FieldNumber = 1;
+    private global::Com.Bcom.Solar.Gprc.RectificationParameters rectificationParameters1_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.RectificationParameters RectificationParameters1 {
+      get { return rectificationParameters1_; }
+      set {
+        rectificationParameters1_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "rectification_parameters_2" field.</summary>
+    public const int RectificationParameters2FieldNumber = 2;
+    private global::Com.Bcom.Solar.Gprc.RectificationParameters rectificationParameters2_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.RectificationParameters RectificationParameters2 {
+      get { return rectificationParameters2_; }
+      set {
+        rectificationParameters2_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RectificationParametersPair);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RectificationParametersPair other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(RectificationParameters1, other.RectificationParameters1)) return false;
+      if (!object.Equals(RectificationParameters2, other.RectificationParameters2)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (rectificationParameters1_ != null) hash ^= RectificationParameters1.GetHashCode();
+      if (rectificationParameters2_ != null) hash ^= RectificationParameters2.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (rectificationParameters1_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(RectificationParameters1);
+      }
+      if (rectificationParameters2_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(RectificationParameters2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (rectificationParameters1_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(RectificationParameters1);
+      }
+      if (rectificationParameters2_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(RectificationParameters2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (rectificationParameters1_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RectificationParameters1);
+      }
+      if (rectificationParameters2_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(RectificationParameters2);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RectificationParametersPair other) {
+      if (other == null) {
+        return;
+      }
+      if (other.rectificationParameters1_ != null) {
+        if (rectificationParameters1_ == null) {
+          RectificationParameters1 = new global::Com.Bcom.Solar.Gprc.RectificationParameters();
+        }
+        RectificationParameters1.MergeFrom(other.RectificationParameters1);
+      }
+      if (other.rectificationParameters2_ != null) {
+        if (rectificationParameters2_ == null) {
+          RectificationParameters2 = new global::Com.Bcom.Solar.Gprc.RectificationParameters();
+        }
+        RectificationParameters2.MergeFrom(other.RectificationParameters2);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (rectificationParameters1_ == null) {
+              RectificationParameters1 = new global::Com.Bcom.Solar.Gprc.RectificationParameters();
+            }
+            input.ReadMessage(RectificationParameters1);
+            break;
+          }
+          case 18: {
+            if (rectificationParameters2_ == null) {
+              RectificationParameters2 = new global::Com.Bcom.Solar.Gprc.RectificationParameters();
+            }
+            input.ReadMessage(RectificationParameters2);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (rectificationParameters1_ == null) {
+              RectificationParameters1 = new global::Com.Bcom.Solar.Gprc.RectificationParameters();
+            }
+            input.ReadMessage(RectificationParameters1);
+            break;
+          }
+          case 18: {
+            if (rectificationParameters2_ == null) {
+              RectificationParameters2 = new global::Com.Bcom.Solar.Gprc.RectificationParameters();
+            }
+            input.ReadMessage(RectificationParameters2);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class CameraRigParameters : pb::IMessage<CameraRigParameters>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<CameraRigParameters> _parser = new pb::MessageParser<CameraRigParameters>(() => new CameraRigParameters());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<CameraRigParameters> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[7]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraRigParameters() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraRigParameters(CameraRigParameters other) : this() {
+      cameraParameters_ = other.cameraParameters_.Clone();
+      cameraIdsPair_ = other.cameraIdsPair_.Clone();
+      transformations3D_ = other.transformations3D_.Clone();
+      rectificationParameters_ = other.rectificationParameters_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public CameraRigParameters Clone() {
+      return new CameraRigParameters(this);
+    }
+
+    /// <summary>Field number for the "camera_parameters" field.</summary>
+    public const int CameraParametersFieldNumber = 1;
+    private static readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraParameters>.Codec _map_cameraParameters_codec
+        = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraParameters>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::Com.Bcom.Solar.Gprc.CameraParameters.Parser), 10);
+    private readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraParameters> cameraParameters_ = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraParameters>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraParameters> CameraParameters {
+      get { return cameraParameters_; }
+    }
+
+    /// <summary>Field number for the "camera_ids_pair" field.</summary>
+    public const int CameraIdsPairFieldNumber = 2;
+    private static readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraIdPair>.Codec _map_cameraIdsPair_codec
+        = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraIdPair>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::Com.Bcom.Solar.Gprc.CameraIdPair.Parser), 18);
+    private readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraIdPair> cameraIdsPair_ = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraIdPair>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.CameraIdPair> CameraIdsPair {
+      get { return cameraIdsPair_; }
+    }
+
+    /// <summary>Field number for the "transformations_3d" field.</summary>
+    public const int Transformations3DFieldNumber = 3;
+    private static readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.Matrix4x4>.Codec _map_transformations3D_codec
+        = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.Matrix4x4>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::Com.Bcom.Solar.Gprc.Matrix4x4.Parser), 26);
+    private readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.Matrix4x4> transformations3D_ = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.Matrix4x4>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.Matrix4x4> Transformations3D {
+      get { return transformations3D_; }
+    }
+
+    /// <summary>Field number for the "rectification_parameters" field.</summary>
+    public const int RectificationParametersFieldNumber = 4;
+    private static readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.RectificationParametersPair>.Codec _map_rectificationParameters_codec
+        = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.RectificationParametersPair>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForMessage(18, global::Com.Bcom.Solar.Gprc.RectificationParametersPair.Parser), 34);
+    private readonly pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.RectificationParametersPair> rectificationParameters_ = new pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.RectificationParametersPair>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<uint, global::Com.Bcom.Solar.Gprc.RectificationParametersPair> RectificationParameters {
+      get { return rectificationParameters_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as CameraRigParameters);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(CameraRigParameters other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!CameraParameters.Equals(other.CameraParameters)) return false;
+      if (!CameraIdsPair.Equals(other.CameraIdsPair)) return false;
+      if (!Transformations3D.Equals(other.Transformations3D)) return false;
+      if (!RectificationParameters.Equals(other.RectificationParameters)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= CameraParameters.GetHashCode();
+      hash ^= CameraIdsPair.GetHashCode();
+      hash ^= Transformations3D.GetHashCode();
+      hash ^= RectificationParameters.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      cameraParameters_.WriteTo(output, _map_cameraParameters_codec);
+      cameraIdsPair_.WriteTo(output, _map_cameraIdsPair_codec);
+      transformations3D_.WriteTo(output, _map_transformations3D_codec);
+      rectificationParameters_.WriteTo(output, _map_rectificationParameters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      cameraParameters_.WriteTo(ref output, _map_cameraParameters_codec);
+      cameraIdsPair_.WriteTo(ref output, _map_cameraIdsPair_codec);
+      transformations3D_.WriteTo(ref output, _map_transformations3D_codec);
+      rectificationParameters_.WriteTo(ref output, _map_rectificationParameters_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += cameraParameters_.CalculateSize(_map_cameraParameters_codec);
+      size += cameraIdsPair_.CalculateSize(_map_cameraIdsPair_codec);
+      size += transformations3D_.CalculateSize(_map_transformations3D_codec);
+      size += rectificationParameters_.CalculateSize(_map_rectificationParameters_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(CameraRigParameters other) {
+      if (other == null) {
+        return;
+      }
+      cameraParameters_.Add(other.cameraParameters_);
+      cameraIdsPair_.Add(other.cameraIdsPair_);
+      transformations3D_.Add(other.transformations3D_);
+      rectificationParameters_.Add(other.rectificationParameters_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            cameraParameters_.AddEntriesFrom(input, _map_cameraParameters_codec);
+            break;
+          }
+          case 18: {
+            cameraIdsPair_.AddEntriesFrom(input, _map_cameraIdsPair_codec);
+            break;
+          }
+          case 26: {
+            transformations3D_.AddEntriesFrom(input, _map_transformations3D_codec);
+            break;
+          }
+          case 34: {
+            rectificationParameters_.AddEntriesFrom(input, _map_rectificationParameters_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            cameraParameters_.AddEntriesFrom(ref input, _map_cameraParameters_codec);
+            break;
+          }
+          case 18: {
+            cameraIdsPair_.AddEntriesFrom(ref input, _map_cameraIdsPair_codec);
+            break;
+          }
+          case 26: {
+            transformations3D_.AddEntriesFrom(ref input, _map_transformations3D_codec);
+            break;
+          }
+          case 34: {
+            rectificationParameters_.AddEntriesFrom(ref input, _map_rectificationParameters_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class CameraDistortion : pb::IMessage<CameraDistortion>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1021,7 +2038,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1337,7 +2354,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1590,7 +2607,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1906,7 +2923,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2192,6 +3209,167 @@ namespace Com.Bcom.Solar.Gprc {
 
   }
 
+  public sealed partial class Frames : pb::IMessage<Frames>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Frames> _parser = new pb::MessageParser<Frames>(() => new Frames());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Frames> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Frames() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Frames(Frames other) : this() {
+      frames_ = other.frames_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Frames Clone() {
+      return new Frames(this);
+    }
+
+    /// <summary>Field number for the "frames" field.</summary>
+    public const int Frames_FieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Com.Bcom.Solar.Gprc.Frame> _repeated_frames_codec
+        = pb::FieldCodec.ForMessage(10, global::Com.Bcom.Solar.Gprc.Frame.Parser);
+    private readonly pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame> frames_ = new pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame> Frames_ {
+      get { return frames_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Frames);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Frames other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!frames_.Equals(other.frames_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= frames_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      frames_.WriteTo(output, _repeated_frames_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      frames_.WriteTo(ref output, _repeated_frames_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += frames_.CalculateSize(_repeated_frames_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Frames other) {
+      if (other == null) {
+        return;
+      }
+      frames_.Add(other.frames_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            frames_.AddEntriesFrom(input, _repeated_frames_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            frames_.AddEntriesFrom(ref input, _repeated_frames_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class Matrix4x4 : pb::IMessage<Matrix4x4>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2204,7 +3382,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2916,7 +4094,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3355,6 +4533,574 @@ namespace Com.Bcom.Solar.Gprc {
           }
           case 77: {
             M33 = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Matrix3x4 : pb::IMessage<Matrix3x4>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Matrix3x4> _parser = new pb::MessageParser<Matrix3x4>(() => new Matrix3x4());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Matrix3x4> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Matrix3x4() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Matrix3x4(Matrix3x4 other) : this() {
+      m11_ = other.m11_;
+      m12_ = other.m12_;
+      m13_ = other.m13_;
+      m14_ = other.m14_;
+      m21_ = other.m21_;
+      m22_ = other.m22_;
+      m23_ = other.m23_;
+      m24_ = other.m24_;
+      m31_ = other.m31_;
+      m32_ = other.m32_;
+      m33_ = other.m33_;
+      m34_ = other.m34_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Matrix3x4 Clone() {
+      return new Matrix3x4(this);
+    }
+
+    /// <summary>Field number for the "m11" field.</summary>
+    public const int M11FieldNumber = 1;
+    private float m11_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M11 {
+      get { return m11_; }
+      set {
+        m11_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m12" field.</summary>
+    public const int M12FieldNumber = 2;
+    private float m12_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M12 {
+      get { return m12_; }
+      set {
+        m12_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m13" field.</summary>
+    public const int M13FieldNumber = 3;
+    private float m13_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M13 {
+      get { return m13_; }
+      set {
+        m13_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m14" field.</summary>
+    public const int M14FieldNumber = 4;
+    private float m14_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M14 {
+      get { return m14_; }
+      set {
+        m14_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m21" field.</summary>
+    public const int M21FieldNumber = 5;
+    private float m21_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M21 {
+      get { return m21_; }
+      set {
+        m21_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m22" field.</summary>
+    public const int M22FieldNumber = 6;
+    private float m22_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M22 {
+      get { return m22_; }
+      set {
+        m22_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m23" field.</summary>
+    public const int M23FieldNumber = 7;
+    private float m23_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M23 {
+      get { return m23_; }
+      set {
+        m23_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m24" field.</summary>
+    public const int M24FieldNumber = 8;
+    private float m24_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M24 {
+      get { return m24_; }
+      set {
+        m24_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m31" field.</summary>
+    public const int M31FieldNumber = 9;
+    private float m31_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M31 {
+      get { return m31_; }
+      set {
+        m31_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m32" field.</summary>
+    public const int M32FieldNumber = 10;
+    private float m32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M32 {
+      get { return m32_; }
+      set {
+        m32_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m33" field.</summary>
+    public const int M33FieldNumber = 11;
+    private float m33_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M33 {
+      get { return m33_; }
+      set {
+        m33_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m34" field.</summary>
+    public const int M34FieldNumber = 12;
+    private float m34_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M34 {
+      get { return m34_; }
+      set {
+        m34_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Matrix3x4);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Matrix3x4 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M11, other.M11)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M12, other.M12)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M13, other.M13)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M14, other.M14)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M21, other.M21)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M22, other.M22)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M23, other.M23)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M24, other.M24)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M31, other.M31)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M32, other.M32)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M33, other.M33)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M34, other.M34)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (M11 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M11);
+      if (M12 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M12);
+      if (M13 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M13);
+      if (M14 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M14);
+      if (M21 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M21);
+      if (M22 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M22);
+      if (M23 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M23);
+      if (M24 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M24);
+      if (M31 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M31);
+      if (M32 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M32);
+      if (M33 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M33);
+      if (M34 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M34);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (M11 != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(M11);
+      }
+      if (M12 != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(M12);
+      }
+      if (M13 != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(M13);
+      }
+      if (M14 != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(M14);
+      }
+      if (M21 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(M21);
+      }
+      if (M22 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(M22);
+      }
+      if (M23 != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(M23);
+      }
+      if (M24 != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(M24);
+      }
+      if (M31 != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(M31);
+      }
+      if (M32 != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(M32);
+      }
+      if (M33 != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(M33);
+      }
+      if (M34 != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(M34);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (M11 != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(M11);
+      }
+      if (M12 != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(M12);
+      }
+      if (M13 != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(M13);
+      }
+      if (M14 != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(M14);
+      }
+      if (M21 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(M21);
+      }
+      if (M22 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(M22);
+      }
+      if (M23 != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(M23);
+      }
+      if (M24 != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(M24);
+      }
+      if (M31 != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(M31);
+      }
+      if (M32 != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(M32);
+      }
+      if (M33 != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(M33);
+      }
+      if (M34 != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(M34);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (M11 != 0F) {
+        size += 1 + 4;
+      }
+      if (M12 != 0F) {
+        size += 1 + 4;
+      }
+      if (M13 != 0F) {
+        size += 1 + 4;
+      }
+      if (M14 != 0F) {
+        size += 1 + 4;
+      }
+      if (M21 != 0F) {
+        size += 1 + 4;
+      }
+      if (M22 != 0F) {
+        size += 1 + 4;
+      }
+      if (M23 != 0F) {
+        size += 1 + 4;
+      }
+      if (M24 != 0F) {
+        size += 1 + 4;
+      }
+      if (M31 != 0F) {
+        size += 1 + 4;
+      }
+      if (M32 != 0F) {
+        size += 1 + 4;
+      }
+      if (M33 != 0F) {
+        size += 1 + 4;
+      }
+      if (M34 != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Matrix3x4 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.M11 != 0F) {
+        M11 = other.M11;
+      }
+      if (other.M12 != 0F) {
+        M12 = other.M12;
+      }
+      if (other.M13 != 0F) {
+        M13 = other.M13;
+      }
+      if (other.M14 != 0F) {
+        M14 = other.M14;
+      }
+      if (other.M21 != 0F) {
+        M21 = other.M21;
+      }
+      if (other.M22 != 0F) {
+        M22 = other.M22;
+      }
+      if (other.M23 != 0F) {
+        M23 = other.M23;
+      }
+      if (other.M24 != 0F) {
+        M24 = other.M24;
+      }
+      if (other.M31 != 0F) {
+        M31 = other.M31;
+      }
+      if (other.M32 != 0F) {
+        M32 = other.M32;
+      }
+      if (other.M33 != 0F) {
+        M33 = other.M33;
+      }
+      if (other.M34 != 0F) {
+        M34 = other.M34;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            M11 = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            M12 = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            M13 = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            M14 = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            M21 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            M22 = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            M23 = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            M24 = input.ReadFloat();
+            break;
+          }
+          case 77: {
+            M31 = input.ReadFloat();
+            break;
+          }
+          case 85: {
+            M32 = input.ReadFloat();
+            break;
+          }
+          case 93: {
+            M33 = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            M34 = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 13: {
+            M11 = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            M12 = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            M13 = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            M14 = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            M21 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            M22 = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            M23 = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            M24 = input.ReadFloat();
+            break;
+          }
+          case 77: {
+            M31 = input.ReadFloat();
+            break;
+          }
+          case 85: {
+            M32 = input.ReadFloat();
+            break;
+          }
+          case 93: {
+            M33 = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            M34 = input.ReadFloat();
             break;
           }
         }
