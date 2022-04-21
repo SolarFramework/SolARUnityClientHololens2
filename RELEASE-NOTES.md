@@ -1,6 +1,7 @@
 # Release Notes
 
 ## v0.4.0
+* Improve hologram alignment by applying the offset transfom between sensor camera and the eyes location.
 
 ## v0.3.0
 
