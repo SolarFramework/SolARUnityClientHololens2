@@ -625,6 +625,8 @@ SolARHololens2ResearchMode researchMode;
             }
 
             NotifyOnStart(sensorsStarted, rpcAvailable);
+
+            StartCoroutine(FetchAndSendFrames());
         }
 
         // Needed ? (if LV, can the Task be gc'd before ending its work ?
@@ -673,6 +675,8 @@ SolARHololens2ResearchMode researchMode;
             }
 
             NotifyOnStop();
+
+            StopCoroutine(FetchAndSendFrames());
         }
 
         #endregion
@@ -824,6 +828,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     uint _pixelBufferSize = 0;
 
                     byte[] vclBufferData = null;
+
 #if ENABLE_WINMD_SUPPORT
 			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
 #endif
@@ -926,6 +931,20 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             }
         }
 
+        // https://github.com/PimDeWitte/UnityMainThreadDispatcher
+        private static readonly Queue<Action> _executionQueue = new Queue<Action>();
+
+        //private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
+        //{
+        //    lock (_executionQueue)
+        //    {
+        //        _executionQueue.Enqueue(() => {
+        //            StartCoroutine(relocAndMappingResultReceivedOnMainThread(result));
+        //        });
+        //    }
+        //}
+
+        // private System.Collections.IEnumerator relocAndMappingResultReceivedOnMainThread(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         {
             var receivedPose = result.relocAndMappingResult.Pose;
@@ -934,7 +953,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             {
                 if (result.relocAndMappingResult.PoseStatus == SolARRpc.RelocalizationPoseStatus.NoPose)
                 {
-                    return;
+                    return; //yield return  null;
                 }
 
                 NotifyOnReceivedPose(result);
@@ -991,6 +1010,8 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                         result.resultStatus.errMessage);
                 }
             }
+
+            // yield return null;
         }
 
         private void SentFrame(long nbSentFrames)
@@ -1006,16 +1027,18 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                    m.m30 + ", " + m.m31 + ", " + m.m32 + ", " + m.m33;
         }
 
-        private void LateUpdate()
+        System.Collections.IEnumerator /*void*/ FetchAndSendFrames()
         {
-            try
-            {
+            // TODO(jmhenaff): handle exception w/ coroutine
+            // Comment try-catch because of yied
+            //try
+            //{
 
 #if ENABLE_WINMD_SUPPORT
 		    researchMode.Update();
 #endif
 
-                if (sensorsStarted)
+            while (sensorsStarted)
                 {
                     SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender =
                         relocAndMappingProxy.BuildFrameSender(relocAndMappingResultReceived, SentFrame);
@@ -1072,6 +1095,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                         // relocAndMappingFrameSender.RelocalizeAndMap();
 
                         var res = relocAndMappingFrameSender.RelocAndMapAsyncDrop();
+
                         if (!res.success)
                         {
                             NotifyOnGrpcError("RelocAndMapAsyncDrop error: " + res.errMessage);
@@ -1081,17 +1105,28 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                             }
                         }
                     }
+
+                    yield return new WaitForSeconds(.033f);
+                    // Thread.Sleep(33);
                 }
 
-            }
-            catch (Exception e)
-            {
-                NotifyOnGrpcError("LateUpdate() error: " + e.Message);
-                if (rpcAvailable)
-                {
-                    relocAndMappingProxy.SendMessage("LateUpdate() error: " + e.Message + "\n" + e.StackTrace);
-                }
-            }
+            //}
+            //catch (Exception e)
+            //{
+            //    NotifyOnGrpcError("LateUpdate() error: " + e.Message);
+            //    if (rpcAvailable)
+            //    {
+            //        relocAndMappingProxy.SendMessage("LateUpdate() error: " + e.Message + "\n" + e.StackTrace);
+            //    }
+            //}            
+        }
+
+        bool coroutineStarted = false;
+        Thread t = null;
+
+        private void LateUpdate()
+        {
+
         }
 
         private Hl2SensorType toHl2SensorType(Hl2SensorTypeEditor type)
