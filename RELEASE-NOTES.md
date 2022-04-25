@@ -2,6 +2,7 @@
 
 ## v0.4.0
 * Improve hologram alignment by applying the offset transfom between sensor camera and the eyes location.
+* Use a coroutine to fetch and send frames + control sending rate
 
 ## v0.3.0
 
