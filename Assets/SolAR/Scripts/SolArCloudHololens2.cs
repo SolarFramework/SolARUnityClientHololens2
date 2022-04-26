@@ -925,7 +925,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                                     .SetPortBase(_frontendBasePort)
                                     .SetClientPoolSize(advancedGrpcSettings.channelPoolSize)
                                     .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
-                                    .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
+                                    // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
                                     .Build();
             TestRpcConnection();
             yield return null;
@@ -1076,7 +1076,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                         }
                     }
 
-                    yield return new WaitForSeconds(.033f);
+                    yield return new WaitForSeconds(advancedGrpcSettings.delayBetweenFramesInMs / 1000f);
                     // Thread.Sleep(33);
                 }
 

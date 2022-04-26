@@ -304,14 +304,15 @@ namespace Com.Bcom.Solar.Gprc
         // This pool also guaranties that only one channel will only be used by a call at a time.
         private class GrpcClientPool
         {
-            private Dictionary<SolARMappingAndRelocalizationProxyClient, bool> clientsAvailability =
-                new Dictionary<SolARMappingAndRelocalizationProxyClient, bool>();
-            private Dictionary<SolARMappingAndRelocalizationProxyClient, GrpcChannel> clientsChannel =
-                new Dictionary<SolARMappingAndRelocalizationProxyClient, GrpcChannel>();
-            private Dictionary<SolARMappingAndRelocalizationProxyClient, string> clientsAddress =
-                new Dictionary<SolARMappingAndRelocalizationProxyClient, string>();
+            private class ClientInfo
+            {
+                public GrpcChannel channel = null;
+                public bool available = false;
+                public string address = "<not-set>";
+            }
 
-            private bool useUniquePortNumber = false;
+            private Dictionary<SolARMappingAndRelocalizationProxyClient, ClientInfo> pool =
+                new Dictionary<SolARMappingAndRelocalizationProxyClient, ClientInfo>();
 
             private object lockObject = new object();
             public GrpcClientPool(int size, string serviceAddress, int portBase, bool useUniquePortNumber)
@@ -323,35 +324,15 @@ namespace Com.Bcom.Solar.Gprc
                 }
             }
 
-            private SolARMappingAndRelocalizationProxyClient AddClient(string channelAddress)
-            {
-                var channel = GrpcChannel.ForAddress(
-                    channelAddress,
-                    new GrpcChannelOptions
-                    {
-                        HttpHandler = new GrpcWebHandler(new HttpClientHandler())
-                        {
-                         HttpVersion = new Version("1.1")
-                        }
-                    });
-
-                var client = new SolARMappingAndRelocalizationProxyClient(channel);
-
-                clientsAvailability.Add(client, true);
-                clientsChannel.Add(client, channel);
-                clientsAddress.Add(client, channelAddress);
-                return client;
-            }
-
             public SolARMappingAndRelocalizationProxyClient GetClient()
             {
                 lock (lockObject)
                 {
-                    foreach (KeyValuePair<SolARMappingAndRelocalizationProxyClient, bool> entry in clientsAvailability)
+                    foreach (KeyValuePair<SolARMappingAndRelocalizationProxyClient, ClientInfo> entry in pool)
                     {
-                        if (entry.Value)
+                        if (entry.Value.available)
                         {
-                            clientsAvailability[entry.Key] = false;
+                            entry.Value.available = false;
                             return entry.Key;
                         }
                     }
@@ -363,11 +344,11 @@ namespace Com.Bcom.Solar.Gprc
             {
                 lock (lockObject)
                 {
-                    if (!clientsAvailability.ContainsKey(client))
+                    if (!pool.ContainsKey(client))
                     {
                         return false;
                     }
-                    clientsAvailability[client] = true;
+                    pool[client].available = true;
                     return true;
                 }
             }
@@ -376,25 +357,40 @@ namespace Com.Bcom.Solar.Gprc
             {
                 lock (lockObject)
                 {
-                    if (client != null && clientsChannel.ContainsKey(client) && clientsAddress.ContainsKey(client))
+                    if (client != null && pool.ContainsKey(client))
                     {
-                        GrpcChannel channel;
-                        if (clientsChannel.TryGetValue(client, out channel))
-                        {
-                            channel.Dispose();
-                        }
-                        clientsChannel.Remove(client);
-                        clientsAvailability.Remove(client);
-
-                        // Replace by new instance so that pool always contains the same nb of elts
-                        string channelAddress;
-                        if (clientsAddress.TryGetValue(client, out channelAddress))
-                        {
-                            AddClient(channelAddress);
-                        }
-                        clientsAddress.Remove(client);
+                        ClientInfo clientInfo = pool[client];
+                        clientInfo.channel.Dispose();
+                        pool.Remove(client);
+                        AddClient(clientInfo.address);
                     }
                 }
+            }
+
+            private SolARMappingAndRelocalizationProxyClient AddClient(string channelAddress)
+            {
+                var newChannel = GrpcChannel.ForAddress(
+                    channelAddress,
+                    new GrpcChannelOptions
+                    {
+                        HttpHandler = new GrpcWebHandler(new HttpClientHandler())
+                        {
+                            HttpVersion = new Version("1.1")
+                        }
+                    });
+
+                var client = new SolARMappingAndRelocalizationProxyClient(newChannel);
+
+                pool.Add(
+                    new SolARMappingAndRelocalizationProxyClient(newChannel),
+                    new ClientInfo()
+                    {
+                        channel = newChannel,
+                        available = true,
+                        address = channelAddress
+                    });
+
+                return client;
             }
         }
 
@@ -429,7 +425,7 @@ namespace Com.Bcom.Solar.Gprc
             private bool fastModeEnabled = true;
             private int clientPoolSize = 6;
             private bool useUniquePortNumber = false;
-            private int relocAndMappingRequestIntervalMs = 20;
+            private int relocAndMappingRequestIntervalMs = 0;
 
             public Builder SetServiceAddress(string serviceAddress)
             {
@@ -444,7 +440,7 @@ namespace Com.Bcom.Solar.Gprc
 
             public Builder UseUniquePortNumber(bool useUniquePortNumber)
             {
-                useUniquePortNumber = useUniquePortNumber;
+                this.useUniquePortNumber = useUniquePortNumber;
                 return this;
             }
 
