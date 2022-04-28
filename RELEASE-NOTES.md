@@ -1,5 +1,10 @@
 # Release Notes
 
+## v0.4.0
+* Improve hologram alignment by applying the offset transfom between sensor camera and the eyes location.
+* Use a coroutine to start sensors, fetch and send frames + control sending rate
+* Add a marker-sized cube to debug registration accuracy
+
 ## v0.3.0
 
 * Add JPEG compression option

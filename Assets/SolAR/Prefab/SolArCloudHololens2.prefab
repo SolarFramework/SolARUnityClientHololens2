@@ -51,7 +51,7 @@ MonoBehaviour:
     channelPoolSize: 6
     useUniquePort: 0
     delayBetweenFramesInMs: 20
-    compressionEnabled: 1
+    imageCompression: 1
   selectedSensor: 1
   pvParameters:
     name: PV
