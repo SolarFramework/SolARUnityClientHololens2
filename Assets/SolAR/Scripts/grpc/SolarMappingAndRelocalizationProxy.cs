@@ -59,7 +59,7 @@ namespace Com.Bcom.Solar.Gprc {
             "UmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEgsKB05PX1BPU0UQABIMCghORVdf",
             "UE9TRRABEg8KC0xBVEVTVF9QT1NFEAIqMgoLSW1hZ2VMYXlvdXQSCgoGUkdC",
             "XzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKi4KEEltYWdlQ29tcHJl",
-            "c3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMsgECiJTb2xBUk1h",
+            "c3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMokFCiJTb2xBUk1h",
             "cHBpbmdBbmRSZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQSJi5jb20uYmNv",
             "bS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29tLmJjb20uc29s",
             "YXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNvbGFyLmdwcmMu",
@@ -71,8 +71,10 @@ namespace Com.Bcom.Solar.Gprc {
             "Z3ByYy5GcmFtZRopLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRp",
             "b25SZXN1bHQSVwoOR2V0M0RUcmFuc2Zvcm0SGi5jb20uYmNvbS5zb2xhci5n",
             "cHJjLkVtcHR5GikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlv",
-            "blJlc3VsdBJHCgtTZW5kTWVzc2FnZRIcLmNvbS5iY29tLnNvbGFyLmdwcmMu",
-            "TWVzc2FnZRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHliBnByb3RvMw=="));
+            "blJlc3VsdBI/CgVSZXNldBIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHka",
+            "Gi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5EkcKC1NlbmRNZXNzYWdlEhwu",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5NZXNzYWdlGhouY29tLmJjb20uc29sYXIu",
+            "Z3ByYy5FbXB0eWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
