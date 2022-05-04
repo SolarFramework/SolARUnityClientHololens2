@@ -442,10 +442,13 @@ SolARHololens2ResearchMode researchMode;
             }
         }
 
-        //void OnApplicationQuit()
-        //{
+        void OnApplicationQuit()
+        {
         //    SaveUserPrefs();
-        //}
+
+            // Stop services if currently started
+            StopSensorsCapture();
+        }
 
         public bool TestRpcConnection()
         {
