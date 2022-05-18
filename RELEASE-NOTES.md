@@ -1,6 +1,8 @@
 # Release Notes
 
 ## v0.5.0
+* Add reset button
+* Send a "stop" request to ARCloud services when application closes (if in "start" mode)
 ## v0.4.0
 * Improve hologram alignment by applying the offset transfom between sensor camera and the eyes location.
 * Use a coroutine to start sensors, fetch and send frames + control sending rate

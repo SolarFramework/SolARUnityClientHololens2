@@ -256,6 +256,8 @@ SolARHololens2ResearchMode researchMode;
 
         public event Action<long> OnSentFrame;
 
+        public event Action OnReset;
+
         private void NotifyOnDepthFrame(
             byte[] depthData,
             byte[] depthABData,
@@ -323,6 +325,9 @@ SolARHololens2ResearchMode researchMode;
 
         private void NotifyOnSentFrame(long nbSentFrames)
             => OnSentFrame?.Invoke(nbSentFrames);
+
+        private void NotifyOnReset()
+            => OnReset?.Invoke();
 
         SolArCloudHololens2()
         {
@@ -437,10 +442,13 @@ SolARHololens2ResearchMode researchMode;
             }
         }
 
-        //void OnApplicationQuit()
-        //{
+        void OnApplicationQuit()
+        {
         //    SaveUserPrefs();
-        //}
+
+            // Stop services if currently started
+            StopSensorsCapture();
+        }
 
         public bool TestRpcConnection()
         {
@@ -1089,6 +1097,44 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             //        relocAndMappingProxy.SendMessage("LateUpdate() error: " + e.Message + "\n" + e.StackTrace);
             //    }
             //}            
+        }
+
+        public void Reset()
+        {
+            // RelocAndMappingProxy used to be created when starting the mapping/reloc
+            // (in order to take into account the latest value for service address)
+            // Need to be created here if null to be able to reset before having used 
+            // the service.
+            //TODO(jmhenaff): handle this better
+            if (relocAndMappingProxy == null)
+            {
+                string _frontEndIp = frontendIp;
+                int _frontendBasePort = frontendBasePort;
+
+                string[] splittedString = frontendIp.Split(':');
+                if (splittedString.Length > 2)
+                {
+                    _frontEndIp = frontendIp.Substring(0, frontendIp.LastIndexOf(':'));
+
+                    if (!Int32.TryParse(frontendIp.Substring(frontendIp.LastIndexOf(':') + 1), out _frontendBasePort))
+                    {
+                        NotifyOnUnityAppError("Ill-formed URL: '" + frontendIp + "'");
+                        // best effort
+                        _frontendBasePort = frontendBasePort;
+                    }
+                }
+
+                relocAndMappingProxy = new SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.Builder()
+                        .SetServiceAddress(_frontEndIp)
+                        .SetPortBase(_frontendBasePort)
+                        .SetClientPoolSize(advancedGrpcSettings.channelPoolSize)
+                        .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
+                        // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
+                        .Build();
+            }
+
+            relocAndMappingProxy.Reset();
+            NotifyOnReset();
         }
 
         private void LateUpdate()
