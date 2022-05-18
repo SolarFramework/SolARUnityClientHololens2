@@ -189,17 +189,8 @@ Envoy is available for many platforms, but I will describe the case where Envoy 
 ### Install
 
 As mentionned earlier, the installation is described for Linux as Windows installation is performed only via a Docker image, which adds some complexity and/or performance issues.
-On Ubuntu Envoy can be installed simply via apt ([doc](https://www.envoyproxy.io/docs/envoy/v1.19.1/start/install#install-envoy-on-ubuntu-linux)):
-```bash
-sudo apt update
-sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-curl -sL 'https://getenvoy.io/gpg' | sudo gpg --dearmor -o /usr/share/keyrings/getenvoy-keyring.gpg
-Verify the keyring - this should yield "OK"
-echo 1a2f6152efc6cc39e384fb869cdf3cc3e4e1ac68f4ad8f8f114a7c58bb0bea01 /usr/share/keyrings/getenvoy-keyring.gpg | sha256sum --check
-echo "deb [arch=amd64 signed-by=/usr/share/keyrings/getenvoy-keyring.gpg] https://dl.bintray.com/tetrate/getenvoy-deb $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/getenvoy.list
-sudo apt update
-sudo apt install -y getenvoy-envoy
-```
+
+On Ubuntu Envoy can be installed simply via **apt**, as described in the official [documentation](https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux).
 
 ### Run and test
 Follow the instructions [here](https://www.envoyproxy.io/docs/envoy/v1.19.1/start/quick-start/run-envoy#run-envoy-with-the-demo-configuration) to run Envoy with a default configuration and attempt to connect to it.
