@@ -1,5 +1,7 @@
 # Release Notes
 
+## v0.6.0
+
 ## v0.5.0
 * Add reset button
 * Send a "stop" request to ARCloud services when application closes (if in "start" mode)
