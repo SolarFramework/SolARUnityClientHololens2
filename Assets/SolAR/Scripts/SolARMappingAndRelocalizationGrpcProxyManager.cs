@@ -777,6 +777,41 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
+
+        public ResultStatus Reset()
+        {
+            SolARMappingAndRelocalizationProxyClient client = null;
+            try
+            {
+                client = clientPool.GetClient();
+                if (client == null)
+                {
+                    return new ResultStatus(false, "Cannot call Reset(): no gRPC client available");
+                }
+
+                client.Reset(
+                    EMPTY,
+                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+
+                clientPool.ReleaseClient(client);
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                clientPool.DeleteClient(client);
+                return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::Reset(): Error: "
+                    + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);
+            }
+            catch (Exception e)
+            {
+                clientPool.DeleteClient(client);
+                return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::Reset(): Error: "
+                    + e.Message);
+            }
+
+            return SUCCESS;
+
+        }
+
         public ResultStatus SendMessage(string message)
         {
             SolARMappingAndRelocalizationProxyClient client = null;
@@ -785,7 +820,7 @@ namespace Com.Bcom.Solar.Gprc
                 client = clientPool.GetClient();
                 if (client == null)
                 {
-                    return new ResultStatus(false, "Cannot call RelocalizeAndMap(): no gRPC client available");
+                    return new ResultStatus(false, "Cannot call SendMessage(): no gRPC client available");
                 }
 
 
