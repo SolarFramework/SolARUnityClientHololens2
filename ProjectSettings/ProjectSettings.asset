@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: bcom
-  productName: SolARHololens2
+  productName: DevSolARHololens2
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -263,6 +263,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8098013011867456620, guid: 892250fbfc1442f49a66d62b6c348e31, type: 2}
   - {fileID: 2256912601668067897, guid: bc86b981421586743bee1b33317fbc8a, type: 2}
   - {fileID: 0}
@@ -284,7 +285,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.bcom.SolARHololens2
-    Standalone: com.bcom.SolARHololens2
+    Standalone: com.bcom.DevSolARHololens2
     iPhone: com.bcom.SolARHololens2
   buildNumber:
     Standalone: 0
@@ -755,7 +756,7 @@ PlayerSettings:
     WSA: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: SolARDemo
+  metroPackageName: SolARDemo.dev
   metroPackageVersion: 0.6.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
@@ -777,7 +778,7 @@ PlayerSettings:
     2228424: Assets/SolAR/Demos/Objects/solarLogo_620x620.png
     2293860: Assets/SolAR/Demos/Objects/solarLogo_310x150.png
     2293960: Assets/SolAR/Demos/Objects/solarLogo_620x300.png
-  metroTileShortName: SolARHololens2
+  metroTileShortName: DevSolARHololens2
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -792,6 +793,7 @@ PlayerSettings:
   metroSplashScreenUseBackgroundColor: 0
   platformCapabilities:
     WindowsStoreApps:
+      CodeGeneration: False
       OfflineMapsManagement: False
       HumanInterfaceDevice: False
       Location: False
@@ -804,7 +806,6 @@ PlayerSettings:
       InternetClientServer: True
       VideosLibrary: False
       Objects3D: False
-      Proximity: False
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -827,7 +828,7 @@ PlayerSettings:
       RecordedCallsFolder: False
       Contacts: False
       InternetClient: True
-      CodeGeneration: False
+      Proximity: False
       BackgroundMediaPlayback: False
       EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
