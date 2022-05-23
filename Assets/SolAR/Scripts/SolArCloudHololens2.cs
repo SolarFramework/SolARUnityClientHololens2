@@ -198,6 +198,9 @@ SolARHololens2ResearchMode researchMode;
 
         private bool rpcAvailable = false;
 
+        [HideInInspector]
+        public GameObject mainCamera;
+
         // *******************************************
         // Callbacks 
         // *******************************************
@@ -403,6 +406,11 @@ SolARHololens2ResearchMode researchMode;
 
 		researchMode.Init();
 #endif
+
+            if (mainCamera == null)
+            {
+                mainCamera = GameObject.FindWithTag("MainCamera");
+            }
 
             if (solarScene == null)
             {
@@ -935,8 +943,16 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                                     .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
                                     // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
                                     .Build();
+            relocAndMappingProxy.solarClient = this;
+
             TestRpcConnection();
             yield return null;
+
+            // JMH Debug
+            if (mainCamera != null)
+            {
+                relocAndMappingProxy.SendMessage("JMH MainCamera found");
+            }
 
             if (!rpcAvailable)
             {
@@ -1069,10 +1085,11 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                     if (rpcAvailable && relocAndMappingProxyInitialized)
                     {
-                        // Sync call, not working yet
-                        // relocAndMappingFrameSender.RelocalizeAndMap();
+                    // Sync call, not working yet
+                    // relocAndMappingFrameSender.RelocalizeAndMap();
 
-                        var res = relocAndMappingFrameSender.RelocAndMapAsyncDrop();
+                    // JMH Debug pass cam pose here, because can only be retrieved from main thread
+                    var res = relocAndMappingFrameSender.RelocAndMapAsyncDrop(mainCamera.transform.localToWorldMatrix);
 
                         if (!res.success)
                         {

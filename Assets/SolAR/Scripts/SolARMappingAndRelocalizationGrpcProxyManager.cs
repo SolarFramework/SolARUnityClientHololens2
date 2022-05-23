@@ -23,7 +23,11 @@ using Google.Protobuf;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Concurrent;
+using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
+
 
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
@@ -31,11 +35,21 @@ using UnityEngine.Experimental.Rendering;
 using SolARMappingAndRelocalizationProxyClient =
     Com.Bcom.Solar.Gprc.SolARMappingAndRelocalizationProxy.SolARMappingAndRelocalizationProxyClient;
 
+using Bcom.Solar;
+
 namespace Com.Bcom.Solar.Gprc
 {
 
     public class SolARMappingAndRelocalizationGrpcProxyManager
     {
+        // JMH Debug
+        public SolArCloudHololens2 solarClient;
+        // private Mutex mut = new Mutex();
+        // private List<string> rmCameraPoses = new List<string>();
+        // private List<string> mainCameraPoses = new List<string>();
+        private BlockingCollection<string> rmCameraPoses = new BlockingCollection<string>();
+        private BlockingCollection<string> mainCameraPoses = new BlockingCollection<string>();
+
         private string gRpcAddress = "<not-set>";
 
         private Empty EMPTY = new Empty();
@@ -211,7 +225,7 @@ namespace Com.Bcom.Solar.Gprc
             }
 
             // TODO(jmhenaff): use void return type ? (all could be handled via the callback method)
-            public ResultStatus RelocAndMapAsyncDrop()
+            public ResultStatus RelocAndMapAsyncDrop(UnityEngine.Matrix4x4 camPose)
             {
                 //manager.SendMessage("*********************");
                 //manager.SendMessage("manager.rpcTask: " + manager.rpcTask);
@@ -247,7 +261,7 @@ namespace Com.Bcom.Solar.Gprc
                         }
                     }
 
-                    manager.rpcTask = RelocAndMapAsyncDropInternal();
+                    manager.rpcTask = RelocAndMapAsyncDropInternal(camPose);
 
                     frameSentCallback(++manager.nbSentFrames);
                 }
@@ -255,7 +269,7 @@ namespace Com.Bcom.Solar.Gprc
                 return manager.SUCCESS;
             }
 
-            private async Task<ResultStatus> RelocAndMapAsyncDropInternal()
+            private async Task<ResultStatus> RelocAndMapAsyncDropInternal(UnityEngine.Matrix4x4 camPose)
             {
                 RelocAndMappingResult result = null;
                 await Task.Run(() =>
@@ -265,6 +279,66 @@ namespace Com.Bcom.Solar.Gprc
                             if (frame != null)
                             {
                                 result = manager.RelocalizeAndMap(frame);
+
+                                // JMH Debug
+                                try
+                                {
+                                    if (!manager.rmCameraPoses.IsCompleted)
+                                    {
+                                        manager.rmCameraPoses.Add(frame.Timestamp + " "
+                                            + frame.Pose.M11 + " "
+                                            + frame.Pose.M12 + " "
+                                            + frame.Pose.M13 + " "
+                                            + frame.Pose.M14 + " "
+                                            + frame.Pose.M21 + " "
+                                            + frame.Pose.M22 + " "
+                                            + frame.Pose.M23 + " "
+                                            + frame.Pose.M24 + " "
+                                            + frame.Pose.M31 + " "
+                                            + frame.Pose.M32 + " "
+                                            + frame.Pose.M33 + " "
+                                            + frame.Pose.M34 + " "
+                                            + frame.Pose.M41 + " "
+                                            + frame.Pose.M42 + " "
+                                            + frame.Pose.M43 + " "
+                                            + frame.Pose.M44);
+                                    }
+
+                                    try
+                                    {
+                                        if (!manager.mainCameraPoses.IsCompleted && manager.solarClient != null && manager.solarClient.mainCamera != null)
+                                        {                                            
+                                            manager.mainCameraPoses.Add(frame.Timestamp + " "
+                                                + camPose.m00 + " "
+                                                + camPose.m01 + " "
+                                                + camPose.m02 + " "
+                                                + camPose.m03 + " "
+                                                + camPose.m10 + " "
+                                                + camPose.m11 + " "
+                                                + camPose.m12 + " "
+                                                + camPose.m13 + " "
+                                                + camPose.m20 + " "
+                                                + camPose.m21 + " "
+                                                + camPose.m22 + " "
+                                                + camPose.m23 + " "
+                                                + camPose.m30 + " "
+                                                + camPose.m31 + " "
+                                                + camPose.m32 + " "
+                                                + camPose.m33);
+                                        }
+                                    } catch(Exception e)
+                                    {
+                                        manager.SendMessage("Error when getting camera pose: " + e.Message);
+                                        throw e;
+                                    }
+
+                                }
+                                catch (InvalidOperationException)
+                                {
+                                    // Stop has been called, CompleteAdding() has been called, no more adds allowed
+                                    // TODO: log ?
+                                }
+
                             }
                             else
                             {
@@ -569,6 +643,25 @@ namespace Com.Bcom.Solar.Gprc
                 clientPool.DeleteClient(client);
                 return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::Stop(): Error: "
                     + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);
+            }
+
+            rmCameraPoses.CompleteAdding();
+            mainCameraPoses.CompleteAdding();
+
+            using (var writer = new StreamWriter(string.Format("{0}/left-front-poses.txt", Application.persistentDataPath), false))
+            {
+                foreach (string line in rmCameraPoses.GetConsumingEnumerable())
+                {
+                    writer.WriteLine(line);
+                }                
+            }
+
+            using (var writer = new StreamWriter(string.Format("{0}/maincamera-poses.txt", Application.persistentDataPath), false))
+            {
+                foreach (string line in mainCameraPoses.GetConsumingEnumerable())
+                {
+                    writer.WriteLine(line);
+                }
             }
 
             return SUCCESS;
