@@ -1144,7 +1144,7 @@ PrefabInstance:
         type: 3}
       propertyPath: solarScene
       value: 
-      objectReference: {fileID: 183285884}
+      objectReference: {fileID: 1728440067}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: solarScene2
@@ -9444,7 +9444,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1728440068
 Transform:
   m_ObjectHideFlags: 0
@@ -9453,7 +9453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728440067}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0785, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.157, y: 0.157, z: 0.157}
   m_Children:
   - {fileID: 1144091826}
