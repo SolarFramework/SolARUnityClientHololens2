@@ -18,13 +18,17 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 using UnityEngine;
 
 #if ENABLE_WINMD_SUPPORT
 using SolARHololens2UnityPlugin;
 using Windows.Storage;
+using Windows.Perception.Spatial;
 #endif
+
+using Microsoft.MixedReality.OpenXR;
 
 using SolARRpc = Com.Bcom.Solar.Gprc;
 
@@ -332,6 +336,10 @@ SolARHololens2ResearchMode researchMode;
         private void NotifyOnReset()
             => OnReset?.Invoke();
 
+#if ENABLE_WINMD_SUPPORT
+        SpatialCoordinateSystem origin;
+#endif
+
         SolArCloudHololens2()
         {
             pvParameters = new CameraParameters(pvDefaultParameters);
@@ -346,7 +354,9 @@ SolARHololens2ResearchMode researchMode;
             else
             {
                 // VLC LEFT LEFT
-                // camToEyesMatrix.m03 = -0.05f;
+                // camToEyesMatrix.m03 = -0.01f;
+                camToEyesMatrix.m03 = 0.04f;
+                camToEyesMatrix.m13 = 0.10f;
                 camToEyesMatrix.m23 = -0.10f;
             }
 
@@ -378,6 +388,12 @@ SolARHololens2ResearchMode researchMode;
             }
 
 #if ENABLE_WINMD_SUPPORT
+        
+        origin = PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem;
+        System.Numerics.Matrix4x4? m = origin.TryGetTransformTo(origin);
+
+//        IntPtr ptr = Marshal.GetIUnknownForObject(origin);
+//        researchMode.SetSpatialCoordinateSystem(ptr);
 
 		if ( enabledSensors[Hl2SensorType.PV] )
 		{
@@ -405,6 +421,8 @@ SolARHololens2ResearchMode researchMode;
 		}
 
 		researchMode.Init();
+
+        researchMode.SetSpatialCoordinateSystem(origin);
 #endif
 
             if (mainCamera == null)
@@ -474,7 +492,7 @@ SolARHololens2ResearchMode researchMode;
             return rpcAvailable;
         }
 
-        #region Button Events
+#region Button Events
 
         public void TogglePipelineMode()
         {
@@ -594,7 +612,7 @@ SolARHololens2ResearchMode researchMode;
             StopCoroutine(FetchAndSendFrames());
         }
 
-        #endregion
+#endregion
 
         private void handleDepth(
             SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender)
@@ -719,7 +737,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     byte[] vclBufferData = null;
 
 #if ENABLE_WINMD_SUPPORT
-			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
+			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None, origin /* PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem*/);
 #endif
                     if (vclBufferData != null)
                     {
@@ -881,7 +899,8 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     solarDeltaMatinv.m23 *= -1;
 
                     // Apply modified delta to initial pose of scene
-                    var newScenePose = camToEyesMatrix * solarDeltaMatinv * solarSceneInitPose;
+                    // var newScenePose = camToEyesMatrix * solarDeltaMatinv * solarSceneInitPose;
+                    var newScenePose = solarDeltaMatinv * solarSceneInitPose;
 
                     // Apply corrected pose to scene
                     solarScene.transform.rotation = newScenePose.ExtractRotation();
