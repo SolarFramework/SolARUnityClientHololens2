@@ -1,5 +1,6 @@
 # Release Notes
 
+# v0.7.0
 ## v0.6.0
 * Fix accuracy issues due the use of different coordinate system origin between Unity application and native plugin: the origin used in Unity is now shared between the two.
 * Fix pose errors due to wrong computation for the correction of the pose received from SolAR.
