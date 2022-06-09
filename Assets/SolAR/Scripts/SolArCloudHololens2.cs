@@ -890,6 +890,11 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     solarDeltaMatinv.m22 *= -1;
                     solarDeltaMatinv.m23 *= -1;
 
+                    solarDeltaMatinv.m02 *= -1;
+                    solarDeltaMatinv.m12 *= -1;
+                    solarDeltaMatinv.m22 *= -1;
+                    solarDeltaMatinv.m32 *= -1;
+
                     // Apply modified delta to initial pose of scene
                     // var newScenePose = camToEyesMatrix * solarDeltaMatinv * solarSceneInitPose;
                     var newScenePose = solarDeltaMatinv * solarSceneInitPose;
