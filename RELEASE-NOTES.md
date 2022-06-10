@@ -2,6 +2,7 @@
 
 # v0.7.0
 * Change sharing of SpatialCoordinateSystem object between Unity and native plugin so that it works with PV camera as well.
+* Make a prefab for the simple GUI.
 
 ## v0.6.0
 * Fix accuracy issues due the use of different coordinate system origin between Unity application and native plugin: the origin used in Unity is now shared between the two.
