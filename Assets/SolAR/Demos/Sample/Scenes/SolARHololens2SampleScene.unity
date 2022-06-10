@@ -1184,8 +1184,63 @@ PrefabInstance:
       objectReference: {fileID: 1728440067}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
+      propertyPath: selectedSensor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
       propertyPath: gRpcDelayBetweenFramesInMs
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.name
+      value: LEFT_FRONT
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.width
+      value: 640
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.distK1
+      value: -0.009463
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.distK2
+      value: 0.003013
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.focalX
+      value: 366.189452
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.focalY
+      value: 366.47809
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.height
+      value: 480
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.centerX
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.centerY
+      value: 240
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e688a6d483c98df4ebcb4627f077e80c, type: 3}

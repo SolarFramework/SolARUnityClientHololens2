@@ -334,7 +334,7 @@ SolARHololens2ResearchMode researchMode;
             => OnReset?.Invoke();
 
 #if ENABLE_WINMD_SUPPORT
-        SpatialCoordinateSystem origin;
+        SpatialCoordinateSystem spatialCoordinateSystem;
 #endif
 
         SolArCloudHololens2()
@@ -386,11 +386,8 @@ SolARHololens2ResearchMode researchMode;
 
 #if ENABLE_WINMD_SUPPORT
         
-        origin = PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem;
-        System.Numerics.Matrix4x4? m = origin.TryGetTransformTo(origin);
-
-//        IntPtr ptr = Marshal.GetIUnknownForObject(origin);
-//        researchMode.SetSpatialCoordinateSystem(ptr);
+        spatialCoordinateSystem = PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem;
+        researchMode.SetSpatialCoordinateSystem(spatialCoordinateSystem);
 
 		if ( enabledSensors[Hl2SensorType.PV] )
 		{
@@ -419,7 +416,6 @@ SolARHololens2ResearchMode researchMode;
 
 		researchMode.Init();
 
-        researchMode.SetSpatialCoordinateSystem(origin);
 #endif
 
             if (solarScene == null)
@@ -729,7 +725,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     byte[] vclBufferData = null;
 
 #if ENABLE_WINMD_SUPPORT
-			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None, origin /* PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem*/);
+			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
 #endif
                     if (vclBufferData != null)
                     {
