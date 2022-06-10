@@ -144,16 +144,6 @@ namespace Com.Bcom.Solar.Gprc
             public void SetFrame(int sensorId, ulong timestamp, ImageLayout imLayout,
                 uint imWidth, uint imHeight, byte[] imData, double[] pose, ImageCompression imageCompression)
             {
-
-                // System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
-                // stopWatch.Start();
-                // byte[] imDataPng = encodeToPNG(imWidth, imHeight, imLayout, imData);
-                // byte[] imDataPng = convertToPNG(imLayout, imWidth, imHeight, imData);
-                byte[] imDataPng = imData;
-                // stopWatch.Stop();
-                // manager.SendMessage("encodeToPNG duration: " + stopWatch.ElapsedMilliseconds + "(" + imDataPng.Length + " bytes)");
-                
-
                 frame = new Frame
                 {
                     SensorId = sensorId,
@@ -163,8 +153,7 @@ namespace Com.Bcom.Solar.Gprc
                         Layout = imLayout,
                         Width = imWidth,
                         Height = imHeight,
-                        Data = ByteString.CopyFrom(imDataPng),
-                        // Data = UnsafeByteOperations.UnsafeWrap(imDataPng),
+                        Data = ByteString.CopyFrom(imData),
                         ImageCompression = imageCompression
                     },
                     Pose = new Matrix4x4
