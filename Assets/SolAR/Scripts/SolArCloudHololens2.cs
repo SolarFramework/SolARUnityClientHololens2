@@ -95,7 +95,9 @@ SolARHololens2ResearchMode researchMode;
         public enum Hl2SensorTypeEditor
         {
             PV,
-            RM_LEFT_FRONT
+            RM_LEFT_FRONT,
+            RM_RIGHT_FRONT,
+            RM_LEFT_RIGHT_FRONT
         }
 
         [HideInInspector] public Hl2SensorTypeEditor selectedSensor = Hl2SensorTypeEditor.RM_LEFT_FRONT;
@@ -173,6 +175,24 @@ SolARHololens2ResearchMode researchMode;
             distK3 = 0
         };
 
+        private CameraParameters rightFrontDefaultParameters = new CameraParameters()
+        {
+            name = "RIGHT_FRONT",
+            id = 0,
+            type = SolARRpc.CameraType.Gray,
+            width = 640,
+            height = 480,
+            focalX = 366.189452,
+            focalY = 366.478090,
+            centerX = 320,
+            centerY = 240,
+            distK1 = -0.009463,
+            distK2 = 0.003013,
+            distP1 = -0.006169,
+            distP2 = -0.008975,
+            distK3 = 0
+        };
+
         // Use these object to store user modifed values
         // TODO: persistency, load from file, calibrate within app.
         [HideInInspector]
@@ -180,6 +200,12 @@ SolARHololens2ResearchMode researchMode;
 
         [HideInInspector]
         public CameraParameters leftFrontParameters;
+
+        [HideInInspector]
+        public CameraParameters rightFrontParameters;
+
+        [HideInInspector]
+        public CameraParameters leftRightFrontParameters;
 
         [HideInInspector]
         public CameraParameters selectedCameraParameter;
@@ -348,6 +374,8 @@ SolARHololens2ResearchMode researchMode;
         {
             pvParameters = new CameraParameters(pvDefaultParameters);
             leftFrontParameters = new CameraParameters(leftFrontDefaultParameters);
+            rightFrontParameters = new CameraParameters(rightFrontDefaultParameters);
+            leftRightFrontParameters = new CameraParameters(leftFrontDefaultParameters);
 
             // Apply modified delta to initial pose of scene
             camToEyesMatrix = Matrix4x4.identity;
@@ -384,7 +412,13 @@ SolARHololens2ResearchMode researchMode;
 
             try
             {
-                enabledSensors[toHl2SensorType(selectedSensor)] = true;
+                if (selectedSensor == Hl2SensorTypeEditor.RM_LEFT_RIGHT_FRONT) {
+                    enabledSensors[Hl2SensorType.RM_LEFT_FRONT] = true;                    
+                    enabledSensors[Hl2SensorType.RM_RIGHT_FRONT] = true;                    
+                }
+                else {
+                    enabledSensors[toHl2SensorType(selectedSensor)] = true;                    
+                }
             }
             catch (Exception e)
             {
@@ -1215,6 +1249,11 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             return leftFrontDefaultParameters;
         }
 
+        public CameraParameters GetRightFrontDefaultParameters()
+        {
+            return rightFrontDefaultParameters;
+        }
+
         private string d2str(double d)
         {
             return string.Format("{0:0.00000}", d);
@@ -1247,6 +1286,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             {
                 case Hl2SensorTypeEditor.PV: return Hl2SensorType.PV;
                 case Hl2SensorTypeEditor.RM_LEFT_FRONT: return Hl2SensorType.RM_LEFT_FRONT;
+                case Hl2SensorTypeEditor.RM_RIGHT_FRONT: return Hl2SensorType.RM_RIGHT_FRONT;
                 default: throw new ArgumentException("Cannot convert given value of Hl2SensorTypeEditor to Hl2SensorType");
             }
         }

@@ -35,59 +35,79 @@ namespace Com.Bcom.Solar.Gprc {
             "dHJpeDN4MxI5CgpkaXN0b3J0aW9uGAcgASgLMiUuY29tLmJjb20uc29sYXIu",
             "Z3ByYy5DYW1lcmFEaXN0b3J0aW9uIlMKEENhbWVyYURpc3RvcnRpb24SCwoD",
             "S18xGAEgASgCEgsKA0tfMhgCIAEoAhILCgNQXzEYAyABKAISCwoDUF8yGAQg",
-            "ASgCEgsKA0tfMxgFIAEoAiKcAQoUUmVsb2NhbGl6YXRpb25SZXN1bHQSQgoL",
-            "cG9zZV9zdGF0dXMYASABKA4yLS5jb20uYmNvbS5zb2xhci5ncHJjLlJlbG9j",
-            "YWxpemF0aW9uUG9zZVN0YXR1cxIsCgRwb3NlGAIgASgLMh4uY29tLmJjb20u",
-            "c29sYXIuZ3ByYy5NYXRyaXg0eDQSEgoKY29uZmlkZW5jZRgDIAEoAiKnAQoF",
-            "SW1hZ2USDQoFd2lkdGgYASABKA0SDgoGaGVpZ2h0GAIgASgNEgwKBGRhdGEY",
-            "AyABKAwSMAoGbGF5b3V0GAQgASgOMiAuY29tLmJjb20uc29sYXIuZ3ByYy5J",
-            "bWFnZUxheW91dBI/ChBpbWFnZUNvbXByZXNzaW9uGAUgASgOMiUuY29tLmJj",
-            "b20uc29sYXIuZ3ByYy5JbWFnZUNvbXByZXNzaW9uIoYBCgVGcmFtZRIRCglz",
-            "ZW5zb3JfaWQYASABKAUSKQoFaW1hZ2UYAiABKAsyGi5jb20uYmNvbS5zb2xh",
-            "ci5ncHJjLkltYWdlEhEKCXRpbWVzdGFtcBgDIAEoBBIsCgRwb3NlGAQgASgL",
-            "Mh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXg0eDQi2wEKCU1hdHJpeDR4",
-            "NBILCgNtMTEYASABKAISCwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNt",
-            "MTQYBCABKAISCwoDbTIxGAUgASgCEgsKA20yMhgGIAEoAhILCgNtMjMYByAB",
-            "KAISCwoDbTI0GAggASgCEgsKA20zMRgJIAEoAhILCgNtMzIYCiABKAISCwoD",
-            "bTMzGAsgASgCEgsKA20zNBgMIAEoAhILCgNtNDEYDSABKAISCwoDbTQyGA4g",
-            "ASgCEgsKA200MxgPIAEoAhILCgNtNDQYECABKAIigAEKCU1hdHJpeDN4MxIL",
-            "CgNtMTEYASABKAISCwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNtMjEY",
-            "BCABKAISCwoDbTIyGAUgASgCEgsKA20yMxgGIAEoAhILCgNtMzEYByABKAIS",
-            "CwoDbTMyGAggASgCEgsKA20zMxgJIAEoAipHCgxQaXBlbGluZU1vZGUSHgoa",
-            "UkVMT0NBTElaQVRJT05fQU5EX01BUFBJTkcQABIXChNSRUxPQ0FMSVpBVElP",
-            "Tl9PTkxZEAEqHwoKQ2FtZXJhVHlwZRIHCgNSR0IQABIICgRHUkFZEAEqRgoY",
-            "UmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEgsKB05PX1BPU0UQABIMCghORVdf",
-            "UE9TRRABEg8KC0xBVEVTVF9QT1NFEAIqMgoLSW1hZ2VMYXlvdXQSCgoGUkdC",
-            "XzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKi4KEEltYWdlQ29tcHJl",
-            "c3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMokFCiJTb2xBUk1h",
-            "cHBpbmdBbmRSZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQSJi5jb20uYmNv",
-            "bS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29tLmJjb20uc29s",
-            "YXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNvbGFyLmdwcmMu",
-            "RW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej4KBFN0b3ASGi5j",
-            "b20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20uc29sYXIuZ3By",
-            "Yy5FbXB0eRJYChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29tLmJjb20uc29s",
-            "YXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20uc29sYXIuZ3By",
-            "Yy5FbXB0eRJZChBSZWxvY2FsaXplQW5kTWFwEhouY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5GcmFtZRopLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRp",
-            "b25SZXN1bHQSVwoOR2V0M0RUcmFuc2Zvcm0SGi5jb20uYmNvbS5zb2xhci5n",
-            "cHJjLkVtcHR5GikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlv",
-            "blJlc3VsdBI/CgVSZXNldBIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHka",
-            "Gi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5EkcKC1NlbmRNZXNzYWdlEhwu",
-            "Y29tLmJjb20uc29sYXIuZ3ByYy5NZXNzYWdlGhouY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5FbXB0eWIGcHJvdG8z"));
+            "ASgCEgsKA0tfMxgFIAEoAiKdAwoXUmVjdGlmaWNhdGlvblBhcmFtZXRlcnMS",
+            "NQoNY2FtMV9yb3RhdGlvbhgBIAEoCzIeLmNvbS5iY29tLnNvbGFyLmdwcmMu",
+            "TWF0cml4M3gzEjcKD2NhbTFfcHJvamVjdGlvbhgCIAEoCzIeLmNvbS5iY29t",
+            "LnNvbGFyLmdwcmMuTWF0cml4M3g0EjkKEGNhbTFfc3RlcmVvX3R5cGUYAyAB",
+            "KA4yHy5jb20uYmNvbS5zb2xhci5ncHJjLlN0ZXJlb1R5cGUSFQoNY2FtMV9i",
+            "YXNlbGluZRgEIAEoAhI1Cg1jYW0yX3JvdGF0aW9uGAUgASgLMh4uY29tLmJj",
+            "b20uc29sYXIuZ3ByYy5NYXRyaXgzeDMSNwoPY2FtMl9wcm9qZWN0aW9uGAYg",
+            "ASgLMh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXgzeDQSOQoQY2FtMl9z",
+            "dGVyZW9fdHlwZRgHIAEoDjIfLmNvbS5iY29tLnNvbGFyLmdwcmMuU3RlcmVv",
+            "VHlwZRIVCg1jYW0yX2Jhc2VsaW5lGAggASgCIpwBChRSZWxvY2FsaXphdGlv",
+            "blJlc3VsdBJCCgtwb3NlX3N0YXR1cxgBIAEoDjItLmNvbS5iY29tLnNvbGFy",
+            "LmdwcmMuUmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEiwKBHBvc2UYAiABKAsy",
+            "Hi5jb20uYmNvbS5zb2xhci5ncHJjLk1hdHJpeDR4NBISCgpjb25maWRlbmNl",
+            "GAMgASgCIqcBCgVJbWFnZRINCgV3aWR0aBgBIAEoDRIOCgZoZWlnaHQYAiAB",
+            "KA0SDAoEZGF0YRgDIAEoDBIwCgZsYXlvdXQYBCABKA4yIC5jb20uYmNvbS5z",
+            "b2xhci5ncHJjLkltYWdlTGF5b3V0Ej8KEGltYWdlQ29tcHJlc3Npb24YBSAB",
+            "KA4yJS5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdlQ29tcHJlc3Npb24iNAoG",
+            "RnJhbWVzEioKBmZyYW1lcxgBIAMoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMu",
+            "RnJhbWUihgEKBUZyYW1lEhEKCXNlbnNvcl9pZBgBIAEoBRIpCgVpbWFnZRgC",
+            "IAEoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1hZ2USEQoJdGltZXN0YW1w",
+            "GAMgASgEEiwKBHBvc2UYBCABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1h",
+            "dHJpeDR4NCLbAQoJTWF0cml4NHg0EgsKA20xMRgBIAEoAhILCgNtMTIYAiAB",
+            "KAISCwoDbTEzGAMgASgCEgsKA20xNBgEIAEoAhILCgNtMjEYBSABKAISCwoD",
+            "bTIyGAYgASgCEgsKA20yMxgHIAEoAhILCgNtMjQYCCABKAISCwoDbTMxGAkg",
+            "ASgCEgsKA20zMhgKIAEoAhILCgNtMzMYCyABKAISCwoDbTM0GAwgASgCEgsK",
+            "A200MRgNIAEoAhILCgNtNDIYDiABKAISCwoDbTQzGA8gASgCEgsKA200NBgQ",
+            "IAEoAiKAAQoJTWF0cml4M3gzEgsKA20xMRgBIAEoAhILCgNtMTIYAiABKAIS",
+            "CwoDbTEzGAMgASgCEgsKA20yMRgEIAEoAhILCgNtMjIYBSABKAISCwoDbTIz",
+            "GAYgASgCEgsKA20zMRgHIAEoAhILCgNtMzIYCCABKAISCwoDbTMzGAkgASgC",
+            "IqcBCglNYXRyaXgzeDQSCwoDbTExGAEgASgCEgsKA20xMhgCIAEoAhILCgNt",
+            "MTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20yMRgFIAEoAhILCgNtMjIYBiAB",
+            "KAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEoAhILCgNtMzEYCSABKAISCwoD",
+            "bTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNtMzQYDCABKAIqRwoMUGlwZWxp",
+            "bmVNb2RlEh4KGlJFTE9DQUxJWkFUSU9OX0FORF9NQVBQSU5HEAASFwoTUkVM",
+            "T0NBTElaQVRJT05fT05MWRABKh8KCkNhbWVyYVR5cGUSBwoDUkdCEAASCAoE",
+            "R1JBWRABKioKClN0ZXJlb1R5cGUSDgoKSG9yaXpvbnRhbBAAEgwKCFZlcnRp",
+            "Y2FsEAEqRgoYUmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEgsKB05PX1BPU0UQ",
+            "ABIMCghORVdfUE9TRRABEg8KC0xBVEVTVF9QT1NFEAIqMgoLSW1hZ2VMYXlv",
+            "dXQSCgoGUkdCXzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKi4KEElt",
+            "YWdlQ29tcHJlc3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMvIF",
+            "CiJTb2xBUk1hcHBpbmdBbmRSZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQS",
+            "Ji5jb20uYmNvbS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29t",
+            "LmJjb20uc29sYXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNv",
+            "bGFyLmdwcmMuRW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej4K",
+            "BFN0b3ASGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20u",
+            "c29sYXIuZ3ByYy5FbXB0eRJYChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29t",
+            "LmJjb20uc29sYXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20u",
+            "c29sYXIuZ3ByYy5FbXB0eRJmChpzZXRSZWN0aWZpY2F0aW9uUGFyYW1ldGVy",
+            "cxIsLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVjdGlmaWNhdGlvblBhcmFtZXRl",
+            "cnMaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5EloKEFJlbG9jYWxpemVB",
+            "bmRNYXASGy5jb20uYmNvbS5zb2xhci5ncHJjLkZyYW1lcxopLmNvbS5iY29t",
+            "LnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25SZXN1bHQSVwoOR2V0M0RUcmFu",
+            "c2Zvcm0SGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GikuY29tLmJjb20u",
+            "c29sYXIuZ3ByYy5SZWxvY2FsaXphdGlvblJlc3VsdBI/CgVSZXNldBIaLmNv",
+            "bS5iY29tLnNvbGFyLmdwcmMuRW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJj",
+            "LkVtcHR5EkcKC1NlbmRNZXNzYWdlEhwuY29tLmJjb20uc29sYXIuZ3ByYy5N",
+            "ZXNzYWdlGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.StereoType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Empty), global::Com.Bcom.Solar.Gprc.Empty.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.PipelineModeValue), global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser, new[]{ "PipelineMode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Message), global::Com.Bcom.Solar.Gprc.Message.Parser, new[]{ "Message_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParameters), global::Com.Bcom.Solar.Gprc.CameraParameters.Parser, new[]{ "Name", "Id", "CameraType", "Width", "Height", "Intrinsics", "Distortion" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraDistortion), global::Com.Bcom.Solar.Gprc.CameraDistortion.Parser, new[]{ "K1", "K2", "P1", "P2", "K3" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParameters), global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser, new[]{ "Cam1Rotation", "Cam1Projection", "Cam1StereoType", "Cam1Baseline", "Cam2Rotation", "Cam2Projection", "Cam2StereoType", "Cam2Baseline" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RelocalizationResult), global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser, new[]{ "PoseStatus", "Pose", "Confidence" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Image), global::Com.Bcom.Solar.Gprc.Image.Parser, new[]{ "Width", "Height", "Data", "Layout", "ImageCompression" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "Frames_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frame), global::Com.Bcom.Solar.Gprc.Frame.Parser, new[]{ "SensorId", "Image", "Timestamp", "Pose" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix4x4), global::Com.Bcom.Solar.Gprc.Matrix4x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34", "M41", "M42", "M43", "M44" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x3), global::Com.Bcom.Solar.Gprc.Matrix3x3.Parser, new[]{ "M11", "M12", "M13", "M21", "M22", "M23", "M31", "M32", "M33" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x3), global::Com.Bcom.Solar.Gprc.Matrix3x3.Parser, new[]{ "M11", "M12", "M13", "M21", "M22", "M23", "M31", "M32", "M33" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x4), global::Com.Bcom.Solar.Gprc.Matrix3x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34" }, null, null, null, null)
           }));
     }
     #endregion
@@ -102,6 +122,11 @@ namespace Com.Bcom.Solar.Gprc {
   public enum CameraType {
     [pbr::OriginalName("RGB")] Rgb = 0,
     [pbr::OriginalName("GRAY")] Gray = 1,
+  }
+
+  public enum StereoType {
+    [pbr::OriginalName("Horizontal")] Horizontal = 0,
+    [pbr::OriginalName("Vertical")] Vertical = 1,
   }
 
   public enum RelocalizationPoseStatus {
@@ -1327,6 +1352,466 @@ namespace Com.Bcom.Solar.Gprc {
 
   }
 
+  public sealed partial class RectificationParameters : pb::IMessage<RectificationParameters>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<RectificationParameters> _parser = new pb::MessageParser<RectificationParameters>(() => new RectificationParameters());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RectificationParameters> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[5]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParameters() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParameters(RectificationParameters other) : this() {
+      cam1Rotation_ = other.cam1Rotation_ != null ? other.cam1Rotation_.Clone() : null;
+      cam1Projection_ = other.cam1Projection_ != null ? other.cam1Projection_.Clone() : null;
+      cam1StereoType_ = other.cam1StereoType_;
+      cam1Baseline_ = other.cam1Baseline_;
+      cam2Rotation_ = other.cam2Rotation_ != null ? other.cam2Rotation_.Clone() : null;
+      cam2Projection_ = other.cam2Projection_ != null ? other.cam2Projection_.Clone() : null;
+      cam2StereoType_ = other.cam2StereoType_;
+      cam2Baseline_ = other.cam2Baseline_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RectificationParameters Clone() {
+      return new RectificationParameters(this);
+    }
+
+    /// <summary>Field number for the "cam1_rotation" field.</summary>
+    public const int Cam1RotationFieldNumber = 1;
+    private global::Com.Bcom.Solar.Gprc.Matrix3x3 cam1Rotation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.Matrix3x3 Cam1Rotation {
+      get { return cam1Rotation_; }
+      set {
+        cam1Rotation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam1_projection" field.</summary>
+    public const int Cam1ProjectionFieldNumber = 2;
+    private global::Com.Bcom.Solar.Gprc.Matrix3x4 cam1Projection_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.Matrix3x4 Cam1Projection {
+      get { return cam1Projection_; }
+      set {
+        cam1Projection_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam1_stereo_type" field.</summary>
+    public const int Cam1StereoTypeFieldNumber = 3;
+    private global::Com.Bcom.Solar.Gprc.StereoType cam1StereoType_ = global::Com.Bcom.Solar.Gprc.StereoType.Horizontal;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.StereoType Cam1StereoType {
+      get { return cam1StereoType_; }
+      set {
+        cam1StereoType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam1_baseline" field.</summary>
+    public const int Cam1BaselineFieldNumber = 4;
+    private float cam1Baseline_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Cam1Baseline {
+      get { return cam1Baseline_; }
+      set {
+        cam1Baseline_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam2_rotation" field.</summary>
+    public const int Cam2RotationFieldNumber = 5;
+    private global::Com.Bcom.Solar.Gprc.Matrix3x3 cam2Rotation_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.Matrix3x3 Cam2Rotation {
+      get { return cam2Rotation_; }
+      set {
+        cam2Rotation_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam2_projection" field.</summary>
+    public const int Cam2ProjectionFieldNumber = 6;
+    private global::Com.Bcom.Solar.Gprc.Matrix3x4 cam2Projection_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.Matrix3x4 Cam2Projection {
+      get { return cam2Projection_; }
+      set {
+        cam2Projection_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam2_stereo_type" field.</summary>
+    public const int Cam2StereoTypeFieldNumber = 7;
+    private global::Com.Bcom.Solar.Gprc.StereoType cam2StereoType_ = global::Com.Bcom.Solar.Gprc.StereoType.Horizontal;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.StereoType Cam2StereoType {
+      get { return cam2StereoType_; }
+      set {
+        cam2StereoType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "cam2_baseline" field.</summary>
+    public const int Cam2BaselineFieldNumber = 8;
+    private float cam2Baseline_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float Cam2Baseline {
+      get { return cam2Baseline_; }
+      set {
+        cam2Baseline_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RectificationParameters);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RectificationParameters other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Cam1Rotation, other.Cam1Rotation)) return false;
+      if (!object.Equals(Cam1Projection, other.Cam1Projection)) return false;
+      if (Cam1StereoType != other.Cam1StereoType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Cam1Baseline, other.Cam1Baseline)) return false;
+      if (!object.Equals(Cam2Rotation, other.Cam2Rotation)) return false;
+      if (!object.Equals(Cam2Projection, other.Cam2Projection)) return false;
+      if (Cam2StereoType != other.Cam2StereoType) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Cam2Baseline, other.Cam2Baseline)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (cam1Rotation_ != null) hash ^= Cam1Rotation.GetHashCode();
+      if (cam1Projection_ != null) hash ^= Cam1Projection.GetHashCode();
+      if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) hash ^= Cam1StereoType.GetHashCode();
+      if (Cam1Baseline != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Cam1Baseline);
+      if (cam2Rotation_ != null) hash ^= Cam2Rotation.GetHashCode();
+      if (cam2Projection_ != null) hash ^= Cam2Projection.GetHashCode();
+      if (Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) hash ^= Cam2StereoType.GetHashCode();
+      if (Cam2Baseline != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Cam2Baseline);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (cam1Rotation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Cam1Rotation);
+      }
+      if (cam1Projection_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Cam1Projection);
+      }
+      if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Cam1StereoType);
+      }
+      if (Cam1Baseline != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Cam1Baseline);
+      }
+      if (cam2Rotation_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Cam2Rotation);
+      }
+      if (cam2Projection_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Cam2Projection);
+      }
+      if (Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) Cam2StereoType);
+      }
+      if (Cam2Baseline != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(Cam2Baseline);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (cam1Rotation_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Cam1Rotation);
+      }
+      if (cam1Projection_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Cam1Projection);
+      }
+      if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) Cam1StereoType);
+      }
+      if (Cam1Baseline != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(Cam1Baseline);
+      }
+      if (cam2Rotation_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(Cam2Rotation);
+      }
+      if (cam2Projection_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Cam2Projection);
+      }
+      if (Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        output.WriteRawTag(56);
+        output.WriteEnum((int) Cam2StereoType);
+      }
+      if (Cam2Baseline != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(Cam2Baseline);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (cam1Rotation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Cam1Rotation);
+      }
+      if (cam1Projection_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Cam1Projection);
+      }
+      if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Cam1StereoType);
+      }
+      if (Cam1Baseline != 0F) {
+        size += 1 + 4;
+      }
+      if (cam2Rotation_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Cam2Rotation);
+      }
+      if (cam2Projection_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Cam2Projection);
+      }
+      if (Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Cam2StereoType);
+      }
+      if (Cam2Baseline != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RectificationParameters other) {
+      if (other == null) {
+        return;
+      }
+      if (other.cam1Rotation_ != null) {
+        if (cam1Rotation_ == null) {
+          Cam1Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+        }
+        Cam1Rotation.MergeFrom(other.Cam1Rotation);
+      }
+      if (other.cam1Projection_ != null) {
+        if (cam1Projection_ == null) {
+          Cam1Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+        }
+        Cam1Projection.MergeFrom(other.Cam1Projection);
+      }
+      if (other.Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        Cam1StereoType = other.Cam1StereoType;
+      }
+      if (other.Cam1Baseline != 0F) {
+        Cam1Baseline = other.Cam1Baseline;
+      }
+      if (other.cam2Rotation_ != null) {
+        if (cam2Rotation_ == null) {
+          Cam2Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+        }
+        Cam2Rotation.MergeFrom(other.Cam2Rotation);
+      }
+      if (other.cam2Projection_ != null) {
+        if (cam2Projection_ == null) {
+          Cam2Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+        }
+        Cam2Projection.MergeFrom(other.Cam2Projection);
+      }
+      if (other.Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
+        Cam2StereoType = other.Cam2StereoType;
+      }
+      if (other.Cam2Baseline != 0F) {
+        Cam2Baseline = other.Cam2Baseline;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (cam1Rotation_ == null) {
+              Cam1Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+            }
+            input.ReadMessage(Cam1Rotation);
+            break;
+          }
+          case 18: {
+            if (cam1Projection_ == null) {
+              Cam1Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+            }
+            input.ReadMessage(Cam1Projection);
+            break;
+          }
+          case 24: {
+            Cam1StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
+            break;
+          }
+          case 37: {
+            Cam1Baseline = input.ReadFloat();
+            break;
+          }
+          case 42: {
+            if (cam2Rotation_ == null) {
+              Cam2Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+            }
+            input.ReadMessage(Cam2Rotation);
+            break;
+          }
+          case 50: {
+            if (cam2Projection_ == null) {
+              Cam2Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+            }
+            input.ReadMessage(Cam2Projection);
+            break;
+          }
+          case 56: {
+            Cam2StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
+            break;
+          }
+          case 69: {
+            Cam2Baseline = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (cam1Rotation_ == null) {
+              Cam1Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+            }
+            input.ReadMessage(Cam1Rotation);
+            break;
+          }
+          case 18: {
+            if (cam1Projection_ == null) {
+              Cam1Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+            }
+            input.ReadMessage(Cam1Projection);
+            break;
+          }
+          case 24: {
+            Cam1StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
+            break;
+          }
+          case 37: {
+            Cam1Baseline = input.ReadFloat();
+            break;
+          }
+          case 42: {
+            if (cam2Rotation_ == null) {
+              Cam2Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
+            }
+            input.ReadMessage(Cam2Rotation);
+            break;
+          }
+          case 50: {
+            if (cam2Projection_ == null) {
+              Cam2Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
+            }
+            input.ReadMessage(Cam2Projection);
+            break;
+          }
+          case 56: {
+            Cam2StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
+            break;
+          }
+          case 69: {
+            Cam2Baseline = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class RelocalizationResult : pb::IMessage<RelocalizationResult>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1339,7 +1824,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1592,7 +2077,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1896,6 +2381,167 @@ namespace Com.Bcom.Solar.Gprc {
 
   }
 
+  public sealed partial class Frames : pb::IMessage<Frames>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Frames> _parser = new pb::MessageParser<Frames>(() => new Frames());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Frames> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Frames() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Frames(Frames other) : this() {
+      frames_ = other.frames_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Frames Clone() {
+      return new Frames(this);
+    }
+
+    /// <summary>Field number for the "frames" field.</summary>
+    public const int Frames_FieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Com.Bcom.Solar.Gprc.Frame> _repeated_frames_codec
+        = pb::FieldCodec.ForMessage(10, global::Com.Bcom.Solar.Gprc.Frame.Parser);
+    private readonly pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame> frames_ = new pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame> Frames_ {
+      get { return frames_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Frames);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Frames other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!frames_.Equals(other.frames_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= frames_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      frames_.WriteTo(output, _repeated_frames_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      frames_.WriteTo(ref output, _repeated_frames_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += frames_.CalculateSize(_repeated_frames_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Frames other) {
+      if (other == null) {
+        return;
+      }
+      frames_.Add(other.frames_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            frames_.AddEntriesFrom(input, _repeated_frames_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            frames_.AddEntriesFrom(ref input, _repeated_frames_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class Frame : pb::IMessage<Frame>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1908,7 +2554,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2206,7 +2852,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2918,7 +3564,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3357,6 +4003,574 @@ namespace Com.Bcom.Solar.Gprc {
           }
           case 77: {
             M33 = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class Matrix3x4 : pb::IMessage<Matrix3x4>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Matrix3x4> _parser = new pb::MessageParser<Matrix3x4>(() => new Matrix3x4());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<Matrix3x4> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Matrix3x4() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Matrix3x4(Matrix3x4 other) : this() {
+      m11_ = other.m11_;
+      m12_ = other.m12_;
+      m13_ = other.m13_;
+      m14_ = other.m14_;
+      m21_ = other.m21_;
+      m22_ = other.m22_;
+      m23_ = other.m23_;
+      m24_ = other.m24_;
+      m31_ = other.m31_;
+      m32_ = other.m32_;
+      m33_ = other.m33_;
+      m34_ = other.m34_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public Matrix3x4 Clone() {
+      return new Matrix3x4(this);
+    }
+
+    /// <summary>Field number for the "m11" field.</summary>
+    public const int M11FieldNumber = 1;
+    private float m11_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M11 {
+      get { return m11_; }
+      set {
+        m11_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m12" field.</summary>
+    public const int M12FieldNumber = 2;
+    private float m12_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M12 {
+      get { return m12_; }
+      set {
+        m12_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m13" field.</summary>
+    public const int M13FieldNumber = 3;
+    private float m13_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M13 {
+      get { return m13_; }
+      set {
+        m13_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m14" field.</summary>
+    public const int M14FieldNumber = 4;
+    private float m14_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M14 {
+      get { return m14_; }
+      set {
+        m14_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m21" field.</summary>
+    public const int M21FieldNumber = 5;
+    private float m21_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M21 {
+      get { return m21_; }
+      set {
+        m21_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m22" field.</summary>
+    public const int M22FieldNumber = 6;
+    private float m22_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M22 {
+      get { return m22_; }
+      set {
+        m22_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m23" field.</summary>
+    public const int M23FieldNumber = 7;
+    private float m23_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M23 {
+      get { return m23_; }
+      set {
+        m23_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m24" field.</summary>
+    public const int M24FieldNumber = 8;
+    private float m24_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M24 {
+      get { return m24_; }
+      set {
+        m24_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m31" field.</summary>
+    public const int M31FieldNumber = 9;
+    private float m31_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M31 {
+      get { return m31_; }
+      set {
+        m31_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m32" field.</summary>
+    public const int M32FieldNumber = 10;
+    private float m32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M32 {
+      get { return m32_; }
+      set {
+        m32_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m33" field.</summary>
+    public const int M33FieldNumber = 11;
+    private float m33_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M33 {
+      get { return m33_; }
+      set {
+        m33_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "m34" field.</summary>
+    public const int M34FieldNumber = 12;
+    private float m34_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float M34 {
+      get { return m34_; }
+      set {
+        m34_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as Matrix3x4);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(Matrix3x4 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M11, other.M11)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M12, other.M12)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M13, other.M13)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M14, other.M14)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M21, other.M21)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M22, other.M22)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M23, other.M23)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M24, other.M24)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M31, other.M31)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M32, other.M32)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M33, other.M33)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(M34, other.M34)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (M11 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M11);
+      if (M12 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M12);
+      if (M13 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M13);
+      if (M14 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M14);
+      if (M21 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M21);
+      if (M22 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M22);
+      if (M23 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M23);
+      if (M24 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M24);
+      if (M31 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M31);
+      if (M32 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M32);
+      if (M33 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M33);
+      if (M34 != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(M34);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (M11 != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(M11);
+      }
+      if (M12 != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(M12);
+      }
+      if (M13 != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(M13);
+      }
+      if (M14 != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(M14);
+      }
+      if (M21 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(M21);
+      }
+      if (M22 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(M22);
+      }
+      if (M23 != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(M23);
+      }
+      if (M24 != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(M24);
+      }
+      if (M31 != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(M31);
+      }
+      if (M32 != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(M32);
+      }
+      if (M33 != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(M33);
+      }
+      if (M34 != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(M34);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (M11 != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(M11);
+      }
+      if (M12 != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(M12);
+      }
+      if (M13 != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(M13);
+      }
+      if (M14 != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(M14);
+      }
+      if (M21 != 0F) {
+        output.WriteRawTag(45);
+        output.WriteFloat(M21);
+      }
+      if (M22 != 0F) {
+        output.WriteRawTag(53);
+        output.WriteFloat(M22);
+      }
+      if (M23 != 0F) {
+        output.WriteRawTag(61);
+        output.WriteFloat(M23);
+      }
+      if (M24 != 0F) {
+        output.WriteRawTag(69);
+        output.WriteFloat(M24);
+      }
+      if (M31 != 0F) {
+        output.WriteRawTag(77);
+        output.WriteFloat(M31);
+      }
+      if (M32 != 0F) {
+        output.WriteRawTag(85);
+        output.WriteFloat(M32);
+      }
+      if (M33 != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(M33);
+      }
+      if (M34 != 0F) {
+        output.WriteRawTag(101);
+        output.WriteFloat(M34);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (M11 != 0F) {
+        size += 1 + 4;
+      }
+      if (M12 != 0F) {
+        size += 1 + 4;
+      }
+      if (M13 != 0F) {
+        size += 1 + 4;
+      }
+      if (M14 != 0F) {
+        size += 1 + 4;
+      }
+      if (M21 != 0F) {
+        size += 1 + 4;
+      }
+      if (M22 != 0F) {
+        size += 1 + 4;
+      }
+      if (M23 != 0F) {
+        size += 1 + 4;
+      }
+      if (M24 != 0F) {
+        size += 1 + 4;
+      }
+      if (M31 != 0F) {
+        size += 1 + 4;
+      }
+      if (M32 != 0F) {
+        size += 1 + 4;
+      }
+      if (M33 != 0F) {
+        size += 1 + 4;
+      }
+      if (M34 != 0F) {
+        size += 1 + 4;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(Matrix3x4 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.M11 != 0F) {
+        M11 = other.M11;
+      }
+      if (other.M12 != 0F) {
+        M12 = other.M12;
+      }
+      if (other.M13 != 0F) {
+        M13 = other.M13;
+      }
+      if (other.M14 != 0F) {
+        M14 = other.M14;
+      }
+      if (other.M21 != 0F) {
+        M21 = other.M21;
+      }
+      if (other.M22 != 0F) {
+        M22 = other.M22;
+      }
+      if (other.M23 != 0F) {
+        M23 = other.M23;
+      }
+      if (other.M24 != 0F) {
+        M24 = other.M24;
+      }
+      if (other.M31 != 0F) {
+        M31 = other.M31;
+      }
+      if (other.M32 != 0F) {
+        M32 = other.M32;
+      }
+      if (other.M33 != 0F) {
+        M33 = other.M33;
+      }
+      if (other.M34 != 0F) {
+        M34 = other.M34;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            M11 = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            M12 = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            M13 = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            M14 = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            M21 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            M22 = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            M23 = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            M24 = input.ReadFloat();
+            break;
+          }
+          case 77: {
+            M31 = input.ReadFloat();
+            break;
+          }
+          case 85: {
+            M32 = input.ReadFloat();
+            break;
+          }
+          case 93: {
+            M33 = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            M34 = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 13: {
+            M11 = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            M12 = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            M13 = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            M14 = input.ReadFloat();
+            break;
+          }
+          case 45: {
+            M21 = input.ReadFloat();
+            break;
+          }
+          case 53: {
+            M22 = input.ReadFloat();
+            break;
+          }
+          case 61: {
+            M23 = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            M24 = input.ReadFloat();
+            break;
+          }
+          case 77: {
+            M31 = input.ReadFloat();
+            break;
+          }
+          case 85: {
+            M32 = input.ReadFloat();
+            break;
+          }
+          case 93: {
+            M33 = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            M34 = input.ReadFloat();
             break;
           }
         }
