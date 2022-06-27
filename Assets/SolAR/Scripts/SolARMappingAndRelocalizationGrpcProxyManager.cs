@@ -721,7 +721,9 @@ namespace Com.Bcom.Solar.Gprc
 
                 // System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
                 // stopWatch.Start();
-                var result = client.RelocalizeAndMap(frame,
+                Frames frames = new Frames();
+                frames.Frames_.Add(frame);
+                var result = client.RelocalizeAndMap(frames,
                     deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
                 // stopWatch.Stop();
                 // SendMessage("RelocalizeAndMap duration: " + stopWatch.ElapsedMilliseconds);
