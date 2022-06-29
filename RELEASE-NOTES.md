@@ -1,6 +1,9 @@
 # Release Notes
 
-# v0.7.0
+## v0.8.0
+* Performance: move heavy processing (start/stop) outside of UI/main thread.
+
+## v0.7.0
 * Change sharing of SpatialCoordinateSystem object between Unity and native plugin so that it works with PV camera as well.
 * Make a prefab for the simple GUI.
 
