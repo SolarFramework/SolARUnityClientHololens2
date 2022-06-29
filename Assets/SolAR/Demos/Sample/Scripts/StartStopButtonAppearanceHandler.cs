@@ -24,6 +24,9 @@ public class StartStopButtonAppearanceHandler : MonoBehaviour
     public ButtonConfigHelper startStopButtonConfigHelper;
     public SolArCloudHololens2 solArCloudHololens2;
 
+    private string label;
+    private bool labelChanged = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,11 @@ public class StartStopButtonAppearanceHandler : MonoBehaviour
 
     void Update()
     {
+        if (labelChanged)
+        {
+            startStopButtonConfigHelper.MainLabelText = label;
+            labelChanged = false;
+        }
     }
 
     public void ToggleSensorCatpure()
@@ -42,13 +50,14 @@ public class StartStopButtonAppearanceHandler : MonoBehaviour
 
     private void OnStart(bool sensorsStarted, bool gRpcOk)
     {
-        string label = sensorsStarted ? "stop" : "start\nerror sensors";
+        label = sensorsStarted ? "stop" : "start\nerror sensors";
         label += gRpcOk ? "" : "\nerror gRPC";
-        startStopButtonConfigHelper.MainLabelText = label;
+        labelChanged = true;
     }
 
     private void OnStop()
     {
-        startStopButtonConfigHelper.MainLabelText = "Start";
+        label = "Start";
+        labelChanged = true;
     }
 }

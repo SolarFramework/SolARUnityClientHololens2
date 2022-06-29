@@ -202,6 +202,13 @@ SolARHololens2ResearchMode researchMode;
 
         private bool rpcAvailable = false;
 
+        private Thread fetchFramesThread = null;
+        private Thread stopFrameSendingThread = null;
+
+        private Quaternion receivedPoseOrientation;
+        private Vector3 receivedPosePosition;
+        private bool poseReceived = false;
+
         // *******************************************
         // Callbacks 
         // *******************************************
@@ -547,13 +554,23 @@ SolARHololens2ResearchMode researchMode;
 
         public void StartSensorsCapture()
         {
-            StartCoroutine(FetchAndSendFrames());
+            if (fetchFramesThread == null)
+            {
+                fetchFramesThread = new Thread(FetchAndSendFramesThread);
+                fetchFramesThread.Start();
+            }
         }
 
-        // Needed ? (if LV, can the Task be gc'd before ending its work ?
-        private Task stopServiceTask;
-
         public void StopSensorsCapture()
+        {
+            if (stopFrameSendingThread == null)
+            {
+                stopFrameSendingThread = new Thread(StopSensorsCaptureThread);
+                stopFrameSendingThread.Start();
+            }
+        }
+
+        public void StopSensorsCaptureThread()
         {
             NotifyOnUnityAppError("StopRGBSensorCaptureEvent");
 
@@ -562,20 +579,6 @@ SolARHololens2ResearchMode researchMode;
 #if ENABLE_WINMD_SUPPORT
 				researchMode.Stop();
 #endif
-                sensorsStarted = false;
-
-                // Use Task to not freeze UI due to Sleep()
-                stopServiceTask = Task.Factory.StartNew(() =>
-                {
-                    // Wait for remaining frames to be processed
-                    // TODO: improve sync, use some kind of join()
-                    Thread.Sleep(500);
-
-                    if (relocAndMappingProxyInitialized)
-                    {
-                        relocAndMappingProxy.Stop();
-                    }
-                });
             }
             catch (Exception e)
             {
@@ -587,17 +590,47 @@ SolARHololens2ResearchMode researchMode;
                 }
             }
 
-            // Delay before sending stop request (wait for pending requests to be sent)
-            new WaitForSeconds(0.5f);
+            sensorsStarted = false;
 
-            if (relocAndMappingProxyInitialized)
+            if (fetchFramesThread != null)
             {
-                relocAndMappingProxy.Stop();
+                try
+                {
+                    fetchFramesThread.Join();
+                }
+                catch (Exception e)
+                {
+                    NotifyOnUnityAppError("Exception occured when joining sender thread : " + e.Message);
+                    if (rpcAvailable)
+                    {
+                        relocAndMappingProxy.SendMessage("Exception occured when joining sender thread : " + e.Message
+                            + "\n" + e.StackTrace);
+                    }
+                }
+                finally
+                {
+                    fetchFramesThread = null;
+                }
             }
 
-            NotifyOnStop();
+            try
+            {
+                if (relocAndMappingProxyInitialized)
+                {
+                    relocAndMappingProxy.Stop();
+                }
 
-            StopCoroutine(FetchAndSendFrames());
+                NotifyOnStop();
+            }
+            catch (Exception e)
+            {
+                NotifyOnUnityAppError("Exception occured when stopping : " + e.Message);
+                if (rpcAvailable)
+                {
+                    relocAndMappingProxy.SendMessage("Exception occured when stopping : " + e.Message
+                        + "\n" + e.StackTrace);
+                }
+            }
         }
 
 #endregion
@@ -842,19 +875,19 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
         // private System.Collections.IEnumerator relocAndMappingResultReceivedOnMainThread(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         {
-            var receivedPose = result.relocAndMappingResult.Pose;
-
             if (result.resultStatus.success)
             {
                 if (result.relocAndMappingResult.PoseStatus == SolARRpc.RelocalizationPoseStatus.NoPose)
                 {
-                    return; //yield return  null;
+                    return;
                 }
 
                 NotifyOnReceivedPose(result);
 
                 if (solarScene != null)
                 {
+                    var receivedPose = result.relocAndMappingResult.Pose;
+
                     // SolAR transform * CS conversion
                     // https://medium.com/comerge/what-are-the-coordinates-225f1ec0dd78
                     Matrix4x4 solarDeltaMat = new Matrix4x4()
@@ -895,11 +928,9 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     // var newScenePose = camToEyesMatrix * solarDeltaMatinv * solarSceneInitPose;
                     var newScenePose = solarDeltaMatinv * solarSceneInitPose;
 
-                    // Apply corrected pose to scene
-                    solarScene.transform.rotation = newScenePose.ExtractRotation();
-                    solarScene.transform.position = newScenePose.ExtractPosition();
-
-                    solarScene.SetActive(true);
+                    receivedPoseOrientation = newScenePose.ExtractRotation();
+                    receivedPosePosition = newScenePose.ExtractPosition();
+                    poseReceived = true;
                 }
             }
             else
@@ -928,8 +959,14 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                    m.m30 + ", " + m.m31 + ", " + m.m32 + ", " + m.m33;
         }
 
-        System.Collections.IEnumerator /*void*/ FetchAndSendFrames()
+        void FetchAndSendFramesThread()
         {
+
+            if (stopFrameSendingThread != null)
+            {
+                stopFrameSendingThread.Join();
+                stopFrameSendingThread = null;
+            }
 
             string _frontEndIp = frontendIp;
             int _frontendBasePort = frontendBasePort;
@@ -956,29 +993,21 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                                     // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
                                     .Build();
             TestRpcConnection();
-            yield return null;
 
             if (!rpcAvailable)
             {
                 NotifyOnUnityAppError("Could not connect to RPC service");
             }
 
-            // rpcClient.gRpcAddress = SolARServicesFrontEndIpAddress;
-            // relocAndMappingProxy.gRpcAddress = SolARServicesFrontEndIpAddress;
-
             if (!relocAndMappingProxyInitialized)
             {
                 var res = relocAndMappingProxy.Init(pipelineMode);
-
-                yield return null;
 
                 relocAndMappingProxyInitialized = res.success;
                 if (!relocAndMappingProxyInitialized)
                 {
                     NotifyOnGrpcError(res.errMessage);
                 }
-
-                // debugLogSelectedCameraParameters("Start");
 
                 res = relocAndMappingProxy.SetCameraParameters(
                     selectedCameraParameter.name,
@@ -998,8 +1027,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     (float)selectedCameraParameter.distP2,
                     (float)selectedCameraParameter.distK3);
 
-                yield return null;
-
                 relocAndMappingProxyInitialized = res.success;
                 if (!relocAndMappingProxyInitialized)
                 {
@@ -1011,8 +1038,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             {
                 var res = relocAndMappingProxy.Start();
 
-                yield return null;
-
                 if (!res.success)
                 {
                     NotifyOnGrpcError(res.errMessage);
@@ -1023,20 +1048,17 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 #if ENABLE_WINMD_SUPPORT
 				researchMode.Start();
 #endif
-            sensorsStarted = true; // TODO(jmhenaff): error handling ?
+            sensorsStarted = true;
 
             NotifyOnStart(sensorsStarted, rpcAvailable);
 
-            // TODO(jmhenaff): handle exception w/ coroutine
-            // Comment try-catch because of yied
-            //try
-            //{
+            try
+            {
 
 #if ENABLE_WINMD_SUPPORT
 		    researchMode.Update();
 #endif
-
-            while (sensorsStarted)
+                while (sensorsStarted)
                 {
                     SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender =
                         relocAndMappingProxy.BuildFrameSender(relocAndMappingResultReceived, SentFrame);
@@ -1104,20 +1126,29 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                         }
                     }
 
-                    yield return new WaitForSeconds(advancedGrpcSettings.delayBetweenFramesInMs / 1000f);
-                    // Thread.Sleep(33);
+                    Thread.Sleep(33);
                 }
 
-            //}
-            //catch (Exception e)
-            //{
-            //    NotifyOnGrpcError("LateUpdate() error: " + e.Message);
-            //    if (rpcAvailable)
-            //    {
-            //        relocAndMappingProxy.SendMessage("LateUpdate() error: " + e.Message + "\n" + e.StackTrace);
-            //    }
-            //}            
+                // Wait for remaining frames to be processed
+                Thread.Sleep(500);
+
+                // DEBUG
+                //if (rpcAvailable)
+                //{
+                //    relocAndMappingProxy.SendMessage("Sender thread has ended");
+                //}
+
+            }
+            catch (Exception e)
+            {
+                NotifyOnGrpcError("FetchAndSendFramesThread() error: " + e.Message);
+                if (rpcAvailable)
+                {
+                    relocAndMappingProxy.SendMessage("FetchAndSendFramesThread() error: " + e.Message + "\n" + e.StackTrace);
+                }
+            }
         }
+
 
         public void Reset()
         {
@@ -1155,6 +1186,18 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
             relocAndMappingProxy.Reset();
             NotifyOnReset();
+        }
+
+        private void Update()
+        {
+            if (poseReceived)
+            {
+                // Apply corrected pose to scene
+                solarScene.transform.rotation = receivedPoseOrientation;
+                solarScene.transform.position = receivedPosePosition;
+                solarScene.SetActive(true);
+                poseReceived = false;
+            }
         }
 
         private void LateUpdate()
