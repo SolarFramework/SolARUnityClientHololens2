@@ -281,6 +281,9 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 8098013011867456620, guid: 892250fbfc1442f49a66d62b6c348e31, type: 2}
   - {fileID: 2256912601668067897, guid: bc86b981421586743bee1b33317fbc8a, type: 2}
   - {fileID: 0}
@@ -821,8 +824,8 @@ PlayerSettings:
       PrivateNetworkClientServer: True
       InternetClientServer: True
       VideosLibrary: False
-      BackgroundMediaPlayback: False
       Objects3D: False
+      Proximity: False
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -844,9 +847,9 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
-      Proximity: False
       InternetClient: True
       CodeGeneration: False
+      BackgroundMediaPlayback: False
       EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
