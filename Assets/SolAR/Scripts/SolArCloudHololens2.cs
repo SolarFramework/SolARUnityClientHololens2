@@ -164,15 +164,15 @@ SolARHololens2ResearchMode researchMode;
             type = SolARRpc.CameraType.Gray,
             width = 640,
             height = 480,
-            focalX = 366.189452,
-            focalY = 366.478090,
-            centerX = 320,
-            centerY = 240,
-            distK1 = -0.009463,
-            distK2 = 0.003013,
-            distP1 = -0.006169,
-            distP2 = -0.008975,
-            distK3 = 0
+            focalX = 379.208296,
+            focalY = 379.324101,
+            centerX = 338.139661,
+            centerY = 223.713982,
+            distK1 = 0.012777,
+            distK2 = 0.039282,
+            distP1 = -0.003430,
+            distP2 = 0.010244,
+            distK3 = -0.031223
         };
 
         private CameraParameters rightFrontDefaultParameters = new CameraParameters()
@@ -182,15 +182,15 @@ SolARHololens2ResearchMode researchMode;
             type = SolARRpc.CameraType.Gray,
             width = 640,
             height = 480,
-            focalX = 366.189452,
-            focalY = 366.478090,
-            centerX = 320,
-            centerY = 240,
-            distK1 = -0.009463,
-            distK2 = 0.003013,
-            distP1 = -0.006169,
-            distP2 = -0.008975,
-            distK3 = 0
+            focalX = 379.602593,
+            focalY = 378.966262,
+            centerX = 321.843500,
+            centerY = 247.071938,
+            distK1 = 0.001495,
+            distK2 = 0.049246,
+            distP1 = -0.000468,
+            distP2 = -0.009119,
+            distK3 = -0.031659
         };
 
         // Use these object to store user modifed values
