@@ -192,9 +192,6 @@ SolARHololens2ResearchMode researchMode;
         Dictionary<Hl2SensorType, bool> enabledSensors = new Dictionary<Hl2SensorType, bool>();
         private bool longThrow = false;
 
-        // Manual transform from sensor Camera to Unity viewpoint
-        Matrix4x4 camToEyesMatrix;
-
         public bool isLongThrow()
         {
             return longThrow;
@@ -348,22 +345,6 @@ SolARHololens2ResearchMode researchMode;
         {
             pvParameters = new CameraParameters(pvDefaultParameters);
             leftFrontParameters = new CameraParameters(leftFrontDefaultParameters);
-
-            // Apply modified delta to initial pose of scene
-            camToEyesMatrix = Matrix4x4.identity;
-            if (selectedSensor == Hl2SensorTypeEditor.PV)
-            {
-                camToEyesMatrix.m23 = -0.10f;
-            }
-            else
-            {
-                // VLC LEFT LEFT
-                // camToEyesMatrix.m03 = -0.01f;
-                camToEyesMatrix.m03 = 0.04f;
-                camToEyesMatrix.m13 = 0.10f;
-                camToEyesMatrix.m23 = -0.10f;
-            }
-
         }
 
         // Start is called before the first frame update
