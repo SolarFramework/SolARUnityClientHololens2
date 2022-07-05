@@ -1226,6 +1226,8 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
             if (relocAndMappingProxyInitialized)
             {
+                relocAndMappingProxy.SetStereo(selectedSensor == Hl2SensorTypeEditor.STEREO);
+
                 var res = relocAndMappingProxy.Start();
 
                 if (!res.success)

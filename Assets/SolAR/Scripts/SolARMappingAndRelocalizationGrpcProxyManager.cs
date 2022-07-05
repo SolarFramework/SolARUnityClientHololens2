@@ -486,6 +486,11 @@ namespace Com.Bcom.Solar.Gprc
             this.relocAndMappingRequestIntervalMs = relocAndMappingRequestIntervalMs;
         }
 
+        public void SetStereo(Boolean stereo_mode)
+        {
+            isStereoMode = stereo_mode;
+        }
+
         public ResultStatus Init()
         {
             return Init(PipelineMode.RelocalizationAndMapping);
