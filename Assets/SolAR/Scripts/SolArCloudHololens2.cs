@@ -187,7 +187,6 @@ SolARHololens2ResearchMode researchMode;
         private bool sensorsStarted = false;
 
         SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager relocAndMappingProxy = null;
-        bool relocAndMappingProxyInitialized = false;
 
         Dictionary<Hl2SensorType, bool> enabledSensors = new Dictionary<Hl2SensorType, bool>();
         private bool longThrow = false;
@@ -207,7 +206,7 @@ SolARHololens2ResearchMode researchMode;
         private bool poseReceived = false;
 
         // *******************************************
-        // Callbacks 
+        // Callbacks
         // *******************************************
 
         public event Action<
@@ -373,7 +372,7 @@ SolARHololens2ResearchMode researchMode;
             }
 
 #if ENABLE_WINMD_SUPPORT
-        
+
         spatialCoordinateSystem = PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem;
         researchMode.SetSpatialCoordinateSystem(spatialCoordinateSystem);
 
@@ -455,12 +454,11 @@ SolARHololens2ResearchMode researchMode;
         public bool TestRpcConnection()
         {
             var res = relocAndMappingProxy.SendMessage("Hololens 2 requesting connection");
-            rpcAvailable = res.success;
             if (!res.success)
             {
                 NotifyOnUnityAppError("Failure in attempt to contact relocalization and mapping service:\n" + res.errMessage + "\n");
             }
-            return rpcAvailable;
+            return res.success;
         }
 
         public bool isRpcAvailable()
@@ -498,8 +496,6 @@ SolARHololens2ResearchMode researchMode;
             }
 
             NotifyOnPipelineModeChanged(oldMode, pipelineMode);
-
-            relocAndMappingProxyInitialized = false;
         }
 
         public void ToggleSensorCatpure()
@@ -557,21 +553,15 @@ SolARHololens2ResearchMode researchMode;
 
             try
             {
+                sensorsStarted = false;
 #if ENABLE_WINMD_SUPPORT
 				researchMode.Stop();
 #endif
             }
             catch (Exception e)
             {
-                NotifyOnUnityAppError("Exception occured when stopping : " + e.Message);
-                if (rpcAvailable)
-                {
-                    relocAndMappingProxy.SendMessage("Exception occured when stopping : " + e.Message
-                        + "\n" + e.StackTrace);
-                }
+                Error(ErrorKind.PLUGIN, "Exception occured when stopping plugin", e);
             }
-
-            sensorsStarted = false;
 
             if (fetchFramesThread != null)
             {
@@ -581,12 +571,7 @@ SolARHololens2ResearchMode researchMode;
                 }
                 catch (Exception e)
                 {
-                    NotifyOnUnityAppError("Exception occured when joining sender thread : " + e.Message);
-                    if (rpcAvailable)
-                    {
-                        relocAndMappingProxy.SendMessage("Exception occured when joining sender thread : " + e.Message
-                            + "\n" + e.StackTrace);
-                    }
+                    Error(ErrorKind.UNITY, "Exception occured when joining sender thread", e);
                 }
                 finally
                 {
@@ -596,21 +581,19 @@ SolARHololens2ResearchMode researchMode;
 
             try
             {
-                if (relocAndMappingProxyInitialized)
+                if (relocAndMappingProxy != null)
                 {
                     relocAndMappingProxy.Stop();
                 }
-
-                NotifyOnStop();
             }
             catch (Exception e)
             {
-                NotifyOnUnityAppError("Exception occured when stopping : " + e.Message);
-                if (rpcAvailable)
-                {
-                    relocAndMappingProxy.SendMessage("Exception occured when stopping : " + e.Message
-                        + "\n" + e.StackTrace);
-                }
+                Error(ErrorKind.UNITY, "Exception occured when stopping", e);
+            }
+            finally
+            {
+                relocAndMappingProxy = null;
+                NotifyOnStop();
             }
         }
 
@@ -619,79 +602,78 @@ SolARHololens2ResearchMode researchMode;
         private void handleDepth(
             SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender)
         {
-
-            int width = -1;
-            int height = -1;
-#if ENABLE_WINMD_SUPPORT
-	    width = (int)researchMode.GetDepthWidth();
-	    height = (int)researchMode.GetDepthHeight();
-#endif
-
-            if (width != 0 && height != 0)
+            try
             {
-                try
-                {
-                    ulong ts = 0;
-                    double[] cam2WorldTransform = null;
-                    uint _width = 0;
-                    uint _height = 0;
-                    float _fx = -1;
-                    float _fy = -1;
-                    uint _pixelBufferSize = 0;
-
-                    ushort[] depthBufferData = null; ;
+                int width = -1;
+                int height = -1;
 #if ENABLE_WINMD_SUPPORT
-			depthBufferData = researchMode.GetDepthData(out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height);
+	            width = (int)researchMode.GetDepthWidth();
+	            height = (int)researchMode.GetDepthHeight();
 #endif
-                    if (depthBufferData != null)
-                    {
-                        if (depthBufferData.Length > 0)
-                        {
-                            // TODO(jmhenaff): optimize
-                            int depthPixelCount = width * height;
-
-                            // Arrays for visualization (ushort depth value normalized to byte) otherwise it's too dark
-                            byte[] depthData = new byte[depthPixelCount];
-                            byte[] depthABData = new byte[depthPixelCount];
-
-                            // Arrays of data to send via gRPC, with original values for depth and expected layout (u16)
-                            byte[] depthDataGrpc = new byte[depthPixelCount * 2];
-                            byte[] depthABDataGrpc = new byte[depthPixelCount * 2];
-
-                            // depthAText.text += "Fill buffers \n";
-                            for (int i = 0; i < depthPixelCount; i++)
-                            {
-                                depthDataGrpc[2 * i] = (byte)(depthBufferData[i] >> 8);
-                                depthDataGrpc[2 * i + 1] = (byte)depthBufferData[i];
-                                depthABDataGrpc[2 * i] = (byte)(depthBufferData[depthPixelCount + i] >> 8);
-                                depthABDataGrpc[2 * i + 1] = (byte)depthBufferData[depthPixelCount + i];
-
-                                depthData[i] = convertDepthPixel(depthBufferData[i], longThrow);
-                                depthABData[i] = convertDepthPixel(depthBufferData[depthPixelCount + i], longThrow);
-                            }
-
-                            // TODO(jmhenaff): use addFrame() when multi frame is made available (send Depth and DepthAB
-                            if (rpcAvailable)
-                            {
-                                relocAndMappingFrameSender.SetFrame(0, ts, SolARRpc.ImageLayout.Grey16,
-                                    _width, _height, depthData, cam2WorldTransform, SolARRpc.ImageCompression.None);
-                            }
-                            NotifyOnDepthFrame(depthData, depthABData, ts, cam2WorldTransform, _width,
-                                _height, _fx, _fy, _pixelBufferSize);
-                        }
-                    }
-                }
-                catch (Exception e)
+                if (width <= 0 || height <= 0)
                 {
-                    NotifyOnUnityAppError("Error while handling depth buffer: [" + e.GetType().Name + "] " +
-                        e.Message);
-
-                    if (rpcAvailable)
-                    {
-                        relocAndMappingProxy.SendMessage("Error while handling depth buffer: [" +
-                            e.GetType().Name + "] " + e.Message + "\n" + e.StackTrace);
-                    }
+                    Error(ErrorKind.PLUGIN, "No value retrieved for depth buffer width and/or height (w:" + width + ", h: " + height + ")");
+                    return;
                 }
+
+                ulong ts = 0;
+                double[] cam2WorldTransform = null;
+                uint _width = 0;
+                uint _height = 0;
+                float _fx = -1;
+                float _fy = -1;
+                uint _pixelBufferSize = 0;
+                ushort[] depthBufferData = null;
+
+#if ENABLE_WINMD_SUPPORT
+		        depthBufferData = researchMode.GetDepthData(out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height);
+#endif
+                if (depthBufferData == null)
+                {
+                    // Error(ErrorKind.PLUGIN, "Depth buffer is null");
+                    return;
+                }
+
+                if (depthBufferData.Length == 0)
+                {
+                    // Error(ErrorKind.PLUGIN, "Depth buffer is empty");
+                    return;
+                }
+
+                int depthPixelCount = width * height;
+
+                // Arrays for visualization (ushort depth value normalized to byte) otherwise it's too dark
+                byte[] depthData = new byte[depthPixelCount];
+                byte[] depthABData = new byte[depthPixelCount];
+
+                // Arrays of data to send via gRPC, with original values for depth and expected layout (u16)
+                byte[] depthDataGrpc = new byte[depthPixelCount * 2];
+                byte[] depthABDataGrpc = new byte[depthPixelCount * 2];
+
+                // depthAText.text += "Fill buffers \n";
+                for (int i = 0; i < depthPixelCount; i++)
+                {
+                    depthDataGrpc[2 * i] = (byte)(depthBufferData[i] >> 8);
+                    depthDataGrpc[2 * i + 1] = (byte)depthBufferData[i];
+                    depthABDataGrpc[2 * i] = (byte)(depthBufferData[depthPixelCount + i] >> 8);
+                    depthABDataGrpc[2 * i + 1] = (byte)depthBufferData[depthPixelCount + i];
+
+                    depthData[i] = convertDepthPixel(depthBufferData[i], longThrow);
+                    depthABData[i] = convertDepthPixel(depthBufferData[depthPixelCount + i], longThrow);
+                }
+
+                NotifyOnDepthFrame(depthData, depthABData, ts, cam2WorldTransform, _width,
+                    _height, _fx, _fy, _pixelBufferSize);
+
+                if (rpcAvailable)
+                {
+                    relocAndMappingFrameSender.SetFrame(0, ts, SolARRpc.ImageLayout.Grey16,
+                        _width, _height, depthData, cam2WorldTransform, SolARRpc.ImageCompression.None);
+                }
+            }
+            catch (Exception e)
+            {
+                Error(ErrorKind.UNITY, "Error while handling depth buffer: [" + e.GetType().Name + "]", e);
             }
         }
 
@@ -711,149 +693,129 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
         private void handleVlc(
 #if ENABLE_WINMD_SUPPORT
-	SolARHololens2UnityPlugin.RMSensorType sensorType,
+	                   SolARHololens2UnityPlugin.RMSensorType sensorType,
 #endif
-    SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender
-        )
+                       SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender)
         {
-
-            int width = -1;
-            int height = -1;
+            try
+            {
+                int width = -1;
+                int height = -1;
 #if ENABLE_WINMD_SUPPORT
-	    width = (int)researchMode.GetVlcWidth(sensorType);
-	    height = (int)researchMode.GetVlcHeight(sensorType);
+	            width = (int)researchMode.GetVlcWidth(sensorType);
+	            height = (int)researchMode.GetVlcHeight(sensorType);
 #endif
 
-            if (width != 0 && height != 0)
-            {
-                try
+                if (width <= 0 || height <= 0)
                 {
-                    ulong ts = 0;
-                    double[] cam2WorldTransform = null; ;
-                    uint _width = 0;
-                    uint _height = 0;
-                    float _fx = -1f;
-                    float _fy = -1f;
-                    uint _pixelBufferSize = 0;
+                    Error(ErrorKind.PLUGIN, "No value retrieved for VLC buffer width and/or height (w:" + width + ", h: " + height + ")");
+                    return;
+                }
 
-                    byte[] vclBufferData = null;
+                ulong ts = 0;
+                double[] cam2WorldTransform = null; ;
+                uint _width = 0;
+                uint _height = 0;
+                float _fx = -1f;
+                float _fy = -1f;
+                uint _pixelBufferSize = 0;
+                byte[] vclBufferData = null;
 
 #if ENABLE_WINMD_SUPPORT
 			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
 #endif
-                    if (vclBufferData != null)
-                    {
-                        if (vclBufferData.Length > 0)
-                        {
-#if ENABLE_WINMD_SUPPORT
-                        NotifyOnVlcFrame(sensorType, vclBufferData, ts, cam2WorldTransform, _width, _height, _fx, _fy, _pixelBufferSize);
-#endif
-                            if (rpcAvailable)
-                            {
-                                relocAndMappingFrameSender.SetFrame(
-                                     /* sensor id PV */ 0,
-                                     ts,
-                                     SolARRpc.ImageLayout.Grey8,
-                                     _width,
-                                     _height,
-                                     vclBufferData,
-                                     cam2WorldTransform,
-                                     advancedGrpcSettings.imageCompression);
-                            }
-                        }
-                        else
-                        {
-                            Debug.Log("VLC buffer is empty");
-                        }
-                    }
-                    else
-                    {
-                        Debug.Log("VLC buffer is null");
-                    }
-                }
-                catch (Exception e)
-                {
-                    NotifyOnUnityAppError("Exception while handling VLC frame: [" + e.GetType().Name + "] " +
-                        e.Message);
 
-                    if (rpcAvailable)
-                    {
-                        relocAndMappingProxy.SendMessage("Exception while handling VLC frame: [" +
-                            e.GetType().Name + "] " + e.Message + "\n" + e.StackTrace);
-                    }
+                if (vclBufferData == null)
+                {
+                    // Error(ErrorKind.PLUGIN, "VLC buffer is null");
+                    return;
                 }
+
+                if (vclBufferData.Length == 0)
+                {
+                    // Error(ErrorKind.PLUGIN, "VLC buffer is empty");
+                    return;
+                }
+
+#if ENABLE_WINMD_SUPPORT
+                NotifyOnVlcFrame(sensorType, vclBufferData, ts, cam2WorldTransform, _width, _height, _fx, _fy, _pixelBufferSize);
+#endif
+
+                if (rpcAvailable)
+                {
+                    relocAndMappingFrameSender.SetFrame(
+                            /* sensor id PV */ 0,
+                            ts,
+                            SolARRpc.ImageLayout.Grey8,
+                            _width,
+                            _height,
+                            vclBufferData,
+                            cam2WorldTransform,
+                            advancedGrpcSettings.imageCompression);
+                }
+            }
+            catch (Exception e)
+            {
+                Error(ErrorKind.UNITY, "Exception while handling VLC frame: [" + e.GetType().Name + "]", e);
             }
         }
 
         private void handlePv(
             SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender)
         {
-            // update depth map texture
-            int width = -1;
-            int height = -1;
-
-#if ENABLE_WINMD_SUPPORT
-			width = (int)researchMode.GetPvWidth();
-			height = (int)researchMode.GetPvHeight();
-#endif
-            if (width != 0 && height != 0)
+            try
             {
-                try
+                // update depth map texture
+                int width = -1;
+                int height = -1;
+#if ENABLE_WINMD_SUPPORT
+			    width = (int)researchMode.GetPvWidth();
+			    height = (int)researchMode.GetPvHeight();
+#endif
+                if (width <= 0 || height <= 0)
                 {
-                    uint _width = 0;
-                    uint _height = 0;
-                    uint _pixelBufferSize = 0;
-                    float _fx = -1.0f;
-                    float _fy = -1.0f;
-                    ulong _timestamp = 0;
-                    double[] _PVtoWorldtransform = null;
-                    byte[] frameTexture = null;
+                    Error(ErrorKind.PLUGIN, "No value retrieved for PV buffer width and/or height (w:" + width + ", h: " + height + ")");
+                    return;
+                }
+
+                uint _width = 0;
+                uint _height = 0;
+                uint _pixelBufferSize = 0;
+                float _fx = -1.0f;
+                float _fy = -1.0f;
+                ulong _timestamp = 0;
+                double[] _PVtoWorldtransform = null;
+                byte[] frameTexture = null;
 #if ENABLE_WINMD_SUPPORT
 			    frameTexture = researchMode.GetPvData(out _timestamp, out _PVtoWorldtransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
 #endif
-                    if (frameTexture != null)
-                    {
-                        if (frameTexture.Length > 0)
-                        {
-                            NotifyOnPvFrame(frameTexture, _timestamp, _PVtoWorldtransform, _width, _height,
-                                _fx, _fy, _pixelBufferSize);
-                            if (rpcAvailable)
-                            {
-                                relocAndMappingFrameSender.SetFrame(/* sensor id PV */ 0, _timestamp,
-                                    SolARRpc.ImageLayout.Rgb24, _width, _height, frameTexture,
-                                    _PVtoWorldtransform, advancedGrpcSettings.imageCompression);
-                            }
-                        }
-                    }
-
-                }
-                catch (Exception e)
+                if (frameTexture == null)
                 {
-                    NotifyOnUnityAppError("Exception while handling PV frame: [" + e.GetType().Name + "] " +
-                        e.Message);
-                    if (rpcAvailable)
-                    {
-                        relocAndMappingProxy.SendMessage("Exception while handling PV frame: [" +
-                            e.GetType().Name + "] " + e.Message + "\n" + e.StackTrace);
-                    }
+                    // Error(ErrorKind.PLUGIN, "PV buffer is null");
+                    return;
                 }
+
+                if (frameTexture.Length == 0)
+                {
+                    // Error(ErrorKind.PLUGIN, "PV buffer is empty");
+                    return;
+                }
+
+                NotifyOnPvFrame(frameTexture, _timestamp, _PVtoWorldtransform, _width, _height, _fx, _fy, _pixelBufferSize);
+
+                if (rpcAvailable)
+                {
+                    relocAndMappingFrameSender.SetFrame(/* sensor id PV */ 0, _timestamp,
+                        SolARRpc.ImageLayout.Rgb24, _width, _height, frameTexture,
+                        _PVtoWorldtransform, advancedGrpcSettings.imageCompression);
+                }
+            }
+            catch (Exception e)
+            {
+                Error(ErrorKind.UNITY, "Exception while handling PV frame: [" + e.GetType().Name + "]", e);
             }
         }
 
-        // https://github.com/PimDeWitte/UnityMainThreadDispatcher
-        private static readonly Queue<Action> _executionQueue = new Queue<Action>();
-
-        //private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
-        //{
-        //    lock (_executionQueue)
-        //    {
-        //        _executionQueue.Enqueue(() => {
-        //            StartCoroutine(relocAndMappingResultReceivedOnMainThread(result));
-        //        });
-        //    }
-        //}
-
-        // private System.Collections.IEnumerator relocAndMappingResultReceivedOnMainThread(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         {
             if (result.resultStatus.success)
@@ -906,7 +868,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     solarDeltaMatinv.m32 *= -1;
 
                     // Apply modified delta to initial pose of scene
-                    // var newScenePose = camToEyesMatrix * solarDeltaMatinv * solarSceneInitPose;
                     var newScenePose = solarDeltaMatinv * solarSceneInitPose;
 
                     receivedPoseOrientation = newScenePose.ExtractRotation();
@@ -923,8 +884,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                         result.resultStatus.errMessage);
                 }
             }
-
-            // yield return null;
         }
 
         private void SentFrame(long nbSentFrames)
@@ -942,13 +901,14 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
         void FetchAndSendFramesThread()
         {
-
+            // Wait for stop thread to complete
             if (stopFrameSendingThread != null)
             {
                 stopFrameSendingThread.Join();
                 stopFrameSendingThread = null;
             }
 
+            // Parse service URL
             string _frontEndIp = frontendIp;
             int _frontendBasePort = frontendBasePort;
 
@@ -973,21 +933,22 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                                     .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
                                     // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
                                     .Build();
-            TestRpcConnection();
-
-            if (!rpcAvailable)
+            try
             {
-                NotifyOnUnityAppError("Could not connect to RPC service");
-            }
+                rpcAvailable = TestRpcConnection();
 
-            if (!relocAndMappingProxyInitialized)
-            {
+                if (!rpcAvailable)
+                {
+                    NotifyOnUnityAppError("Could not connect to RPC service");
+                    throw new Exception();
+                }
+
                 var res = relocAndMappingProxy.Init(pipelineMode);
 
-                relocAndMappingProxyInitialized = res.success;
-                if (!relocAndMappingProxyInitialized)
+                if (!res.success)
                 {
-                    NotifyOnGrpcError(res.errMessage);
+                    Error(ErrorKind.GRPC, res.errMessage);
+                    throw new Exception();
                 }
 
                 res = relocAndMappingProxy.SetCameraParameters(
@@ -998,9 +959,9 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     selectedCameraParameter.height,
                     new double[]
                     {
-                        selectedCameraParameter.focalX, 0, selectedCameraParameter.centerX,
-                        0, selectedCameraParameter.focalY, selectedCameraParameter.centerY,
-                        0, 0, 1
+                            selectedCameraParameter.focalX, 0, selectedCameraParameter.centerX,
+                            0, selectedCameraParameter.focalY, selectedCameraParameter.centerY,
+                            0, 0, 1
                     },
                     (float)selectedCameraParameter.distK1,
                     (float)selectedCameraParameter.distK2,
@@ -1008,42 +969,55 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     (float)selectedCameraParameter.distP2,
                     (float)selectedCameraParameter.distK3);
 
-                relocAndMappingProxyInitialized = res.success;
-                if (!relocAndMappingProxyInitialized)
+                if (!res.success)
                 {
-                    NotifyOnGrpcError(res.errMessage);
+                    Error(ErrorKind.GRPC, res.errMessage);
+                    throw new Exception();
                 }
-            }
 
-            if (relocAndMappingProxyInitialized)
-            {
-                var res = relocAndMappingProxy.Start();
+                 res = relocAndMappingProxy.Start();
 
                 if (!res.success)
                 {
-                    NotifyOnGrpcError(res.errMessage);
+                    Error(ErrorKind.GRPC, res.errMessage);
+                    throw new Exception();
                 }
+
+                try
+                {
+    #if ENABLE_WINMD_SUPPORT
+				    researchMode.Start();
+    #endif
+                }
+                catch (Exception e)
+                {
+                    Error(ErrorKind.PLUGIN, res.errMessage);
+                    throw e;
+                }
+
+                sensorsStarted = true;
+
             }
-
-
-#if ENABLE_WINMD_SUPPORT
-				researchMode.Start();
-#endif
-            sensorsStarted = true;
-
-            NotifyOnStart(sensorsStarted, rpcAvailable);
+            catch(Exception e)
+            {
+                return;
+            }
+            finally
+            {
+                NotifyOnStart(sensorsStarted, rpcAvailable);
+            }
 
             try
             {
-
-#if ENABLE_WINMD_SUPPORT
-		    researchMode.Update();
-#endif
                 while (sensorsStarted)
                 {
+#if ENABLE_WINMD_SUPPORT
+		            researchMode.Update();
+#endif
                     SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender =
                         relocAndMappingProxy.BuildFrameSender(relocAndMappingResultReceived, SentFrame);
 
+                    // Fetch frames image buffers and poses
                     if (enabledSensors[Hl2SensorType.PV])
                     {
                         handlePv(relocAndMappingFrameSender);
@@ -1090,46 +1064,25 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                         handleDepth(relocAndMappingFrameSender);
                     }
 
-                    if (rpcAvailable && relocAndMappingProxyInitialized)
+                    //Send request to SolAR services
+                    var res = relocAndMappingFrameSender.RelocAndMapAsyncDrop();
+
+                    if (!res.success)
                     {
-                        // Sync call, not working yet
-                        // relocAndMappingFrameSender.RelocalizeAndMap();
-
-                        var res = relocAndMappingFrameSender.RelocAndMapAsyncDrop();
-
-                        if (!res.success)
-                        {
-                            NotifyOnGrpcError("RelocAndMapAsyncDrop error: " + res.errMessage);
-                            if (rpcAvailable)
-                            {
-                                relocAndMappingProxy.SendMessage("RelocAndMapAsyncDrop error: " + res.errMessage);
-                            }
-                        }
+                        Error(ErrorKind.GRPC, "RelocAndMapAsyncDrop error: " + res.errMessage);
                     }
 
                     Thread.Sleep(33);
                 }
 
-                // Wait for remaining frames to be processed
+                // Stopped: wait for remaining frames to be processed
                 Thread.Sleep(500);
-
-                // DEBUG
-                //if (rpcAvailable)
-                //{
-                //    relocAndMappingProxy.SendMessage("Sender thread has ended");
-                //}
-
             }
             catch (Exception e)
             {
-                NotifyOnGrpcError("FetchAndSendFramesThread() error: " + e.Message);
-                if (rpcAvailable)
-                {
-                    relocAndMappingProxy.SendMessage("FetchAndSendFramesThread() error: " + e.Message + "\n" + e.StackTrace);
-                }
+                Error(ErrorKind.GRPC, "FetchAndSendFramesThread() error", e);
             }
         }
-
 
         public void Reset()
         {
@@ -1181,11 +1134,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             }
         }
 
-        private void LateUpdate()
-        {
-
-        }
-
         public CameraParameters GetPvDefaultParameters()
         {
             return pvDefaultParameters;
@@ -1231,6 +1179,28 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 default: throw new ArgumentException("Cannot convert given value of Hl2SensorTypeEditor to Hl2SensorType");
             }
         }
+        enum ErrorKind
+        {
+            GRPC,
+            UNITY,
+            PLUGIN
+        }
 
+        private void Error(ErrorKind kind, string message, Exception e = null)
+        {
+            string notifyOnMessage = message + (e != null ? ": " + e.Message : "");
+            string rpcMessage = notifyOnMessage + ( e != null ? "\n" + e.StackTrace : "");
+
+            switch(kind)
+            {
+                case ErrorKind.GRPC: NotifyOnGrpcError(notifyOnMessage); break;
+                case ErrorKind.PLUGIN: NotifyOnPluginError(notifyOnMessage); break;
+                case ErrorKind.UNITY: NotifyOnUnityAppError(notifyOnMessage); break;
+            }
+            if (rpcAvailable)
+            {
+                relocAndMappingProxy.SendMessage(rpcMessage);
+            }
+        }
     }
 }
