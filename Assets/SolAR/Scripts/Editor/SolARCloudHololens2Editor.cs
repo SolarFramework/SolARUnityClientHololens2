@@ -24,7 +24,6 @@ public class SolARCloudHololens2Editor : Editor
     private SerializedProperty selectedSensorProp;
     private SerializedProperty pvParameters;
     private SerializedProperty leftFrontParameters;
-    private SerializedProperty rightFrontParameters;
 
     new SolArCloudHololens2 target => (SolArCloudHololens2)base.target;
 
@@ -35,7 +34,6 @@ public class SolARCloudHololens2Editor : Editor
         selectedSensorProp = serializedObject.FindProperty("selectedSensor");
         pvParameters = serializedObject.FindProperty("pvParameters");
         leftFrontParameters = serializedObject.FindProperty("leftFrontParameters");
-        rightFrontParameters = serializedObject.FindProperty("rightFrontParameters");
     }
 
     public override void OnInspectorGUI()
@@ -54,8 +52,6 @@ public class SolARCloudHololens2Editor : Editor
                                              pvParameters);
                 ResetDefaultCameraParameters(target.GetLeftFrontDefaultParameters(),
                                              leftFrontParameters);
-                ResetDefaultCameraParameters(target.GetRightFrontDefaultParameters(),
-                                             rightFrontParameters);
             }
 
             EditorGUILayout.PropertyField(selectedSensorProp);
@@ -75,12 +71,7 @@ public class SolARCloudHololens2Editor : Editor
                     target.selectedCameraParameter = target.leftFrontParameters;
                     break;
 
-                case SolArCloudHololens2.Hl2SensorTypeEditor.RM_RIGHT_FRONT:
-                    updateCameraParameters(rightFrontParameters);
-                    target.selectedCameraParameter = target.rightFrontParameters;
-                    break;
-
-                case SolArCloudHololens2.Hl2SensorTypeEditor.RM_LEFT_RIGHT_FRONT:
+                case SolArCloudHololens2.Hl2SensorTypeEditor.STEREO:
                     updateCameraParameters(leftFrontParameters);
                     target.selectedCameraParameter = target.leftFrontParameters;
                     break;
