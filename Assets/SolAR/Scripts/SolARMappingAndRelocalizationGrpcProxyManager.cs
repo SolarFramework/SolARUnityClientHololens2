@@ -53,13 +53,13 @@ namespace Com.Bcom.Solar.Gprc
 
         private long nbSentFrames = 0;
 
-        private Boolean isStereoMode;
+        private Boolean isStereoMode = false;
 
         public class FrameSender
         {
             private SolARMappingAndRelocalizationGrpcProxyManager manager;
             // TODO(jmhenaff): Use a Frames object to handle multiple sensor frames (e.g. to support stereo)
-            private Frames global_frames;
+            private Frame frame_camera1, frame_camera2;
 
             private Action<RelocAndMappingResult> poseReceivedCallback;
 
@@ -71,7 +71,8 @@ namespace Com.Bcom.Solar.Gprc
                 this.manager = manager;
                 this.poseReceivedCallback = poseReceivedCallback;
                 this.frameSentCallback = frameSentCallback;
-                this.global_frames = new Frames();
+                this.frame_camera1 = null;
+                this.frame_camera2 = null;
             }
 
             private byte[] encodeToPNG(UInt32 width, UInt32 height, ImageLayout imLayout, byte[] originalImage)
@@ -186,36 +187,13 @@ namespace Com.Bcom.Solar.Gprc
                         }
                     };
 
-                    global_frames.Frames_.Insert(sensorId, frame);
+                    if (sensorId == 0)
+                        frame_camera1 = frame;
+                    else if (sensorId == 1)
+                        frame_camera2 = frame;
                 }
             }
-/*
-            public ResultStatus RelocalizeAndMap()
-            {
-                try
-                {
-                    if ((manager.isStereoMode) && (global_frames.Frames_.Count == 2))
-                    {
-                        poseReceivedCallback(manager.RelocalizeAndMap(global_frames));
-                        global_frames.Frames_.Clear();
-                    }
-                    else{
-                        if (global_frames.Frames_.Count > 0)
-                        {
-                            poseReceivedCallback(manager.RelocalizeAndMap(global_frames));
-                            global_frames.Frames_.Clear();
-                        }
-                    }
-                }
-                catch (Exception e)
-                {
-                    poseReceivedCallback(new RelocAndMappingResult(
-                        new ResultStatus(false, "Reloc and map threw an exception: " + e.Message),
-                        null));
-                }
-                return manager.SUCCESS;
-            }
-*/
+
             // TODO(jmhenaff): use void return type ? (all could be handled via the callback method)
             public ResultStatus RelocAndMapAsyncDrop()
             {
@@ -268,26 +246,30 @@ namespace Com.Bcom.Solar.Gprc
                     {
                         try
                         {
-                            if ((manager.isStereoMode) && (global_frames.Frames_.Count == 2) 
-                             && (global_frames.Frames_[0] != null) && (global_frames.Frames_[1] != null))
+                            Frames frame_list = new Frames();
+
+                            if ((manager.isStereoMode) && (frame_camera1 != null) && (frame_camera2 != null))
                             {
-                                result = manager.RelocalizeAndMap(global_frames);
-                                global_frames.Frames_.Clear();
+                                frame_list.Frames_.Add(frame_camera1);
+                                frame_list.Frames_.Add(frame_camera2);
+                                result = manager.RelocalizeAndMap(frame_list);
+                                frame_camera1 = null;
+                                frame_camera2 = null;
+                            }
+                            else if ((!manager.isStereoMode) && (frame_camera1 != null))
+                            {
+                                frame_list.Frames_.Add(frame_camera1);
+                                result = manager.RelocalizeAndMap(frame_list);
+                                frame_camera1 = null;
                             }
                             else
                             {
-                                if ((global_frames.Frames_.Count > 0) && (global_frames.Frames_[0] != null))
-                                {
-                                    result = manager.RelocalizeAndMap(global_frames);
-                                    global_frames.Frames_.Clear();
-                                }
-                                else
-                                {
-                                    result = new RelocAndMappingResult(
-                                        new ResultStatus(false, "Given frame is null"),
-                                        null);
-                                }
+                                result = new RelocAndMappingResult(
+                                    new ResultStatus(false, "Given frame is null"),
+                                    null);
                             }
+
+                            
                         }
                         catch(Exception e)
                         {
@@ -534,8 +516,6 @@ namespace Com.Bcom.Solar.Gprc
                 return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::init(): Error: "
                     + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);  
             }
-
-            isStereoMode = false;
 
             return SUCCESS;
         }
