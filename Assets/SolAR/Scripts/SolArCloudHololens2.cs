@@ -96,8 +96,7 @@ SolARHololens2ResearchMode researchMode;
         {
             PV,
             RM_LEFT_FRONT,
-            RM_RIGHT_FRONT,
-            RM_LEFT_RIGHT_FRONT
+            STEREO
         }
 
         [HideInInspector] public Hl2SensorTypeEditor selectedSensor = Hl2SensorTypeEditor.RM_LEFT_FRONT;
@@ -175,22 +174,112 @@ SolARHololens2ResearchMode researchMode;
             distK3 = -0.031223
         };
 
-        private CameraParameters rightFrontDefaultParameters = new CameraParameters()
+        public struct CameraRectification
         {
-            name = "RIGHT_FRONT",
-            id = 0,
-            type = SolARRpc.CameraType.Gray,
-            width = 640,
-            height = 480,
-            focalX = 379.602593,
-            focalY = 378.966262,
-            centerX = 321.843500,
-            centerY = 247.071938,
-            distK1 = 0.001495,
-            distK2 = 0.049246,
-            distP1 = -0.000468,
-            distP2 = -0.009119,
-            distK3 = -0.031659
+            public double rotationM11;
+            public double rotationM12;
+            public double rotationM13;
+            public double rotationM21;
+            public double rotationM22;
+            public double rotationM23;
+            public double rotationM31;
+            public double rotationM32;
+            public double rotationM33;
+            public double projectionM11;
+            public double projectionM12;
+            public double projectionM13;
+            public double projectionM14;
+            public double projectionM21;
+            public double projectionM22;
+            public double projectionM23;
+            public double projectionM24;
+            public double projectionM31;
+            public double projectionM32;
+            public double projectionM33;
+            public double projectionM34;
+            public SolARRpc.StereoType stereoType;
+            public double baseline;
+
+            public CameraRectification(CameraRectification other)
+            {
+                rotationM11 = other.rotationM11;
+                rotationM12 = other.rotationM12;
+                rotationM13 = other.rotationM13;
+                rotationM21 = other.rotationM21;
+                rotationM22 = other.rotationM22;
+                rotationM23 = other.rotationM23;
+                rotationM31 = other.rotationM31;
+                rotationM32 = other.rotationM32;
+                rotationM33 = other.rotationM33;
+                projectionM11 = other.projectionM11;
+                projectionM12 = other.projectionM12;
+                projectionM13 = other.projectionM13;
+                projectionM14 = other.projectionM14;
+                projectionM21 = other.projectionM21;
+                projectionM22 = other.projectionM22;
+                projectionM23 = other.projectionM23;
+                projectionM24 = other.projectionM24;
+                projectionM31 = other.projectionM31;
+                projectionM32 = other.projectionM32;
+                projectionM33 = other.projectionM33;
+                projectionM34 = other.projectionM34;
+                stereoType = other.stereoType;
+                baseline = other.baseline;
+            }
+        }
+
+        private CameraRectification leftFrontDefaultRectification = new CameraRectification()
+        {
+                rotationM11 = 0.9999951720237732,
+                rotationM12 = -0.0019471854902803898,
+                rotationM13 = -0.002411173889413476,
+                rotationM21 = 0.0019234707579016685,
+                rotationM22 = 0.999950110912323,
+                rotationM23 = -0.00979890488088131,
+                rotationM31 = 0.0024301339872181416,
+                rotationM32 = 0.009794220328330994,
+                rotationM33 = 0.9999490976333618,
+                projectionM11 = 448.189453125,
+                projectionM12 = 0.0,
+                projectionM13 = 312.5350646972656,
+                projectionM14 = 0.0,
+                projectionM21 = 0.0,
+                projectionM22 = 448.189453125,
+                projectionM23 = 244.19573974609375,
+                projectionM24 = 0.0,
+                projectionM31 = 0.0,
+                projectionM32 = 0.0,
+                projectionM33 = 1.0,
+                projectionM34 = 0.0,
+                stereoType = SolARRpc.StereoType.Vertical,
+                baseline = 0.09388977289199829
+        };
+
+        private CameraRectification rightFrontDefaultRectification = new CameraRectification()
+        {
+                rotationM11 = 0.9999831914901733,
+                rotationM12 = 0.0052928864024579525,
+                rotationM13 = 0.002372994087636471,
+                rotationM21 = -0.005249184090644121,
+                rotationM22 = 0.9998231530189514,
+                rotationM23 = -0.01805926114320755,
+                rotationM31 = -0.002468160120770335,
+                rotationM32 = 0.018046502023935318,
+                rotationM33 = 0.9998341202735901,
+                projectionM11 = 448.189453125,
+                projectionM12 = 0.0,
+                projectionM13 = 312.5350646972656,
+                projectionM14 = 0.0,
+                projectionM21 = 0.0,
+                projectionM22 = 448.189453125,
+                projectionM23 = 244.19573974609375,
+                projectionM24 = 42.080406188964844,
+                projectionM31 = 0.0,
+                projectionM32 = 0.0,
+                projectionM33 = 1.0,
+                projectionM34 = 0.0,
+                stereoType = SolARRpc.StereoType.Vertical,
+                baseline = 0.09388977289199829
         };
 
         // Use these object to store user modifed values
@@ -200,12 +289,6 @@ SolARHololens2ResearchMode researchMode;
 
         [HideInInspector]
         public CameraParameters leftFrontParameters;
-
-        [HideInInspector]
-        public CameraParameters rightFrontParameters;
-
-        [HideInInspector]
-        public CameraParameters leftRightFrontParameters;
 
         [HideInInspector]
         public CameraParameters selectedCameraParameter;
@@ -374,8 +457,6 @@ SolARHololens2ResearchMode researchMode;
         {
             pvParameters = new CameraParameters(pvDefaultParameters);
             leftFrontParameters = new CameraParameters(leftFrontDefaultParameters);
-            rightFrontParameters = new CameraParameters(rightFrontDefaultParameters);
-            leftRightFrontParameters = new CameraParameters(leftFrontDefaultParameters);
 
             // Apply modified delta to initial pose of scene
             camToEyesMatrix = Matrix4x4.identity;
@@ -412,7 +493,7 @@ SolARHololens2ResearchMode researchMode;
 
             try
             {
-                if (selectedSensor == Hl2SensorTypeEditor.RM_LEFT_RIGHT_FRONT) {
+                if (selectedSensor == Hl2SensorTypeEditor.STEREO) {
                     enabledSensors[Hl2SensorType.RM_LEFT_FRONT] = true;                    
                     enabledSensors[Hl2SensorType.RM_RIGHT_FRONT] = true;                    
                 }
@@ -803,8 +884,13 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 #endif
                             if (rpcAvailable)
                             {
+                                int sensorID = 0;
+#if ENABLE_WINMD_SUPPORT                                
+                                if (sensorType == SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT)
+                                    sensorID = 1;
+#endif                                
                                 relocAndMappingFrameSender.SetFrame(
-                                     /* sensor id PV */ 0,
+                                     sensorID,
                                      ts,
                                      SolARRpc.ImageLayout.Grey8,
                                      _width,
@@ -1066,6 +1152,76 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 {
                     NotifyOnGrpcError(res.errMessage);
                 }
+
+                // Stereo mode => set rectification parameters for each camera
+                if (selectedSensor == Hl2SensorTypeEditor.STEREO)
+                {
+                    res = relocAndMappingProxy.setRectificationParameters(
+                        new double[]
+                        {
+                            leftFrontDefaultRectification.rotationM11,
+                            leftFrontDefaultRectification.rotationM12,
+                            leftFrontDefaultRectification.rotationM13,
+                            leftFrontDefaultRectification.rotationM21,
+                            leftFrontDefaultRectification.rotationM22,
+                            leftFrontDefaultRectification.rotationM23,
+                            leftFrontDefaultRectification.rotationM31,
+                            leftFrontDefaultRectification.rotationM32,
+                            leftFrontDefaultRectification.rotationM33
+                        },
+                        new double[]
+                        {
+                            leftFrontDefaultRectification.projectionM11,
+                            leftFrontDefaultRectification.projectionM12,
+                            leftFrontDefaultRectification.projectionM13,
+                            leftFrontDefaultRectification.projectionM14,
+                            leftFrontDefaultRectification.projectionM21,
+                            leftFrontDefaultRectification.projectionM22,
+                            leftFrontDefaultRectification.projectionM23,
+                            leftFrontDefaultRectification.projectionM24,
+                            leftFrontDefaultRectification.projectionM31,
+                            leftFrontDefaultRectification.projectionM32,
+                            leftFrontDefaultRectification.projectionM33,
+                            leftFrontDefaultRectification.projectionM34,
+                        },
+                        leftFrontDefaultRectification.stereoType,
+                        (float)leftFrontDefaultRectification.baseline,
+                        new double[]
+                        {
+                            rightFrontDefaultRectification.rotationM11,
+                            rightFrontDefaultRectification.rotationM12,
+                            rightFrontDefaultRectification.rotationM13,
+                            rightFrontDefaultRectification.rotationM21,
+                            rightFrontDefaultRectification.rotationM22,
+                            rightFrontDefaultRectification.rotationM23,
+                            rightFrontDefaultRectification.rotationM31,
+                            rightFrontDefaultRectification.rotationM32,
+                            rightFrontDefaultRectification.rotationM33
+                        },
+                        new double[]
+                        {
+                            rightFrontDefaultRectification.projectionM11,
+                            rightFrontDefaultRectification.projectionM12,
+                            rightFrontDefaultRectification.projectionM13,
+                            rightFrontDefaultRectification.projectionM14,
+                            rightFrontDefaultRectification.projectionM21,
+                            rightFrontDefaultRectification.projectionM22,
+                            rightFrontDefaultRectification.projectionM23,
+                            rightFrontDefaultRectification.projectionM24,
+                            rightFrontDefaultRectification.projectionM31,
+                            rightFrontDefaultRectification.projectionM32,
+                            rightFrontDefaultRectification.projectionM33,
+                            rightFrontDefaultRectification.projectionM34,
+                        },
+                        rightFrontDefaultRectification.stereoType,
+                        (float)rightFrontDefaultRectification.baseline);
+
+                    relocAndMappingProxyInitialized = res.success;
+                    if (!relocAndMappingProxyInitialized)
+                    {
+                        NotifyOnGrpcError(res.errMessage);
+                    }
+                }
             }
 
             if (relocAndMappingProxyInitialized)
@@ -1249,11 +1405,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             return leftFrontDefaultParameters;
         }
 
-        public CameraParameters GetRightFrontDefaultParameters()
-        {
-            return rightFrontDefaultParameters;
-        }
-
         private string d2str(double d)
         {
             return string.Format("{0:0.00000}", d);
@@ -1286,7 +1437,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             {
                 case Hl2SensorTypeEditor.PV: return Hl2SensorType.PV;
                 case Hl2SensorTypeEditor.RM_LEFT_FRONT: return Hl2SensorType.RM_LEFT_FRONT;
-                case Hl2SensorTypeEditor.RM_RIGHT_FRONT: return Hl2SensorType.RM_RIGHT_FRONT;
+                case Hl2SensorTypeEditor.STEREO: return Hl2SensorType.RM_LEFT_FRONT;
                 default: throw new ArgumentException("Cannot convert given value of Hl2SensorTypeEditor to Hl2SensorType");
             }
         }
