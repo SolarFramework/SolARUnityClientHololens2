@@ -1,5 +1,7 @@
 # Release Notes
 
+## v0.9.0
+
 ## v0.8.0
 * Performance: move heavy processing (start/stop) outside of UI/main thread.
 
