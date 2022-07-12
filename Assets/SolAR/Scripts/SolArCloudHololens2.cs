@@ -99,7 +99,8 @@ SolARHololens2ResearchMode researchMode;
             STEREO
         }
 
-        [HideInInspector] public Hl2SensorTypeEditor selectedSensor = Hl2SensorTypeEditor.RM_LEFT_FRONT;
+        [HideInInspector]
+        public Hl2SensorTypeEditor selectedSensor = Hl2SensorTypeEditor.RM_LEFT_FRONT;
 
         [Serializable]
         public struct CameraParameters
@@ -295,10 +296,12 @@ SolARHololens2ResearchMode researchMode;
 
         private bool sensorsStarted = false;
 
-        SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager relocAndMappingProxy = null;
+        private SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager relocAndMappingProxy = null;
 
-        Dictionary<Hl2SensorType, bool> enabledSensors = new Dictionary<Hl2SensorType, bool>();
+        private Dictionary<Hl2SensorType, bool> enabledSensors = new Dictionary<Hl2SensorType, bool>();
         private bool longThrow = false;
+
+        private Dictionary<Hl2SensorType, int> sensorIds = new Dictionary<Hl2SensorType, int>();
 
         public bool isLongThrow()
         {
@@ -484,6 +487,19 @@ SolARHololens2ResearchMode researchMode;
             catch (Exception e)
             {
                 NotifyOnUnityAppError("Error enabling sensor: " + e.Message);
+            }
+
+            // Sensor Id == -1 for disabled devices, >= 0 otherwise
+            int enabledSensorId = 0;
+            foreach (KeyValuePair<Hl2SensorType, bool> entry in enabledSensors)
+            {
+                sensorIds.Add(entry.Key, entry.Value ? enabledSensorId++ : -1);
+            }
+            // Special case for stereo mapping, hard coded for now
+            if (selectedSensor == Hl2SensorTypeEditor.STEREO)
+            {
+                sensorIds[Hl2SensorType.RM_LEFT_FRONT] = 0;
+                sensorIds[Hl2SensorType.RM_RIGHT_FRONT] = 1;
             }
 
 #if ENABLE_WINMD_SUPPORT
@@ -782,7 +798,7 @@ SolARHololens2ResearchMode researchMode;
 
                 if (rpcAvailable)
                 {
-                    relocAndMappingFrameSender.SetFrame(0, ts, SolARRpc.ImageLayout.Grey16,
+                    relocAndMappingFrameSender.SetFrame(sensorIds[Hl2SensorType.RM_DEPTH], ts, SolARRpc.ImageLayout.Grey16,
                         _width, _height, depthData, cam2WorldTransform, SolARRpc.ImageCompression.None);
                 }
             }
@@ -857,13 +873,12 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                 if (rpcAvailable)
                 {
-                    int sensorID = 0;
+                    Hl2SensorType vlcSensorType = Hl2SensorType.RM_LEFT_FRONT;
 #if ENABLE_WINMD_SUPPORT                                
-                    if (sensorType == SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT)
-                        sensorID = 1;
+                    vlcSensorType = convertVlcSensorType(sensorType);
 #endif
                     relocAndMappingFrameSender.SetFrame(
-                            sensorID,
+                            sensorIds[vlcSensorType],
                             ts,
                             SolARRpc.ImageLayout.Grey8,
                             _width,
@@ -924,7 +939,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                 if (rpcAvailable)
                 {
-                    relocAndMappingFrameSender.SetFrame(/* sensor id PV */ 0, _timestamp,
+                    relocAndMappingFrameSender.SetFrame(sensorIds[Hl2SensorType.PV], _timestamp,
                         SolARRpc.ImageLayout.Rgb24, _width, _height, frameTexture,
                         _PVtoWorldtransform, advancedGrpcSettings.imageCompression);
                 }
@@ -1274,6 +1289,18 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 Error(ErrorKind.GRPC, "FetchAndSendFramesThread() error", e);
             }
         }
+#if ENABLE_WINMD_SUPPORT
+        private Hl2SensorType convertVlcSensorType(SolARHololens2UnityPlugin.RMSensorType pluginSensorType)
+        {
+            switch(pluginSensorType)
+            {
+                case SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT: return Hl2SensorType.RM_LEFT_FRONT;
+                case SolARHololens2UnityPlugin.RMSensorType.LEFT_LEFT: return Hl2SensorType.RM_LEFT_LEFT;
+                case SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT: return Hl2SensorType.RM_RIGHT_FRONT;
+                case SolARHololens2UnityPlugin.RMSensorType.RIGHT_RIGHT: return Hl2SensorType.RM_RIGHT_RIGHT;
+            }
+        }
+#endif
 
         public void Reset()
         {
