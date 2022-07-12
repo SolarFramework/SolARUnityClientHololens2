@@ -70,6 +70,11 @@ public class SolARCloudHololens2Editor : Editor
                     updateCameraParameters(leftFrontParameters);
                     target.selectedCameraParameter = target.leftFrontParameters;
                     break;
+
+                case SolArCloudHololens2.Hl2SensorTypeEditor.STEREO:
+                    updateCameraParameters(leftFrontParameters);
+                    target.selectedCameraParameter = target.leftFrontParameters;
+                    break;
             }
         }
 
