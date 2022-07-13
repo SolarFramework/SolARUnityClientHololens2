@@ -53,13 +53,11 @@ namespace Com.Bcom.Solar.Gprc
 
         private long nbSentFrames = 0;
 
-        private Boolean isStereoMode = false;
-
         public class FrameSender
         {
             private SolARMappingAndRelocalizationGrpcProxyManager manager;
-            // TODO(jmhenaff): Use a Frames object to handle multiple sensor frames (e.g. to support stereo)
-            private Frame frame_camera1, frame_camera2;
+
+            private Frames frames = new Frames();
 
             private Action<RelocAndMappingResult> poseReceivedCallback;
 
@@ -71,8 +69,6 @@ namespace Com.Bcom.Solar.Gprc
                 this.manager = manager;
                 this.poseReceivedCallback = poseReceivedCallback;
                 this.frameSentCallback = frameSentCallback;
-                this.frame_camera1 = null;
-                this.frame_camera2 = null;
             }
 
             private byte[] encodeToPNG(UInt32 width, UInt32 height, ImageLayout imLayout, byte[] originalImage)
@@ -146,52 +142,44 @@ namespace Com.Bcom.Solar.Gprc
                 return UnityEngine.ImageConversion.EncodeArrayToPNG(imData, format, imWidth, imHeight);
             }
 
-            public void SetFrame(int sensorId, ulong timestamp, ImageLayout imLayout,
+            public void AddFrame(int sensorId, ulong timestamp, ImageLayout imLayout,
                 uint imWidth, uint imHeight, byte[] imData, double[] pose, ImageCompression imageCompression)
             {
-                if (sensorId < 2)
+                frames.Frames_.Add( new Frame
                 {
-                    Frame frame = new Frame
+                    SensorId = sensorId,
+                    Timestamp = timestamp,
+                    Image = new Image
                     {
-                        SensorId = sensorId,
-                        Timestamp = timestamp,
-                        Image = new Image
-                        {
-                            Layout = imLayout,
-                            Width = imWidth,
-                            Height = imHeight,
-                            Data = ByteString.CopyFrom(imData),
-                            ImageCompression = imageCompression
-                        },
-                        Pose = new Matrix4x4
-                        {
-                            M11 = (float)pose[0],
-                            M12 = (float)pose[1],
-                            M13 = (float)pose[2],
-                            M14 = (float)pose[3],
+                        Layout = imLayout,
+                        Width = imWidth,
+                        Height = imHeight,
+                        Data = ByteString.CopyFrom(imData),
+                        ImageCompression = imageCompression
+                    },
+                    Pose = new Matrix4x4
+                    {
+                        M11 = (float)pose[0],
+                        M12 = (float)pose[1],
+                        M13 = (float)pose[2],
+                        M14 = (float)pose[3],
 
-                            M21 = (float)pose[4],
-                            M22 = (float)pose[5],
-                            M23 = (float)pose[6],
-                            M24 = (float)pose[7],
+                        M21 = (float)pose[4],
+                        M22 = (float)pose[5],
+                        M23 = (float)pose[6],
+                        M24 = (float)pose[7],
 
-                            M31 = (float)pose[8],
-                            M32 = (float)pose[9],
-                            M33 = (float)pose[10],
-                            M34 = (float)pose[11],
+                        M31 = (float)pose[8],
+                        M32 = (float)pose[9],
+                        M33 = (float)pose[10],
+                        M34 = (float)pose[11],
 
-                            M41 = (float)pose[12],
-                            M42 = (float)pose[13],
-                            M43 = (float)pose[14],
-                            M44 = (float)pose[15]
-                        }
-                    };
-
-                    if (sensorId == 0)
-                        frame_camera1 = frame;
-                    else if (sensorId == 1)
-                        frame_camera2 = frame;
-                }
+                        M41 = (float)pose[12],
+                        M42 = (float)pose[13],
+                        M43 = (float)pose[14],
+                        M44 = (float)pose[15]
+                    }
+                });
             }
 
             // TODO(jmhenaff): use void return type ? (all could be handled via the callback method)
@@ -246,29 +234,15 @@ namespace Com.Bcom.Solar.Gprc
                     {
                         try
                         {
-                            Frames frame_list = new Frames();
-
-                            if ((manager.isStereoMode) && (frame_camera1 != null) && (frame_camera2 != null))
-                            {
-                                frame_list.Frames_.Add(frame_camera1);
-                                frame_list.Frames_.Add(frame_camera2);
-                                result = manager.RelocalizeAndMap(frame_list);
-                                frame_camera1 = null;
-                                frame_camera2 = null;
-                            }
-                            else if ((!manager.isStereoMode) && (frame_camera1 != null))
-                            {
-                                frame_list.Frames_.Add(frame_camera1);
-                                result = manager.RelocalizeAndMap(frame_list);
-                                frame_camera1 = null;
-                            }
-                            else
+                            if (frames.Frames_.Count == 0)
                             {
                                 result = new RelocAndMappingResult(
-                                    new ResultStatus(false, "Given frame is null"),
+                                    new ResultStatus(true, "No frame to send"),
                                     null);
+                                return;
                             }
 
+                            result = manager.RelocalizeAndMap(frames);
                             
                         }
                         catch(Exception e)
@@ -484,11 +458,6 @@ namespace Com.Bcom.Solar.Gprc
             this.fastModeEnabled = fastModeEnabled;
             this.clientPool = new GrpcClientPool(clientPoolSize, serviceAddress, portBase, useUniquePortNumber);
             this.relocAndMappingRequestIntervalMs = relocAndMappingRequestIntervalMs;
-        }
-
-        public void SetStereo(Boolean stereo_mode)
-        {
-            isStereoMode = stereo_mode;
         }
 
         public ResultStatus Init()
@@ -729,8 +698,6 @@ namespace Com.Bcom.Solar.Gprc
                 return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::setRectificationParameters(): Error: "
                     + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);
             }
-
-            isStereoMode = true;
 
             return SUCCESS;
         }

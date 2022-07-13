@@ -798,7 +798,7 @@ SolARHololens2ResearchMode researchMode;
 
                 if (rpcAvailable)
                 {
-                    relocAndMappingFrameSender.SetFrame(sensorIds[Hl2SensorType.RM_DEPTH], ts, SolARRpc.ImageLayout.Grey16,
+                    relocAndMappingFrameSender.AddFrame(sensorIds[Hl2SensorType.RM_DEPTH], ts, SolARRpc.ImageLayout.Grey16,
                         _width, _height, depthData, cam2WorldTransform, SolARRpc.ImageCompression.None);
                 }
             }
@@ -877,7 +877,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 #if ENABLE_WINMD_SUPPORT                                
                     vlcSensorType = convertVlcSensorType(sensorType);
 #endif
-                    relocAndMappingFrameSender.SetFrame(
+                    relocAndMappingFrameSender.AddFrame(
                             sensorIds[vlcSensorType],
                             ts,
                             SolARRpc.ImageLayout.Grey8,
@@ -939,7 +939,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                 if (rpcAvailable)
                 {
-                    relocAndMappingFrameSender.SetFrame(sensorIds[Hl2SensorType.PV], _timestamp,
+                    relocAndMappingFrameSender.AddFrame(sensorIds[Hl2SensorType.PV], _timestamp,
                         SolARRpc.ImageLayout.Rgb24, _width, _height, frameTexture,
                         _PVtoWorldtransform, advancedGrpcSettings.imageCompression);
                 }
@@ -1179,8 +1179,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     }
                 }
 
-                relocAndMappingProxy.SetStereo(selectedSensor == Hl2SensorTypeEditor.STEREO);
-
                 res = relocAndMappingProxy.Start();
 
                 if (!res.success)
@@ -1298,6 +1296,10 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 case SolARHololens2UnityPlugin.RMSensorType.LEFT_LEFT: return Hl2SensorType.RM_LEFT_LEFT;
                 case SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT: return Hl2SensorType.RM_RIGHT_FRONT;
                 case SolARHololens2UnityPlugin.RMSensorType.RIGHT_RIGHT: return Hl2SensorType.RM_RIGHT_RIGHT;
+                default:
+                {
+                    throw new Exception("Cannot convert sensor type: not a valid VLC type");
+                }
             }
         }
 #endif
