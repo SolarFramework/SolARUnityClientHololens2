@@ -866,12 +866,9 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                 if (rpcAvailable)
                 {
-                    Hl2SensorType vlcSensorType = Hl2SensorType.RM_LEFT_FRONT;
 #if ENABLE_WINMD_SUPPORT                                
-                    vlcSensorType = convertVlcSensorType(sensorType);
-#endif
                     relocAndMappingFrameSender.AddFrame(
-                            sensorIds[vlcSensorType],
+                            sensorIds[ConvertVlcSensorType(sensorType)],
                             ts,
                             SolARRpc.ImageLayout.Grey8,
                             _width,
@@ -879,6 +876,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                             vclBufferData,
                             cam2WorldTransform,
                             advancedGrpcSettings.imageCompression);
+#endif
                 }
             }
             catch (Exception e)
@@ -1224,7 +1222,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             }
         }
 #if ENABLE_WINMD_SUPPORT
-        private Hl2SensorType convertVlcSensorType(SolARHololens2UnityPlugin.RMSensorType pluginSensorType)
+        private Hl2SensorType ConvertVlcSensorType(SolARHololens2UnityPlugin.RMSensorType pluginSensorType)
         {
             switch(pluginSensorType)
             {
@@ -1232,10 +1230,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 case SolARHololens2UnityPlugin.RMSensorType.LEFT_LEFT: return Hl2SensorType.RM_LEFT_LEFT;
                 case SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT: return Hl2SensorType.RM_RIGHT_FRONT;
                 case SolARHololens2UnityPlugin.RMSensorType.RIGHT_RIGHT: return Hl2SensorType.RM_RIGHT_RIGHT;
-                default:
-                {
-                    throw new Exception("Cannot convert sensor type: not a valid VLC type");
-                }
+                default: throw new Exception("Cannot convert sensor type: not a valid VLC type");
             }
         }
 #endif
