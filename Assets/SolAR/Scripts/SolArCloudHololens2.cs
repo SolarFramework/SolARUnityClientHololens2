@@ -175,112 +175,110 @@ SolARHololens2ResearchMode researchMode;
             distK3 = 0
         };
 
-        public struct CameraRectification
+        public struct RotationMatrix
         {
-            public double rotationM11;
-            public double rotationM12;
-            public double rotationM13;
-            public double rotationM21;
-            public double rotationM22;
-            public double rotationM23;
-            public double rotationM31;
-            public double rotationM32;
-            public double rotationM33;
-            public double projectionM11;
-            public double projectionM12;
-            public double projectionM13;
-            public double projectionM14;
-            public double projectionM21;
-            public double projectionM22;
-            public double projectionM23;
-            public double projectionM24;
-            public double projectionM31;
-            public double projectionM32;
-            public double projectionM33;
-            public double projectionM34;
-            public SolARRpc.StereoType stereoType;
-            public double baseline;
+            public float m00;
+            public float m01;
+            public float m02;
+            public float m10;
+            public float m11;
+            public float m12;
+            public float m20;
+            public float m21;
+            public float m22;
+        }
+        public struct ProjectionMatrix
+        {
+            public float m00;
+            public float m01;
+            public float m02;
+            public float m03;
+            public float m10;
+            public float m11;
+            public float m12;
+            public float m13;
+            public float m20;
+            public float m21;
+            public float m22;
+            public float m23;
+        }
 
-            public CameraRectification(CameraRectification other)
-            {
-                rotationM11 = other.rotationM11;
-                rotationM12 = other.rotationM12;
-                rotationM13 = other.rotationM13;
-                rotationM21 = other.rotationM21;
-                rotationM22 = other.rotationM22;
-                rotationM23 = other.rotationM23;
-                rotationM31 = other.rotationM31;
-                rotationM32 = other.rotationM32;
-                rotationM33 = other.rotationM33;
-                projectionM11 = other.projectionM11;
-                projectionM12 = other.projectionM12;
-                projectionM13 = other.projectionM13;
-                projectionM14 = other.projectionM14;
-                projectionM21 = other.projectionM21;
-                projectionM22 = other.projectionM22;
-                projectionM23 = other.projectionM23;
-                projectionM24 = other.projectionM24;
-                projectionM31 = other.projectionM31;
-                projectionM32 = other.projectionM32;
-                projectionM33 = other.projectionM33;
-                projectionM34 = other.projectionM34;
-                stereoType = other.stereoType;
-                baseline = other.baseline;
-            }
+        public class CameraRectification
+        {
+            public RotationMatrix rotation;
+            public ProjectionMatrix projection;
+            public SolARRpc.StereoType stereoType;
+            public float baseline;
         }
 
         private CameraRectification leftFrontDefaultRectification = new CameraRectification()
         {
-                rotationM11 = 0.02669704705476761,
-                rotationM12 = 0.9994716048240662,
-                rotationM13 = -0.018540197983384132,
-                rotationM21 = -0.9996250867843628,
-                rotationM22 = 0.02657913789153099,
-                rotationM23 = 0.02657913789153099,
-                rotationM31 = -0.006577212363481522,
-                rotationM32 = 0.018708838149905205,
-                rotationM33 = 0.9998064637184143,
-                projectionM11 = 379.1451721191406,
-                projectionM12 = 0.0,
-                projectionM13 = 318.05926513671875,
-                projectionM14 = 0.0,
-                projectionM21 = 0.0,
-                projectionM22 = 379.1451721191406,
-                projectionM23 = 223.33978271484375,
-                projectionM24 = 0.0,
-                projectionM31 = 0.0,
-                projectionM32 = 0.0,
-                projectionM33 = 1.0,
-                projectionM34 = 0.0,
+                rotation = new RotationMatrix
+                {
+                    m00 = 0.02669704705476761f,
+                    m01 = 0.9994716048240662f,
+                    m02 = -0.018540197983384132f,
+                    m10 = -0.9996250867843628f,
+                    m11 = 0.02657913789153099f,
+                    m12 = 0.02657913789153099f,
+                    m20 = -0.006577212363481522f,
+                    m21 = 0.018708838149905205f,
+                    m22 = 0.9998064637184143f,
+
+                },
+
+                projection = new ProjectionMatrix
+                {
+                    m00 = 379.1451721191406f,
+                    m01 = 0.0f,
+                    m02 = 318.05926513671875f,
+                    m03 = 0.0f,
+                    m10 = 0.0f,
+                    m11 = 379.1451721191406f,
+                    m12 = 223.3397827148437f,
+                    m13 = 0.0f,
+                    m20 = 0.0f,
+                    m21 = 0.0f,
+                    m22 = 1.0f,
+                    m23 = 0.0f,
+                },
                 stereoType = SolARRpc.StereoType.Vertical,
-                baseline = 0.10892833769321442
+                baseline = 0.10892833769321442f
         };
 
         private CameraRectification rightFrontDefaultRectification = new CameraRectification()
         {
-                rotationM11 = -0.024275457486510277,
-                rotationM12 = -0.9994537830352783,
-                rotationM13 = -0.022422846406698227,
-                rotationM21 = 0.9997012615203857,
-                rotationM22 = -0.024332838132977486,
-                rotationM23 = 0.0022897087037563324,
-                rotationM31 = -0.0028340695425868034,
-                rotationM32 = -0.02236056514084339,
-                rotationM33 = 0.9997459650039673,
-                projectionM11 = 379.1451721191406,
-                projectionM12 = 0.0,
-                projectionM13 = 318.05926513671875,
-                projectionM14 = 41.299652099609375,
-                projectionM21 = 0.0,
-                projectionM22 = 379.1451721191406,
-                projectionM23 = 223.33978271484375,
-                projectionM24 = 0.0,
-                projectionM31 = 0.0,
-                projectionM32 = 0.0,
-                projectionM33 = 1.0,
-                projectionM34 = 0.0,
-                stereoType = SolARRpc.StereoType.Vertical,
-                baseline = 0.10892833769321442
+            rotation = new RotationMatrix
+            {
+                m00 = -0.024275457486510277f,
+                m01 = -0.9994537830352783f,
+                m02 = -0.022422846406698227f,
+                m10 = 0.9997012615203857f,
+                m11 = -0.024332838132977486f,
+                m12 = 0.0022897087037563324f,
+                m20 = -0.0028340695425868034f,
+                m21 = -0.02236056514084339f,
+                m22 = 0.9997459650039673f,
+
+            },
+
+            projection = new ProjectionMatrix
+            {
+                m00 = 379.1451721191406f,
+                m01 = 0.0f,
+                m02 = 318.05926513671875f,
+                m03 = 41.299652099609375f,
+                m10 = 0.0f,
+                m11 = 379.1451721191406f,
+                m12 = 223.33978271484375f,
+                m13 = 0.0f,
+                m20 = 0.0f,
+                m21 = 0.0f,
+                m22 = 1.0f,
+                m23 = 0.0f,
+            },
+            stereoType = SolARRpc.StereoType.Vertical,
+            baseline = 0.10892833769321442f
         };
 
         // Use these object to store user modifed values
@@ -1112,65 +1110,8 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 // Stereo mode => set rectification parameters for each camera
                 if (selectedSensor == Hl2SensorTypeEditor.STEREO)
                 {
-                    res = relocAndMappingProxy.setRectificationParameters(
-                        new double[]
-                        {
-                            leftFrontDefaultRectification.rotationM11,
-                            leftFrontDefaultRectification.rotationM12,
-                            leftFrontDefaultRectification.rotationM13,
-                            leftFrontDefaultRectification.rotationM21,
-                            leftFrontDefaultRectification.rotationM22,
-                            leftFrontDefaultRectification.rotationM23,
-                            leftFrontDefaultRectification.rotationM31,
-                            leftFrontDefaultRectification.rotationM32,
-                            leftFrontDefaultRectification.rotationM33
-                        },
-                        new double[]
-                        {
-                            leftFrontDefaultRectification.projectionM11,
-                            leftFrontDefaultRectification.projectionM12,
-                            leftFrontDefaultRectification.projectionM13,
-                            leftFrontDefaultRectification.projectionM14,
-                            leftFrontDefaultRectification.projectionM21,
-                            leftFrontDefaultRectification.projectionM22,
-                            leftFrontDefaultRectification.projectionM23,
-                            leftFrontDefaultRectification.projectionM24,
-                            leftFrontDefaultRectification.projectionM31,
-                            leftFrontDefaultRectification.projectionM32,
-                            leftFrontDefaultRectification.projectionM33,
-                            leftFrontDefaultRectification.projectionM34,
-                        },
-                        leftFrontDefaultRectification.stereoType,
-                        (float)leftFrontDefaultRectification.baseline,
-                        new double[]
-                        {
-                            rightFrontDefaultRectification.rotationM11,
-                            rightFrontDefaultRectification.rotationM12,
-                            rightFrontDefaultRectification.rotationM13,
-                            rightFrontDefaultRectification.rotationM21,
-                            rightFrontDefaultRectification.rotationM22,
-                            rightFrontDefaultRectification.rotationM23,
-                            rightFrontDefaultRectification.rotationM31,
-                            rightFrontDefaultRectification.rotationM32,
-                            rightFrontDefaultRectification.rotationM33
-                        },
-                        new double[]
-                        {
-                            rightFrontDefaultRectification.projectionM11,
-                            rightFrontDefaultRectification.projectionM12,
-                            rightFrontDefaultRectification.projectionM13,
-                            rightFrontDefaultRectification.projectionM14,
-                            rightFrontDefaultRectification.projectionM21,
-                            rightFrontDefaultRectification.projectionM22,
-                            rightFrontDefaultRectification.projectionM23,
-                            rightFrontDefaultRectification.projectionM24,
-                            rightFrontDefaultRectification.projectionM31,
-                            rightFrontDefaultRectification.projectionM32,
-                            rightFrontDefaultRectification.projectionM33,
-                            rightFrontDefaultRectification.projectionM34,
-                        },
-                        rightFrontDefaultRectification.stereoType,
-                        (float)rightFrontDefaultRectification.baseline);
+                    res = relocAndMappingProxy.setRectificationParameters(leftFrontDefaultRectification,
+                        rightFrontDefaultRectification);
 
                     if (!res.success)
                     {

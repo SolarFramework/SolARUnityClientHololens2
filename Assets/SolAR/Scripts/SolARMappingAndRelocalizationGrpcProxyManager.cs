@@ -30,6 +30,7 @@ using UnityEngine.Experimental.Rendering;
 
 using SolARMappingAndRelocalizationProxyClient =
     Com.Bcom.Solar.Gprc.SolARMappingAndRelocalizationProxy.SolARMappingAndRelocalizationProxyClient;
+using static Bcom.Solar.SolArCloudHololens2;
 
 namespace Com.Bcom.Solar.Gprc
 {
@@ -603,8 +604,8 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
-        public ResultStatus setRectificationParameters(double[] cam1Rotation, double[] cam1Projection, StereoType cam1StereoType, float cam1Baseline,
-                                                       double[] cam2Rotation, double[] cam2Projection, StereoType cam2StereoType, float cam2Baseline)
+        public ResultStatus setRectificationParameters(CameraRectification leftCamRectParams,
+                                                       CameraRectification rightCamRectParams )
         {
             SolARMappingAndRelocalizationProxyClient client = null;
             try
@@ -619,74 +620,74 @@ namespace Com.Bcom.Solar.Gprc
                 {
                     Cam1Rotation = new Matrix3x3
                     {
-                        M11 = (float)cam1Rotation[0],
-                        M12 = (float)cam1Rotation[1],
-                        M13 = (float)cam1Rotation[2],
+                        M11 = leftCamRectParams.rotation.m00,
+                        M12 = leftCamRectParams.rotation.m01,
+                        M13 = leftCamRectParams.rotation.m02,
 
-                        M21 = (float)cam1Rotation[3],
-                        M22 = (float)cam1Rotation[4],
-                        M23 = (float)cam1Rotation[5],
+                        M21 = leftCamRectParams.rotation.m10,
+                        M22 = leftCamRectParams.rotation.m11,
+                        M23 = leftCamRectParams.rotation.m12,
 
 
-                        M31 = (float)cam1Rotation[6],
-                        M32 = (float)cam1Rotation[7],
-                        M33 = (float)cam1Rotation[8]
+                        M31 = leftCamRectParams.rotation.m20,
+                        M32 = leftCamRectParams.rotation.m21,
+                        M33 = leftCamRectParams.rotation.m22
                     },
                     Cam1Projection = new Matrix3x4
                     {
-                        M11 = (float)cam1Projection[0],
-                        M12 = (float)cam1Projection[1],
-                        M13 = (float)cam1Projection[2],
-                        M14 = (float)cam1Projection[3],
+                        M11 = leftCamRectParams.projection.m00,
+                        M12 = leftCamRectParams.projection.m01,
+                        M13 = leftCamRectParams.projection.m02,
+                        M14 = leftCamRectParams.projection.m03,
 
-                        M21 = (float)cam1Projection[4],
-                        M22 = (float)cam1Projection[5],
-                        M23 = (float)cam1Projection[6],
-                        M24 = (float)cam1Projection[7],
+                        M21 = leftCamRectParams.projection.m10,
+                        M22 = leftCamRectParams.projection.m11,
+                        M23 = leftCamRectParams.projection.m12,
+                        M24 = leftCamRectParams.projection.m13,
 
-
-                        M31 = (float)cam1Projection[8],
-                        M32 = (float)cam1Projection[9],
-                        M33 = (float)cam1Projection[10],
-                        M34 = (float)cam1Projection[11]
+                        M31 = leftCamRectParams.projection.m20,
+                        M32 = leftCamRectParams.projection.m21,
+                        M33 = leftCamRectParams.projection.m22,
+                        M34 = leftCamRectParams.projection.m23
                     },
-                    Cam1StereoType = cam1StereoType,
-                    Cam1Baseline = cam1Baseline,
+                    Cam1StereoType = leftCamRectParams.stereoType,
+                    Cam1Baseline = leftCamRectParams.baseline,
+
                     Cam2Rotation = new Matrix3x3
                     {
-                        M11 = (float)cam2Rotation[0],
-                        M12 = (float)cam2Rotation[1],
-                        M13 = (float)cam2Rotation[2],
+                        M11 = rightCamRectParams.rotation.m00,
+                        M12 = rightCamRectParams.rotation.m01,
+                        M13 = rightCamRectParams.rotation.m02,
 
-                        M21 = (float)cam2Rotation[3],
-                        M22 = (float)cam2Rotation[4],
-                        M23 = (float)cam2Rotation[5],
+                        M21 = rightCamRectParams.rotation.m10,
+                        M22 = rightCamRectParams.rotation.m11,
+                        M23 = rightCamRectParams.rotation.m12,
 
 
-                        M31 = (float)cam2Rotation[6],
-                        M32 = (float)cam2Rotation[7],
-                        M33 = (float)cam2Rotation[8]
+                        M31 = rightCamRectParams.rotation.m20,
+                        M32 = rightCamRectParams.rotation.m21,
+                        M33 = rightCamRectParams.rotation.m22
                     },
                     Cam2Projection = new Matrix3x4
                     {
-                        M11 = (float)cam2Projection[0],
-                        M12 = (float)cam2Projection[1],
-                        M13 = (float)cam2Projection[2],
-                        M14 = (float)cam2Projection[3],
+                        M11 = rightCamRectParams.projection.m00,
+                        M12 = rightCamRectParams.projection.m01,
+                        M13 = rightCamRectParams.projection.m02,
+                        M14 = rightCamRectParams.projection.m03,
 
-                        M21 = (float)cam2Projection[4],
-                        M22 = (float)cam2Projection[5],
-                        M23 = (float)cam2Projection[6],
-                        M24 = (float)cam2Projection[7],
+                        M21 = rightCamRectParams.projection.m10,
+                        M22 = rightCamRectParams.projection.m11,
+                        M23 = rightCamRectParams.projection.m12,
+                        M24 = rightCamRectParams.projection.m13,
 
 
-                        M31 = (float)cam2Projection[8],
-                        M32 = (float)cam2Projection[9],
-                        M33 = (float)cam2Projection[10],
-                        M34 = (float)cam2Projection[11]
+                        M31 = rightCamRectParams.projection.m20,
+                        M32 = rightCamRectParams.projection.m21,
+                        M33 = rightCamRectParams.projection.m22,
+                        M34 = rightCamRectParams.projection.m23,
                     },
-                    Cam2StereoType = cam2StereoType,
-                    Cam2Baseline = cam2Baseline
+                    Cam2StereoType = rightCamRectParams.stereoType,
+                    Cam2Baseline = rightCamRectParams.baseline
                 },
                     deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
