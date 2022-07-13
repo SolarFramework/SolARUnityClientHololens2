@@ -474,17 +474,12 @@ SolARHololens2ResearchMode researchMode;
 
             try
             {
-                if (selectedSensor == Hl2SensorTypeEditor.STEREO) {
-                    enabledSensors[Hl2SensorType.RM_LEFT_FRONT] = true;                    
-                    enabledSensors[Hl2SensorType.RM_RIGHT_FRONT] = true;                    
-                }
-                else {
-                    enabledSensors[toHl2SensorType(selectedSensor)] = true;                    
-                }
+                UpdateEnabledSensors(selectedSensor);
             }
             catch (Exception e)
             {
                 NotifyOnUnityAppError("Error enabling sensor: " + e.Message);
+                return;
             }
 
             // Sensor Id == -1 for disabled devices, >= 0 otherwise
@@ -1116,7 +1111,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     if (!res.success)
                     {
                         Error(ErrorKind.GRPC, res.errMessage);
-                        throw new Exception();
+                        throw new Exception(res.errMessage);
                     }
                 }
 
@@ -1125,7 +1120,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 if (!res.success)
                 {
                     Error(ErrorKind.GRPC, res.errMessage);
-                    throw new Exception();
+                    throw new Exception(res.errMessage);
                 }
 
                 try
@@ -1331,14 +1326,30 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             return (byte)(normalizedValue * 255);
         }
 
-        private Hl2SensorType toHl2SensorType(Hl2SensorTypeEditor type)
+        private void UpdateEnabledSensors(Hl2SensorTypeEditor type)
         {
             switch (type)
             {
-                case Hl2SensorTypeEditor.PV: return Hl2SensorType.PV;
-                case Hl2SensorTypeEditor.RM_LEFT_FRONT: return Hl2SensorType.RM_LEFT_FRONT;
-                case Hl2SensorTypeEditor.STEREO: return Hl2SensorType.RM_LEFT_FRONT;
-                default: throw new ArgumentException("Cannot convert given value of Hl2SensorTypeEditor to Hl2SensorType");
+                case Hl2SensorTypeEditor.PV:
+                    {
+                        enabledSensors[Hl2SensorType.PV] = true;
+                        break;
+                    }
+                case Hl2SensorTypeEditor.RM_LEFT_FRONT:
+                    {
+                        enabledSensors[Hl2SensorType.RM_LEFT_FRONT] = true;
+                        break;
+                    }
+                case Hl2SensorTypeEditor.STEREO:
+                    {
+                        enabledSensors[Hl2SensorType.RM_LEFT_FRONT] = true;
+                        enabledSensors[Hl2SensorType.RM_RIGHT_FRONT] = true;
+                        break;
+                    }
+                default:
+                    {
+                        throw new ArgumentException("Unkown Hl2SensorTypeEditor value");
+                    }
             }
         }
         enum ErrorKind
