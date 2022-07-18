@@ -30,6 +30,7 @@ using UnityEngine.Experimental.Rendering;
 
 using SolARMappingAndRelocalizationProxyClient =
     Com.Bcom.Solar.Gprc.SolARMappingAndRelocalizationProxy.SolARMappingAndRelocalizationProxyClient;
+using static Bcom.Solar.SolArCloudHololens2;
 
 namespace Com.Bcom.Solar.Gprc
 {
@@ -53,13 +54,11 @@ namespace Com.Bcom.Solar.Gprc
 
         private long nbSentFrames = 0;
 
-        private Boolean isStereoMode = false;
-
         public class FrameSender
         {
             private SolARMappingAndRelocalizationGrpcProxyManager manager;
-            // TODO(jmhenaff): Use a Frames object to handle multiple sensor frames (e.g. to support stereo)
-            private Frame frame_camera1, frame_camera2;
+
+            private Frames frames = new Frames();
 
             private Action<RelocAndMappingResult> poseReceivedCallback;
 
@@ -71,8 +70,6 @@ namespace Com.Bcom.Solar.Gprc
                 this.manager = manager;
                 this.poseReceivedCallback = poseReceivedCallback;
                 this.frameSentCallback = frameSentCallback;
-                this.frame_camera1 = null;
-                this.frame_camera2 = null;
             }
 
             private byte[] encodeToPNG(UInt32 width, UInt32 height, ImageLayout imLayout, byte[] originalImage)
@@ -146,52 +143,44 @@ namespace Com.Bcom.Solar.Gprc
                 return UnityEngine.ImageConversion.EncodeArrayToPNG(imData, format, imWidth, imHeight);
             }
 
-            public void SetFrame(int sensorId, ulong timestamp, ImageLayout imLayout,
+            public void AddFrame(int sensorId, ulong timestamp, ImageLayout imLayout,
                 uint imWidth, uint imHeight, byte[] imData, double[] pose, ImageCompression imageCompression)
             {
-                if (sensorId < 2)
+                frames.Frames_.Add( new Frame
                 {
-                    Frame frame = new Frame
+                    SensorId = sensorId,
+                    Timestamp = timestamp,
+                    Image = new Image
                     {
-                        SensorId = sensorId,
-                        Timestamp = timestamp,
-                        Image = new Image
-                        {
-                            Layout = imLayout,
-                            Width = imWidth,
-                            Height = imHeight,
-                            Data = ByteString.CopyFrom(imData),
-                            ImageCompression = imageCompression
-                        },
-                        Pose = new Matrix4x4
-                        {
-                            M11 = (float)pose[0],
-                            M12 = (float)pose[1],
-                            M13 = (float)pose[2],
-                            M14 = (float)pose[3],
+                        Layout = imLayout,
+                        Width = imWidth,
+                        Height = imHeight,
+                        Data = ByteString.CopyFrom(imData),
+                        ImageCompression = imageCompression
+                    },
+                    Pose = new Matrix4x4
+                    {
+                        M11 = (float)pose[0],
+                        M12 = (float)pose[1],
+                        M13 = (float)pose[2],
+                        M14 = (float)pose[3],
 
-                            M21 = (float)pose[4],
-                            M22 = (float)pose[5],
-                            M23 = (float)pose[6],
-                            M24 = (float)pose[7],
+                        M21 = (float)pose[4],
+                        M22 = (float)pose[5],
+                        M23 = (float)pose[6],
+                        M24 = (float)pose[7],
 
-                            M31 = (float)pose[8],
-                            M32 = (float)pose[9],
-                            M33 = (float)pose[10],
-                            M34 = (float)pose[11],
+                        M31 = (float)pose[8],
+                        M32 = (float)pose[9],
+                        M33 = (float)pose[10],
+                        M34 = (float)pose[11],
 
-                            M41 = (float)pose[12],
-                            M42 = (float)pose[13],
-                            M43 = (float)pose[14],
-                            M44 = (float)pose[15]
-                        }
-                    };
-
-                    if (sensorId == 0)
-                        frame_camera1 = frame;
-                    else if (sensorId == 1)
-                        frame_camera2 = frame;
-                }
+                        M41 = (float)pose[12],
+                        M42 = (float)pose[13],
+                        M43 = (float)pose[14],
+                        M44 = (float)pose[15]
+                    }
+                });
             }
 
             // TODO(jmhenaff): use void return type ? (all could be handled via the callback method)
@@ -246,29 +235,15 @@ namespace Com.Bcom.Solar.Gprc
                     {
                         try
                         {
-                            Frames frame_list = new Frames();
-
-                            if ((manager.isStereoMode) && (frame_camera1 != null) && (frame_camera2 != null))
-                            {
-                                frame_list.Frames_.Add(frame_camera1);
-                                frame_list.Frames_.Add(frame_camera2);
-                                result = manager.RelocalizeAndMap(frame_list);
-                                frame_camera1 = null;
-                                frame_camera2 = null;
-                            }
-                            else if ((!manager.isStereoMode) && (frame_camera1 != null))
-                            {
-                                frame_list.Frames_.Add(frame_camera1);
-                                result = manager.RelocalizeAndMap(frame_list);
-                                frame_camera1 = null;
-                            }
-                            else
+                            if (frames.Frames_.Count == 0)
                             {
                                 result = new RelocAndMappingResult(
-                                    new ResultStatus(false, "Given frame is null"),
+                                    new ResultStatus(true, "No frame to send"),
                                     null);
+                                return;
                             }
 
+                            result = manager.RelocalizeAndMap(frames);
                             
                         }
                         catch(Exception e)
@@ -486,11 +461,6 @@ namespace Com.Bcom.Solar.Gprc
             this.relocAndMappingRequestIntervalMs = relocAndMappingRequestIntervalMs;
         }
 
-        public void SetStereo(Boolean stereo_mode)
-        {
-            isStereoMode = stereo_mode;
-        }
-
         public ResultStatus Init()
         {
             return Init(PipelineMode.RelocalizationAndMapping);
@@ -634,8 +604,8 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
-        public ResultStatus setRectificationParameters(double[] cam1Rotation, double[] cam1Projection, StereoType cam1StereoType, float cam1Baseline,
-                                                       double[] cam2Rotation, double[] cam2Projection, StereoType cam2StereoType, float cam2Baseline)
+        public ResultStatus setRectificationParameters(CameraRectification leftCamRectParams,
+                                                       CameraRectification rightCamRectParams )
         {
             SolARMappingAndRelocalizationProxyClient client = null;
             try
@@ -650,74 +620,74 @@ namespace Com.Bcom.Solar.Gprc
                 {
                     Cam1Rotation = new Matrix3x3
                     {
-                        M11 = (float)cam1Rotation[0],
-                        M12 = (float)cam1Rotation[1],
-                        M13 = (float)cam1Rotation[2],
+                        M11 = leftCamRectParams.rotation.m00,
+                        M12 = leftCamRectParams.rotation.m01,
+                        M13 = leftCamRectParams.rotation.m02,
 
-                        M21 = (float)cam1Rotation[3],
-                        M22 = (float)cam1Rotation[4],
-                        M23 = (float)cam1Rotation[5],
+                        M21 = leftCamRectParams.rotation.m10,
+                        M22 = leftCamRectParams.rotation.m11,
+                        M23 = leftCamRectParams.rotation.m12,
 
 
-                        M31 = (float)cam1Rotation[6],
-                        M32 = (float)cam1Rotation[7],
-                        M33 = (float)cam1Rotation[8]
+                        M31 = leftCamRectParams.rotation.m20,
+                        M32 = leftCamRectParams.rotation.m21,
+                        M33 = leftCamRectParams.rotation.m22
                     },
                     Cam1Projection = new Matrix3x4
                     {
-                        M11 = (float)cam1Projection[0],
-                        M12 = (float)cam1Projection[1],
-                        M13 = (float)cam1Projection[2],
-                        M14 = (float)cam1Projection[3],
+                        M11 = leftCamRectParams.projection.m00,
+                        M12 = leftCamRectParams.projection.m01,
+                        M13 = leftCamRectParams.projection.m02,
+                        M14 = leftCamRectParams.projection.m03,
 
-                        M21 = (float)cam1Projection[4],
-                        M22 = (float)cam1Projection[5],
-                        M23 = (float)cam1Projection[6],
-                        M24 = (float)cam1Projection[7],
+                        M21 = leftCamRectParams.projection.m10,
+                        M22 = leftCamRectParams.projection.m11,
+                        M23 = leftCamRectParams.projection.m12,
+                        M24 = leftCamRectParams.projection.m13,
 
-
-                        M31 = (float)cam1Projection[8],
-                        M32 = (float)cam1Projection[9],
-                        M33 = (float)cam1Projection[10],
-                        M34 = (float)cam1Projection[11]
+                        M31 = leftCamRectParams.projection.m20,
+                        M32 = leftCamRectParams.projection.m21,
+                        M33 = leftCamRectParams.projection.m22,
+                        M34 = leftCamRectParams.projection.m23
                     },
-                    Cam1StereoType = cam1StereoType,
-                    Cam1Baseline = cam1Baseline,
+                    Cam1StereoType = leftCamRectParams.stereoType,
+                    Cam1Baseline = leftCamRectParams.baseline,
+
                     Cam2Rotation = new Matrix3x3
                     {
-                        M11 = (float)cam2Rotation[0],
-                        M12 = (float)cam2Rotation[1],
-                        M13 = (float)cam2Rotation[2],
+                        M11 = rightCamRectParams.rotation.m00,
+                        M12 = rightCamRectParams.rotation.m01,
+                        M13 = rightCamRectParams.rotation.m02,
 
-                        M21 = (float)cam2Rotation[3],
-                        M22 = (float)cam2Rotation[4],
-                        M23 = (float)cam2Rotation[5],
+                        M21 = rightCamRectParams.rotation.m10,
+                        M22 = rightCamRectParams.rotation.m11,
+                        M23 = rightCamRectParams.rotation.m12,
 
 
-                        M31 = (float)cam2Rotation[6],
-                        M32 = (float)cam2Rotation[7],
-                        M33 = (float)cam2Rotation[8]
+                        M31 = rightCamRectParams.rotation.m20,
+                        M32 = rightCamRectParams.rotation.m21,
+                        M33 = rightCamRectParams.rotation.m22
                     },
                     Cam2Projection = new Matrix3x4
                     {
-                        M11 = (float)cam2Projection[0],
-                        M12 = (float)cam2Projection[1],
-                        M13 = (float)cam2Projection[2],
-                        M14 = (float)cam2Projection[3],
+                        M11 = rightCamRectParams.projection.m00,
+                        M12 = rightCamRectParams.projection.m01,
+                        M13 = rightCamRectParams.projection.m02,
+                        M14 = rightCamRectParams.projection.m03,
 
-                        M21 = (float)cam2Projection[4],
-                        M22 = (float)cam2Projection[5],
-                        M23 = (float)cam2Projection[6],
-                        M24 = (float)cam2Projection[7],
+                        M21 = rightCamRectParams.projection.m10,
+                        M22 = rightCamRectParams.projection.m11,
+                        M23 = rightCamRectParams.projection.m12,
+                        M24 = rightCamRectParams.projection.m13,
 
 
-                        M31 = (float)cam2Projection[8],
-                        M32 = (float)cam2Projection[9],
-                        M33 = (float)cam2Projection[10],
-                        M34 = (float)cam2Projection[11]
+                        M31 = rightCamRectParams.projection.m20,
+                        M32 = rightCamRectParams.projection.m21,
+                        M33 = rightCamRectParams.projection.m22,
+                        M34 = rightCamRectParams.projection.m23,
                     },
-                    Cam2StereoType = cam2StereoType,
-                    Cam2Baseline = cam2Baseline
+                    Cam2StereoType = rightCamRectParams.stereoType,
+                    Cam2Baseline = rightCamRectParams.baseline
                 },
                     deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
@@ -729,8 +699,6 @@ namespace Com.Bcom.Solar.Gprc
                 return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::setRectificationParameters(): Error: "
                     + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);
             }
-
-            isStereoMode = true;
 
             return SUCCESS;
         }
