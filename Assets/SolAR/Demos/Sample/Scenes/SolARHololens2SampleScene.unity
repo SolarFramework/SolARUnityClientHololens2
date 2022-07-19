@@ -1022,6 +1022,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1549047765000947495, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0013
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549047765000947495, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0829
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549047765000947495, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.0333
+      objectReference: {fileID: 0}
     - target: {fileID: 1549047766176742968, guid: a8f07552a13987649a78d4c67f5168bf,
         type: 3}
       propertyPath: solArCloudHololens2
