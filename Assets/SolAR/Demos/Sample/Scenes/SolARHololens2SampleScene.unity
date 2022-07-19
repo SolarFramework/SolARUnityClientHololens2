@@ -1119,6 +1119,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.551
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.955
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9659259
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.258819
+      objectReference: {fileID: 0}
+    - target: {fileID: 75813466780328444, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 433120246387395414, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: solArCloudHololens2
+      value: 
+      objectReference: {fileID: 287962944}
     - target: {fileID: 1549047766176742968, guid: a8f07552a13987649a78d4c67f5168bf,
         type: 3}
       propertyPath: solArCloudHololens2
@@ -1204,6 +1249,21 @@ PrefabInstance:
       propertyPath: solArCloudHololens2
       value: 
       objectReference: {fileID: 287962944}
+    - target: {fileID: 5994287047106722841, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5994287047106722841, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9144757042660812498, guid: a8f07552a13987649a78d4c67f5168bf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8f07552a13987649a78d4c67f5168bf, type: 3}
 --- !u!1001 &2372330668762981838
