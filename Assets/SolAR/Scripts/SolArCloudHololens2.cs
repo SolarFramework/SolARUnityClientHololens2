@@ -1014,6 +1014,12 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
             }
             else
             {
+                // Manage tracking lost icon
+                if (pipelineMode == SolARRpc.PipelineMode.RelocalizationAndMapping)
+                {
+                    NotifyOnMappingStatusChanged(SolARRpc.MappingStatus.TrackingLost);
+                }
+
                 NotifyOnGrpcError("Error when receiving pose: " + result.resultStatus.errMessage);
                 if (rpcAvailable)
                 {

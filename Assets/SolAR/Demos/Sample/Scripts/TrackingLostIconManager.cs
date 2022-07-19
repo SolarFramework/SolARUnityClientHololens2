@@ -13,28 +13,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 using UnityEngine;
 
 using Bcom.Solar;
 
 using SolARRpc = Com.Bcom.Solar.Gprc;
 
-public class TrackingLostManager : MonoBehaviour
+public class TrackingLostIconManager : MonoBehaviour
 {
     public SolArCloudHololens2 solArCloudHololens2;
 
-    private bool displayTrackingLost;
+    private bool displayTrackingLostIcon;
     private bool mappingStatusChanged;
 
     // Start is called before the first frame update
     void Start()
-    {  
-        displayTrackingLost = false;
-        mappingStatusChanged = true;
+    {
+        displayTrackingLostIcon = false;
+        mappingStatusChanged = false;
 
         solArCloudHololens2.OnMappingStatusChanged += OnMappingStatusChanged;
-
     }
 
     // Update is called once per frame
@@ -43,7 +42,7 @@ public class TrackingLostManager : MonoBehaviour
         // Manage tracking lost icon
         if (mappingStatusChanged)
         {
-            gameObject.GetComponent<MeshRenderer>().enabled = displayTrackingLost;   
+            gameObject.GetComponent<MeshRenderer>().enabled = displayTrackingLostIcon;   
 
             mappingStatusChanged = false;
         }
@@ -51,9 +50,9 @@ public class TrackingLostManager : MonoBehaviour
 
     void OnMappingStatusChanged(SolARRpc.MappingStatus mappingStatus)
     {
-        if ((mappingStatus == SolARRpc.MappingStatus.TrackingLost) != displayTrackingLost)
+        if ((mappingStatus == SolARRpc.MappingStatus.TrackingLost) != displayTrackingLostIcon)
         {
-            displayTrackingLost = (mappingStatus == SolARRpc.MappingStatus.TrackingLost);
+            displayTrackingLostIcon = (mappingStatus == SolARRpc.MappingStatus.TrackingLost);
             mappingStatusChanged = true;
         }
     }
