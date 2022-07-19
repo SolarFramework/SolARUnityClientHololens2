@@ -362,6 +362,9 @@ SolARHololens2ResearchMode researchMode;
             SolARRpc.PipelineMode /* old mode */,
             SolARRpc.PipelineMode /* new mode */> OnPipelineModeChanged;
 
+        public event Action<
+            SolARRpc.MappingStatus /* mapping status */> OnMappingStatusChanged;
+
         // TODO(jmhenaff): rename toLog ?
         public event Action<string> OnGrpcError;
         public event Action<string> OnPluginError;
@@ -429,6 +432,9 @@ SolARHololens2ResearchMode researchMode;
 
         private void NotifyOnGrpcError(string message)
             => OnGrpcError?.Invoke(message);
+
+        private void NotifyOnMappingStatusChanged(SolARRpc.MappingStatus mappingStatus)
+            => OnMappingStatusChanged?.Invoke(mappingStatus);
 
         private void NotifyOnPluginError(string message)
             => OnPluginError?.Invoke(message);
@@ -945,6 +951,12 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
         {
             if (result.resultStatus.success)
             {
+                // Manage tracking lost icon
+                if (pipelineMode == SolARRpc.PipelineMode.RelocalizationAndMapping)
+                {
+                    NotifyOnMappingStatusChanged(result.relocAndMappingResult.MappingStatus);
+                }
+
                 if (result.relocAndMappingResult.PoseStatus == SolARRpc.RelocalizationPoseStatus.NoPose)
                 {
                     return;
