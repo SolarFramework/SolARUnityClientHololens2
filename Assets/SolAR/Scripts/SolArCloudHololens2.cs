@@ -630,6 +630,9 @@ SolARHololens2ResearchMode researchMode;
 
         public void ToggleSensorCatpure()
         {
+            // Hide/init tracking lost icon
+            NotifyOnMappingStatusChanged(SolARRpc.MappingStatus.Bootstrap);
+
             if (!sensorsStarted)
             {
                 StartSensorsCapture();
@@ -680,12 +683,6 @@ SolARHololens2ResearchMode researchMode;
         public void StopSensorsCaptureThread()
         {
             NotifyOnUnityAppError("StopRGBSensorCaptureEvent");
-
-            // Manage tracking lost icon
-            if (pipelineMode == SolARRpc.PipelineMode.RelocalizationAndMapping)
-            {
-                NotifyOnMappingStatusChanged(SolARRpc.MappingStatus.Bootstrap);
-            }
 
             try
             {
