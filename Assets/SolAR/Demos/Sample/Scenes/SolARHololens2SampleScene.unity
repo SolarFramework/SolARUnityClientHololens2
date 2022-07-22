@@ -347,12 +347,42 @@ PrefabInstance:
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: selectedSensor
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: gRpcDelayBetweenFramesInMs
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: leftFrontParameters.distK1
+      value: -0.009463000111281872
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: leftFrontParameters.distK2
+      value: 0.0030129998922348022
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: leftFrontParameters.distP1
+      value: -0.0061690001748502254
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: leftFrontParameters.distP2
+      value: -0.008975000120699406
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: leftFrontParameters.focalX
+      value: 448.189453125
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: leftFrontParameters.focalY
+      value: 448.189453125
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
@@ -372,22 +402,32 @@ PrefabInstance:
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: selectedCameraParameter.distK1
-      value: -0.009463
+      value: -0.009463000111281872
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: selectedCameraParameter.distK2
-      value: 0.003013
+      value: 0.0030129998922348022
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.distP1
+      value: -0.0061690001748502254
+      objectReference: {fileID: 0}
+    - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
+        type: 3}
+      propertyPath: selectedCameraParameter.distP2
+      value: -0.008975000120699406
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: selectedCameraParameter.focalX
-      value: 366.189452
+      value: 448.189453125
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
       propertyPath: selectedCameraParameter.focalY
-      value: 366.47809
+      value: 448.189453125
       objectReference: {fileID: 0}
     - target: {fileID: 747794893107280973, guid: e688a6d483c98df4ebcb4627f077e80c,
         type: 3}
