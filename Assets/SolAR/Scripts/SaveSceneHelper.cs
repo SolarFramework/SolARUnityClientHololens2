@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SaveSceneHelper : MonoBehaviour
 {
+    public GameObject solARScene;
     public Bcom.Solar.SolArCloudHololens2 solarCloudHololens2;
 
     public GameObject serializableCubePrefab;
@@ -37,12 +38,12 @@ public class SaveSceneHelper : MonoBehaviour
         if (save)
         {
             save = false;
-            SaveSceneState(gameObject);
+            SaveSceneState(solARScene);
         }
         if (load)
         {
             load = false;
-            LoadSceneState(gameObject);
+            LoadSceneState(solARScene);
         }
     }
 
