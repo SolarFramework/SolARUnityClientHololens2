@@ -44,64 +44,68 @@ namespace Com.Bcom.Solar.Gprc {
             "b20uc29sYXIuZ3ByYy5NYXRyaXgzeDMSNwoPY2FtMl9wcm9qZWN0aW9uGAYg",
             "ASgLMh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXgzeDQSOQoQY2FtMl9z",
             "dGVyZW9fdHlwZRgHIAEoDjIfLmNvbS5iY29tLnNvbGFyLmdwcmMuU3RlcmVv",
-            "VHlwZRIVCg1jYW0yX2Jhc2VsaW5lGAggASgCIpwBChRSZWxvY2FsaXphdGlv",
+            "VHlwZRIVCg1jYW0yX2Jhc2VsaW5lGAggASgCItgBChRSZWxvY2FsaXphdGlv",
             "blJlc3VsdBJCCgtwb3NlX3N0YXR1cxgBIAEoDjItLmNvbS5iY29tLnNvbGFy",
             "LmdwcmMuUmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEiwKBHBvc2UYAiABKAsy",
             "Hi5jb20uYmNvbS5zb2xhci5ncHJjLk1hdHJpeDR4NBISCgpjb25maWRlbmNl",
-            "GAMgASgCIqcBCgVJbWFnZRINCgV3aWR0aBgBIAEoDRIOCgZoZWlnaHQYAiAB",
-            "KA0SDAoEZGF0YRgDIAEoDBIwCgZsYXlvdXQYBCABKA4yIC5jb20uYmNvbS5z",
-            "b2xhci5ncHJjLkltYWdlTGF5b3V0Ej8KEGltYWdlQ29tcHJlc3Npb24YBSAB",
-            "KA4yJS5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdlQ29tcHJlc3Npb24iNAoG",
-            "RnJhbWVzEioKBmZyYW1lcxgBIAMoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMu",
-            "RnJhbWUihgEKBUZyYW1lEhEKCXNlbnNvcl9pZBgBIAEoBRIpCgVpbWFnZRgC",
-            "IAEoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1hZ2USEQoJdGltZXN0YW1w",
-            "GAMgASgEEiwKBHBvc2UYBCABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1h",
-            "dHJpeDR4NCLbAQoJTWF0cml4NHg0EgsKA20xMRgBIAEoAhILCgNtMTIYAiAB",
-            "KAISCwoDbTEzGAMgASgCEgsKA20xNBgEIAEoAhILCgNtMjEYBSABKAISCwoD",
-            "bTIyGAYgASgCEgsKA20yMxgHIAEoAhILCgNtMjQYCCABKAISCwoDbTMxGAkg",
-            "ASgCEgsKA20zMhgKIAEoAhILCgNtMzMYCyABKAISCwoDbTM0GAwgASgCEgsK",
-            "A200MRgNIAEoAhILCgNtNDIYDiABKAISCwoDbTQzGA8gASgCEgsKA200NBgQ",
-            "IAEoAiKAAQoJTWF0cml4M3gzEgsKA20xMRgBIAEoAhILCgNtMTIYAiABKAIS",
-            "CwoDbTEzGAMgASgCEgsKA20yMRgEIAEoAhILCgNtMjIYBSABKAISCwoDbTIz",
-            "GAYgASgCEgsKA20zMRgHIAEoAhILCgNtMzIYCCABKAISCwoDbTMzGAkgASgC",
-            "IqcBCglNYXRyaXgzeDQSCwoDbTExGAEgASgCEgsKA20xMhgCIAEoAhILCgNt",
-            "MTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20yMRgFIAEoAhILCgNtMjIYBiAB",
-            "KAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEoAhILCgNtMzEYCSABKAISCwoD",
-            "bTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNtMzQYDCABKAIqRwoMUGlwZWxp",
-            "bmVNb2RlEh4KGlJFTE9DQUxJWkFUSU9OX0FORF9NQVBQSU5HEAASFwoTUkVM",
-            "T0NBTElaQVRJT05fT05MWRABKh8KCkNhbWVyYVR5cGUSBwoDUkdCEAASCAoE",
-            "R1JBWRABKioKClN0ZXJlb1R5cGUSDgoKSG9yaXpvbnRhbBAAEgwKCFZlcnRp",
-            "Y2FsEAEqRgoYUmVsb2NhbGl6YXRpb25Qb3NlU3RhdHVzEgsKB05PX1BPU0UQ",
-            "ABIMCghORVdfUE9TRRABEg8KC0xBVEVTVF9QT1NFEAIqMgoLSW1hZ2VMYXlv",
-            "dXQSCgoGUkdCXzI0EAASCgoGR1JFWV84EAESCwoHR1JFWV8xNhACKi4KEElt",
-            "YWdlQ29tcHJlc3Npb24SCAoETk9ORRAAEgcKA1BORxABEgcKA0pQRxACMvIF",
-            "CiJTb2xBUk1hcHBpbmdBbmRSZWxvY2FsaXphdGlvblByb3h5EkoKBEluaXQS",
-            "Ji5jb20uYmNvbS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZVZhbHVlGhouY29t",
-            "LmJjb20uc29sYXIuZ3ByYy5FbXB0eRI/CgVTdGFydBIaLmNvbS5iY29tLnNv",
-            "bGFyLmdwcmMuRW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej4K",
-            "BFN0b3ASGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20u",
-            "c29sYXIuZ3ByYy5FbXB0eRJYChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29t",
-            "LmJjb20uc29sYXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20u",
-            "c29sYXIuZ3ByYy5FbXB0eRJmChpzZXRSZWN0aWZpY2F0aW9uUGFyYW1ldGVy",
-            "cxIsLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVjdGlmaWNhdGlvblBhcmFtZXRl",
-            "cnMaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5EloKEFJlbG9jYWxpemVB",
-            "bmRNYXASGy5jb20uYmNvbS5zb2xhci5ncHJjLkZyYW1lcxopLmNvbS5iY29t",
-            "LnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25SZXN1bHQSVwoOR2V0M0RUcmFu",
-            "c2Zvcm0SGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GikuY29tLmJjb20u",
-            "c29sYXIuZ3ByYy5SZWxvY2FsaXphdGlvblJlc3VsdBI/CgVSZXNldBIaLmNv",
-            "bS5iY29tLnNvbGFyLmdwcmMuRW1wdHkaGi5jb20uYmNvbS5zb2xhci5ncHJj",
-            "LkVtcHR5EkcKC1NlbmRNZXNzYWdlEhwuY29tLmJjb20uc29sYXIuZ3ByYy5N",
-            "ZXNzYWdlGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eWIGcHJvdG8z"));
+            "GAMgASgCEjoKDm1hcHBpbmdfc3RhdHVzGAQgASgOMiIuY29tLmJjb20uc29s",
+            "YXIuZ3ByYy5NYXBwaW5nU3RhdHVzIqcBCgVJbWFnZRINCgV3aWR0aBgBIAEo",
+            "DRIOCgZoZWlnaHQYAiABKA0SDAoEZGF0YRgDIAEoDBIwCgZsYXlvdXQYBCAB",
+            "KA4yIC5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdlTGF5b3V0Ej8KEGltYWdl",
+            "Q29tcHJlc3Npb24YBSABKA4yJS5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdl",
+            "Q29tcHJlc3Npb24iNAoGRnJhbWVzEioKBmZyYW1lcxgBIAMoCzIaLmNvbS5i",
+            "Y29tLnNvbGFyLmdwcmMuRnJhbWUihgEKBUZyYW1lEhEKCXNlbnNvcl9pZBgB",
+            "IAEoBRIpCgVpbWFnZRgCIAEoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1h",
+            "Z2USEQoJdGltZXN0YW1wGAMgASgEEiwKBHBvc2UYBCABKAsyHi5jb20uYmNv",
+            "bS5zb2xhci5ncHJjLk1hdHJpeDR4NCLbAQoJTWF0cml4NHg0EgsKA20xMRgB",
+            "IAEoAhILCgNtMTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20xNBgEIAEoAhIL",
+            "CgNtMjEYBSABKAISCwoDbTIyGAYgASgCEgsKA20yMxgHIAEoAhILCgNtMjQY",
+            "CCABKAISCwoDbTMxGAkgASgCEgsKA20zMhgKIAEoAhILCgNtMzMYCyABKAIS",
+            "CwoDbTM0GAwgASgCEgsKA200MRgNIAEoAhILCgNtNDIYDiABKAISCwoDbTQz",
+            "GA8gASgCEgsKA200NBgQIAEoAiKAAQoJTWF0cml4M3gzEgsKA20xMRgBIAEo",
+            "AhILCgNtMTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20yMRgEIAEoAhILCgNt",
+            "MjIYBSABKAISCwoDbTIzGAYgASgCEgsKA20zMRgHIAEoAhILCgNtMzIYCCAB",
+            "KAISCwoDbTMzGAkgASgCIqcBCglNYXRyaXgzeDQSCwoDbTExGAEgASgCEgsK",
+            "A20xMhgCIAEoAhILCgNtMTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20yMRgF",
+            "IAEoAhILCgNtMjIYBiABKAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEoAhIL",
+            "CgNtMzEYCSABKAISCwoDbTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNtMzQY",
+            "DCABKAIqRwoMUGlwZWxpbmVNb2RlEh4KGlJFTE9DQUxJWkFUSU9OX0FORF9N",
+            "QVBQSU5HEAASFwoTUkVMT0NBTElaQVRJT05fT05MWRABKh8KCkNhbWVyYVR5",
+            "cGUSBwoDUkdCEAASCAoER1JBWRABKioKClN0ZXJlb1R5cGUSDgoKSG9yaXpv",
+            "bnRhbBAAEgwKCFZlcnRpY2FsEAEqRgoYUmVsb2NhbGl6YXRpb25Qb3NlU3Rh",
+            "dHVzEgsKB05PX1BPU0UQABIMCghORVdfUE9TRRABEg8KC0xBVEVTVF9QT1NF",
+            "EAIqUAoNTWFwcGluZ1N0YXR1cxINCglCT09UU1RSQVAQABILCgdNQVBQSU5H",
+            "EAESEQoNVFJBQ0tJTkdfTE9TVBACEhAKDExPT1BfQ0xPU1VSRRADKjIKC0lt",
+            "YWdlTGF5b3V0EgoKBlJHQl8yNBAAEgoKBkdSRVlfOBABEgsKB0dSRVlfMTYQ",
+            "AiouChBJbWFnZUNvbXByZXNzaW9uEggKBE5PTkUQABIHCgNQTkcQARIHCgNK",
+            "UEcQAjLyBQoiU29sQVJNYXBwaW5nQW5kUmVsb2NhbGl6YXRpb25Qcm94eRJK",
+            "CgRJbml0EiYuY29tLmJjb20uc29sYXIuZ3ByYy5QaXBlbGluZU1vZGVWYWx1",
+            "ZRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHkSPwoFU3RhcnQSGi5jb20u",
+            "YmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20uc29sYXIuZ3ByYy5F",
+            "bXB0eRI+CgRTdG9wEhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRoaLmNv",
+            "bS5iY29tLnNvbGFyLmdwcmMuRW1wdHkSWAoTU2V0Q2FtZXJhUGFyYW1ldGVy",
+            "cxIlLmNvbS5iY29tLnNvbGFyLmdwcmMuQ2FtZXJhUGFyYW1ldGVycxoaLmNv",
+            "bS5iY29tLnNvbGFyLmdwcmMuRW1wdHkSZgoac2V0UmVjdGlmaWNhdGlvblBh",
+            "cmFtZXRlcnMSLC5jb20uYmNvbS5zb2xhci5ncHJjLlJlY3RpZmljYXRpb25Q",
+            "YXJhbWV0ZXJzGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJaChBSZWxv",
+            "Y2FsaXplQW5kTWFwEhsuY29tLmJjb20uc29sYXIuZ3ByYy5GcmFtZXMaKS5j",
+            "b20uYmNvbS5zb2xhci5ncHJjLlJlbG9jYWxpemF0aW9uUmVzdWx0ElcKDkdl",
+            "dDNEVHJhbnNmb3JtEhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRopLmNv",
+            "bS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25SZXN1bHQSPwoFUmVz",
+            "ZXQSGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5GhouY29tLmJjb20uc29s",
+            "YXIuZ3ByYy5FbXB0eRJHCgtTZW5kTWVzc2FnZRIcLmNvbS5iY29tLnNvbGFy",
+            "LmdwcmMuTWVzc2FnZRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHliBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.StereoType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.StereoType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.MappingStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Empty), global::Com.Bcom.Solar.Gprc.Empty.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.PipelineModeValue), global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser, new[]{ "PipelineMode" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Message), global::Com.Bcom.Solar.Gprc.Message.Parser, new[]{ "Message_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParameters), global::Com.Bcom.Solar.Gprc.CameraParameters.Parser, new[]{ "Name", "Id", "CameraType", "Width", "Height", "Intrinsics", "Distortion" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraDistortion), global::Com.Bcom.Solar.Gprc.CameraDistortion.Parser, new[]{ "K1", "K2", "P1", "P2", "K3" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParameters), global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser, new[]{ "Cam1Rotation", "Cam1Projection", "Cam1StereoType", "Cam1Baseline", "Cam2Rotation", "Cam2Projection", "Cam2StereoType", "Cam2Baseline" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RelocalizationResult), global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser, new[]{ "PoseStatus", "Pose", "Confidence" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RelocalizationResult), global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser, new[]{ "PoseStatus", "Pose", "Confidence", "MappingStatus" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Image), global::Com.Bcom.Solar.Gprc.Image.Parser, new[]{ "Width", "Height", "Data", "Layout", "ImageCompression" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "Frames_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frame), global::Com.Bcom.Solar.Gprc.Frame.Parser, new[]{ "SensorId", "Image", "Timestamp", "Pose" }, null, null, null, null),
@@ -133,6 +137,13 @@ namespace Com.Bcom.Solar.Gprc {
     [pbr::OriginalName("NO_POSE")] NoPose = 0,
     [pbr::OriginalName("NEW_POSE")] NewPose = 1,
     [pbr::OriginalName("LATEST_POSE")] LatestPose = 2,
+  }
+
+  public enum MappingStatus {
+    [pbr::OriginalName("BOOTSTRAP")] Bootstrap = 0,
+    [pbr::OriginalName("MAPPING")] Mapping = 1,
+    [pbr::OriginalName("TRACKING_LOST")] TrackingLost = 2,
+    [pbr::OriginalName("LOOP_CLOSURE")] LoopClosure = 3,
   }
 
   public enum ImageLayout {
@@ -1844,6 +1855,7 @@ namespace Com.Bcom.Solar.Gprc {
       poseStatus_ = other.poseStatus_;
       pose_ = other.pose_ != null ? other.pose_.Clone() : null;
       confidence_ = other.confidence_;
+      mappingStatus_ = other.mappingStatus_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1885,6 +1897,17 @@ namespace Com.Bcom.Solar.Gprc {
       }
     }
 
+    /// <summary>Field number for the "mapping_status" field.</summary>
+    public const int MappingStatusFieldNumber = 4;
+    private global::Com.Bcom.Solar.Gprc.MappingStatus mappingStatus_ = global::Com.Bcom.Solar.Gprc.MappingStatus.Bootstrap;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Com.Bcom.Solar.Gprc.MappingStatus MappingStatus {
+      get { return mappingStatus_; }
+      set {
+        mappingStatus_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as RelocalizationResult);
@@ -1901,6 +1924,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (PoseStatus != other.PoseStatus) return false;
       if (!object.Equals(Pose, other.Pose)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Confidence, other.Confidence)) return false;
+      if (MappingStatus != other.MappingStatus) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1910,6 +1934,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (PoseStatus != global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus.NoPose) hash ^= PoseStatus.GetHashCode();
       if (pose_ != null) hash ^= Pose.GetHashCode();
       if (Confidence != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Confidence);
+      if (MappingStatus != global::Com.Bcom.Solar.Gprc.MappingStatus.Bootstrap) hash ^= MappingStatus.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1938,6 +1963,10 @@ namespace Com.Bcom.Solar.Gprc {
         output.WriteRawTag(29);
         output.WriteFloat(Confidence);
       }
+      if (MappingStatus != global::Com.Bcom.Solar.Gprc.MappingStatus.Bootstrap) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) MappingStatus);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1959,6 +1988,10 @@ namespace Com.Bcom.Solar.Gprc {
         output.WriteRawTag(29);
         output.WriteFloat(Confidence);
       }
+      if (MappingStatus != global::Com.Bcom.Solar.Gprc.MappingStatus.Bootstrap) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) MappingStatus);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1976,6 +2009,9 @@ namespace Com.Bcom.Solar.Gprc {
       }
       if (Confidence != 0F) {
         size += 1 + 4;
+      }
+      if (MappingStatus != global::Com.Bcom.Solar.Gprc.MappingStatus.Bootstrap) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MappingStatus);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1999,6 +2035,9 @@ namespace Com.Bcom.Solar.Gprc {
       }
       if (other.Confidence != 0F) {
         Confidence = other.Confidence;
+      }
+      if (other.MappingStatus != global::Com.Bcom.Solar.Gprc.MappingStatus.Bootstrap) {
+        MappingStatus = other.MappingStatus;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2029,6 +2068,10 @@ namespace Com.Bcom.Solar.Gprc {
             Confidence = input.ReadFloat();
             break;
           }
+          case 32: {
+            MappingStatus = (global::Com.Bcom.Solar.Gprc.MappingStatus) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -2056,6 +2099,10 @@ namespace Com.Bcom.Solar.Gprc {
           }
           case 29: {
             Confidence = input.ReadFloat();
+            break;
+          }
+          case 32: {
+            MappingStatus = (global::Com.Bcom.Solar.Gprc.MappingStatus) input.ReadEnum();
             break;
           }
         }
