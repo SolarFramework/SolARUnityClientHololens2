@@ -164,15 +164,15 @@ SolARHololens2ResearchMode researchMode;
             type = SolARRpc.CameraType.Gray,
             width = 640,
             height = 480,
-            focalX = 366.189452,
-            focalY = 366.478090,
-            centerX = 320,
-            centerY = 240,
-            distK1 = -0.009463,
-            distK2 = 0.003013,
-            distP1 = -0.006169,
-            distP2 = -0.008975,
-            distK3 = 0
+            focalX = 379.2082824707031,
+            focalY = 379.3240966796875,
+            centerX = 338.1396484375,
+            centerY = 223.7139892578125,
+            distK1 = 0.012776999734342098,
+            distK2 = 0.03928200155496597,
+            distP1 = -0.00343000004068017,
+            distP2 = 0.010243999771773815,
+            distK3 = -0.031222999095916748
         };
 
         public struct RotationMatrix
@@ -215,27 +215,26 @@ SolARHololens2ResearchMode researchMode;
         {
                 rotation = new RotationMatrix
                 {
-                    m00 = 0.02669704705476761f,
-                    m01 = 0.9994716048240662f,
-                    m02 = -0.018540197983384132f,
-                    m10 = -0.9996250867843628f,
-                    m11 = 0.02657913789153099f,
-                    m12 = 0.02657913789153099f,
-                    m20 = -0.006577212363481522f,
-                    m21 = 0.018708838149905205f,
-                    m22 = 0.9998064637184143f,
-
+                    m00 = 0.9998642802238464f,
+                    m01 = 0.016154831275343895f,
+                    m02 = 0.0032359908800572157f,
+                    m10 = -0.0163414981216192255f,
+                    m11 = 0.997422456741333f,
+                    m12 = 0.0698670968413353f,
+                    m20 = -0.0020989589393138885f,
+                    m21 = -0.06991049647331238f,
+                    m22 = 0.9975510835647583f,
                 },
 
                 projection = new ProjectionMatrix
                 {
-                    m00 = 379.1451721191406f,
+                    m00 = 379.40545654296875f,
                     m01 = 0.0f,
-                    m02 = 318.05926513671875f,
+                    m02 = 330.3832702636719f,
                     m03 = 0.0f,
                     m10 = 0.0f,
-                    m11 = 379.1451721191406f,
-                    m12 = 223.3397827148437f,
+                    m11 = 379.40545654296875f,
+                    m12 = 188.85345458984375f,
                     m13 = 0.0f,
                     m20 = 0.0f,
                     m21 = 0.0f,
@@ -243,42 +242,41 @@ SolARHololens2ResearchMode researchMode;
                     m23 = 0.0f,
                 },
                 stereoType = SolARRpc.StereoType.Vertical,
-                baseline = 0.10892833769321442f
+                baseline = 0.10667625069618225f
         };
 
         private CameraRectification rightFrontDefaultRectification = new CameraRectification()
         {
             rotation = new RotationMatrix
             {
-                m00 = -0.024275457486510277f,
-                m01 = -0.9994537830352783f,
-                m02 = -0.022422846406698227f,
-                m10 = 0.9997012615203857f,
-                m11 = -0.024332838132977486f,
-                m12 = 0.0022897087037563324f,
-                m20 = -0.0028340695425868034f,
-                m21 = -0.02236056514084339f,
-                m22 = 0.9997459650039673f,
-
+                m00 = 0.9996479153633118f,
+                m01 = 0.02649933099746704f,
+                m02 = -0.0013472416903823614f,
+                m10 = -0.026232751086354256f,
+                m11 = 0.994664192199707f,
+                m12 = 0.09977497160434723f,
+                m20 = 0.003984023351222277f,
+                m21 = -0.09970450401306152f,
+                m22 = 0.9950091242790222f,
             },
 
             projection = new ProjectionMatrix
             {
-                m00 = 379.1451721191406f,
+                m00 = 379.40545654296875f,
                 m01 = 0.0f,
-                m02 = 318.05926513671875f,
-                m03 = 41.299652099609375f,
+                m02 = 330.3832702636719f,
+                m03 = 0.0f,
                 m10 = 0.0f,
-                m11 = 379.1451721191406f,
-                m12 = 223.33978271484375f,
-                m13 = 0.0f,
+                m11 = 379.40545654296875f,
+                m12 = 188.85345458984375f,
+                m13 = 40.47355270385742f,
                 m20 = 0.0f,
                 m21 = 0.0f,
                 m22 = 1.0f,
                 m23 = 0.0f,
             },
             stereoType = SolARRpc.StereoType.Vertical,
-            baseline = 0.10892833769321442f
+            baseline = 0.10667625069618225f
         };
 
         // Use these object to store user modifed values
@@ -362,6 +360,9 @@ SolARHololens2ResearchMode researchMode;
             SolARRpc.PipelineMode /* old mode */,
             SolARRpc.PipelineMode /* new mode */> OnPipelineModeChanged;
 
+        public event Action<
+            SolARRpc.MappingStatus /* mapping status */> OnMappingStatusChanged;
+
         // TODO(jmhenaff): rename toLog ?
         public event Action<string> OnGrpcError;
         public event Action<string> OnPluginError;
@@ -429,6 +430,9 @@ SolARHololens2ResearchMode researchMode;
 
         private void NotifyOnGrpcError(string message)
             => OnGrpcError?.Invoke(message);
+
+        private void NotifyOnMappingStatusChanged(SolARRpc.MappingStatus mappingStatus)
+            => OnMappingStatusChanged?.Invoke(mappingStatus);
 
         private void NotifyOnPluginError(string message)
             => OnPluginError?.Invoke(message);
@@ -624,6 +628,9 @@ SolARHololens2ResearchMode researchMode;
 
         public void ToggleSensorCatpure()
         {
+            // Hide/init tracking lost icon
+            NotifyOnMappingStatusChanged(SolARRpc.MappingStatus.Bootstrap);
+
             if (!sensorsStarted)
             {
                 StartSensorsCapture();
@@ -945,6 +952,12 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
         {
             if (result.resultStatus.success)
             {
+                // Manage tracking lost icon
+                if ((pipelineMode == SolARRpc.PipelineMode.RelocalizationAndMapping) && (sensorsStarted))
+                {
+                    NotifyOnMappingStatusChanged(result.relocAndMappingResult.MappingStatus);
+                }
+
                 if (result.relocAndMappingResult.PoseStatus == SolARRpc.RelocalizationPoseStatus.NoPose)
                 {
                     return;
@@ -1001,13 +1014,22 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 }
             }
             else
-            {
+            {                
+                
+                // Manage tracking lost icon
+                if ((pipelineMode == SolARRpc.PipelineMode.RelocalizationAndMapping) && (sensorsStarted))
+                {
+                    NotifyOnMappingStatusChanged(SolARRpc.MappingStatus.TrackingLost);
+                }
+
                 NotifyOnGrpcError("Error when receiving pose: " + result.resultStatus.errMessage);
+/*                
                 if (rpcAvailable)
                 {
                     relocAndMappingProxy.SendMessage("Error when receiving pose: " +
                         result.resultStatus.errMessage);
                 }
+*/                
             }
         }
 
