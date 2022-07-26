@@ -20,6 +20,12 @@ public class InstantiatePersistentObject : MonoBehaviour
 
     public void InstantiateObject(GameObject prefab)
     {
-        GameObject.Instantiate(prefab, sceneRoot.transform);
+        GameObject.Instantiate(prefab,
+            new Vector3(
+                gameObject.transform.position.x + 0.3f,
+                gameObject.transform.position.y,
+                gameObject.transform.position.z),
+            gameObject.transform.rotation,
+            sceneRoot.transform);
     }
 }
