@@ -662,7 +662,7 @@ SolARHololens2ResearchMode researchMode;
 
         public void StartSensorsCapture()
         {
-            if (fetchFramesThread == null)
+            if (fetchFramesThread == null || !fetchFramesThread.IsAlive)
             {
                 fetchFramesThread = new Thread(FetchAndSendFramesThread);
                 fetchFramesThread.Start();
@@ -671,7 +671,7 @@ SolARHololens2ResearchMode researchMode;
 
         public void StopSensorsCapture()
         {
-            if (stopFrameSendingThread == null)
+            if (stopFrameSendingThread == null || !stopFrameSendingThread.IsAlive)
             {
                 stopFrameSendingThread = new Thread(StopSensorsCaptureThread);
                 stopFrameSendingThread.Start();
