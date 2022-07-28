@@ -355,7 +355,7 @@ namespace Com.Bcom.Solar.Gprc
                 var client = new SolARMappingAndRelocalizationProxyClient(newChannel);
 
                 pool.Add(
-                    new SolARMappingAndRelocalizationProxyClient(newChannel),
+                    client,
                     new ClientInfo()
                     {
                         channel = newChannel,
@@ -898,7 +898,6 @@ namespace Com.Bcom.Solar.Gprc
                 {
                     return new ResultStatus(false, "Cannot call SendMessage(): no gRPC client available");
                 }
-
 
                 client.SendMessage(
                     new Message { Message_ = message},
