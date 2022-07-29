@@ -1,5 +1,7 @@
 # Release Notes
 
+## v0.10.0
+
 ## v0.9.0
 * Add support for stereo-based mapping using VLC cameras LEFT_FRONT and RIGHT_FRONT.
 * Add visual indications for tracking loss.
