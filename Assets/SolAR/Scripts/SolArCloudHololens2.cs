@@ -854,6 +854,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
 #if ENABLE_WINMD_SUPPORT
 			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
+                ts = ts / TimeSpan.TicksPerMillisecond;
 #endif
                 if (vclBufferData == null)
                 {
@@ -920,6 +921,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 byte[] frameTexture = null;
 #if ENABLE_WINMD_SUPPORT
 			    frameTexture = researchMode.GetPvData(out _timestamp, out _PVtoWorldtransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
+                _timestamp = _timestamp / TimeSpan.TicksPerMillisecond;
 #endif
                 if (frameTexture == null)
                 {
