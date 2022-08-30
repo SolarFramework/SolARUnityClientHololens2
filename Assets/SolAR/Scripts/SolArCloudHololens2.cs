@@ -662,7 +662,7 @@ SolARHololens2ResearchMode researchMode;
 
         public void StartSensorsCapture()
         {
-            if (fetchFramesThread == null)
+            if (fetchFramesThread == null || !fetchFramesThread.IsAlive)
             {
                 fetchFramesThread = new Thread(FetchAndSendFramesThread);
                 fetchFramesThread.Start();
@@ -671,7 +671,7 @@ SolARHololens2ResearchMode researchMode;
 
         public void StopSensorsCapture()
         {
-            if (stopFrameSendingThread == null)
+            if (stopFrameSendingThread == null || !stopFrameSendingThread.IsAlive)
             {
                 stopFrameSendingThread = new Thread(StopSensorsCaptureThread);
                 stopFrameSendingThread.Start();
@@ -1057,33 +1057,33 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 stopFrameSendingThread = null;
             }
 
-            // Parse service URL
-            string _frontEndIp = frontendIp;
-            int _frontendBasePort = frontendBasePort;
-
-            string[] splittedString = frontendIp.Split(':');
-            if (splittedString.Length > 2)
-            {
-                _frontEndIp = frontendIp.Substring(0, frontendIp.LastIndexOf(':'));
-
-                if (!Int32.TryParse(frontendIp.Substring(frontendIp.LastIndexOf(':') + 1), out _frontendBasePort))
-                {
-                    NotifyOnUnityAppError("Ill-formed URL: '" + frontendIp + "'");
-                    // best effort
-                    _frontendBasePort = frontendBasePort;
-                }
-            }
-
-            // New instance to force creation of new reusable channels and clients with potentially a different address
-            relocAndMappingProxy = new SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.Builder()
-                                    .SetServiceAddress(_frontEndIp)
-                                    .SetPortBase(_frontendBasePort)
-                                    .SetClientPoolSize(advancedGrpcSettings.channelPoolSize)
-                                    .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
-                                    // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
-                                    .Build();
             try
             {
+
+                // Check service URL format
+                // Warning: only checks IP v4 address (only 2 colons possible, protocol and port)
+                // TODO(jmhenaff): handle IP v6
+                Uri uri = new Uri(frontendIp.Split(':').Length > 2 ? frontendIp : frontendIp + ":" + frontendBasePort);
+
+                // Warning: only allows IP address, not textual domain names. This is to avoid a bug
+                // with gRPC calls with addresses like "xxx.xxx.xxx." which seems to take a lot of resource
+                // even after the deadline has expired and the client has been deleted in the manager.
+                // TODO(jmhenaff): find a way to allow any well formed URLs without the aforementioned issue.
+                System.Net.IPAddress.Parse(uri.Host);
+
+                int _frontendBasePort = uri.Port;
+                string _frontEndIp = uri.GetComponents(UriComponents.SchemeAndServer & ~UriComponents.Port, UriFormat.UriEscaped);
+
+                // New instance to force creation of new reusable channels and clients with potentially a different address
+                relocAndMappingProxy = new SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.Builder()
+                                        .SetServiceAddress(_frontEndIp)
+                                        .SetPortBase(_frontendBasePort)
+                                        .SetClientPoolSize(advancedGrpcSettings.channelPoolSize)
+                                        .UseUniquePortNumber(advancedGrpcSettings.useUniquePort)
+                                        // .SetRelocAndMappingRequestIntervalMs(advancedGrpcSettings.delayBetweenFramesInMs)
+                                        .Build();
+
+
                 rpcAvailable = TestRpcConnection();
 
                 if (!rpcAvailable)

@@ -1,7 +1,11 @@
 # Release Notes
 
+## v0.10.0
+
 ## v0.9.0
 * Add support for stereo-based mapping using VLC cameras LEFT_FRONT and RIGHT_FRONT.
+* Add visual indications for tracking loss.
+* Add menu with a collection of objects to build a persitent AR scene.
 
 ## v0.8.0
 * Performance: move heavy processing (start/stop) outside of UI/main thread.
