@@ -1179,6 +1179,9 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.FrameSender relocAndMappingFrameSender =
                         relocAndMappingProxy.BuildFrameSender(relocAndMappingResultReceived, SentFrame);
 
+                    // Set mono or stereo mode at frame sender level
+                    relocAndMappingFrameSender.setStereoMode(selectedSensor == Hl2SensorTypeEditor.STEREO);
+
                     // Fetch frames image buffers and poses
                     if (enabledSensors[Hl2SensorType.PV])
                     {

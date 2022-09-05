@@ -64,12 +64,19 @@ namespace Com.Bcom.Solar.Gprc
 
             private Action<long> frameSentCallback;
 
+            private bool stereoMode = false;
+
             public FrameSender(SolARMappingAndRelocalizationGrpcProxyManager manager,
                 Action<RelocAndMappingResult> poseReceivedCallback, Action<long> frameSentCallback)
             {
                 this.manager = manager;
                 this.poseReceivedCallback = poseReceivedCallback;
                 this.frameSentCallback = frameSentCallback;
+            }
+
+            public void setStereoMode(bool mode)
+            {
+                stereoMode = mode;
             }
 
             private byte[] encodeToPNG(UInt32 width, UInt32 height, ImageLayout imLayout, byte[] originalImage)
@@ -239,6 +246,14 @@ namespace Com.Bcom.Solar.Gprc
                             {
                                 result = new RelocAndMappingResult(
                                     new ResultStatus(true, "No frame to send"),
+                                    null);
+                                return;
+                            }
+
+                            if ((stereoMode) && (frames.Frames_.Count != 2))
+                            {
+                                result = new RelocAndMappingResult(
+                                    new ResultStatus(true, "Stereo mode: not enough images to send"),
                                     null);
                                 return;
                             }
