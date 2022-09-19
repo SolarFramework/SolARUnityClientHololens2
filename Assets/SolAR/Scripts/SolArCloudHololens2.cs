@@ -858,13 +858,13 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 #endif
                 if (vclBufferData == null)
                 {
-                    // Error(ErrorKind.PLUGIN, "VLC buffer is null");
+                    Error(ErrorKind.PLUGIN, "VLC buffer is null");
                     return;
                 }
 
                 if (vclBufferData.Length == 0)
                 {
-                    // Error(ErrorKind.PLUGIN, "VLC buffer is empty");
+                    Error(ErrorKind.PLUGIN, "VLC buffer is empty");
                     return;
                 }
 
