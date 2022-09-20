@@ -14,17 +14,32 @@
  * limitations under the License.
  */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 using TMPro;
+using Bcom.Solar;
 
 public class VersionGetter : MonoBehaviour
 {
+    public SolArCloudHololens2 solArCloudHololens2;
+
     void Start()
     {
-        gameObject.GetComponent<TextMeshPro>().text = "v." + Application.version;
+        if (solArCloudHololens2.selectedSensor == SolArCloudHololens2.Hl2SensorTypeEditor.PV)
+        {
+            gameObject.GetComponent<TextMeshPro>().text = "v." + Application.version + " (RGB front camera)";
+        }
+        else if (solArCloudHololens2.selectedSensor == SolArCloudHololens2.Hl2SensorTypeEditor.RM_LEFT_FRONT)
+        {
+            gameObject.GetComponent<TextMeshPro>().text = "v." + Application.version + " (left front camera)";
+        }
+        else if (solArCloudHololens2.selectedSensor == SolArCloudHololens2.Hl2SensorTypeEditor.STEREO)
+        {
+            gameObject.GetComponent<TextMeshPro>().text = "v." + Application.version + " (left front + right front cameras)";
+        }
+        else
+        {
+            gameObject.GetComponent<TextMeshPro>().text = "v." + Application.version;
+        }
     }
-
 }
