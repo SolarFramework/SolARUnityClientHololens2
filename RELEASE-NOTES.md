@@ -1,6 +1,7 @@
 # Release Notes
 
 ## v0.10.0
+* Add a console prefab to be able to log error messages
 
 ## v0.9.0
 * Add support for stereo-based mapping using VLC cameras LEFT_FRONT and RIGHT_FRONT.
