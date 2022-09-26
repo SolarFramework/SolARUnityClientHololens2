@@ -1,4 +1,5 @@
 # Release Notes
+## v0.11.0
 
 ## v0.10.0
 * Add a console prefab to be able to log error messages
