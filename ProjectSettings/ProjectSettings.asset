@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: bcom
-  productName: DevSolARHololens2
+  productName: SolARHololens2
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -790,7 +790,7 @@ PlayerSettings:
     WSA: 3
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: DevSolARDemo
+  metroPackageName: SolARDemo
   metroPackageVersion: 0.10.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
@@ -812,7 +812,7 @@ PlayerSettings:
     2228424: Assets/SolAR/Demos/Objects/solarLogo_620x620.png
     2293860: Assets/SolAR/Demos/Objects/solarLogo_310x150.png
     2293960: Assets/SolAR/Demos/Objects/solarLogo_620x300.png
-  metroTileShortName: DevSolARHololens2
+  metroTileShortName: SolARHololens2
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -838,8 +838,8 @@ PlayerSettings:
       PrivateNetworkClientServer: True
       InternetClientServer: True
       VideosLibrary: False
+      BackgroundMediaPlayback: False
       Objects3D: False
-      Proximity: False
       RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
@@ -861,9 +861,9 @@ PlayerSettings:
       PointOfService: False
       RecordedCallsFolder: False
       Contacts: False
+      Proximity: False
       InternetClient: True
       CodeGeneration: False
-      BackgroundMediaPlayback: False
       EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
