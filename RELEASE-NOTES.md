@@ -1,6 +1,8 @@
 # Release Notes
 
 ## v0.10.0
+* Display selected selected camera or whether stereo mode is active.
+* Delete obsolete files.
 
 ## v0.9.0
 * Add support for stereo-based mapping using VLC cameras LEFT_FRONT and RIGHT_FRONT.
