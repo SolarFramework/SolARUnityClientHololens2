@@ -836,7 +836,6 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 	            width = (int)researchMode.GetVlcWidth(sensorType);
 	            height = (int)researchMode.GetVlcHeight(sensorType);
 #endif
-
                 if (width <= 0 || height <= 0)
                 {
                     Error(ErrorKind.PLUGIN, "No value retrieved for VLC buffer width and/or height (w:" + width + ", h: " + height + ")");
