@@ -56,6 +56,7 @@ namespace Com.Bcom.Solar.Gprc {
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.PipelineModeValue> __Marshaller_com_bcom_solar_gprc_PipelineModeValue = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Empty> __Marshaller_com_bcom_solar_gprc_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Empty.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.CameraParameters> __Marshaller_com_bcom_solar_gprc_CameraParameters = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.CameraParameters.Parser));
+    static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.CameraParametersStereo> __Marshaller_com_bcom_solar_gprc_CameraParametersStereo = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.CameraParametersStereo.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.RectificationParameters> __Marshaller_com_bcom_solar_gprc_RectificationParameters = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Frames> __Marshaller_com_bcom_solar_gprc_Frames = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Frames.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.RelocalizationResult> __Marshaller_com_bcom_solar_gprc_RelocalizationResult = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser));
@@ -87,6 +88,13 @@ namespace Com.Bcom.Solar.Gprc {
         __ServiceName,
         "SetCameraParameters",
         __Marshaller_com_bcom_solar_gprc_CameraParameters,
+        __Marshaller_com_bcom_solar_gprc_Empty);
+
+    static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.CameraParametersStereo, global::Com.Bcom.Solar.Gprc.Empty> __Method_SetCameraParametersStereo = new grpc::Method<global::Com.Bcom.Solar.Gprc.CameraParametersStereo, global::Com.Bcom.Solar.Gprc.Empty>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SetCameraParametersStereo",
+        __Marshaller_com_bcom_solar_gprc_CameraParametersStereo,
         __Marshaller_com_bcom_solar_gprc_Empty);
 
     static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.RectificationParameters, global::Com.Bcom.Solar.Gprc.Empty> __Method_setRectificationParameters = new grpc::Method<global::Com.Bcom.Solar.Gprc.RectificationParameters, global::Com.Bcom.Solar.Gprc.Empty>(
@@ -150,6 +158,11 @@ namespace Com.Bcom.Solar.Gprc {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Com.Bcom.Solar.Gprc.Empty> SetCameraParameters(global::Com.Bcom.Solar.Gprc.CameraParameters request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Com.Bcom.Solar.Gprc.Empty> SetCameraParametersStereo(global::Com.Bcom.Solar.Gprc.CameraParametersStereo request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -268,6 +281,22 @@ namespace Com.Bcom.Solar.Gprc {
       {
         return CallInvoker.AsyncUnaryCall(__Method_SetCameraParameters, null, options, request);
       }
+      public virtual global::Com.Bcom.Solar.Gprc.Empty SetCameraParametersStereo(global::Com.Bcom.Solar.Gprc.CameraParametersStereo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetCameraParametersStereo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Com.Bcom.Solar.Gprc.Empty SetCameraParametersStereo(global::Com.Bcom.Solar.Gprc.CameraParametersStereo request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetCameraParametersStereo, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.Empty> SetCameraParametersStereoAsync(global::Com.Bcom.Solar.Gprc.CameraParametersStereo request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetCameraParametersStereoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.Empty> SetCameraParametersStereoAsync(global::Com.Bcom.Solar.Gprc.CameraParametersStereo request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetCameraParametersStereo, null, options, request);
+      }
       public virtual global::Com.Bcom.Solar.Gprc.Empty setRectificationParameters(global::Com.Bcom.Solar.Gprc.RectificationParameters request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return setRectificationParameters(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -364,6 +393,7 @@ namespace Com.Bcom.Solar.Gprc {
           .AddMethod(__Method_Start, serviceImpl.Start)
           .AddMethod(__Method_Stop, serviceImpl.Stop)
           .AddMethod(__Method_SetCameraParameters, serviceImpl.SetCameraParameters)
+          .AddMethod(__Method_SetCameraParametersStereo, serviceImpl.SetCameraParametersStereo)
           .AddMethod(__Method_setRectificationParameters, serviceImpl.setRectificationParameters)
           .AddMethod(__Method_RelocalizeAndMap, serviceImpl.RelocalizeAndMap)
           .AddMethod(__Method_Get3DTransform, serviceImpl.Get3DTransform)
@@ -381,6 +411,7 @@ namespace Com.Bcom.Solar.Gprc {
       serviceBinder.AddMethod(__Method_Start, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Start));
       serviceBinder.AddMethod(__Method_Stop, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Stop));
       serviceBinder.AddMethod(__Method_SetCameraParameters, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.CameraParameters, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.SetCameraParameters));
+      serviceBinder.AddMethod(__Method_SetCameraParametersStereo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.CameraParametersStereo, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.SetCameraParametersStereo));
       serviceBinder.AddMethod(__Method_setRectificationParameters, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.RectificationParameters, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.setRectificationParameters));
       serviceBinder.AddMethod(__Method_RelocalizeAndMap, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Frames, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(serviceImpl.RelocalizeAndMap));
       serviceBinder.AddMethod(__Method_Get3DTransform, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(serviceImpl.Get3DTransform));

@@ -619,6 +619,93 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
+        public ResultStatus SetCameraParametersStereo(string camName1, uint camId1, CameraType camType1,
+            uint width1, uint height1, double[] intrisincs1, float distortion1_k1, float distortion1_k2,
+            float distortion1_p1, float distortion1_p2, float distortion1_k3,
+            string camName2, uint camId2, CameraType camType2,
+            uint width2, uint height2, double[] intrisincs2, float distortion2_k1, float distortion2_k2,
+            float distortion2_p1, float distortion2_p2, float distortion2_k3)
+        {
+            SolARMappingAndRelocalizationProxyClient client = null;
+            try
+            {
+                client = clientPool.GetClient();
+                if (client == null)
+                {
+                    return new ResultStatus(false, "Cannot call SetCameraParametersStereo(): no gRPC client available");
+                }
+
+                client.SetCameraParametersStereo(new CameraParametersStereo
+                {
+                    Name1 = camName1,
+                    Id1 = camId1,
+                    CameraType1 = camType1,
+                    Width1 = width1,
+                    Height1 = height1,
+                    Intrinsics1 = new Matrix3x3
+                    {
+                        M11 = (float)intrisincs1[0],
+                        M12 = (float)intrisincs1[1],
+                        M13 = (float)intrisincs1[2],
+
+                        M21 = (float)intrisincs1[3],
+                        M22 = (float)intrisincs1[4],
+                        M23 = (float)intrisincs1[5],
+
+                        M31 = (float)intrisincs1[6],
+                        M32 = (float)intrisincs1[7],
+                        M33 = (float)intrisincs1[8]
+                    },
+                    Distortion1 = new CameraDistortion
+                    {
+                        K1 = distortion1_k1,
+                        K2 = distortion1_k2,
+                        P1 = distortion1_p1,
+                        P2 = distortion1_p2,
+                        K3 = distortion1_k3
+                    },
+                    Name2 = camName2,
+                    Id2 = camId2,
+                    CameraType2 = camType2,
+                    Width2 = width2,
+                    Height2 = height2,
+                    Intrinsics2 = new Matrix3x3
+                    {
+                        M11 = (float)intrisincs2[0],
+                        M12 = (float)intrisincs2[1],
+                        M13 = (float)intrisincs2[2],
+
+                        M21 = (float)intrisincs2[3],
+                        M22 = (float)intrisincs2[4],
+                        M23 = (float)intrisincs2[5],
+
+                        M31 = (float)intrisincs2[6],
+                        M32 = (float)intrisincs2[7],
+                        M33 = (float)intrisincs2[8]
+                    },
+                    Distortion2 = new CameraDistortion
+                    {
+                        K1 = distortion2_k1,
+                        K2 = distortion2_k2,
+                        P1 = distortion2_p1,
+                        P2 = distortion2_p2,
+                        K3 = distortion2_k3
+                    }
+                },
+                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+
+                clientPool.ReleaseClient(client);
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                clientPool.DeleteClient(client);
+                return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::Stop(): Error: "
+                    + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);
+            }
+
+            return SUCCESS;
+        }
+
         public ResultStatus setRectificationParameters(CameraRectification leftCamRectParams,
                                                        CameraRectification rightCamRectParams )
         {

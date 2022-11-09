@@ -175,6 +175,24 @@ SolARHololens2ResearchMode researchMode;
             distK3 = 0.0
         };
 
+        private CameraParameters rightFrontDefaultParameters = new CameraParameters()
+        {
+            name = "RIGHT_FRONT",
+            id = 1,
+            type = SolARRpc.CameraType.Gray,
+            width = 640,
+            height = 480,
+            focalX = 366.189453125,
+            focalY = 366.47808837890625,
+            centerX = 320.0,
+            centerY = 240.0,
+            distK1 = -0.009463000111281872,
+            distK2 = 0.0030129998922348022,
+            distP1 = -0.0061690001748502254,
+            distP2 = -0.008975000120699406,
+            distK3 = 0.0
+        };
+
         public struct RotationMatrix
         {
             public float m00;
@@ -1099,33 +1117,77 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     throw new Exception();
                 }
 
-                res = relocAndMappingProxy.SetCameraParameters(
-                    selectedCameraParameter.name,
-                    selectedCameraParameter.id,
-                    selectedCameraParameter.type,
-                    selectedCameraParameter.width,
-                    selectedCameraParameter.height,
-                    new double[]
-                    {
-                            selectedCameraParameter.focalX, 0, selectedCameraParameter.centerX,
-                            0, selectedCameraParameter.focalY, selectedCameraParameter.centerY,
-                            0, 0, 1
-                    },
-                    (float)selectedCameraParameter.distK1,
-                    (float)selectedCameraParameter.distK2,
-                    (float)selectedCameraParameter.distP1,
-                    (float)selectedCameraParameter.distP2,
-                    (float)selectedCameraParameter.distK3);
-
-                if (!res.success)
+                // Mono camera mode
+                if ((selectedSensor == Hl2SensorTypeEditor.PV) || (selectedSensor == Hl2SensorTypeEditor.RM_LEFT_FRONT))
                 {
-                    Error(ErrorKind.GRPC, res.errMessage);
-                    throw new Exception();
+                    res = relocAndMappingProxy.SetCameraParameters(
+                        selectedCameraParameter.name,
+                        selectedCameraParameter.id,
+                        selectedCameraParameter.type,
+                        selectedCameraParameter.width,
+                        selectedCameraParameter.height,
+                        new double[]
+                        {
+                                selectedCameraParameter.focalX, 0, selectedCameraParameter.centerX,
+                                0, selectedCameraParameter.focalY, selectedCameraParameter.centerY,
+                                0, 0, 1
+                        },
+                        (float)selectedCameraParameter.distK1,
+                        (float)selectedCameraParameter.distK2,
+                        (float)selectedCameraParameter.distP1,
+                        (float)selectedCameraParameter.distP2,
+                        (float)selectedCameraParameter.distK3);
+
+                    if (!res.success)
+                    {
+                        Error(ErrorKind.GRPC, res.errMessage);
+                        throw new Exception();
+                    }
                 }
 
-                // Stereo mode => set rectification parameters for each camera
+                // Stereo camera mode => set rectification parameters for each camera
                 if (selectedSensor == Hl2SensorTypeEditor.STEREO)
                 {
+                    res = relocAndMappingProxy.SetCameraParametersStereo(
+                        leftFrontDefaultParameters.name,
+                        leftFrontDefaultParameters.id,
+                        leftFrontDefaultParameters.type,
+                        leftFrontDefaultParameters.width,
+                        leftFrontDefaultParameters.height,
+                        new double[]
+                        {
+                                leftFrontDefaultParameters.focalX, 0, leftFrontDefaultParameters.centerX,
+                                0, leftFrontDefaultParameters.focalY, leftFrontDefaultParameters.centerY,
+                                0, 0, 1
+                        },
+                        (float)leftFrontDefaultParameters.distK1,
+                        (float)leftFrontDefaultParameters.distK2,
+                        (float)leftFrontDefaultParameters.distP1,
+                        (float)leftFrontDefaultParameters.distP2,
+                        (float)leftFrontDefaultParameters.distK3,
+                        rightFrontDefaultParameters.name,
+                        rightFrontDefaultParameters.id,
+                        rightFrontDefaultParameters.type,
+                        rightFrontDefaultParameters.width,
+                        rightFrontDefaultParameters.height,
+                        new double[]
+                        {
+                                rightFrontDefaultParameters.focalX, 0, rightFrontDefaultParameters.centerX,
+                                0, rightFrontDefaultParameters.focalY, rightFrontDefaultParameters.centerY,
+                                0, 0, 1
+                        },
+                        (float)rightFrontDefaultParameters.distK1,
+                        (float)rightFrontDefaultParameters.distK2,
+                        (float)rightFrontDefaultParameters.distP1,
+                        (float)rightFrontDefaultParameters.distP2,
+                        (float)rightFrontDefaultParameters.distK3);
+
+                    if (!res.success)
+                    {
+                        Error(ErrorKind.GRPC, res.errMessage);
+                        throw new Exception();
+                    }
+
                     res = relocAndMappingProxy.setRectificationParameters(leftFrontDefaultRectification,
                         rightFrontDefaultRectification);
 
