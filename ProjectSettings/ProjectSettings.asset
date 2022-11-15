@@ -128,8 +128,25 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.7.0
+  bundleVersion: 0.10.0
   preloadedAssets:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -284,7 +301,6 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 8098013011867456620, guid: 892250fbfc1442f49a66d62b6c348e31, type: 2}
   - {fileID: 2256912601668067897, guid: bc86b981421586743bee1b33317fbc8a, type: 2}
-  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -775,7 +791,7 @@ PlayerSettings:
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: SolARDemo
-  metroPackageVersion: 0.7.0.0
+  metroPackageVersion: 0.10.0.0
   metroCertificatePath: Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
@@ -796,7 +812,7 @@ PlayerSettings:
     2228424: Assets/SolAR/Demos/Objects/solarLogo_620x620.png
     2293860: Assets/SolAR/Demos/Objects/solarLogo_310x150.png
     2293960: Assets/SolAR/Demos/Objects/solarLogo_620x300.png
-  metroTileShortName: DevSolARHololens2
+  metroTileShortName: SolARHololens2
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
@@ -822,6 +838,9 @@ PlayerSettings:
       PrivateNetworkClientServer: True
       InternetClientServer: True
       VideosLibrary: False
+      BackgroundMediaPlayback: False
+      Objects3D: False
+      RemoteSystem: False
       BlockedChatMessages: False
       PhoneCall: False
       UserDataTasks: False
@@ -843,8 +862,9 @@ PlayerSettings:
       RecordedCallsFolder: False
       Contacts: False
       Proximity: False
+      InternetClient: True
       CodeGeneration: False
-      BackgroundMediaPlayback: False
+      EnterpriseAuthentication: False
   metroTargetDeviceFamilies:
     Desktop: False
     Holographic: True

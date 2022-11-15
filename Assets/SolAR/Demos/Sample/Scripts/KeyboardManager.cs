@@ -19,17 +19,21 @@ using UnityEngine;
 using TMPro;
 using Bcom.Solar;
 
+using Microsoft.MixedReality.Toolkit.Experimental.UI;
+
 public class KeyboardManager : MonoBehaviour
 {
     public SolArCloudHololens2 solArCloudHololens2;
-    public TextMeshPro ipText;
+
+    public GameObject mRKeyboardPreview;
+    public MixedRealityKeyboardPreview mRKeyboardPreviewScript;
 
     private TouchScreenKeyboard keyboard;
 
     void Start()
     {
-        ipText.text = solArCloudHololens2.frontendIp;
-        ipText.GetComponent<MeshRenderer>().enabled = false;
+        mRKeyboardPreviewScript.Text = solArCloudHololens2.frontendIp;
+        mRKeyboardPreview.SetActive(false);
     }
 
     void Update()
@@ -38,16 +42,15 @@ public class KeyboardManager : MonoBehaviour
         {
             if (keyboard.status == TouchScreenKeyboard.Status.Visible)
             {
-                ipText.GetComponent<MeshRenderer>().enabled = true;
+                mRKeyboardPreview.SetActive(true);
                 solArCloudHololens2.frontendIp = keyboard.text;
             }
             else
             {
-                ipText.GetComponent<MeshRenderer>().enabled = false;
+                mRKeyboardPreview.SetActive(false);
             }
         }
-
-        ipText.text = solArCloudHololens2.frontendIp;
+        mRKeyboardPreviewScript.Text = solArCloudHololens2.frontendIp;
     }
 
     public void OpenKeyboardForIp()
