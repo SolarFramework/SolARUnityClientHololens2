@@ -64,11 +64,11 @@ namespace Com.Bcom.Solar.Gprc {
             "dBgCIAEoDRIMCgRkYXRhGAMgASgMEjAKBmxheW91dBgEIAEoDjIgLmNvbS5i",
             "Y29tLnNvbGFyLmdwcmMuSW1hZ2VMYXlvdXQSPwoQaW1hZ2VDb21wcmVzc2lv",
             "bhgFIAEoDjIlLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1hZ2VDb21wcmVzc2lv",
-            "biI0CgZGcmFtZXMSKgoGZnJhbWVzGAEgAygLMhouY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5GcmFtZSKaAQoFRnJhbWUSEQoJc2Vuc29yX2lkGAEgASgFEikKBWlt",
-            "YWdlGAIgASgLMhouY29tLmJjb20uc29sYXIuZ3ByYy5JbWFnZRIRCgl0aW1l",
-            "c3RhbXAYAyABKAQSLAoEcG9zZRgEIAEoCzIeLmNvbS5iY29tLnNvbGFyLmdw",
-            "cmMuTWF0cml4NHg0EhIKCmZpeGVkX3Bvc2UYBSABKAgi2wEKCU1hdHJpeDR4",
+            "biJICgZGcmFtZXMSKgoGZnJhbWVzGAEgAygLMhouY29tLmJjb20uc29sYXIu",
+            "Z3ByYy5GcmFtZRISCgpmaXhlZF9wb3NlGAIgASgIIoYBCgVGcmFtZRIRCglz",
+            "ZW5zb3JfaWQYASABKAUSKQoFaW1hZ2UYAiABKAsyGi5jb20uYmNvbS5zb2xh",
+            "ci5ncHJjLkltYWdlEhEKCXRpbWVzdGFtcBgDIAEoBBIsCgRwb3NlGAQgASgL",
+            "Mh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXg0eDQi2wEKCU1hdHJpeDR4",
             "NBILCgNtMTEYASABKAISCwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNt",
             "MTQYBCABKAISCwoDbTIxGAUgASgCEgsKA20yMhgGIAEoAhILCgNtMjMYByAB",
             "KAISCwoDbTI0GAggASgCEgsKA20zMRgJIAEoAhILCgNtMzIYCiABKAISCwoD",
@@ -121,8 +121,8 @@ namespace Com.Bcom.Solar.Gprc {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParameters), global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser, new[]{ "Cam1Rotation", "Cam1Projection", "Cam1StereoType", "Cam1Baseline", "Cam2Rotation", "Cam2Projection", "Cam2StereoType", "Cam2Baseline" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RelocalizationResult), global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser, new[]{ "PoseStatus", "Pose", "Confidence", "MappingStatus" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Image), global::Com.Bcom.Solar.Gprc.Image.Parser, new[]{ "Width", "Height", "Data", "Layout", "ImageCompression" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "Frames_" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frame), global::Com.Bcom.Solar.Gprc.Frame.Parser, new[]{ "SensorId", "Image", "Timestamp", "Pose", "FixedPose" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "Frames_", "FixedPose" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frame), global::Com.Bcom.Solar.Gprc.Frame.Parser, new[]{ "SensorId", "Image", "Timestamp", "Pose" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix4x4), global::Com.Bcom.Solar.Gprc.Matrix4x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34", "M41", "M42", "M43", "M44" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x3), global::Com.Bcom.Solar.Gprc.Matrix3x3.Parser, new[]{ "M11", "M12", "M13", "M21", "M22", "M23", "M31", "M32", "M33" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x4), global::Com.Bcom.Solar.Gprc.Matrix3x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34" }, null, null, null, null)
@@ -3148,6 +3148,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Frames(Frames other) : this() {
       frames_ = other.frames_.Clone();
+      fixedPose_ = other.fixedPose_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3166,6 +3167,17 @@ namespace Com.Bcom.Solar.Gprc {
       get { return frames_; }
     }
 
+    /// <summary>Field number for the "fixed_pose" field.</summary>
+    public const int FixedPoseFieldNumber = 2;
+    private bool fixedPose_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool FixedPose {
+      get { return fixedPose_; }
+      set {
+        fixedPose_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Frames);
@@ -3180,6 +3192,7 @@ namespace Com.Bcom.Solar.Gprc {
         return true;
       }
       if(!frames_.Equals(other.frames_)) return false;
+      if (FixedPose != other.FixedPose) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3187,6 +3200,7 @@ namespace Com.Bcom.Solar.Gprc {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= frames_.GetHashCode();
+      if (FixedPose != false) hash ^= FixedPose.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3204,6 +3218,10 @@ namespace Com.Bcom.Solar.Gprc {
       output.WriteRawMessage(this);
     #else
       frames_.WriteTo(output, _repeated_frames_codec);
+      if (FixedPose != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(FixedPose);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3214,6 +3232,10 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       frames_.WriteTo(ref output, _repeated_frames_codec);
+      if (FixedPose != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(FixedPose);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3224,6 +3246,9 @@ namespace Com.Bcom.Solar.Gprc {
     public int CalculateSize() {
       int size = 0;
       size += frames_.CalculateSize(_repeated_frames_codec);
+      if (FixedPose != false) {
+        size += 1 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3236,6 +3261,9 @@ namespace Com.Bcom.Solar.Gprc {
         return;
       }
       frames_.Add(other.frames_);
+      if (other.FixedPose != false) {
+        FixedPose = other.FixedPose;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3254,6 +3282,10 @@ namespace Com.Bcom.Solar.Gprc {
             frames_.AddEntriesFrom(input, _repeated_frames_codec);
             break;
           }
+          case 16: {
+            FixedPose = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -3270,6 +3302,10 @@ namespace Com.Bcom.Solar.Gprc {
             break;
           case 10: {
             frames_.AddEntriesFrom(ref input, _repeated_frames_codec);
+            break;
+          }
+          case 16: {
+            FixedPose = input.ReadBool();
             break;
           }
         }
@@ -3312,7 +3348,6 @@ namespace Com.Bcom.Solar.Gprc {
       image_ = other.image_ != null ? other.image_.Clone() : null;
       timestamp_ = other.timestamp_;
       pose_ = other.pose_ != null ? other.pose_.Clone() : null;
-      fixedPose_ = other.fixedPose_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3365,17 +3400,6 @@ namespace Com.Bcom.Solar.Gprc {
       }
     }
 
-    /// <summary>Field number for the "fixed_pose" field.</summary>
-    public const int FixedPoseFieldNumber = 5;
-    private bool fixedPose_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool FixedPose {
-      get { return fixedPose_; }
-      set {
-        fixedPose_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Frame);
@@ -3393,7 +3417,6 @@ namespace Com.Bcom.Solar.Gprc {
       if (!object.Equals(Image, other.Image)) return false;
       if (Timestamp != other.Timestamp) return false;
       if (!object.Equals(Pose, other.Pose)) return false;
-      if (FixedPose != other.FixedPose) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3404,7 +3427,6 @@ namespace Com.Bcom.Solar.Gprc {
       if (image_ != null) hash ^= Image.GetHashCode();
       if (Timestamp != 0UL) hash ^= Timestamp.GetHashCode();
       if (pose_ != null) hash ^= Pose.GetHashCode();
-      if (FixedPose != false) hash ^= FixedPose.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3437,10 +3459,6 @@ namespace Com.Bcom.Solar.Gprc {
         output.WriteRawTag(34);
         output.WriteMessage(Pose);
       }
-      if (FixedPose != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(FixedPose);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3466,10 +3484,6 @@ namespace Com.Bcom.Solar.Gprc {
         output.WriteRawTag(34);
         output.WriteMessage(Pose);
       }
-      if (FixedPose != false) {
-        output.WriteRawTag(40);
-        output.WriteBool(FixedPose);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3490,9 +3504,6 @@ namespace Com.Bcom.Solar.Gprc {
       }
       if (pose_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pose);
-      }
-      if (FixedPose != false) {
-        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3522,9 +3533,6 @@ namespace Com.Bcom.Solar.Gprc {
           Pose = new global::Com.Bcom.Solar.Gprc.Matrix4x4();
         }
         Pose.MergeFrom(other.Pose);
-      }
-      if (other.FixedPose != false) {
-        FixedPose = other.FixedPose;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -3562,10 +3570,6 @@ namespace Com.Bcom.Solar.Gprc {
             input.ReadMessage(Pose);
             break;
           }
-          case 40: {
-            FixedPose = input.ReadBool();
-            break;
-          }
         }
       }
     #endif
@@ -3600,10 +3604,6 @@ namespace Com.Bcom.Solar.Gprc {
               Pose = new global::Com.Bcom.Solar.Gprc.Matrix4x4();
             }
             input.ReadMessage(Pose);
-            break;
-          }
-          case 40: {
-            FixedPose = input.ReadBool();
             break;
           }
         }
