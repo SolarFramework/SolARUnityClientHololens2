@@ -60,6 +60,7 @@ namespace Com.Bcom.Solar.Gprc {
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.RectificationParameters> __Marshaller_com_bcom_solar_gprc_RectificationParameters = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Frames> __Marshaller_com_bcom_solar_gprc_Frames = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Frames.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.RelocalizationResult> __Marshaller_com_bcom_solar_gprc_RelocalizationResult = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser));
+    static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.GroundTruthFrames> __Marshaller_com_bcom_solar_gprc_GroundTruthFrames = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.GroundTruthFrames.Parser));
     static readonly grpc::Marshaller<global::Com.Bcom.Solar.Gprc.Message> __Marshaller_com_bcom_solar_gprc_Message = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Com.Bcom.Solar.Gprc.Message.Parser));
 
     static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.PipelineModeValue, global::Com.Bcom.Solar.Gprc.Empty> __Method_Init = new grpc::Method<global::Com.Bcom.Solar.Gprc.PipelineModeValue, global::Com.Bcom.Solar.Gprc.Empty>(
@@ -109,6 +110,13 @@ namespace Com.Bcom.Solar.Gprc {
         __ServiceName,
         "RelocalizeAndMap",
         __Marshaller_com_bcom_solar_gprc_Frames,
+        __Marshaller_com_bcom_solar_gprc_RelocalizationResult);
+
+    static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.GroundTruthFrames, global::Com.Bcom.Solar.Gprc.RelocalizationResult> __Method_RelocalizeAndMapGroundTruth = new grpc::Method<global::Com.Bcom.Solar.Gprc.GroundTruthFrames, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RelocalizeAndMapGroundTruth",
+        __Marshaller_com_bcom_solar_gprc_GroundTruthFrames,
         __Marshaller_com_bcom_solar_gprc_RelocalizationResult);
 
     static readonly grpc::Method<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.RelocalizationResult> __Method_Get3DTransform = new grpc::Method<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(
@@ -173,6 +181,11 @@ namespace Com.Bcom.Solar.Gprc {
       }
 
       public virtual global::System.Threading.Tasks.Task<global::Com.Bcom.Solar.Gprc.RelocalizationResult> RelocalizeAndMap(global::Com.Bcom.Solar.Gprc.Frames request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      public virtual global::System.Threading.Tasks.Task<global::Com.Bcom.Solar.Gprc.RelocalizationResult> RelocalizeAndMapGroundTruth(global::Com.Bcom.Solar.Gprc.GroundTruthFrames request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -329,6 +342,22 @@ namespace Com.Bcom.Solar.Gprc {
       {
         return CallInvoker.AsyncUnaryCall(__Method_RelocalizeAndMap, null, options, request);
       }
+      public virtual global::Com.Bcom.Solar.Gprc.RelocalizationResult RelocalizeAndMapGroundTruth(global::Com.Bcom.Solar.Gprc.GroundTruthFrames request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RelocalizeAndMapGroundTruth(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual global::Com.Bcom.Solar.Gprc.RelocalizationResult RelocalizeAndMapGroundTruth(global::Com.Bcom.Solar.Gprc.GroundTruthFrames request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RelocalizeAndMapGroundTruth, null, options, request);
+      }
+      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.RelocalizationResult> RelocalizeAndMapGroundTruthAsync(global::Com.Bcom.Solar.Gprc.GroundTruthFrames request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RelocalizeAndMapGroundTruthAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      public virtual grpc::AsyncUnaryCall<global::Com.Bcom.Solar.Gprc.RelocalizationResult> RelocalizeAndMapGroundTruthAsync(global::Com.Bcom.Solar.Gprc.GroundTruthFrames request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RelocalizeAndMapGroundTruth, null, options, request);
+      }
       public virtual global::Com.Bcom.Solar.Gprc.RelocalizationResult Get3DTransform(global::Com.Bcom.Solar.Gprc.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return Get3DTransform(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -396,6 +425,7 @@ namespace Com.Bcom.Solar.Gprc {
           .AddMethod(__Method_SetCameraParametersStereo, serviceImpl.SetCameraParametersStereo)
           .AddMethod(__Method_setRectificationParameters, serviceImpl.setRectificationParameters)
           .AddMethod(__Method_RelocalizeAndMap, serviceImpl.RelocalizeAndMap)
+          .AddMethod(__Method_RelocalizeAndMapGroundTruth, serviceImpl.RelocalizeAndMapGroundTruth)
           .AddMethod(__Method_Get3DTransform, serviceImpl.Get3DTransform)
           .AddMethod(__Method_Reset, serviceImpl.Reset)
           .AddMethod(__Method_SendMessage, serviceImpl.SendMessage).Build();
@@ -414,6 +444,7 @@ namespace Com.Bcom.Solar.Gprc {
       serviceBinder.AddMethod(__Method_SetCameraParametersStereo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.CameraParametersStereo, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.SetCameraParametersStereo));
       serviceBinder.AddMethod(__Method_setRectificationParameters, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.RectificationParameters, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.setRectificationParameters));
       serviceBinder.AddMethod(__Method_RelocalizeAndMap, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Frames, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(serviceImpl.RelocalizeAndMap));
+      serviceBinder.AddMethod(__Method_RelocalizeAndMapGroundTruth, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.GroundTruthFrames, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(serviceImpl.RelocalizeAndMapGroundTruth));
       serviceBinder.AddMethod(__Method_Get3DTransform, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.RelocalizationResult>(serviceImpl.Get3DTransform));
       serviceBinder.AddMethod(__Method_Reset, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Empty, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.Reset));
       serviceBinder.AddMethod(__Method_SendMessage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Com.Bcom.Solar.Gprc.Message, global::Com.Bcom.Solar.Gprc.Empty>(serviceImpl.SendMessage));

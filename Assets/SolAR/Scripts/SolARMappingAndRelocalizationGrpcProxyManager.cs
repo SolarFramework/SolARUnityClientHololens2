@@ -188,7 +188,6 @@ namespace Com.Bcom.Solar.Gprc
                         M44 = (float)pose[15]
                     }
                 });
-                frames.FixedPose = false;
             }
 
             // TODO(jmhenaff): use void return type ? (all could be handled via the callback method)
