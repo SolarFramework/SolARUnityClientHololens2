@@ -969,6 +969,8 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
         private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         {
+            NotifyOnReceivedPose(result);
+
             if (result.resultStatus.success)
             {
                 // Manage tracking lost icon
@@ -980,9 +982,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 if (result.relocAndMappingResult.PoseStatus == SolARRpc.RelocalizationPoseStatus.NoPose)
                 {
                     return;
-                }
-
-                NotifyOnReceivedPose(result);
+                }                
 
                 if (solarScene != null)
                 {
