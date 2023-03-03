@@ -49,9 +49,27 @@ public class HudMessageManager : MonoBehaviour
             Text t = gameObject.GetComponent<Text>();
             lock (this)
             {
-                t.text = responseStatus;
-                t.text += "\nMapping Status: " + mappingStatus;
-                t.text += "\nPose Status: " + poseStatus;
+                if (mappingStatus != "")
+                {
+                    t.text = "Mapping Status: " + mappingStatus;
+                    t.text += "\nPose Status: " + poseStatus;
+                    
+                    if (mappingStatus == "TrackingLost")
+                        t.color = new Color32( 255, 0, 0, 255);
+                    else
+                        t.color = new Color32(32, 145, 16, 255);
+
+                    /*
+                    t.text = responseStatus;
+                    t.text += "\nMapping Status: " + mappingStatus;
+                    t.text += "\nPose Status: " + poseStatus;
+                    */
+                }
+                else
+                {
+                    t.text = "";
+                }
+
             }
         }
     }
@@ -86,6 +104,8 @@ public class HudMessageManager : MonoBehaviour
         responseStatus = "";
         mappingStatus = "";
         poseStatus = "";
+
+        updateText = true;
     }
 
 }
