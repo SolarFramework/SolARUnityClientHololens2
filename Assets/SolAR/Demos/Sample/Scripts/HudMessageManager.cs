@@ -27,7 +27,6 @@ public class HudMessageManager : MonoBehaviour
 
     private bool updateText;
 
-    private string responseStatus;
     private string mappingStatus;
     private string poseStatus;
 
@@ -59,11 +58,6 @@ public class HudMessageManager : MonoBehaviour
                     else
                         t.color = new Color32(32, 145, 16, 255);
 
-                    /*
-                    t.text = responseStatus;
-                    t.text += "\nMapping Status: " + mappingStatus;
-                    t.text += "\nPose Status: " + poseStatus;
-                    */
                 }
                 else
                 {
@@ -78,8 +72,6 @@ public class HudMessageManager : MonoBehaviour
     {
         lock(this)
         {
-            responseStatus = result.resultStatus.success ? "Success" : "Failure : " + result.resultStatus.errMessage;
-
             switch (result.relocAndMappingResult.MappingStatus)
             {
                 case SolARRpc.MappingStatus.Bootstrap: mappingStatus = "Bootstrap"; break;
@@ -93,7 +85,7 @@ public class HudMessageManager : MonoBehaviour
                 case SolARRpc.RelocalizationPoseStatus.LatestPose: poseStatus = "LastestPose"; break;
                 case SolARRpc.RelocalizationPoseStatus.NewPose: poseStatus = "NewPose"; break;
                 case SolARRpc.RelocalizationPoseStatus.NoPose: poseStatus = "NoPose"; break;
-                default: throw new System.Exception("Unkown mapping status");
+                default: throw new System.Exception("Unkown pose status");
             }
             updateText = true;
         }
@@ -101,7 +93,6 @@ public class HudMessageManager : MonoBehaviour
 
     void OnStop()
     {
-        responseStatus = "";
         mappingStatus = "";
         poseStatus = "";
 
