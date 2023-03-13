@@ -779,6 +779,9 @@ SolARHololens2ResearchMode researchMode;
 #if ENABLE_WINMD_SUPPORT
 		        depthBufferData = researchMode.GetDepthData(out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height);
 #endif
+                // TODO: update native plugin to produce this SolAR timestamp format
+                ts = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (depthBufferData == null)
                 {
                     // Error(ErrorKind.PLUGIN, "Depth buffer is null");
@@ -875,6 +878,10 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
                 ts = ts / TimeSpan.TicksPerMillisecond;
 #endif
+
+                // TODO: update native plugin to produce this SolAR timestamp format
+                ts = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (vclBufferData == null)
                 {
                     Error(ErrorKind.PLUGIN, "VLC buffer is null");
@@ -955,6 +962,9 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 }
 
                 NotifyOnPvFrame(frameTexture, _timestamp, _PVtoWorldtransform, _width, _height, _fx, _fy, _pixelBufferSize);
+
+                // TODO: update native plugin to produce this SolAR timestamp format
+                _timestamp = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
 
                 if (rpcAvailable)
                 {

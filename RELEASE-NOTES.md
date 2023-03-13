@@ -2,6 +2,7 @@
 ## v0.11.0
 * Update SolAR gRPC stubs to support FixedPose
 * Add more info in HUD text field (Mapping/Pose status)
+* Use UTC UNIX timestamps for sent frames
 
 ## v0.10.0
 * Add a console prefab to be able to log error messages
