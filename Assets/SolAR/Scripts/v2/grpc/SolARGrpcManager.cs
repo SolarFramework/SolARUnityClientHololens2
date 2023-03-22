@@ -78,6 +78,7 @@ namespace Com.Bcom.Solar.Gprc
             try
             {
                 await client.UnregisterClientAsync(new ClientUUID { ClientUuid = clientUuid }, deadline: DEADLINE);
+                clientUuid = "";
             }
             catch (Exception e)
             {
@@ -306,6 +307,11 @@ namespace Com.Bcom.Solar.Gprc
             {
                 Interlocked.Increment(ref networkSlots);
             }
+        }
+
+        internal bool IsRegistered()
+        {
+            return clientUuid != "";
         }
 
         async public Task<RelocAndMappingResult> Get3dTransform()
