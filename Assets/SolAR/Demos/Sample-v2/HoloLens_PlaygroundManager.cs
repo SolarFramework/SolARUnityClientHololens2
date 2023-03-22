@@ -7,6 +7,7 @@ using Com.Bcom.Solar;
 public class HoloLens_PlaygroundManager : MonoBehaviour
 {
     public GameObject solARCloudHololens2;
+    public ushort port;
 
     private SolARCloud solARCloud;
     private SolARCloudHololens2Specific solARCloudHololens2Specific;
@@ -18,7 +19,7 @@ public class HoloLens_PlaygroundManager : MonoBehaviour
         var unityTransport = GetComponent<UnityTransport>();
         // Use same ip as SolAR frontend (without http://)
         unityTransport.ConnectionData.Address = solARCloud.frontendIp.Substring(7);
-        unityTransport.ConnectionData.Port = 32767;
+        unityTransport.ConnectionData.Port = port;
         NetworkManager.Singleton.StartClient();
         Debug.Log("Connect to 3D Assets Sync server...");
     }
