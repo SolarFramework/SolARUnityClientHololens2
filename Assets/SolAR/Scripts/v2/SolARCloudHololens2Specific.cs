@@ -134,8 +134,11 @@ namespace Com.Bcom.Solar
 
             solARCloud.OnReceivedPose += RelocAndMappingResultReceived;
 
-            solarScene.SetActive(false);
-            solarSceneInitPose = solarScene.transform.localToWorldMatrix;
+            if (solarScene)
+            {
+                solarScene.SetActive(false);
+                solarSceneInitPose = solarScene.transform.localToWorldMatrix;
+            }
 
             //solARCloud.StartFetchingFrames += StartSensorsCapture;
             //solARCloud.StopFetchingFrames += StopSensorsCapture;
@@ -181,11 +184,20 @@ namespace Com.Bcom.Solar
             if (poseReceived)
             {
                 // Apply corrected pose to scene
-                solarScene.transform.rotation = receivedPoseOrientation;
-                solarScene.transform.position = receivedPosePosition;
-                solarScene.SetActive(true);
+                if (solarScene)
+                {
+                    solarScene.transform.rotation = receivedPoseOrientation;
+                    solarScene.transform.position = receivedPosePosition;
+                    solarScene.SetActive(true);
+                }
                 poseReceived = false;
             }
+        }
+
+        public void SetSolARScene(GameObject scene)
+        {
+            solarScene = scene;
+            solarSceneInitPose = scene.transform.localToWorldMatrix;
         }
 
         public void StartSensorsCapture()
