@@ -106,15 +106,7 @@ namespace Com.Bcom.Solar
 
         private void OnReceivedPoseInternal(RelocAndMappingResult r)
         {
-            try
-            {
-                OnReceivedPose?.Invoke(r);
-            }
-            catch(Exception e)
-            {
-                Log(LogLevel.ERROR, $"SolARCloud.OnReceivedPoseInternal(): {e.Message}");
-            }
-
+            OnReceivedPose?.Invoke(r);
 
             if (r.Result.MappingStatus != mappingStatus)
             {
