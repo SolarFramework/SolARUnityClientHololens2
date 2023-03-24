@@ -50,6 +50,7 @@ namespace Com.Bcom.Solar.Ui
                 else if (mRKeyboardPreview.activeInHierarchy)
                 {
                     mRKeyboardPreview.SetActive(false);
+                    solar.SaveUserPrefs();
                 }
             }
             mRKeyboardPreviewScript.Text = solar.frontendIp;

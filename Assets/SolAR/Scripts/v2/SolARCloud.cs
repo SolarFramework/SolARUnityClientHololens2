@@ -71,13 +71,16 @@ namespace Com.Bcom.Solar
         void Start()
         {
             LoadUserPrefs();
-            //await Connect();
         }
 
-        void OnApplicationQuit()
+        private void OnApplicationFocus(bool focus)
         {
-            SaveUserPrefs();
-            //await Disconnect();
+            if (!focus) SaveUserPrefs();
+        }
+
+        private void OnApplicationPause(bool pause)
+        {
+            if (pause) SaveUserPrefs();
         }
         #endregion // UnityMonoBehaviorLifecycle
 
@@ -362,11 +365,10 @@ namespace Com.Bcom.Solar
             frontendIp = PlayerPrefs.GetString("SolARCloudServicesAddress", frontendIp);
         }
 
-        private async void SaveUserPrefs()
+        public void SaveUserPrefs()
         {
             PlayerPrefs.SetString("SolARCloudServicesAddress", frontendIp);
             PlayerPrefs.Save();
-            await Connect();
         }
 
         #endregion
