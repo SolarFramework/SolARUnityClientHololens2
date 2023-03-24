@@ -103,7 +103,15 @@ namespace Com.Bcom.Solar
 
         private void OnReceivedPoseInternal(RelocAndMappingResult r)
         {
-            OnReceivedPose?.Invoke(r);
+            try
+            {
+                OnReceivedPose?.Invoke(r);
+            }
+            catch(Exception e)
+            {
+                Log(LogLevel.ERROR, $"SolARCloud.OnReceivedPoseInternal(): {e.Message}");
+            }
+
 
             if (r.Result.MappingStatus != mappingStatus)
             {
@@ -160,7 +168,7 @@ namespace Com.Bcom.Solar
         {
             if (started)
             {
-                OnLog?.Invoke( LogLevel.ERROR, "Pipeline mode cannot be changed while running");
+                Log(LogLevel.ERROR, "Pipeline mode cannot be changed while running");
                 return false;
             }
 
