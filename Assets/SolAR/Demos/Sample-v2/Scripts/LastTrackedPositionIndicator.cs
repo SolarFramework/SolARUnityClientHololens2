@@ -16,8 +16,6 @@
 
 using UnityEngine;
 
-using Bcom.Solar;
-
 using SolARRpc = Com.Bcom.Solar.Gprc;
 
 namespace Com.Bcom.Solar.Ui

@@ -1,5 +1,5 @@
 /**
- * @copyright Copyright (c) 2021-2022 B-com http://www.b-com.com/
+ * @copyright Copyright (c) 2021-2023 B-com http://www.b-com.com/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,9 +15,6 @@
  */
 
 using UnityEngine;
-
-using TMPro;
-using Bcom.Solar;
 
 using Microsoft.MixedReality.Toolkit.Experimental.UI;
 
