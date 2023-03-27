@@ -380,13 +380,13 @@ namespace Com.Bcom.Solar
 
                 uint _width = 0;
                 uint _height = 0;
-                uint _pixelBufferSize = 0;
-                float _fx = -1.0f;
-                float _fy = -1.0f;
                 ulong _timestamp = 0;
                 double[] _PVtoWorldtransform = null;
                 byte[] frameTexture = null;
 #if ENABLE_WINMD_SUPPORT
+                uint _pixelBufferSize = 0;
+                float _fx = -1.0f;
+                float _fy = -1.0f;
 			    frameTexture = researchMode.GetPvData(
                     out _timestamp,
                     out _PVtoWorldtransform,
@@ -478,12 +478,12 @@ namespace Com.Bcom.Solar
                 double[] cam2WorldTransform = null; ;
                 uint _width = 0;
                 uint _height = 0;
-                float _fx = -1f;
-                float _fy = -1f;
-                uint _pixelBufferSize = 0;
                 byte[] vclBufferData = null;
 
 #if ENABLE_WINMD_SUPPORT
+                float _fx = -1f;
+                float _fy = -1f;
+                uint _pixelBufferSize = 0;
 			    vclBufferData = researchMode.GetVlcData(
                     sensorType,
                     out ts,
