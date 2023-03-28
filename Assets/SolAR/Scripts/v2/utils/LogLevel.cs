@@ -1,5 +1,5 @@
-/**
- * @copyright Copyright (c) 2021-2023 B-com http://www.b-com.com/
+﻿/**
+ * @copyright Copyright (c) 2023 B-com http://www.b-com.com/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,30 +14,13 @@
  * limitations under the License.
  */
 
-using UnityEngine;
-
-using Microsoft.MixedReality.Toolkit.UI;
-
-
-namespace Com.Bcom.Solar.Ui
+namespace Com.Bcom.Solar
 {
-    public class ResetHandler : MonoBehaviour
+    public enum LogLevel
     {
-        public ButtonConfigHelper buttonConfigHelper;
-        public SolARCloud solar;
-
-        void Start()
-        {
-            solar.OnReset += OnReset;
-        }
-
-        public async void Reset()
-        {
-            await solar.SolARReset();
-        }
-
-        private void OnReset(bool result)
-        {
-        }
+        ERROR,
+        WARNING,
+        INFO,
+        DEBUG
     }
 }

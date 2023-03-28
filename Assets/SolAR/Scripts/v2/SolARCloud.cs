@@ -1,3 +1,19 @@
+/**
+ * @copyright Copyright (c) 2023 B-com http://www.b-com.com/
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
 using System.Threading.Tasks;
 
@@ -70,24 +86,17 @@ namespace Com.Bcom.Solar
         #region UnityMonoBehaviorLifecycle
         void Start()
         {
-            // LoadUserPrefs();
-            Connect();
+            LoadUserPrefs();
         }
 
-        void OnApplicationFocus(bool focus)
+        private void OnApplicationFocus(bool focus)
         {
-            if (!focus)
-            {
-                SaveUserPrefs();
-            }
+            if (!focus) SaveUserPrefs();
         }
 
-        void OnApplicationPause(bool pause)
+        private void OnApplicationPause(bool pause)
         {
-            if (pause)
-            {
-                SaveUserPrefs();
-            }
+            if (pause) SaveUserPrefs();
         }
         #endregion // UnityMonoBehaviorLifecycle
 
@@ -130,24 +139,47 @@ namespace Com.Bcom.Solar
             }
         }
 
-        async public void Connect()
+        async public Task<bool> Connect()
         {
-            await Disconnect();
+            if (!await Disconnect()) return false;
+
             grpc = BuildGrpcManager();
+            var result = await grpc.RegisterClient();
+            if (!result.Success)
+            {
+                Log(LogLevel.ERROR, "Error while registering client: " + result.ErrMessage);
+                return false;
+            }
             grpc.OnResultReceived += OnReceivedPoseInternal;
+            return true;
         }
 
-        async public Task Disconnect()
+        async public Task<bool> Disconnect()
         {
-            if (grpc != null) await grpc.UnRegisterClient();
-            grpc = null;
+            try
+            {
+                if (grpc != null)
+                {
+                    var res = await grpc.UnRegisterClient();
+                    if (!res.Success)
+                    {
+                        Log(LogLevel.ERROR, "Error while registering client: " + res.ErrMessage);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            finally
+            {
+                grpc = null;
+            }
         }
 
         public bool TogglePipelineMode()
         {
             if (started)
             {
-                OnLog?.Invoke( LogLevel.ERROR, "Pipeline mode cannot be changed while running");
+                Log(LogLevel.ERROR, "Pipeline mode cannot be changed while running");
                 return false;
             }
 
@@ -175,30 +207,30 @@ namespace Com.Bcom.Solar
             return true;
         }
 
-        async private Task<bool> SolARRegisterClient()
-        {
-            Debug.Log($"SolARRegisterClient()");
-            var result = await grpc.RegisterClient();
-            Debug.Log($"SolARRegisterClient() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Debug.LogError($"SolARRegisterClient(): {result.ErrMessage}");
-            return result.Success;
-        }
+        //async private Task<bool> SolARRegisterClient()
+        //{
+        //    Debug.Log($"SolARRegisterClient()");
+        //    var result = await grpc.RegisterClient();
+        //    Debug.Log($"SolARRegisterClient() Done ({result.Success}, {result.ErrMessage})");
+        //    if (!result.Success) Debug.LogError($"SolARRegisterClient(): {result.ErrMessage}");
+        //    return result.Success;
+        //}
 
-        async private Task<bool> SolARUnRegisterClient()
-        {
-            Debug.Log($"SolARUnRegisterClient()");
-            var result = await grpc.UnRegisterClient();
-            Debug.Log($"SolARUnRegisterClient() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Debug.LogError($"SolARUnRegisterClient(): {result.ErrMessage}");
-            return result.Success;
-        }
+        //async private Task<bool> SolARUnRegisterClient()
+        //{
+        //    Debug.Log($"SolARUnRegisterClient()");
+        //    var result = await grpc.UnRegisterClient();
+        //    Debug.Log($"SolARUnRegisterClient() Done ({result.Success}, {result.ErrMessage})");
+        //    if (!result.Success) Debug.LogError($"SolARUnRegisterClient(): {result.ErrMessage}");
+        //    return result.Success;
+        //}
 
         async private Task<bool> SolARInit()
         {
-            Debug.Log($"SolARInit()");
-            var result = await grpc.Init();
-            Debug.Log($"SolARInit() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Debug.LogError($"SolARInit(): {result.ErrMessage}");
+            Debug.Log($"SolARInit({pipelineMode})");
+            var result = await grpc.Init(pipelineMode);
+            Debug.Log($"SolARInit({pipelineMode}) Done ({result.Success}, {result.ErrMessage})");
+            if (!result.Success) Debug.LogError($"SolARInit({pipelineMode}): {result.ErrMessage}");
             return result.Success;
         }
 
@@ -277,7 +309,7 @@ namespace Com.Bcom.Solar
 
         async public Task<bool> StartRelocAndMapping(CamParameters cp)
         {
-            if (!await SolARRegisterClient()) return false;
+            // if (!await SolARRegisterClient()) return false;
             if (!await SolARInit()) return false;
             if (!await SolARSetCamParameters(cp)) return false;
             if (!await SolARStart()) return false;
@@ -285,9 +317,10 @@ namespace Com.Bcom.Solar
             return true;
         }
 
-        async public Task<bool> StartRelocAndMapping(CamParameters cp1, CamParameters cp2, CamRectification cr1, CamRectification cr2)
+        async public Task<bool> StartRelocAndMapping(CamParameters cp1,
+            CamParameters cp2,CamRectification cr1, CamRectification cr2)
         {
-            if (!await SolARRegisterClient()) return false;
+            // if (!await SolARRegisterClient()) return false;
             if (!await SolARInit()) return false;
             if (!await SolARSetCamParametersStereo(cp1, cp2)) return false;
             if (!await SolARSetRectificationParameters(cr1, cr2)) return false;
@@ -300,9 +333,14 @@ namespace Com.Bcom.Solar
         {
             bool res = true;
             res = res && await SolARStop();
-            res = res && await SolARUnRegisterClient();
+            // res = res && await SolARUnRegisterClient();
             // StopFetchingFrames?.Invoke();
             return res;
+        }
+
+        public bool Isregistered()
+        {
+            return grpc != null && grpc.IsRegistered();
         }
 
         #endregion // PublicMethods
@@ -334,13 +372,14 @@ namespace Com.Bcom.Solar
         private void LoadUserPrefs()
         {
             frontendIp = PlayerPrefs.GetString("SolARCloudServicesAddress", frontendIp);
+            frontendBasePort = PlayerPrefs.GetInt("SolARCloudServicesPort", frontendBasePort);
         }
 
-        private void SaveUserPrefs()
+        public void SaveUserPrefs()
         {
             PlayerPrefs.SetString("SolARCloudServicesAddress", frontendIp);
+            PlayerPrefs.SetInt("SolARCloudServicesPort", frontendBasePort);
             PlayerPrefs.Save();
-            Connect();
         }
 
         #endregion

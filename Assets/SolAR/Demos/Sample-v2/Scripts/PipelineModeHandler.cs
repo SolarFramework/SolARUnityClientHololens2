@@ -1,5 +1,5 @@
 /**
- * @copyright Copyright (c) 2022 B-com http://www.b-com.com/
+ * @copyright Copyright (c) 2022-2023 B-com http://www.b-com.com/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 using UnityEngine;
 
 using Microsoft.MixedReality.Toolkit.UI;
-using Bcom.Solar;
 
 using SolARRpc = Com.Bcom.Solar.Gprc;
 

@@ -1,5 +1,5 @@
-/**
- * @copyright Copyright (c) 2021-2023 B-com http://www.b-com.com/
+﻿/**
+ * @copyright Copyright (c) 2023 B-com http://www.b-com.com/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,30 +14,24 @@
  * limitations under the License.
  */
 
+using System;
+
 using UnityEngine;
 
-using Microsoft.MixedReality.Toolkit.UI;
-
-
-namespace Com.Bcom.Solar.Ui
+namespace Com.Bcom.Solar
 {
-    public class ResetHandler : MonoBehaviour
+    static class Extensions
     {
-        public ButtonConfigHelper buttonConfigHelper;
-        public SolARCloud solar;
-
-        void Start()
+        public static LogType ToUnityLogType(this LogLevel logLevel)
         {
-            solar.OnReset += OnReset;
-        }
-
-        public async void Reset()
-        {
-            await solar.SolARReset();
-        }
-
-        private void OnReset(bool result)
-        {
+            switch(logLevel)
+            {
+                case LogLevel.ERROR: return LogType.Error;
+                case LogLevel.WARNING: return LogType.Warning;
+                case LogLevel.INFO:
+                case LogLevel.DEBUG: return LogType.Log;
+                default: throw new ArgumentException("Unkown LogLevel value");
+            }
         }
     }
 }

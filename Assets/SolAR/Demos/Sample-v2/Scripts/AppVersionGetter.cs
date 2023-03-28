@@ -17,7 +17,6 @@
 using UnityEngine;
 
 using TMPro;
-using Bcom.Solar;
 
 using hl2sensor = Com.Bcom.Solar.SolARCloudHololens2Specific.Hl2SensorType;
 

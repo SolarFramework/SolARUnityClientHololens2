@@ -16,8 +16,6 @@
 
 using UnityEngine;
 
-using Bcom.Solar;
-
 using SolARRpc = Com.Bcom.Solar.Gprc;
 
 namespace Com.Bcom.Solar.Ui
@@ -32,15 +30,15 @@ namespace Com.Bcom.Solar.Ui
         void Start()
         {
             solar.OnMappingStatusChanged += OnMappingStatusChanged;
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            SetEnableAllComponentsButThis(false);
         }
 
         void Update()
         {
             if (updateIndicator)
             {
-                gameObject.GetComponent<MeshRenderer>().enabled = displayLastTrackedPos;
-                gameObject.GetComponent<MeshRenderer>().transform.position = Camera.main.transform.position;
+                SetEnableAllComponentsButThis(displayLastTrackedPos);
+                transform.position = Camera.main.transform.position;
                 updateIndicator = false;
             }
         }
@@ -49,6 +47,12 @@ namespace Com.Bcom.Solar.Ui
         {
             displayLastTrackedPos = newMappingStatus == SolARRpc.MappingStatus.TrackingLost;
             updateIndicator = true;
+        }
+
+        private void SetEnableAllComponentsButThis(bool enable)
+        {
+            foreach (var c in GetComponents<MonoBehaviour>())
+                if (c != this) c.enabled = enabled;
         }
     }
 }
