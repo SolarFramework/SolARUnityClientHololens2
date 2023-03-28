@@ -227,10 +227,10 @@ namespace Com.Bcom.Solar
 
         async private Task<bool> SolARInit()
         {
-            Debug.Log($"SolARInit()");
-            var result = await grpc.Init();
-            Debug.Log($"SolARInit() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Debug.LogError($"SolARInit(): {result.ErrMessage}");
+            Debug.Log($"SolARInit({pipelineMode})");
+            var result = await grpc.Init(pipelineMode);
+            Debug.Log($"SolARInit({pipelineMode}) Done ({result.Success}, {result.ErrMessage})");
+            if (!result.Success) Debug.LogError($"SolARInit({pipelineMode}): {result.ErrMessage}");
             return result.Success;
         }
 
@@ -317,7 +317,8 @@ namespace Com.Bcom.Solar
             return true;
         }
 
-        async public Task<bool> StartRelocAndMapping(CamParameters cp1, CamParameters cp2, CamRectification cr1, CamRectification cr2)
+        async public Task<bool> StartRelocAndMapping(CamParameters cp1,
+            CamParameters cp2,CamRectification cr1, CamRectification cr2)
         {
             // if (!await SolARRegisterClient()) return false;
             if (!await SolARInit()) return false;
@@ -371,11 +372,13 @@ namespace Com.Bcom.Solar
         private void LoadUserPrefs()
         {
             frontendIp = PlayerPrefs.GetString("SolARCloudServicesAddress", frontendIp);
+            frontendBasePort = PlayerPrefs.GetInt("SolARCloudServicesPort", frontendBasePort);
         }
 
         public void SaveUserPrefs()
         {
             PlayerPrefs.SetString("SolARCloudServicesAddress", frontendIp);
+            PlayerPrefs.SetInt("SolARCloudServicesPort", frontendBasePort);
             PlayerPrefs.Save();
         }
 

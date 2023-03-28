@@ -103,7 +103,7 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
-        async public Task<ResultStatus> Init(PipelineMode pipelineMode = PipelineMode.RelocalizationAndMapping)
+        async public Task<ResultStatus> Init(PipelineMode pipelineMode)
         {
             try
             {
