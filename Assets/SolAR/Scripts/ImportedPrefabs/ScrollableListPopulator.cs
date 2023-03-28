@@ -41,17 +41,8 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         }
 
         [SerializeField]
-        [Tooltip("Number of items to generate")]
-        private int numItems;
-
-        /// <summary>
-        /// Number of items to generate
-        /// </summary>
-        public int NumItems
-        {
-            get { return numItems; }
-            set { numItems = value; }
-        }
+        [Tooltip("Items to generate")]
+        private Bcom.SharedPlayground.PlaygroundPrefabsScriptableObject objectList;
 
         [SerializeField]
         [Tooltip("Demonstrate lazy loading")]
@@ -119,6 +110,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
             {
                 scrollView = GetComponentInChildren<ScrollingObjectCollection>();
             }
+            MakeScrollingList();
         }
 
         public void MakeScrollingList()
@@ -161,46 +153,49 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 
             if (!lazyLoad)
             {
-                for (int i = 0; i < numItems; i++)
+                foreach (Bcom.SharedPlayground.PrefabType prefabType in System.Enum.GetValues(typeof(Bcom.SharedPlayground.PrefabType)))
                 {
-                    MakeItem(dynamicItem);
+                    MakeItem(dynamicItem, prefabType);
                 }
                 scrollView.gameObject.SetActive(true);
                 gridObjectCollection.UpdateCollection();
             }
             else
             {
-                if (loader != null)
-                {
-                    loader.SetActive(true);
-                }
+                // if (loader != null)
+                // {
+                //     loader.SetActive(true);
+                // }
 
-                StartCoroutine(UpdateListOverTime(loader, itemsPerFrame));
+                // StartCoroutine(UpdateListOverTime(loader, itemsPerFrame));
             }
         }
 
-        private IEnumerator UpdateListOverTime(GameObject loaderViz, int instancesPerFrame)
+        // private IEnumerator UpdateListOverTime(GameObject loaderViz, int instancesPerFrame)
+        // {
+        //     for (int currItemCount = 0; currItemCount < numItems; currItemCount++)
+        //     {
+        //         for (int i = 0; i < instancesPerFrame; i++)
+        //         {
+        //             MakeItem(dynamicItem);
+        //         }
+        //         yield return null;
+        //     }
+
+        //     // Now that the list is populated, hide the loader and show the list
+        //     loaderViz.SetActive(false);
+        //     scrollView.gameObject.SetActive(true);
+
+        //     // Finally, manually call UpdateCollection to set up the collection
+        //     gridObjectCollection.UpdateCollection();
+        // }
+
+        private void MakeItem(GameObject prefab, Bcom.SharedPlayground.PrefabType prefabType)
         {
-            for (int currItemCount = 0; currItemCount < numItems; currItemCount++)
-            {
-                for (int i = 0; i < instancesPerFrame; i++)
-                {
-                    MakeItem(dynamicItem);
-                }
-                yield return null;
-            }
-
-            // Now that the list is populated, hide the loader and show the list
-            loaderViz.SetActive(false);
-            scrollView.gameObject.SetActive(true);
-
-            // Finally, manually call UpdateCollection to set up the collection
-            gridObjectCollection.UpdateCollection();
-        }
-
-        private void MakeItem(GameObject item)
-        {
-            GameObject itemInstance = Instantiate(item, gridObjectCollection.transform);
+            GameObject itemInstance = Instantiate(prefab, gridObjectCollection.transform);
+            var instantiatePersistentObject = itemInstance.GetComponent<InstantiatePersistentObject>();
+            instantiatePersistentObject.prefabType = prefabType;
+            instantiatePersistentObject.UpdateItemPreview(objectList.prefabs[(int)prefabType]);
             itemInstance.SetActive(true);
         }
     }
