@@ -15,13 +15,19 @@ public class HoloLens_PlaygroundManager : MonoBehaviour
     void Start()
     {
         solARCloud = solARCloudHololens2.GetComponent<SolARCloud>();
+        solARCloud.OnConnect += Connect;
         solARCloudHololens2Specific = solARCloudHololens2.GetComponent<SolARCloudHololens2Specific>();
+    }
+
+    private void Connect(string frontendIp)
+    {
         var unityTransport = GetComponent<UnityTransport>();
-        // Use same ip as SolAR frontend (without http://)
-        unityTransport.ConnectionData.Address = solARCloud.frontendIp.Substring(7);
+        // Use same ip as SolAR frontend (without http:// and port)
+        string ipWithoutHTTP = frontendIp.Substring(7);
+        unityTransport.ConnectionData.Address = ipWithoutHTTP.Split(':')[0];
         unityTransport.ConnectionData.Port = port;
+        Debug.Log($"Connecting to 3D Assets Sync server at {unityTransport.ConnectionData.Address}:{unityTransport.ConnectionData.Port}");
         NetworkManager.Singleton.StartClient();
-        Debug.Log("Connect to 3D Assets Sync server...");
     }
 
     // Update is called once per frame

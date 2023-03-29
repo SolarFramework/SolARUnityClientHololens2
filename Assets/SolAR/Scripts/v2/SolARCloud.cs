@@ -31,6 +31,7 @@ namespace Com.Bcom.Solar
         //public Action StopFetchingFrames;
 
         // bool: error?, string: message
+        public event Action<string> OnConnect;
         public event Action<bool, string> OnStart;
         public event Action OnStop;
         public event Action<bool> OnReset;
@@ -151,6 +152,8 @@ namespace Com.Bcom.Solar
                 return false;
             }
             grpc.OnResultReceived += OnReceivedPoseInternal;
+
+            OnConnect?.Invoke(frontendIp);
             return true;
         }
 
