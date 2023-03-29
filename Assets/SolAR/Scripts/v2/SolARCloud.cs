@@ -46,11 +46,8 @@ namespace Com.Bcom.Solar
 
 
         #region UnityEditor
-        [Tooltip("IP address of the SolAR cloud services frontend")]
+        [Tooltip("URL of the SolAR cloud services frontend (ex: \"http://<IP>:<port>\")")]
         public string frontendIp = "<not-set>";
-
-        [Tooltip("Port for SolAR cloud services frontend")]
-        public int frontendBasePort = -1;
 
         [Tooltip("Select to preform both mapping and relocalization or only relocalization")]
         public PipelineMode pipelineMode = PipelineMode.RelocalizationAndMapping;
@@ -144,6 +141,7 @@ namespace Com.Bcom.Solar
             if (!await Disconnect()) return false;
 
             grpc = BuildGrpcManager();
+            if (grpc == null) return false;
             var result = await grpc.RegisterClient();
             if (!result.Success)
             {
@@ -351,16 +349,25 @@ namespace Com.Bcom.Solar
 
         private GrpcManager BuildGrpcManager()
         {
-            // Check service URL format
-            // Warning: only checks IP v4 address (only 2 colons possible, protocol and port)
-            // TODO(jmhenaff): handle IP v6
-            Uri uri = new Uri(frontendIp.Split(':').Length > 2 ? frontendIp : frontendIp + ":" + frontendBasePort);
+            Uri uri;
+            try
+            {
+                // Check service URL format
+                // Warning: only checks IP v4 address (only 2 colons possible, protocol and port)
+                // TODO(jmhenaff): handle IP v6
+                uri = new Uri(frontendIp);
 
-            // Warning: only allows IP address, not textual domain names. This is to avoid a bug
-            // with gRPC calls with addresses like "xxx.xxx.xxx." which seems to take a lot of resource
-            // even after the deadline has expired and the client has been deleted in the manager.
-            // TODO(jmhenaff): find a way to allow any well formed URLs without the aforementioned issue.
-            System.Net.IPAddress.Parse(uri.Host);
+                // Warning: only allows IP address, not textual domain names. This is to avoid a bug
+                // with gRPC calls with addresses like "xxx.xxx.xxx." which seems to take a lot of resource
+                // even after the deadline has expired and the client has been deleted in the manager.
+                // TODO(jmhenaff): find a way to allow any well formed URLs without the aforementioned issue.
+                System.Net.IPAddress.Parse(uri.Host);
+            }
+            catch(UriFormatException)
+            {
+                Log(LogLevel.ERROR, $"Service URL not a valid: {frontendIp}");
+                return null;
+            }
 
             int _frontendBasePort = uri.Port;
             string _frontEndIp = uri.GetComponents(UriComponents.SchemeAndServer & ~UriComponents.Port, UriFormat.UriEscaped);
@@ -372,13 +379,11 @@ namespace Com.Bcom.Solar
         private void LoadUserPrefs()
         {
             frontendIp = PlayerPrefs.GetString("SolARCloudServicesAddress", frontendIp);
-            frontendBasePort = PlayerPrefs.GetInt("SolARCloudServicesPort", frontendBasePort);
         }
 
         public void SaveUserPrefs()
         {
             PlayerPrefs.SetString("SolARCloudServicesAddress", frontendIp);
-            PlayerPrefs.SetInt("SolARCloudServicesPort", frontendBasePort);
             PlayerPrefs.Save();
         }
 
