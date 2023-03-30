@@ -292,6 +292,10 @@ namespace Com.Bcom.Solar
                     stopWatch.Start();
                 }
 
+#if ENABLE_WINMD_SUPPORT
+		        researchMode.Update();
+#endif
+
                 switch (sensorType)
                 {
                     case Hl2SensorType.STEREO:

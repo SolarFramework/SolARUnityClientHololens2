@@ -14154,7 +14154,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontendIp: http://192.168.137.1
-  frontendBasePort: 5000
   pipelineMode: 0
   advancedGrpcSettings:
     threadSlots: 10
