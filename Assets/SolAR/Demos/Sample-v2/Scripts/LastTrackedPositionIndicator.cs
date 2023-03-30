@@ -23,6 +23,7 @@ namespace Com.Bcom.Solar.Ui
     public class LastTrackedPositionIndicator : MonoBehaviour
     {
         public SolARCloud solar;
+        public GameObject indicator;
 
         private bool displayLastTrackedPos = false;
         private bool updateIndicator = false;
@@ -30,14 +31,14 @@ namespace Com.Bcom.Solar.Ui
         void Start()
         {
             solar.OnMappingStatusChanged += OnMappingStatusChanged;
-            SetEnableAllComponentsButThis(false);
+            indicator.SetActive(false);
         }
 
         void Update()
         {
             if (updateIndicator)
             {
-                SetEnableAllComponentsButThis(displayLastTrackedPos);
+                indicator.SetActive(displayLastTrackedPos);
                 transform.position = Camera.main.transform.position;
                 updateIndicator = false;
             }
@@ -45,14 +46,8 @@ namespace Com.Bcom.Solar.Ui
 
         void OnMappingStatusChanged(SolARRpc.MappingStatus oldMappingStatus, SolARRpc.MappingStatus newMappingStatus)
         {
-            displayLastTrackedPos = newMappingStatus == SolARRpc.MappingStatus.TrackingLost;
+            displayLastTrackedPos = (newMappingStatus == SolARRpc.MappingStatus.TrackingLost);
             updateIndicator = true;
-        }
-
-        private void SetEnableAllComponentsButThis(bool enable)
-        {
-            foreach (var c in GetComponents<MonoBehaviour>())
-                if (c != this) c.enabled = enabled;
         }
     }
 }

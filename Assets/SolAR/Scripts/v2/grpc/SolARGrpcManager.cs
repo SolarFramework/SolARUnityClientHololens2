@@ -34,8 +34,6 @@ namespace Com.Bcom.Solar.Gprc
         private Empty EMPTY = new Empty();
         private ResultStatus SUCCESS = new ResultStatus(true, "");
 
-        private string serviceAddress;
-        private int port;
         private volatile int threadSlots;
         private volatile int networkSlots;
         private string clientUuid = "";
@@ -51,8 +49,6 @@ namespace Com.Bcom.Solar.Gprc
                            int threadSlots,
                            int networkSlots)
         {
-            this.serviceAddress = serviceAddress;
-            this.port = port;
             this.threadSlots = threadSlots;
             this.networkSlots = networkSlots;
 
