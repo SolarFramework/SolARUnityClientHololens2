@@ -16,6 +16,7 @@ public class HoloLens_PlaygroundManager : MonoBehaviour
     {
         solARCloud = solARCloudHololens2.GetComponent<SolARCloud>();
         solARCloud.OnConnect += Connect;
+        solARCloud.OnDisconnect += Disconnect;
         solARCloudHololens2Specific = solARCloudHololens2.GetComponent<SolARCloudHololens2Specific>();
     }
 
@@ -28,6 +29,14 @@ public class HoloLens_PlaygroundManager : MonoBehaviour
         unityTransport.ConnectionData.Port = port;
         Debug.Log($"Connecting to 3D Assets Sync server at {unityTransport.ConnectionData.Address}:{unityTransport.ConnectionData.Port}");
         NetworkManager.Singleton.StartClient();
+    }
+
+    private void Disconnect()
+    {
+        if (NetworkManager.Singleton.LocalClient.PlayerObject.TryGetComponent(out Bcom.SharedPlayground.PlaygroundPlayer playgroundPlayer))
+        {
+            playgroundPlayer.Disconnect();
+        }
     }
 
     // Update is called once per frame

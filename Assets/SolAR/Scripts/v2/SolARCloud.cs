@@ -33,6 +33,7 @@ namespace Com.Bcom.Solar
         // bool: error?, string: message
         public event Action<string> OnConnect;
         public event Action<bool, string> OnStart;
+        public event Action OnDisconnect;
         public event Action OnStop;
         public event Action<bool> OnReset;
         // PipelineMode: old mode, PipelineMode: new mode
@@ -168,6 +169,7 @@ namespace Com.Bcom.Solar
                         return false;
                     }
                 }
+                OnDisconnect?.Invoke();
                 return true;
             }
             finally
