@@ -33,7 +33,7 @@ public class HoloLens_PlaygroundManager : MonoBehaviour
 
     private void Disconnect()
     {
-        if (NetworkManager.Singleton.LocalClient.PlayerObject.TryGetComponent(out Bcom.SharedPlayground.PlaygroundPlayer playgroundPlayer))
+        if (NetworkManager.Singleton.IsClient && NetworkManager.Singleton.LocalClient.PlayerObject.TryGetComponent(out Bcom.SharedPlayground.PlaygroundPlayer playgroundPlayer))
         {
             playgroundPlayer.Disconnect();
         }
