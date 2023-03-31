@@ -28,7 +28,6 @@ using Windows.Perception.Spatial;
 using SolARHololens2UnityPlugin;
 #endif
 
-using Com.BCom.SolAR;
 using Com.Bcom.Solar.Gprc;
 
 using SolARRpc = Com.Bcom.Solar.Gprc;
@@ -401,7 +400,7 @@ namespace Com.Bcom.Solar
                     out _pixelBufferSize,
                     out _width,
                     out _height,
-                    /* flip = */ solARCloud.advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
+                    /* flip = */ false /* solARCloud.advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None */);
                 _timestamp = _timestamp / TimeSpan.TicksPerMillisecond;
 #endif
                 if (frameTexture == null)
@@ -499,7 +498,7 @@ namespace Com.Bcom.Solar
                     out _pixelBufferSize,
                     out _width,
                     out _height,
-                    /* flip = */ solARCloud.advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
+                    /* flip = */ false /* solARCloud.advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None */);
                 ts = ts / TimeSpan.TicksPerMillisecond;
 #endif
                 if (vclBufferData == null)
