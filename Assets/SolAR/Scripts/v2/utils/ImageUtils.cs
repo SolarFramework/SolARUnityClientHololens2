@@ -21,7 +21,7 @@ using UnityEngine.Experimental.Rendering;
 using Google.Protobuf;
 
 using Com.Bcom.Solar.Gprc;
-
+using System.Threading.Tasks;
 
 namespace Com.Bcom.Solar
 {
@@ -56,6 +56,11 @@ namespace Com.Bcom.Solar
             return f;
         }
 
+        async static public Task<Frame> ApplyCompressionAsync(Frame f)
+        {
+            return await Task.Run(() => ApplyCompression(f));
+        }
+
         static private byte[] ApplyCompression(ImageLayout imLayout, uint imWidth, uint imHeight, byte[] imData, ImageCompression imageCompression)
         {
             GraphicsFormat format;
@@ -69,8 +74,8 @@ namespace Com.Bcom.Solar
 
             switch (imageCompression)
             {
-                case ImageCompression.Png: return UnityEngine.ImageConversion.EncodeArrayToPNG(Flip(imLayout, imWidth, imHeight, imData), format, imWidth, imHeight);
-                case ImageCompression.Jpg: return UnityEngine.ImageConversion.EncodeArrayToJPG(Flip(imLayout, imWidth, imHeight, imData), format, imWidth, imHeight);
+                case ImageCompression.Png: return UnityEngine.ImageConversion.EncodeArrayToPNG(FlipOpt(imLayout, imWidth, imHeight, imData), format, imWidth, imHeight);
+                case ImageCompression.Jpg: return UnityEngine.ImageConversion.EncodeArrayToJPG(FlipOpt(imLayout, imWidth, imHeight, imData), format, imWidth, imHeight);
                 case ImageCompression.None: throw new ArgumentException("None should not be used here"); // return imData;
                 default: throw new ArgumentException("Unknown image compression");
 
@@ -106,5 +111,38 @@ namespace Com.Bcom.Solar
 
             return result;
         }
+
+        private static byte[] pixel1Bytes = new byte[1];
+        private static byte[] pixel2Bytes = new byte[2];
+        private static byte[] pixel4Bytes = new byte[4];
+        static private byte[] FlipOpt(ImageLayout layout, uint width, uint height, byte[] data)
+        {
+            byte[] pixelArray;
+            switch (layout)
+            {
+                case ImageLayout.Rgb24: pixelArray = pixel4Bytes; break; // because is converted in B8G8R8A8_UNorm
+                case ImageLayout.Grey8: pixelArray = pixel1Bytes; break;
+                case ImageLayout.Grey16: pixelArray = pixel2Bytes; break;
+                default: throw new ArgumentException("Unkown image layout");
+            }
+            uint nbBytesPerPixels = (uint)pixelArray.Length;
+            uint nbBytesPerLines = width * nbBytesPerPixels;
+            for (int y = 0; y < height / 2; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    int destIndex = (int)((x * nbBytesPerPixels) + y * nbBytesPerLines);
+                    int srcIndex = (int)((x * nbBytesPerPixels) + (height - 1 - y) * nbBytesPerLines);
+                    for (int c = 0; c < nbBytesPerPixels; c++)
+                    {
+                        pixelArray[c] = data[destIndex + c];
+                        data[destIndex + c] = data[srcIndex + c];
+                        data[srcIndex + c] = pixelArray[c];
+                    }
+                }
+            }
+            return data;
+        }
+
     }
 }

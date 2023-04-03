@@ -21,7 +21,6 @@ using UnityEngine;
 
 using Com.Bcom.Solar.Gprc;
 
-
 namespace Com.Bcom.Solar
 {
     public class SolARCloud : MonoBehaviour
@@ -100,11 +99,11 @@ namespace Com.Bcom.Solar
         #region PublicMethods
         async public Task OnFrameReceived(Frame frame)
         {
-            if (frame == null) { /* await grpc.SendMessage("Frame is null")*/ ;  Debug.Log("OnFrameReceived(): frame is null"); return; }
+            if (frame == null) { Log(LogLevel.ERROR, "OnFrameReceived(): frame is null"); return; }
 
             var frames = new Frames();
             frames.Frames_.Add(frame);
-            var result = await grpc.RelocalizeAndMap(frames);
+            await grpc.RelocalizeAndMap(frames);
         }
 
         async public Task OnFrameReceived(Frame frame0, Frame frame1)
@@ -114,7 +113,7 @@ namespace Com.Bcom.Solar
             var frames = new Frames();
             frames.Frames_.Add(frame0);
             frames.Frames_.Add(frame1);
-            var result = await grpc.RelocalizeAndMap(frames);
+            await grpc.RelocalizeAndMap(frames);
         }
 
         private void OnReceivedPoseInternal(RelocAndMappingResult r)
@@ -225,105 +224,95 @@ namespace Com.Bcom.Solar
 
         async private Task<bool> SolARInit()
         {
-            Debug.Log($"SolARInit({pipelineMode})");
+            Log(LogLevel.INFO, $"SolARInit({pipelineMode})");
             var result = await grpc.Init(pipelineMode);
-            Debug.Log($"SolARInit({pipelineMode}) Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Debug.LogError($"SolARInit({pipelineMode}): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARInit({pipelineMode}): {result.ErrMessage}");
             return result.Success;
         }
 
         async private Task<bool> SolARStart()
         {
-            Debug.Log($"SolARStart()");
+            Log(LogLevel.INFO, $"SolARStart()");
             var result = await grpc.Start();
-            Debug.Log($"SolARStart() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARStart(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARStart(): {result.ErrMessage}");
             OnStart?.Invoke(result.Success, result.ErrMessage);
             return result.Success;
         }
 
         async public Task<bool> SolARStop()
         {
-            Debug.Log($"SolARStop()");
+            Log(LogLevel.INFO, $"SolARStop()");
             var result = await grpc.Stop();
-            Debug.Log($"SolARStop() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARStop(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARStop(): {result.ErrMessage}");
             OnStop?.Invoke();
             return result.Success;
         }
 
         async public Task<bool> SolARReset()
         {
-            Debug.Log($"SolARReset()");
+            Log(LogLevel.INFO, $"SolARReset()");
             var result = await grpc.Reset();
-            Debug.Log($"SolARReset() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARReset(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARReset(): {result.ErrMessage}");
             OnReset?.Invoke(result.Success);
             return result.Success;
         }
 
         async public Task<bool> SolARSendMessage(string message)
         {
-            Debug.Log($"SolARSendMessage()");
+            Log(LogLevel.INFO, $"SolARSendMessage()");
             var result = await grpc.SendMessage(message);
-            Debug.Log($"SolARSendMessage() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARSendMessage(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARSendMessage(): {result.ErrMessage}");
             return result.Success;
         }
 
 
         async public Task<RelocAndMappingResult> SolARGet3dTransform()
         {
+            Log(LogLevel.INFO, $"SolARGet3dTransform()");
             var result = await grpc.Get3dTransform();
+            if (!result.Status.Success) Log(LogLevel.ERROR, $"SolARGet3dTransform(): {result.Status.ErrMessage}");
             return result;
         }
 
         async private Task<bool> SolARSetCamParameters(CamParameters cp)
         {
-            Debug.Log($"SolARSetCamParameters()");
+            Log(LogLevel.INFO, $"SolARSetCamParameters()");
             var result = await grpc.SetCameraParameters(cp);
-            Debug.Log($"SolARSetCamParameters() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARSetCamParameters(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARSetCamParameters(): {result.ErrMessage}");
             return result.Success;           
         }
 
         async private Task<bool> SolARSetCamParametersStereo(CamParameters cp1, CamParameters cp2)
         {
-            Debug.Log($"SolARSetCamParametersStereo()");
+            Log(LogLevel.INFO, $"SolARSetCamParametersStereo()");
             var result = await grpc.SetCameraParametersStereo(cp1, cp2);
-            Debug.Log($"SolARSetCamParametersStereo() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARSetCamParametersStereo(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARSetCamParametersStereo(): {result.ErrMessage}");
             return result.Success;
         }
 
         async private Task<bool> SolARSetRectificationParameters(CamRectification cr1, CamRectification cr2)
         {
-            Debug.Log($"SolARSetRectificationParameters()");
+            Log(LogLevel.INFO, $"SolARSetRectificationParameters()");
             var result = await grpc.SetRectificationParameters(cr1, cr2);
-            Debug.Log($"SolARSetRectificationParameters() Done ({result.Success}, {result.ErrMessage})");
-            if (!result.Success) Console.WriteLine($"SolARSetRectificationParameters(): {result.ErrMessage}");
+            if (!result.Success) Log(LogLevel.ERROR, $"SolARSetRectificationParameters(): {result.ErrMessage}");
             return result.Success;
         }
 
         async public Task<bool> StartRelocAndMapping(CamParameters cp)
         {
-            // if (!await SolARRegisterClient()) return false;
             if (!await SolARInit()) return false;
             if (!await SolARSetCamParameters(cp)) return false;
             if (!await SolARStart()) return false;
-            // StartFetchingFrames?.Invoke();
             return true;
         }
 
         async public Task<bool> StartRelocAndMapping(CamParameters cp1,
             CamParameters cp2,CamRectification cr1, CamRectification cr2)
         {
-            // if (!await SolARRegisterClient()) return false;
             if (!await SolARInit()) return false;
             if (!await SolARSetCamParametersStereo(cp1, cp2)) return false;
             if (!await SolARSetRectificationParameters(cr1, cr2)) return false;
             if (!await SolARStart()) return false;
-            // StartFetchingFrames?.Invoke();
             return true;
         }
 
@@ -331,7 +320,6 @@ namespace Com.Bcom.Solar
         {
             bool res = true;
             res = res && await SolARStop();
-            // res = res && await SolARUnRegisterClient();
             // StopFetchingFrames?.Invoke();
             return res;
         }

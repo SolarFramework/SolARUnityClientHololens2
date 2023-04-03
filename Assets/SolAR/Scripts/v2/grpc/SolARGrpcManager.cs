@@ -33,6 +33,7 @@ namespace Com.Bcom.Solar.Gprc
 
         private Empty EMPTY = new Empty();
         private ResultStatus SUCCESS = new ResultStatus(true, "");
+        private RelocAndMappingResult SKIPPED = new RelocAndMappingResult(new ResultStatus(true, "Skipped"), null);
 
         private volatile int threadSlots;
         private volatile int networkSlots;
@@ -295,11 +296,7 @@ namespace Com.Bcom.Solar.Gprc
         async public Task<RelocAndMappingResult> RelocalizeAndMap(Frames frames)
         {
 
-            if (networkSlots <= 0)
-            {
-                // await SendMessage("Skip frame");
-                return new RelocAndMappingResult(new ResultStatus(true, "Skipped"), null);
-            }
+            if (networkSlots <= 0) return SKIPPED;
 
             try
             {
