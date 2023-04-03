@@ -27,7 +27,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
   boundsOverride: {fileID: 0}
-  boundsCalculationMethod: 2
+  boundsCalculationMethod: 0
   activation: 3
   flattenAxis: 0
   uniformScaleOnFlattenedAxis: 1

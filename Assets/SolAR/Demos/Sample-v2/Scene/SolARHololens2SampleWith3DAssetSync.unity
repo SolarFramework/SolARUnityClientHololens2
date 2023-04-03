@@ -1047,7 +1047,6 @@ GameObject:
   - component: {fileID: 132049895}
   - component: {fileID: 132049894}
   - component: {fileID: 132049893}
-  - component: {fileID: 132049896}
   m_Layer: 0
   m_Name: TrackingLostIndicator
   m_TagString: Untagged
@@ -1132,19 +1131,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132049891}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &132049896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 132049891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae19f77efc08c204fb9475c7acc8a108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  solar: {fileID: 1989396816}
 --- !u!1 &136192527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 194137950}
+  - component: {fileID: 194137951}
   m_Layer: 0
   m_Name: TrackingLost
   m_TagString: Untagged
@@ -1706,6 +1693,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &194137951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194137949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae19f77efc08c204fb9475c7acc8a108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solar: {fileID: 1989396816}
+  indicator: {fileID: 132049891}
 --- !u!1 &198649968
 GameObject:
   m_ObjectHideFlags: 0
@@ -7196,8 +7197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f6760fa2cbb854e95b8874914f62c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solar: {fileID: 0}
-  hololens2: {fileID: 0}
+  solar: {fileID: 1989396816}
+  hololens2: {fileID: 1989396818}
 --- !u!114 &720197909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18452,7 +18453,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontendIp: http://10.55.11.10:32160
-  frontendBasePort: 32160
   pipelineMode: 0
   advancedGrpcSettings:
     threadSlots: 10
