@@ -55,8 +55,10 @@ public class HudMessageManager : MonoBehaviour
                     
                     if (mappingStatus == "TrackingLost")
                         t.color = new Color32( 255, 0, 0, 255);
+                    else if ((mappingStatus == "Bootstrap") || (mappingStatus == "LoopClosure"))
+                        t.color = new Color32(240, 120, 20, 255);
                     else
-                        t.color = new Color32(32, 145, 16, 255);
+                        t.color = new Color32(95, 210, 80, 255);
 
                 }
                 else

@@ -34,6 +34,7 @@ using SolARRpc = Com.Bcom.Solar.Gprc;
 
 namespace Bcom.Solar
 {
+    [Obsolete]
     public class SolArCloudHololens2 : MonoBehaviour
     {
 

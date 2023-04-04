@@ -34,7 +34,7 @@ using static Bcom.Solar.SolArCloudHololens2;
 
 namespace Com.Bcom.Solar.Gprc
 {
-
+    [Obsolete]
     public class SolARMappingAndRelocalizationGrpcProxyManager
     {
         // Client UUID given by the SolAR Front End
@@ -56,6 +56,7 @@ namespace Com.Bcom.Solar.Gprc
 
         private long nbSentFrames = 0;
 
+        [Obsolete]
         public class FrameSender
         {
             private SolARMappingAndRelocalizationGrpcProxyManager manager;
@@ -384,6 +385,7 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        [Obsolete]
         public class ResultStatus
         { 
             public bool success = true;
@@ -396,6 +398,7 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        [Obsolete]
         public class RelocAndMappingResult
         {
             public ResultStatus resultStatus;
@@ -408,6 +411,7 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        [Obsolete]
         public class Builder
         {
             private string serviceAddress = "";
