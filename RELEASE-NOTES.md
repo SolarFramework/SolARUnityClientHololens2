@@ -1,5 +1,6 @@
 # Release Notes
 ## v0.11.0
+* Massive refactor to separate code that can be shared with non Holens 2 Unity projects
 * Update SolAR gRPC stubs to support FixedPose
 * Add more info in HUD text field (Mapping/Pose status)
 * Use UTC UNIX timestamps for sent frames
