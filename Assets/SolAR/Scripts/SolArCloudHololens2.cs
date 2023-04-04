@@ -733,6 +733,8 @@ SolARHololens2ResearchMode researchMode;
                 if (relocAndMappingProxy != null)
                 {
                     relocAndMappingProxy.Stop();
+
+                    relocAndMappingProxy.UnregisterClient();                    
                 }
             }
             catch (Exception e)
@@ -1119,8 +1121,16 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     throw new Exception();
                 }
 
-                var res = relocAndMappingProxy.Init(pipelineMode);
+                var res = relocAndMappingProxy.RegisterClient();
 
+                if (!res.success)
+                {
+                    Error(ErrorKind.GRPC, res.errMessage);
+                    throw new Exception(res.errMessage);
+                }
+
+                res = relocAndMappingProxy.Init(pipelineMode);
+                
                 if (!res.success)
                 {
                     Error(ErrorKind.GRPC, res.errMessage);

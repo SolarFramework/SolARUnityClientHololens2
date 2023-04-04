@@ -25,109 +25,118 @@ namespace Com.Bcom.Solar.Gprc {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cixzb2xhcl9tYXBwaW5nX2FuZF9yZWxvY2FsaXphdGlvbl9wcm94eS5wcm90",
-            "bxITY29tLmJjb20uc29sYXIuZ3ByYyIHCgVFbXB0eSJNChFQaXBlbGluZU1v",
-            "ZGVWYWx1ZRI4Cg1waXBlbGluZV9tb2RlGAEgASgOMiEuY29tLmJjb20uc29s",
-            "YXIuZ3ByYy5QaXBlbGluZU1vZGUiGgoHTWVzc2FnZRIPCgdtZXNzYWdlGAEg",
-            "ASgJIvABChBDYW1lcmFQYXJhbWV0ZXJzEgwKBG5hbWUYASABKAkSCgoCaWQY",
-            "AiABKA0SNAoLY2FtZXJhX3R5cGUYAyABKA4yHy5jb20uYmNvbS5zb2xhci5n",
-            "cHJjLkNhbWVyYVR5cGUSDQoFd2lkdGgYBCABKA0SDgoGaGVpZ2h0GAUgASgN",
-            "EjIKCmludHJpbnNpY3MYBiABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1h",
-            "dHJpeDN4MxI5CgpkaXN0b3J0aW9uGAcgASgLMiUuY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5DYW1lcmFEaXN0b3J0aW9uIuIDChZDYW1lcmFQYXJhbWV0ZXJzU3Rl",
-            "cmVvEg0KBW5hbWUxGAEgASgJEgsKA2lkMRgCIAEoDRI1CgxjYW1lcmFfdHlw",
-            "ZTEYAyABKA4yHy5jb20uYmNvbS5zb2xhci5ncHJjLkNhbWVyYVR5cGUSDgoG",
-            "d2lkdGgxGAQgASgNEg8KB2hlaWdodDEYBSABKA0SMwoLaW50cmluc2ljczEY",
-            "BiABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1hdHJpeDN4MxI6CgtkaXN0",
-            "b3J0aW9uMRgHIAEoCzIlLmNvbS5iY29tLnNvbGFyLmdwcmMuQ2FtZXJhRGlz",
-            "dG9ydGlvbhINCgVuYW1lMhgIIAEoCRILCgNpZDIYCSABKA0SNQoMY2FtZXJh",
-            "X3R5cGUyGAogASgOMh8uY29tLmJjb20uc29sYXIuZ3ByYy5DYW1lcmFUeXBl",
-            "Eg4KBndpZHRoMhgLIAEoDRIPCgdoZWlnaHQyGAwgASgNEjMKC2ludHJpbnNp",
-            "Y3MyGA0gASgLMh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXgzeDMSOgoL",
-            "ZGlzdG9ydGlvbjIYDiABKAsyJS5jb20uYmNvbS5zb2xhci5ncHJjLkNhbWVy",
-            "YURpc3RvcnRpb24iUwoQQ2FtZXJhRGlzdG9ydGlvbhILCgNLXzEYASABKAIS",
-            "CwoDS18yGAIgASgCEgsKA1BfMRgDIAEoAhILCgNQXzIYBCABKAISCwoDS18z",
-            "GAUgASgCIp0DChdSZWN0aWZpY2F0aW9uUGFyYW1ldGVycxI1Cg1jYW0xX3Jv",
-            "dGF0aW9uGAEgASgLMh4uY29tLmJjb20uc29sYXIuZ3ByYy5NYXRyaXgzeDMS",
-            "NwoPY2FtMV9wcm9qZWN0aW9uGAIgASgLMh4uY29tLmJjb20uc29sYXIuZ3By",
-            "Yy5NYXRyaXgzeDQSOQoQY2FtMV9zdGVyZW9fdHlwZRgDIAEoDjIfLmNvbS5i",
-            "Y29tLnNvbGFyLmdwcmMuU3RlcmVvVHlwZRIVCg1jYW0xX2Jhc2VsaW5lGAQg",
-            "ASgCEjUKDWNhbTJfcm90YXRpb24YBSABKAsyHi5jb20uYmNvbS5zb2xhci5n",
-            "cHJjLk1hdHJpeDN4MxI3Cg9jYW0yX3Byb2plY3Rpb24YBiABKAsyHi5jb20u",
-            "YmNvbS5zb2xhci5ncHJjLk1hdHJpeDN4NBI5ChBjYW0yX3N0ZXJlb190eXBl",
-            "GAcgASgOMh8uY29tLmJjb20uc29sYXIuZ3ByYy5TdGVyZW9UeXBlEhUKDWNh",
-            "bTJfYmFzZWxpbmUYCCABKAIi2AEKFFJlbG9jYWxpemF0aW9uUmVzdWx0EkIK",
-            "C3Bvc2Vfc3RhdHVzGAEgASgOMi0uY29tLmJjb20uc29sYXIuZ3ByYy5SZWxv",
-            "Y2FsaXphdGlvblBvc2VTdGF0dXMSLAoEcG9zZRgCIAEoCzIeLmNvbS5iY29t",
-            "LnNvbGFyLmdwcmMuTWF0cml4NHg0EhIKCmNvbmZpZGVuY2UYAyABKAISOgoO",
-            "bWFwcGluZ19zdGF0dXMYBCABKA4yIi5jb20uYmNvbS5zb2xhci5ncHJjLk1h",
-            "cHBpbmdTdGF0dXMipwEKBUltYWdlEg0KBXdpZHRoGAEgASgNEg4KBmhlaWdo",
-            "dBgCIAEoDRIMCgRkYXRhGAMgASgMEjAKBmxheW91dBgEIAEoDjIgLmNvbS5i",
-            "Y29tLnNvbGFyLmdwcmMuSW1hZ2VMYXlvdXQSPwoQaW1hZ2VDb21wcmVzc2lv",
-            "bhgFIAEoDjIlLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1hZ2VDb21wcmVzc2lv",
-            "biI0CgZGcmFtZXMSKgoGZnJhbWVzGAEgAygLMhouY29tLmJjb20uc29sYXIu",
-            "Z3ByYy5GcmFtZSKMAQoRR3JvdW5kVHJ1dGhGcmFtZXMSKwoGZnJhbWVzGAEg",
-            "ASgLMhsuY29tLmJjb20uc29sYXIuZ3ByYy5GcmFtZXMSNgoOd29ybGRfdHJh",
-            "bnNvcm0YAiABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1hdHJpeDR4NBIS",
-            "CgpmaXhlZF9wb3NlGAMgASgIIoYBCgVGcmFtZRIRCglzZW5zb3JfaWQYASAB",
-            "KAUSKQoFaW1hZ2UYAiABKAsyGi5jb20uYmNvbS5zb2xhci5ncHJjLkltYWdl",
-            "EhEKCXRpbWVzdGFtcBgDIAEoBBIsCgRwb3NlGAQgASgLMh4uY29tLmJjb20u",
-            "c29sYXIuZ3ByYy5NYXRyaXg0eDQi2wEKCU1hdHJpeDR4NBILCgNtMTEYASAB",
-            "KAISCwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNtMTQYBCABKAISCwoD",
-            "bTIxGAUgASgCEgsKA20yMhgGIAEoAhILCgNtMjMYByABKAISCwoDbTI0GAgg",
-            "ASgCEgsKA20zMRgJIAEoAhILCgNtMzIYCiABKAISCwoDbTMzGAsgASgCEgsK",
-            "A20zNBgMIAEoAhILCgNtNDEYDSABKAISCwoDbTQyGA4gASgCEgsKA200MxgP",
-            "IAEoAhILCgNtNDQYECABKAIigAEKCU1hdHJpeDN4MxILCgNtMTEYASABKAIS",
-            "CwoDbTEyGAIgASgCEgsKA20xMxgDIAEoAhILCgNtMjEYBCABKAISCwoDbTIy",
-            "GAUgASgCEgsKA20yMxgGIAEoAhILCgNtMzEYByABKAISCwoDbTMyGAggASgC",
-            "EgsKA20zMxgJIAEoAiKnAQoJTWF0cml4M3g0EgsKA20xMRgBIAEoAhILCgNt",
-            "MTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20xNBgEIAEoAhILCgNtMjEYBSAB",
-            "KAISCwoDbTIyGAYgASgCEgsKA20yMxgHIAEoAhILCgNtMjQYCCABKAISCwoD",
-            "bTMxGAkgASgCEgsKA20zMhgKIAEoAhILCgNtMzMYCyABKAISCwoDbTM0GAwg",
-            "ASgCKkcKDFBpcGVsaW5lTW9kZRIeChpSRUxPQ0FMSVpBVElPTl9BTkRfTUFQ",
-            "UElORxAAEhcKE1JFTE9DQUxJWkFUSU9OX09OTFkQASofCgpDYW1lcmFUeXBl",
-            "EgcKA1JHQhAAEggKBEdSQVkQASoqCgpTdGVyZW9UeXBlEg4KCkhvcml6b250",
-            "YWwQABIMCghWZXJ0aWNhbBABKkYKGFJlbG9jYWxpemF0aW9uUG9zZVN0YXR1",
-            "cxILCgdOT19QT1NFEAASDAoITkVXX1BPU0UQARIPCgtMQVRFU1RfUE9TRRAC",
-            "KlAKDU1hcHBpbmdTdGF0dXMSDQoJQk9PVFNUUkFQEAASCwoHTUFQUElORxAB",
-            "EhEKDVRSQUNLSU5HX0xPU1QQAhIQCgxMT09QX0NMT1NVUkUQAyoyCgtJbWFn",
-            "ZUxheW91dBIKCgZSR0JfMjQQABIKCgZHUkVZXzgQARILCgdHUkVZXzE2EAIq",
-            "LgoQSW1hZ2VDb21wcmVzc2lvbhIICgROT05FEAASBwoDUE5HEAESBwoDSlBH",
-            "EAIyygcKIlNvbEFSTWFwcGluZ0FuZFJlbG9jYWxpemF0aW9uUHJveHkSSgoE",
-            "SW5pdBImLmNvbS5iY29tLnNvbGFyLmdwcmMuUGlwZWxpbmVNb2RlVmFsdWUa",
-            "Gi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5Ej8KBVN0YXJ0EhouY29tLmJj",
-            "b20uc29sYXIuZ3ByYy5FbXB0eRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1w",
-            "dHkSPgoEU3RvcBIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHkaGi5jb20u",
-            "YmNvbS5zb2xhci5ncHJjLkVtcHR5ElgKE1NldENhbWVyYVBhcmFtZXRlcnMS",
-            "JS5jb20uYmNvbS5zb2xhci5ncHJjLkNhbWVyYVBhcmFtZXRlcnMaGi5jb20u",
-            "YmNvbS5zb2xhci5ncHJjLkVtcHR5EmQKGVNldENhbWVyYVBhcmFtZXRlcnNT",
-            "dGVyZW8SKy5jb20uYmNvbS5zb2xhci5ncHJjLkNhbWVyYVBhcmFtZXRlcnNT",
-            "dGVyZW8aGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5EmYKGnNldFJlY3Rp",
-            "ZmljYXRpb25QYXJhbWV0ZXJzEiwuY29tLmJjb20uc29sYXIuZ3ByYy5SZWN0",
-            "aWZpY2F0aW9uUGFyYW1ldGVycxoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1w",
-            "dHkSWgoQUmVsb2NhbGl6ZUFuZE1hcBIbLmNvbS5iY29tLnNvbGFyLmdwcmMu",
-            "RnJhbWVzGikuY29tLmJjb20uc29sYXIuZ3ByYy5SZWxvY2FsaXphdGlvblJl",
-            "c3VsdBJwChtSZWxvY2FsaXplQW5kTWFwR3JvdW5kVHJ1dGgSJi5jb20uYmNv",
-            "bS5zb2xhci5ncHJjLkdyb3VuZFRydXRoRnJhbWVzGikuY29tLmJjb20uc29s",
-            "YXIuZ3ByYy5SZWxvY2FsaXphdGlvblJlc3VsdBJXCg5HZXQzRFRyYW5zZm9y",
-            "bRIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHkaKS5jb20uYmNvbS5zb2xh",
-            "ci5ncHJjLlJlbG9jYWxpemF0aW9uUmVzdWx0Ej8KBVJlc2V0EhouY29tLmJj",
-            "b20uc29sYXIuZ3ByYy5FbXB0eRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1w",
-            "dHkSRwoLU2VuZE1lc3NhZ2USHC5jb20uYmNvbS5zb2xhci5ncHJjLk1lc3Nh",
-            "Z2UaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5YgZwcm90bzM="));
+            "bxITY29tLmJjb20uc29sYXIuZ3ByYyIHCgVFbXB0eSIhCgpDbGllbnRVVUlE",
+            "EhMKC2NsaWVudF91dWlkGAEgASgJImIKEVBpcGVsaW5lTW9kZVZhbHVlEhMK",
+            "C2NsaWVudF91dWlkGAEgASgJEjgKDXBpcGVsaW5lX21vZGUYAiABKA4yIS5j",
+            "b20uYmNvbS5zb2xhci5ncHJjLlBpcGVsaW5lTW9kZSIvCgdNZXNzYWdlEhMK",
+            "C2NsaWVudF91dWlkGAEgASgJEg8KB21lc3NhZ2UYAiABKAkihQIKEENhbWVy",
+            "YVBhcmFtZXRlcnMSEwoLY2xpZW50X3V1aWQYASABKAkSDAoEbmFtZRgCIAEo",
+            "CRIKCgJpZBgDIAEoDRI0CgtjYW1lcmFfdHlwZRgEIAEoDjIfLmNvbS5iY29t",
+            "LnNvbGFyLmdwcmMuQ2FtZXJhVHlwZRINCgV3aWR0aBgFIAEoDRIOCgZoZWln",
+            "aHQYBiABKA0SMgoKaW50cmluc2ljcxgHIAEoCzIeLmNvbS5iY29tLnNvbGFy",
+            "LmdwcmMuTWF0cml4M3gzEjkKCmRpc3RvcnRpb24YCCABKAsyJS5jb20uYmNv",
+            "bS5zb2xhci5ncHJjLkNhbWVyYURpc3RvcnRpb24i9wMKFkNhbWVyYVBhcmFt",
+            "ZXRlcnNTdGVyZW8SEwoLY2xpZW50X3V1aWQYASABKAkSDQoFbmFtZTEYAiAB",
+            "KAkSCwoDaWQxGAMgASgNEjUKDGNhbWVyYV90eXBlMRgEIAEoDjIfLmNvbS5i",
+            "Y29tLnNvbGFyLmdwcmMuQ2FtZXJhVHlwZRIOCgZ3aWR0aDEYBSABKA0SDwoH",
+            "aGVpZ2h0MRgGIAEoDRIzCgtpbnRyaW5zaWNzMRgHIAEoCzIeLmNvbS5iY29t",
+            "LnNvbGFyLmdwcmMuTWF0cml4M3gzEjoKC2Rpc3RvcnRpb24xGAggASgLMiUu",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5DYW1lcmFEaXN0b3J0aW9uEg0KBW5hbWUy",
+            "GAkgASgJEgsKA2lkMhgKIAEoDRI1CgxjYW1lcmFfdHlwZTIYCyABKA4yHy5j",
+            "b20uYmNvbS5zb2xhci5ncHJjLkNhbWVyYVR5cGUSDgoGd2lkdGgyGAwgASgN",
+            "Eg8KB2hlaWdodDIYDSABKA0SMwoLaW50cmluc2ljczIYDiABKAsyHi5jb20u",
+            "YmNvbS5zb2xhci5ncHJjLk1hdHJpeDN4MxI6CgtkaXN0b3J0aW9uMhgPIAEo",
+            "CzIlLmNvbS5iY29tLnNvbGFyLmdwcmMuQ2FtZXJhRGlzdG9ydGlvbiJTChBD",
+            "YW1lcmFEaXN0b3J0aW9uEgsKA0tfMRgBIAEoAhILCgNLXzIYAiABKAISCwoD",
+            "UF8xGAMgASgCEgsKA1BfMhgEIAEoAhILCgNLXzMYBSABKAIisgMKF1JlY3Rp",
+            "ZmljYXRpb25QYXJhbWV0ZXJzEhMKC2NsaWVudF91dWlkGAEgASgJEjUKDWNh",
+            "bTFfcm90YXRpb24YAiABKAsyHi5jb20uYmNvbS5zb2xhci5ncHJjLk1hdHJp",
+            "eDN4MxI3Cg9jYW0xX3Byb2plY3Rpb24YAyABKAsyHi5jb20uYmNvbS5zb2xh",
+            "ci5ncHJjLk1hdHJpeDN4NBI5ChBjYW0xX3N0ZXJlb190eXBlGAQgASgOMh8u",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5TdGVyZW9UeXBlEhUKDWNhbTFfYmFzZWxp",
+            "bmUYBSABKAISNQoNY2FtMl9yb3RhdGlvbhgGIAEoCzIeLmNvbS5iY29tLnNv",
+            "bGFyLmdwcmMuTWF0cml4M3gzEjcKD2NhbTJfcHJvamVjdGlvbhgHIAEoCzIe",
+            "LmNvbS5iY29tLnNvbGFyLmdwcmMuTWF0cml4M3g0EjkKEGNhbTJfc3RlcmVv",
+            "X3R5cGUYCCABKA4yHy5jb20uYmNvbS5zb2xhci5ncHJjLlN0ZXJlb1R5cGUS",
+            "FQoNY2FtMl9iYXNlbGluZRgJIAEoAiLYAQoUUmVsb2NhbGl6YXRpb25SZXN1",
+            "bHQSQgoLcG9zZV9zdGF0dXMYASABKA4yLS5jb20uYmNvbS5zb2xhci5ncHJj",
+            "LlJlbG9jYWxpemF0aW9uUG9zZVN0YXR1cxIsCgRwb3NlGAIgASgLMh4uY29t",
+            "LmJjb20uc29sYXIuZ3ByYy5NYXRyaXg0eDQSEgoKY29uZmlkZW5jZRgDIAEo",
+            "AhI6Cg5tYXBwaW5nX3N0YXR1cxgEIAEoDjIiLmNvbS5iY29tLnNvbGFyLmdw",
+            "cmMuTWFwcGluZ1N0YXR1cyKnAQoFSW1hZ2USDQoFd2lkdGgYASABKA0SDgoG",
+            "aGVpZ2h0GAIgASgNEgwKBGRhdGEYAyABKAwSMAoGbGF5b3V0GAQgASgOMiAu",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5JbWFnZUxheW91dBI/ChBpbWFnZUNvbXBy",
+            "ZXNzaW9uGAUgASgOMiUuY29tLmJjb20uc29sYXIuZ3ByYy5JbWFnZUNvbXBy",
+            "ZXNzaW9uIkkKBkZyYW1lcxITCgtjbGllbnRfdXVpZBgBIAEoCRIqCgZmcmFt",
+            "ZXMYAiADKAsyGi5jb20uYmNvbS5zb2xhci5ncHJjLkZyYW1lIqEBChFHcm91",
+            "bmRUcnV0aEZyYW1lcxITCgtjbGllbnRfdXVpZBgBIAEoCRIrCgZmcmFtZXMY",
+            "AiABKAsyGy5jb20uYmNvbS5zb2xhci5ncHJjLkZyYW1lcxI2Cg53b3JsZF90",
+            "cmFuc29ybRgDIAEoCzIeLmNvbS5iY29tLnNvbGFyLmdwcmMuTWF0cml4NHg0",
+            "EhIKCmZpeGVkX3Bvc2UYBCABKAgihgEKBUZyYW1lEhEKCXNlbnNvcl9pZBgB",
+            "IAEoBRIpCgVpbWFnZRgCIAEoCzIaLmNvbS5iY29tLnNvbGFyLmdwcmMuSW1h",
+            "Z2USEQoJdGltZXN0YW1wGAMgASgEEiwKBHBvc2UYBCABKAsyHi5jb20uYmNv",
+            "bS5zb2xhci5ncHJjLk1hdHJpeDR4NCLbAQoJTWF0cml4NHg0EgsKA20xMRgB",
+            "IAEoAhILCgNtMTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20xNBgEIAEoAhIL",
+            "CgNtMjEYBSABKAISCwoDbTIyGAYgASgCEgsKA20yMxgHIAEoAhILCgNtMjQY",
+            "CCABKAISCwoDbTMxGAkgASgCEgsKA20zMhgKIAEoAhILCgNtMzMYCyABKAIS",
+            "CwoDbTM0GAwgASgCEgsKA200MRgNIAEoAhILCgNtNDIYDiABKAISCwoDbTQz",
+            "GA8gASgCEgsKA200NBgQIAEoAiKAAQoJTWF0cml4M3gzEgsKA20xMRgBIAEo",
+            "AhILCgNtMTIYAiABKAISCwoDbTEzGAMgASgCEgsKA20yMRgEIAEoAhILCgNt",
+            "MjIYBSABKAISCwoDbTIzGAYgASgCEgsKA20zMRgHIAEoAhILCgNtMzIYCCAB",
+            "KAISCwoDbTMzGAkgASgCIqcBCglNYXRyaXgzeDQSCwoDbTExGAEgASgCEgsK",
+            "A20xMhgCIAEoAhILCgNtMTMYAyABKAISCwoDbTE0GAQgASgCEgsKA20yMRgF",
+            "IAEoAhILCgNtMjIYBiABKAISCwoDbTIzGAcgASgCEgsKA20yNBgIIAEoAhIL",
+            "CgNtMzEYCSABKAISCwoDbTMyGAogASgCEgsKA20zMxgLIAEoAhILCgNtMzQY",
+            "DCABKAIqRwoMUGlwZWxpbmVNb2RlEh4KGlJFTE9DQUxJWkFUSU9OX0FORF9N",
+            "QVBQSU5HEAASFwoTUkVMT0NBTElaQVRJT05fT05MWRABKh8KCkNhbWVyYVR5",
+            "cGUSBwoDUkdCEAASCAoER1JBWRABKioKClN0ZXJlb1R5cGUSDgoKSG9yaXpv",
+            "bnRhbBAAEgwKCFZlcnRpY2FsEAEqRgoYUmVsb2NhbGl6YXRpb25Qb3NlU3Rh",
+            "dHVzEgsKB05PX1BPU0UQABIMCghORVdfUE9TRRABEg8KC0xBVEVTVF9QT1NF",
+            "EAIqUAoNTWFwcGluZ1N0YXR1cxINCglCT09UU1RSQVAQABILCgdNQVBQSU5H",
+            "EAESEQoNVFJBQ0tJTkdfTE9TVBACEhAKDExPT1BfQ0xPU1VSRRADKjIKC0lt",
+            "YWdlTGF5b3V0EgoKBlJHQl8yNBAAEgoKBkdSRVlfOBABEgsKB0dSRVlfMTYQ",
+            "AiouChBJbWFnZUNvbXByZXNzaW9uEggKBE5PTkUQABIHCgNQTkcQARIHCgNK",
+            "UEcQAjL5CAoiU29sQVJNYXBwaW5nQW5kUmVsb2NhbGl6YXRpb25Qcm94eRJN",
+            "Cg5SZWdpc3RlckNsaWVudBIaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHka",
+            "Hy5jb20uYmNvbS5zb2xhci5ncHJjLkNsaWVudFVVSUQSTwoQVW5yZWdpc3Rl",
+            "ckNsaWVudBIfLmNvbS5iY29tLnNvbGFyLmdwcmMuQ2xpZW50VVVJRBoaLmNv",
+            "bS5iY29tLnNvbGFyLmdwcmMuRW1wdHkSSgoESW5pdBImLmNvbS5iY29tLnNv",
+            "bGFyLmdwcmMuUGlwZWxpbmVNb2RlVmFsdWUaGi5jb20uYmNvbS5zb2xhci5n",
+            "cHJjLkVtcHR5EkQKBVN0YXJ0Eh8uY29tLmJjb20uc29sYXIuZ3ByYy5DbGll",
+            "bnRVVUlEGhouY29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJDCgRTdG9wEh8u",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5DbGllbnRVVUlEGhouY29tLmJjb20uc29s",
+            "YXIuZ3ByYy5FbXB0eRJYChNTZXRDYW1lcmFQYXJhbWV0ZXJzEiUuY29tLmJj",
+            "b20uc29sYXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzGhouY29tLmJjb20uc29s",
+            "YXIuZ3ByYy5FbXB0eRJkChlTZXRDYW1lcmFQYXJhbWV0ZXJzU3RlcmVvEisu",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5DYW1lcmFQYXJhbWV0ZXJzU3RlcmVvGhou",
+            "Y29tLmJjb20uc29sYXIuZ3ByYy5FbXB0eRJmChpzZXRSZWN0aWZpY2F0aW9u",
+            "UGFyYW1ldGVycxIsLmNvbS5iY29tLnNvbGFyLmdwcmMuUmVjdGlmaWNhdGlv",
+            "blBhcmFtZXRlcnMaGi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5EloKEFJl",
+            "bG9jYWxpemVBbmRNYXASGy5jb20uYmNvbS5zb2xhci5ncHJjLkZyYW1lcxop",
+            "LmNvbS5iY29tLnNvbGFyLmdwcmMuUmVsb2NhbGl6YXRpb25SZXN1bHQScAob",
+            "UmVsb2NhbGl6ZUFuZE1hcEdyb3VuZFRydXRoEiYuY29tLmJjb20uc29sYXIu",
+            "Z3ByYy5Hcm91bmRUcnV0aEZyYW1lcxopLmNvbS5iY29tLnNvbGFyLmdwcmMu",
+            "UmVsb2NhbGl6YXRpb25SZXN1bHQSXAoOR2V0M0RUcmFuc2Zvcm0SHy5jb20u",
+            "YmNvbS5zb2xhci5ncHJjLkNsaWVudFVVSUQaKS5jb20uYmNvbS5zb2xhci5n",
+            "cHJjLlJlbG9jYWxpemF0aW9uUmVzdWx0Ej8KBVJlc2V0EhouY29tLmJjb20u",
+            "c29sYXIuZ3ByYy5FbXB0eRoaLmNvbS5iY29tLnNvbGFyLmdwcmMuRW1wdHkS",
+            "RwoLU2VuZE1lc3NhZ2USHC5jb20uYmNvbS5zb2xhci5ncHJjLk1lc3NhZ2Ua",
+            "Gi5jb20uYmNvbS5zb2xhci5ncHJjLkVtcHR5YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Com.Bcom.Solar.Gprc.PipelineMode), typeof(global::Com.Bcom.Solar.Gprc.CameraType), typeof(global::Com.Bcom.Solar.Gprc.StereoType), typeof(global::Com.Bcom.Solar.Gprc.RelocalizationPoseStatus), typeof(global::Com.Bcom.Solar.Gprc.MappingStatus), typeof(global::Com.Bcom.Solar.Gprc.ImageLayout), typeof(global::Com.Bcom.Solar.Gprc.ImageCompression), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Empty), global::Com.Bcom.Solar.Gprc.Empty.Parser, null, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.PipelineModeValue), global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser, new[]{ "PipelineMode" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Message), global::Com.Bcom.Solar.Gprc.Message.Parser, new[]{ "Message_" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParameters), global::Com.Bcom.Solar.Gprc.CameraParameters.Parser, new[]{ "Name", "Id", "CameraType", "Width", "Height", "Intrinsics", "Distortion" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParametersStereo), global::Com.Bcom.Solar.Gprc.CameraParametersStereo.Parser, new[]{ "Name1", "Id1", "CameraType1", "Width1", "Height1", "Intrinsics1", "Distortion1", "Name2", "Id2", "CameraType2", "Width2", "Height2", "Intrinsics2", "Distortion2" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.ClientUUID), global::Com.Bcom.Solar.Gprc.ClientUUID.Parser, new[]{ "ClientUuid" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.PipelineModeValue), global::Com.Bcom.Solar.Gprc.PipelineModeValue.Parser, new[]{ "ClientUuid", "PipelineMode" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Message), global::Com.Bcom.Solar.Gprc.Message.Parser, new[]{ "ClientUuid", "Message_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParameters), global::Com.Bcom.Solar.Gprc.CameraParameters.Parser, new[]{ "ClientUuid", "Name", "Id", "CameraType", "Width", "Height", "Intrinsics", "Distortion" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraParametersStereo), global::Com.Bcom.Solar.Gprc.CameraParametersStereo.Parser, new[]{ "ClientUuid", "Name1", "Id1", "CameraType1", "Width1", "Height1", "Intrinsics1", "Distortion1", "Name2", "Id2", "CameraType2", "Width2", "Height2", "Intrinsics2", "Distortion2" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.CameraDistortion), global::Com.Bcom.Solar.Gprc.CameraDistortion.Parser, new[]{ "K1", "K2", "P1", "P2", "K3" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParameters), global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser, new[]{ "Cam1Rotation", "Cam1Projection", "Cam1StereoType", "Cam1Baseline", "Cam2Rotation", "Cam2Projection", "Cam2StereoType", "Cam2Baseline" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RectificationParameters), global::Com.Bcom.Solar.Gprc.RectificationParameters.Parser, new[]{ "ClientUuid", "Cam1Rotation", "Cam1Projection", "Cam1StereoType", "Cam1Baseline", "Cam2Rotation", "Cam2Projection", "Cam2StereoType", "Cam2Baseline" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.RelocalizationResult), global::Com.Bcom.Solar.Gprc.RelocalizationResult.Parser, new[]{ "PoseStatus", "Pose", "Confidence", "MappingStatus" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Image), global::Com.Bcom.Solar.Gprc.Image.Parser, new[]{ "Width", "Height", "Data", "Layout", "ImageCompression" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "Frames_" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.GroundTruthFrames), global::Com.Bcom.Solar.Gprc.GroundTruthFrames.Parser, new[]{ "Frames", "WorldTransorm", "FixedPose" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frames), global::Com.Bcom.Solar.Gprc.Frames.Parser, new[]{ "ClientUuid", "Frames_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.GroundTruthFrames), global::Com.Bcom.Solar.Gprc.GroundTruthFrames.Parser, new[]{ "ClientUuid", "Frames", "WorldTransorm", "FixedPose" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Frame), global::Com.Bcom.Solar.Gprc.Frame.Parser, new[]{ "SensorId", "Image", "Timestamp", "Pose" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix4x4), global::Com.Bcom.Solar.Gprc.Matrix4x4.Parser, new[]{ "M11", "M12", "M13", "M14", "M21", "M22", "M23", "M24", "M31", "M32", "M33", "M34", "M41", "M42", "M43", "M44" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Com.Bcom.Solar.Gprc.Matrix3x3), global::Com.Bcom.Solar.Gprc.Matrix3x3.Parser, new[]{ "M11", "M12", "M13", "M21", "M22", "M23", "M31", "M32", "M33" }, null, null, null, null),
@@ -317,6 +326,178 @@ namespace Com.Bcom.Solar.Gprc {
 
   }
 
+  public sealed partial class ClientUUID : pb::IMessage<ClientUUID>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ClientUUID> _parser = new pb::MessageParser<ClientUUID>(() => new ClientUUID());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ClientUUID> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ClientUUID() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ClientUUID(ClientUUID other) : this() {
+      clientUuid_ = other.clientUuid_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ClientUUID Clone() {
+      return new ClientUUID(this);
+    }
+
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ClientUUID);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ClientUUID other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ClientUuid != other.ClientUuid) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ClientUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClientUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ClientUUID other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class PipelineModeValue : pb::IMessage<PipelineModeValue>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -329,7 +510,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[1]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -346,6 +527,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public PipelineModeValue(PipelineModeValue other) : this() {
+      clientUuid_ = other.clientUuid_;
       pipelineMode_ = other.pipelineMode_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -355,8 +537,19 @@ namespace Com.Bcom.Solar.Gprc {
       return new PipelineModeValue(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "pipeline_mode" field.</summary>
-    public const int PipelineModeFieldNumber = 1;
+    public const int PipelineModeFieldNumber = 2;
     private global::Com.Bcom.Solar.Gprc.PipelineMode pipelineMode_ = global::Com.Bcom.Solar.Gprc.PipelineMode.RelocalizationAndMapping;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.PipelineMode PipelineMode {
@@ -379,6 +572,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if (PipelineMode != other.PipelineMode) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -386,6 +580,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       if (PipelineMode != global::Com.Bcom.Solar.Gprc.PipelineMode.RelocalizationAndMapping) hash ^= PipelineMode.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -403,8 +598,12 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ClientUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
       if (PipelineMode != global::Com.Bcom.Solar.Gprc.PipelineMode.RelocalizationAndMapping) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteEnum((int) PipelineMode);
       }
       if (_unknownFields != null) {
@@ -416,8 +615,12 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClientUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
       if (PipelineMode != global::Com.Bcom.Solar.Gprc.PipelineMode.RelocalizationAndMapping) {
-        output.WriteRawTag(8);
+        output.WriteRawTag(16);
         output.WriteEnum((int) PipelineMode);
       }
       if (_unknownFields != null) {
@@ -429,6 +632,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       if (PipelineMode != global::Com.Bcom.Solar.Gprc.PipelineMode.RelocalizationAndMapping) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) PipelineMode);
       }
@@ -442,6 +648,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(PipelineModeValue other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       if (other.PipelineMode != global::Com.Bcom.Solar.Gprc.PipelineMode.RelocalizationAndMapping) {
         PipelineMode = other.PipelineMode;
@@ -460,7 +669,11 @@ namespace Com.Bcom.Solar.Gprc {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 8: {
+          case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 16: {
             PipelineMode = (global::Com.Bcom.Solar.Gprc.PipelineMode) input.ReadEnum();
             break;
           }
@@ -478,7 +691,11 @@ namespace Com.Bcom.Solar.Gprc {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 8: {
+          case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 16: {
             PipelineMode = (global::Com.Bcom.Solar.Gprc.PipelineMode) input.ReadEnum();
             break;
           }
@@ -501,7 +718,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[2]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -518,6 +735,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Message(Message other) : this() {
+      clientUuid_ = other.clientUuid_;
       message_ = other.message_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -527,8 +745,19 @@ namespace Com.Bcom.Solar.Gprc {
       return new Message(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "message" field.</summary>
-    public const int Message_FieldNumber = 1;
+    public const int Message_FieldNumber = 2;
     private string message_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Message_ {
@@ -551,6 +780,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if (Message_ != other.Message_) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -558,6 +788,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       if (Message_.Length != 0) hash ^= Message_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -575,8 +806,12 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Message_.Length != 0) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (Message_.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Message_);
       }
       if (_unknownFields != null) {
@@ -588,8 +823,12 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Message_.Length != 0) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (Message_.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Message_);
       }
       if (_unknownFields != null) {
@@ -601,6 +840,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       if (Message_.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Message_);
       }
@@ -614,6 +856,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(Message other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       if (other.Message_.Length != 0) {
         Message_ = other.Message_;
@@ -633,6 +878,10 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             Message_ = input.ReadString();
             break;
           }
@@ -651,6 +900,10 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             Message_ = input.ReadString();
             break;
           }
@@ -673,7 +926,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -690,6 +943,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CameraParameters(CameraParameters other) : this() {
+      clientUuid_ = other.clientUuid_;
       name_ = other.name_;
       id_ = other.id_;
       cameraType_ = other.cameraType_;
@@ -705,8 +959,19 @@ namespace Com.Bcom.Solar.Gprc {
       return new CameraParameters(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "name" field.</summary>
-    public const int NameFieldNumber = 1;
+    public const int NameFieldNumber = 2;
     private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -717,7 +982,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 2;
+    public const int IdFieldNumber = 3;
     private uint id_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Id {
@@ -728,7 +993,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "camera_type" field.</summary>
-    public const int CameraTypeFieldNumber = 3;
+    public const int CameraTypeFieldNumber = 4;
     private global::Com.Bcom.Solar.Gprc.CameraType cameraType_ = global::Com.Bcom.Solar.Gprc.CameraType.Rgb;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.CameraType CameraType {
@@ -739,7 +1004,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "width" field.</summary>
-    public const int WidthFieldNumber = 4;
+    public const int WidthFieldNumber = 5;
     private uint width_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Width {
@@ -750,7 +1015,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "height" field.</summary>
-    public const int HeightFieldNumber = 5;
+    public const int HeightFieldNumber = 6;
     private uint height_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Height {
@@ -761,7 +1026,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "intrinsics" field.</summary>
-    public const int IntrinsicsFieldNumber = 6;
+    public const int IntrinsicsFieldNumber = 7;
     private global::Com.Bcom.Solar.Gprc.Matrix3x3 intrinsics_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x3 Intrinsics {
@@ -772,7 +1037,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "distortion" field.</summary>
-    public const int DistortionFieldNumber = 7;
+    public const int DistortionFieldNumber = 8;
     private global::Com.Bcom.Solar.Gprc.CameraDistortion distortion_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.CameraDistortion Distortion {
@@ -795,6 +1060,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if (Name != other.Name) return false;
       if (Id != other.Id) return false;
       if (CameraType != other.CameraType) return false;
@@ -808,6 +1074,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Id != 0) hash ^= Id.GetHashCode();
       if (CameraType != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) hash ^= CameraType.GetHashCode();
@@ -831,32 +1098,36 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name.Length != 0) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id);
       }
       if (CameraType != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) CameraType);
       }
       if (Width != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(Width);
       }
       if (Height != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(Height);
       }
       if (intrinsics_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Intrinsics);
       }
       if (distortion_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(Distortion);
       }
       if (_unknownFields != null) {
@@ -868,32 +1139,36 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name.Length != 0) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (Name.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Name);
       }
       if (Id != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id);
       }
       if (CameraType != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) CameraType);
       }
       if (Width != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(Width);
       }
       if (Height != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(Height);
       }
       if (intrinsics_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Intrinsics);
       }
       if (distortion_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(Distortion);
       }
       if (_unknownFields != null) {
@@ -905,6 +1180,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
@@ -936,6 +1214,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(CameraParameters other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       if (other.Name.Length != 0) {
         Name = other.Name;
@@ -979,33 +1260,37 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             Name = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             Id = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 32: {
             CameraType = (global::Com.Bcom.Solar.Gprc.CameraType) input.ReadEnum();
             break;
           }
-          case 32: {
+          case 40: {
             Width = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 48: {
             Height = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 58: {
             if (intrinsics_ == null) {
               Intrinsics = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Intrinsics);
             break;
           }
-          case 58: {
+          case 66: {
             if (distortion_ == null) {
               Distortion = new global::Com.Bcom.Solar.Gprc.CameraDistortion();
             }
@@ -1027,33 +1312,37 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             Name = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             Id = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 32: {
             CameraType = (global::Com.Bcom.Solar.Gprc.CameraType) input.ReadEnum();
             break;
           }
-          case 32: {
+          case 40: {
             Width = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 48: {
             Height = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 58: {
             if (intrinsics_ == null) {
               Intrinsics = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Intrinsics);
             break;
           }
-          case 58: {
+          case 66: {
             if (distortion_ == null) {
               Distortion = new global::Com.Bcom.Solar.Gprc.CameraDistortion();
             }
@@ -1079,7 +1368,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1096,6 +1385,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public CameraParametersStereo(CameraParametersStereo other) : this() {
+      clientUuid_ = other.clientUuid_;
       name1_ = other.name1_;
       id1_ = other.id1_;
       cameraType1_ = other.cameraType1_;
@@ -1118,8 +1408,19 @@ namespace Com.Bcom.Solar.Gprc {
       return new CameraParametersStereo(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "name1" field.</summary>
-    public const int Name1FieldNumber = 1;
+    public const int Name1FieldNumber = 2;
     private string name1_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name1 {
@@ -1130,7 +1431,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "id1" field.</summary>
-    public const int Id1FieldNumber = 2;
+    public const int Id1FieldNumber = 3;
     private uint id1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Id1 {
@@ -1141,7 +1442,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "camera_type1" field.</summary>
-    public const int CameraType1FieldNumber = 3;
+    public const int CameraType1FieldNumber = 4;
     private global::Com.Bcom.Solar.Gprc.CameraType cameraType1_ = global::Com.Bcom.Solar.Gprc.CameraType.Rgb;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.CameraType CameraType1 {
@@ -1152,7 +1453,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "width1" field.</summary>
-    public const int Width1FieldNumber = 4;
+    public const int Width1FieldNumber = 5;
     private uint width1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Width1 {
@@ -1163,7 +1464,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "height1" field.</summary>
-    public const int Height1FieldNumber = 5;
+    public const int Height1FieldNumber = 6;
     private uint height1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Height1 {
@@ -1174,7 +1475,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "intrinsics1" field.</summary>
-    public const int Intrinsics1FieldNumber = 6;
+    public const int Intrinsics1FieldNumber = 7;
     private global::Com.Bcom.Solar.Gprc.Matrix3x3 intrinsics1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x3 Intrinsics1 {
@@ -1185,7 +1486,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "distortion1" field.</summary>
-    public const int Distortion1FieldNumber = 7;
+    public const int Distortion1FieldNumber = 8;
     private global::Com.Bcom.Solar.Gprc.CameraDistortion distortion1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.CameraDistortion Distortion1 {
@@ -1196,7 +1497,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "name2" field.</summary>
-    public const int Name2FieldNumber = 8;
+    public const int Name2FieldNumber = 9;
     private string name2_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name2 {
@@ -1207,7 +1508,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "id2" field.</summary>
-    public const int Id2FieldNumber = 9;
+    public const int Id2FieldNumber = 10;
     private uint id2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Id2 {
@@ -1218,7 +1519,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "camera_type2" field.</summary>
-    public const int CameraType2FieldNumber = 10;
+    public const int CameraType2FieldNumber = 11;
     private global::Com.Bcom.Solar.Gprc.CameraType cameraType2_ = global::Com.Bcom.Solar.Gprc.CameraType.Rgb;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.CameraType CameraType2 {
@@ -1229,7 +1530,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "width2" field.</summary>
-    public const int Width2FieldNumber = 11;
+    public const int Width2FieldNumber = 12;
     private uint width2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Width2 {
@@ -1240,7 +1541,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "height2" field.</summary>
-    public const int Height2FieldNumber = 12;
+    public const int Height2FieldNumber = 13;
     private uint height2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint Height2 {
@@ -1251,7 +1552,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "intrinsics2" field.</summary>
-    public const int Intrinsics2FieldNumber = 13;
+    public const int Intrinsics2FieldNumber = 14;
     private global::Com.Bcom.Solar.Gprc.Matrix3x3 intrinsics2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x3 Intrinsics2 {
@@ -1262,7 +1563,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "distortion2" field.</summary>
-    public const int Distortion2FieldNumber = 14;
+    public const int Distortion2FieldNumber = 15;
     private global::Com.Bcom.Solar.Gprc.CameraDistortion distortion2_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.CameraDistortion Distortion2 {
@@ -1285,6 +1586,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if (Name1 != other.Name1) return false;
       if (Id1 != other.Id1) return false;
       if (CameraType1 != other.CameraType1) return false;
@@ -1305,6 +1607,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       if (Name1.Length != 0) hash ^= Name1.GetHashCode();
       if (Id1 != 0) hash ^= Id1.GetHashCode();
       if (CameraType1 != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) hash ^= CameraType1.GetHashCode();
@@ -1335,60 +1638,64 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Name1.Length != 0) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (Name1.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Name1);
       }
       if (Id1 != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id1);
       }
       if (CameraType1 != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) CameraType1);
       }
       if (Width1 != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(Width1);
       }
       if (Height1 != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(Height1);
       }
       if (intrinsics1_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Intrinsics1);
       }
       if (distortion1_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(Distortion1);
       }
       if (Name2.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteString(Name2);
       }
       if (Id2 != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(Id2);
       }
       if (CameraType2 != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(88);
         output.WriteEnum((int) CameraType2);
       }
       if (Width2 != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(Width2);
       }
       if (Height2 != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteUInt32(Height2);
       }
       if (intrinsics2_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(Intrinsics2);
       }
       if (distortion2_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteMessage(Distortion2);
       }
       if (_unknownFields != null) {
@@ -1400,60 +1707,64 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Name1.Length != 0) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (Name1.Length != 0) {
+        output.WriteRawTag(18);
         output.WriteString(Name1);
       }
       if (Id1 != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteUInt32(Id1);
       }
       if (CameraType1 != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) CameraType1);
       }
       if (Width1 != 0) {
-        output.WriteRawTag(32);
+        output.WriteRawTag(40);
         output.WriteUInt32(Width1);
       }
       if (Height1 != 0) {
-        output.WriteRawTag(40);
+        output.WriteRawTag(48);
         output.WriteUInt32(Height1);
       }
       if (intrinsics1_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Intrinsics1);
       }
       if (distortion1_ != null) {
-        output.WriteRawTag(58);
+        output.WriteRawTag(66);
         output.WriteMessage(Distortion1);
       }
       if (Name2.Length != 0) {
-        output.WriteRawTag(66);
+        output.WriteRawTag(74);
         output.WriteString(Name2);
       }
       if (Id2 != 0) {
-        output.WriteRawTag(72);
+        output.WriteRawTag(80);
         output.WriteUInt32(Id2);
       }
       if (CameraType2 != global::Com.Bcom.Solar.Gprc.CameraType.Rgb) {
-        output.WriteRawTag(80);
+        output.WriteRawTag(88);
         output.WriteEnum((int) CameraType2);
       }
       if (Width2 != 0) {
-        output.WriteRawTag(88);
+        output.WriteRawTag(96);
         output.WriteUInt32(Width2);
       }
       if (Height2 != 0) {
-        output.WriteRawTag(96);
+        output.WriteRawTag(104);
         output.WriteUInt32(Height2);
       }
       if (intrinsics2_ != null) {
-        output.WriteRawTag(106);
+        output.WriteRawTag(114);
         output.WriteMessage(Intrinsics2);
       }
       if (distortion2_ != null) {
-        output.WriteRawTag(114);
+        output.WriteRawTag(122);
         output.WriteMessage(Distortion2);
       }
       if (_unknownFields != null) {
@@ -1465,6 +1776,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       if (Name1.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name1);
       }
@@ -1517,6 +1831,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(CameraParametersStereo other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       if (other.Name1.Length != 0) {
         Name1 = other.Name1;
@@ -1587,67 +1904,71 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             Name1 = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             Id1 = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 32: {
             CameraType1 = (global::Com.Bcom.Solar.Gprc.CameraType) input.ReadEnum();
             break;
           }
-          case 32: {
+          case 40: {
             Width1 = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 48: {
             Height1 = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 58: {
             if (intrinsics1_ == null) {
               Intrinsics1 = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Intrinsics1);
             break;
           }
-          case 58: {
+          case 66: {
             if (distortion1_ == null) {
               Distortion1 = new global::Com.Bcom.Solar.Gprc.CameraDistortion();
             }
             input.ReadMessage(Distortion1);
             break;
           }
-          case 66: {
+          case 74: {
             Name2 = input.ReadString();
             break;
           }
-          case 72: {
+          case 80: {
             Id2 = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 88: {
             CameraType2 = (global::Com.Bcom.Solar.Gprc.CameraType) input.ReadEnum();
             break;
           }
-          case 88: {
+          case 96: {
             Width2 = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 104: {
             Height2 = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 114: {
             if (intrinsics2_ == null) {
               Intrinsics2 = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Intrinsics2);
             break;
           }
-          case 114: {
+          case 122: {
             if (distortion2_ == null) {
               Distortion2 = new global::Com.Bcom.Solar.Gprc.CameraDistortion();
             }
@@ -1669,67 +1990,71 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             Name1 = input.ReadString();
             break;
           }
-          case 16: {
+          case 24: {
             Id1 = input.ReadUInt32();
             break;
           }
-          case 24: {
+          case 32: {
             CameraType1 = (global::Com.Bcom.Solar.Gprc.CameraType) input.ReadEnum();
             break;
           }
-          case 32: {
+          case 40: {
             Width1 = input.ReadUInt32();
             break;
           }
-          case 40: {
+          case 48: {
             Height1 = input.ReadUInt32();
             break;
           }
-          case 50: {
+          case 58: {
             if (intrinsics1_ == null) {
               Intrinsics1 = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Intrinsics1);
             break;
           }
-          case 58: {
+          case 66: {
             if (distortion1_ == null) {
               Distortion1 = new global::Com.Bcom.Solar.Gprc.CameraDistortion();
             }
             input.ReadMessage(Distortion1);
             break;
           }
-          case 66: {
+          case 74: {
             Name2 = input.ReadString();
             break;
           }
-          case 72: {
+          case 80: {
             Id2 = input.ReadUInt32();
             break;
           }
-          case 80: {
+          case 88: {
             CameraType2 = (global::Com.Bcom.Solar.Gprc.CameraType) input.ReadEnum();
             break;
           }
-          case 88: {
+          case 96: {
             Width2 = input.ReadUInt32();
             break;
           }
-          case 96: {
+          case 104: {
             Height2 = input.ReadUInt32();
             break;
           }
-          case 106: {
+          case 114: {
             if (intrinsics2_ == null) {
               Intrinsics2 = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Intrinsics2);
             break;
           }
-          case 114: {
+          case 122: {
             if (distortion2_ == null) {
               Distortion2 = new global::Com.Bcom.Solar.Gprc.CameraDistortion();
             }
@@ -1755,7 +2080,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2071,7 +2396,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2088,6 +2413,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public RectificationParameters(RectificationParameters other) : this() {
+      clientUuid_ = other.clientUuid_;
       cam1Rotation_ = other.cam1Rotation_ != null ? other.cam1Rotation_.Clone() : null;
       cam1Projection_ = other.cam1Projection_ != null ? other.cam1Projection_.Clone() : null;
       cam1StereoType_ = other.cam1StereoType_;
@@ -2104,8 +2430,19 @@ namespace Com.Bcom.Solar.Gprc {
       return new RectificationParameters(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "cam1_rotation" field.</summary>
-    public const int Cam1RotationFieldNumber = 1;
+    public const int Cam1RotationFieldNumber = 2;
     private global::Com.Bcom.Solar.Gprc.Matrix3x3 cam1Rotation_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x3 Cam1Rotation {
@@ -2116,7 +2453,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam1_projection" field.</summary>
-    public const int Cam1ProjectionFieldNumber = 2;
+    public const int Cam1ProjectionFieldNumber = 3;
     private global::Com.Bcom.Solar.Gprc.Matrix3x4 cam1Projection_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x4 Cam1Projection {
@@ -2127,7 +2464,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam1_stereo_type" field.</summary>
-    public const int Cam1StereoTypeFieldNumber = 3;
+    public const int Cam1StereoTypeFieldNumber = 4;
     private global::Com.Bcom.Solar.Gprc.StereoType cam1StereoType_ = global::Com.Bcom.Solar.Gprc.StereoType.Horizontal;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.StereoType Cam1StereoType {
@@ -2138,7 +2475,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam1_baseline" field.</summary>
-    public const int Cam1BaselineFieldNumber = 4;
+    public const int Cam1BaselineFieldNumber = 5;
     private float cam1Baseline_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float Cam1Baseline {
@@ -2149,7 +2486,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam2_rotation" field.</summary>
-    public const int Cam2RotationFieldNumber = 5;
+    public const int Cam2RotationFieldNumber = 6;
     private global::Com.Bcom.Solar.Gprc.Matrix3x3 cam2Rotation_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x3 Cam2Rotation {
@@ -2160,7 +2497,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam2_projection" field.</summary>
-    public const int Cam2ProjectionFieldNumber = 6;
+    public const int Cam2ProjectionFieldNumber = 7;
     private global::Com.Bcom.Solar.Gprc.Matrix3x4 cam2Projection_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix3x4 Cam2Projection {
@@ -2171,7 +2508,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam2_stereo_type" field.</summary>
-    public const int Cam2StereoTypeFieldNumber = 7;
+    public const int Cam2StereoTypeFieldNumber = 8;
     private global::Com.Bcom.Solar.Gprc.StereoType cam2StereoType_ = global::Com.Bcom.Solar.Gprc.StereoType.Horizontal;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.StereoType Cam2StereoType {
@@ -2182,7 +2519,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "cam2_baseline" field.</summary>
-    public const int Cam2BaselineFieldNumber = 8;
+    public const int Cam2BaselineFieldNumber = 9;
     private float cam2Baseline_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float Cam2Baseline {
@@ -2205,6 +2542,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if (!object.Equals(Cam1Rotation, other.Cam1Rotation)) return false;
       if (!object.Equals(Cam1Projection, other.Cam1Projection)) return false;
       if (Cam1StereoType != other.Cam1StereoType) return false;
@@ -2219,6 +2557,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       if (cam1Rotation_ != null) hash ^= Cam1Rotation.GetHashCode();
       if (cam1Projection_ != null) hash ^= Cam1Projection.GetHashCode();
       if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) hash ^= Cam1StereoType.GetHashCode();
@@ -2243,36 +2582,40 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (cam1Rotation_ != null) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (cam1Rotation_ != null) {
+        output.WriteRawTag(18);
         output.WriteMessage(Cam1Rotation);
       }
       if (cam1Projection_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(Cam1Projection);
       }
       if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) Cam1StereoType);
       }
       if (Cam1Baseline != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(45);
         output.WriteFloat(Cam1Baseline);
       }
       if (cam2Rotation_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteMessage(Cam2Rotation);
       }
       if (cam2Projection_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Cam2Projection);
       }
       if (Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Cam2StereoType);
       }
       if (Cam2Baseline != 0F) {
-        output.WriteRawTag(69);
+        output.WriteRawTag(77);
         output.WriteFloat(Cam2Baseline);
       }
       if (_unknownFields != null) {
@@ -2284,36 +2627,40 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (cam1Rotation_ != null) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (cam1Rotation_ != null) {
+        output.WriteRawTag(18);
         output.WriteMessage(Cam1Rotation);
       }
       if (cam1Projection_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(Cam1Projection);
       }
       if (Cam1StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteEnum((int) Cam1StereoType);
       }
       if (Cam1Baseline != 0F) {
-        output.WriteRawTag(37);
+        output.WriteRawTag(45);
         output.WriteFloat(Cam1Baseline);
       }
       if (cam2Rotation_ != null) {
-        output.WriteRawTag(42);
+        output.WriteRawTag(50);
         output.WriteMessage(Cam2Rotation);
       }
       if (cam2Projection_ != null) {
-        output.WriteRawTag(50);
+        output.WriteRawTag(58);
         output.WriteMessage(Cam2Projection);
       }
       if (Cam2StereoType != global::Com.Bcom.Solar.Gprc.StereoType.Horizontal) {
-        output.WriteRawTag(56);
+        output.WriteRawTag(64);
         output.WriteEnum((int) Cam2StereoType);
       }
       if (Cam2Baseline != 0F) {
-        output.WriteRawTag(69);
+        output.WriteRawTag(77);
         output.WriteFloat(Cam2Baseline);
       }
       if (_unknownFields != null) {
@@ -2325,6 +2672,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       if (cam1Rotation_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Cam1Rotation);
       }
@@ -2359,6 +2709,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(RectificationParameters other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       if (other.cam1Rotation_ != null) {
         if (cam1Rotation_ == null) {
@@ -2411,46 +2764,50 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             if (cam1Rotation_ == null) {
               Cam1Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Cam1Rotation);
             break;
           }
-          case 18: {
+          case 26: {
             if (cam1Projection_ == null) {
               Cam1Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
             }
             input.ReadMessage(Cam1Projection);
             break;
           }
-          case 24: {
+          case 32: {
             Cam1StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
             break;
           }
-          case 37: {
+          case 45: {
             Cam1Baseline = input.ReadFloat();
             break;
           }
-          case 42: {
+          case 50: {
             if (cam2Rotation_ == null) {
               Cam2Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Cam2Rotation);
             break;
           }
-          case 50: {
+          case 58: {
             if (cam2Projection_ == null) {
               Cam2Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
             }
             input.ReadMessage(Cam2Projection);
             break;
           }
-          case 56: {
+          case 64: {
             Cam2StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
             break;
           }
-          case 69: {
+          case 77: {
             Cam2Baseline = input.ReadFloat();
             break;
           }
@@ -2469,46 +2826,50 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             if (cam1Rotation_ == null) {
               Cam1Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Cam1Rotation);
             break;
           }
-          case 18: {
+          case 26: {
             if (cam1Projection_ == null) {
               Cam1Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
             }
             input.ReadMessage(Cam1Projection);
             break;
           }
-          case 24: {
+          case 32: {
             Cam1StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
             break;
           }
-          case 37: {
+          case 45: {
             Cam1Baseline = input.ReadFloat();
             break;
           }
-          case 42: {
+          case 50: {
             if (cam2Rotation_ == null) {
               Cam2Rotation = new global::Com.Bcom.Solar.Gprc.Matrix3x3();
             }
             input.ReadMessage(Cam2Rotation);
             break;
           }
-          case 50: {
+          case 58: {
             if (cam2Projection_ == null) {
               Cam2Projection = new global::Com.Bcom.Solar.Gprc.Matrix3x4();
             }
             input.ReadMessage(Cam2Projection);
             break;
           }
-          case 56: {
+          case 64: {
             Cam2StereoType = (global::Com.Bcom.Solar.Gprc.StereoType) input.ReadEnum();
             break;
           }
-          case 69: {
+          case 77: {
             Cam2Baseline = input.ReadFloat();
             break;
           }
@@ -2531,7 +2892,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2820,7 +3181,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3136,7 +3497,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3153,6 +3514,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public Frames(Frames other) : this() {
+      clientUuid_ = other.clientUuid_;
       frames_ = other.frames_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -3162,10 +3524,21 @@ namespace Com.Bcom.Solar.Gprc {
       return new Frames(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "frames" field.</summary>
-    public const int Frames_FieldNumber = 1;
+    public const int Frames_FieldNumber = 2;
     private static readonly pb::FieldCodec<global::Com.Bcom.Solar.Gprc.Frame> _repeated_frames_codec
-        = pb::FieldCodec.ForMessage(10, global::Com.Bcom.Solar.Gprc.Frame.Parser);
+        = pb::FieldCodec.ForMessage(18, global::Com.Bcom.Solar.Gprc.Frame.Parser);
     private readonly pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame> frames_ = new pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Com.Bcom.Solar.Gprc.Frame> Frames_ {
@@ -3185,6 +3558,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if(!frames_.Equals(other.frames_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3192,6 +3566,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       hash ^= frames_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3209,6 +3584,10 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (ClientUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
       frames_.WriteTo(output, _repeated_frames_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -3219,6 +3598,10 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClientUuid.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
       frames_.WriteTo(ref output, _repeated_frames_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -3229,6 +3612,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       size += frames_.CalculateSize(_repeated_frames_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3240,6 +3626,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(Frames other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       frames_.Add(other.frames_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3257,6 +3646,10 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             frames_.AddEntriesFrom(input, _repeated_frames_codec);
             break;
           }
@@ -3275,6 +3668,10 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             frames_.AddEntriesFrom(ref input, _repeated_frames_codec);
             break;
           }
@@ -3297,7 +3694,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3314,6 +3711,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public GroundTruthFrames(GroundTruthFrames other) : this() {
+      clientUuid_ = other.clientUuid_;
       frames_ = other.frames_ != null ? other.frames_.Clone() : null;
       worldTransorm_ = other.worldTransorm_ != null ? other.worldTransorm_.Clone() : null;
       fixedPose_ = other.fixedPose_;
@@ -3325,8 +3723,19 @@ namespace Com.Bcom.Solar.Gprc {
       return new GroundTruthFrames(this);
     }
 
+    /// <summary>Field number for the "client_uuid" field.</summary>
+    public const int ClientUuidFieldNumber = 1;
+    private string clientUuid_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ClientUuid {
+      get { return clientUuid_; }
+      set {
+        clientUuid_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     /// <summary>Field number for the "frames" field.</summary>
-    public const int FramesFieldNumber = 1;
+    public const int FramesFieldNumber = 2;
     private global::Com.Bcom.Solar.Gprc.Frames frames_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Frames Frames {
@@ -3337,7 +3746,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "world_transorm" field.</summary>
-    public const int WorldTransormFieldNumber = 2;
+    public const int WorldTransormFieldNumber = 3;
     private global::Com.Bcom.Solar.Gprc.Matrix4x4 worldTransorm_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Com.Bcom.Solar.Gprc.Matrix4x4 WorldTransorm {
@@ -3348,7 +3757,7 @@ namespace Com.Bcom.Solar.Gprc {
     }
 
     /// <summary>Field number for the "fixed_pose" field.</summary>
-    public const int FixedPoseFieldNumber = 3;
+    public const int FixedPoseFieldNumber = 4;
     private bool fixedPose_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool FixedPose {
@@ -3371,6 +3780,7 @@ namespace Com.Bcom.Solar.Gprc {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (ClientUuid != other.ClientUuid) return false;
       if (!object.Equals(Frames, other.Frames)) return false;
       if (!object.Equals(WorldTransorm, other.WorldTransorm)) return false;
       if (FixedPose != other.FixedPose) return false;
@@ -3380,6 +3790,7 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (ClientUuid.Length != 0) hash ^= ClientUuid.GetHashCode();
       if (frames_ != null) hash ^= Frames.GetHashCode();
       if (worldTransorm_ != null) hash ^= WorldTransorm.GetHashCode();
       if (FixedPose != false) hash ^= FixedPose.GetHashCode();
@@ -3399,16 +3810,20 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (frames_ != null) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (frames_ != null) {
+        output.WriteRawTag(18);
         output.WriteMessage(Frames);
       }
       if (worldTransorm_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(WorldTransorm);
       }
       if (FixedPose != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteBool(FixedPose);
       }
       if (_unknownFields != null) {
@@ -3420,16 +3835,20 @@ namespace Com.Bcom.Solar.Gprc {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (frames_ != null) {
+      if (ClientUuid.Length != 0) {
         output.WriteRawTag(10);
+        output.WriteString(ClientUuid);
+      }
+      if (frames_ != null) {
+        output.WriteRawTag(18);
         output.WriteMessage(Frames);
       }
       if (worldTransorm_ != null) {
-        output.WriteRawTag(18);
+        output.WriteRawTag(26);
         output.WriteMessage(WorldTransorm);
       }
       if (FixedPose != false) {
-        output.WriteRawTag(24);
+        output.WriteRawTag(32);
         output.WriteBool(FixedPose);
       }
       if (_unknownFields != null) {
@@ -3441,6 +3860,9 @@ namespace Com.Bcom.Solar.Gprc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (ClientUuid.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientUuid);
+      }
       if (frames_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Frames);
       }
@@ -3460,6 +3882,9 @@ namespace Com.Bcom.Solar.Gprc {
     public void MergeFrom(GroundTruthFrames other) {
       if (other == null) {
         return;
+      }
+      if (other.ClientUuid.Length != 0) {
+        ClientUuid = other.ClientUuid;
       }
       if (other.frames_ != null) {
         if (frames_ == null) {
@@ -3491,20 +3916,24 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             if (frames_ == null) {
               Frames = new global::Com.Bcom.Solar.Gprc.Frames();
             }
             input.ReadMessage(Frames);
             break;
           }
-          case 18: {
+          case 26: {
             if (worldTransorm_ == null) {
               WorldTransorm = new global::Com.Bcom.Solar.Gprc.Matrix4x4();
             }
             input.ReadMessage(WorldTransorm);
             break;
           }
-          case 24: {
+          case 32: {
             FixedPose = input.ReadBool();
             break;
           }
@@ -3523,20 +3952,24 @@ namespace Com.Bcom.Solar.Gprc {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
+            ClientUuid = input.ReadString();
+            break;
+          }
+          case 18: {
             if (frames_ == null) {
               Frames = new global::Com.Bcom.Solar.Gprc.Frames();
             }
             input.ReadMessage(Frames);
             break;
           }
-          case 18: {
+          case 26: {
             if (worldTransorm_ == null) {
               WorldTransorm = new global::Com.Bcom.Solar.Gprc.Matrix4x4();
             }
             input.ReadMessage(WorldTransorm);
             break;
           }
-          case 24: {
+          case 32: {
             FixedPose = input.ReadBool();
             break;
           }
@@ -3559,7 +3992,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3857,7 +4290,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4569,7 +5002,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5029,7 +5462,7 @@ namespace Com.Bcom.Solar.Gprc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Com.Bcom.Solar.Gprc.SolarMappingAndRelocalizationProxyReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
