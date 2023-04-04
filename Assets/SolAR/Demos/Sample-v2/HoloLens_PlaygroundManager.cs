@@ -47,6 +47,8 @@ public class HoloLens_PlaygroundManager : MonoBehaviour
             var scene = FindObjectOfType<Bcom.SharedPlayground.ScenePersistency>();
             if (scene)
             {
+                // Here we apply a global rotation offset around the X axis to be aligned with the SolAR CS
+                scene.transform.Rotate(Vector3.right, 180f);
                 solARCloudHololens2Specific.SetSolARScene(scene.gameObject);
                 Debug.Log("Set up SolAR scene");
             }
