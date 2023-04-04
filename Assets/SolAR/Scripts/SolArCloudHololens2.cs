@@ -472,7 +472,7 @@ SolARHololens2ResearchMode researchMode;
         SpatialCoordinateSystem spatialCoordinateSystem;
 #endif
 
-        SolArCloudHololens2()
+        public SolArCloudHololens2()
         {
             pvParameters = new CameraParameters(pvDefaultParameters);
             leftFrontParameters = new CameraParameters(leftFrontDefaultParameters);
