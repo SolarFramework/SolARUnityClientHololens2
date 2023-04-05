@@ -30,6 +30,8 @@ namespace Com.Bcom.Solar
         //public Action StopFetchingFrames;
 
         // bool: error?, string: message
+        public event Action OnConnected;
+        public event Action OnDisconnected;
         public event Action<bool, string> OnStart;
         public event Action OnStop;
         public event Action<bool> OnReset;
@@ -49,7 +51,7 @@ namespace Com.Bcom.Solar
         public string frontendIp = "<not-set>";
 
         [Tooltip("Select to preform both mapping and relocalization or only relocalization")]
-        public PipelineMode pipelineMode = PipelineMode.RelocalizationAndMapping;
+        public PipelineMode pipelineMode = PipelineMode.RelocalizationOnly;
 
         [Serializable]
         public struct GrpcSettings
@@ -148,6 +150,7 @@ namespace Com.Bcom.Solar
                 return false;
             }
             grpc.OnResultReceived += OnReceivedPoseInternal;
+            OnConnected?.Invoke();
             return true;
         }
 
@@ -164,6 +167,7 @@ namespace Com.Bcom.Solar
                         return false;
                     }
                 }
+                OnDisconnected?.Invoke();
                 return true;
             }
             finally

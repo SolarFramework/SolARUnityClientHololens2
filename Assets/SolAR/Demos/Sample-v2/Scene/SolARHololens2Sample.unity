@@ -12181,7 +12181,6 @@ MonoBehaviour:
   enabledWhenConnected:
   - {fileID: 911797749}
   - {fileID: 364986204}
-  - {fileID: 1423180867}
 --- !u!1 &1634117447
 GameObject:
   m_ObjectHideFlags: 0
@@ -14154,7 +14153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontendIp: http://192.168.137.1
-  pipelineMode: 0
+  pipelineMode: 1
   advancedGrpcSettings:
     threadSlots: 10
     networkSlots: 10
