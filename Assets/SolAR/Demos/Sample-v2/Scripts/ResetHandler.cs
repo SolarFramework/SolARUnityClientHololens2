@@ -29,8 +29,8 @@ namespace Com.Bcom.Solar.Ui
         void Start()
         {
             solar.OnPipelineModeChanged += OnPipelineModeChanged;
-            solar.OnConnected += OnConnected;
-            solar.OnDisconnected += OnDisconnected;
+            solar.OnConnect += OnConnected;
+            solar.OnDisconnect += OnDisconnected;
             buttonConfigHelper.gameObject.SetActive(ShouldEnable());
         }
 
@@ -44,7 +44,7 @@ namespace Com.Bcom.Solar.Ui
             buttonConfigHelper.gameObject.SetActive(ShouldEnable());
         }
 
-        private void OnConnected()
+        private void OnConnected(string ip)
         {
             buttonConfigHelper.gameObject.SetActive(ShouldEnable());
         }
