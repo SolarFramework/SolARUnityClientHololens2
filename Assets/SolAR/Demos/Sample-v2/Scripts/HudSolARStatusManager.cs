@@ -71,13 +71,20 @@ namespace Com.Bcom.Solar.Ui
         {
             lock (this)
             {
-                switch (result.Result.MappingStatus)
+                if (solar.pipelineMode == PipelineMode.RelocalizationOnly)
                 {
-                    case MappingStatus.Bootstrap: mappingStatus = "Bootstrap"; break;
-                    case MappingStatus.LoopClosure: mappingStatus = "LoopClosure"; break;
-                    case MappingStatus.Mapping: mappingStatus = "Mapping"; break;
-                    case MappingStatus.TrackingLost: mappingStatus = "TrackingLost"; break;
-                    default: throw new System.Exception("Unkown mapping status");
+                    mappingStatus = "N/A";
+                }
+                else
+                {
+                    switch (result.Result.MappingStatus)
+                    {
+                        case MappingStatus.Bootstrap: mappingStatus = "Bootstrap"; break;
+                        case MappingStatus.LoopClosure: mappingStatus = "LoopClosure"; break;
+                        case MappingStatus.Mapping: mappingStatus = "Mapping"; break;
+                        case MappingStatus.TrackingLost: mappingStatus = "TrackingLost"; break;
+                        default: throw new System.Exception("Unkown mapping status");
+                    }
                 }
                 switch (result.Result.PoseStatus)
                 {
