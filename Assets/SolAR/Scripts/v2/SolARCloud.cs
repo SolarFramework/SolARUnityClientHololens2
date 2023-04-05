@@ -51,7 +51,7 @@ namespace Com.Bcom.Solar
         public string frontendIp = "<not-set>";
 
         [Tooltip("Select to preform both mapping and relocalization or only relocalization")]
-        public PipelineMode pipelineMode = PipelineMode.RelocalizationAndMapping;
+        public PipelineMode pipelineMode = PipelineMode.RelocalizationOnly;
 
         [Serializable]
         public struct GrpcSettings

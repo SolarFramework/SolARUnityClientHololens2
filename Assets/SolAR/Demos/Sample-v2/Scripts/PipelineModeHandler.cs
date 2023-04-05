@@ -32,12 +32,9 @@ namespace Com.Bcom.Solar.Ui
         {
             buttonConfigHelper.MainLabelText = buildButtonLabel(solar.pipelineMode);
             solar.OnPipelineModeChanged += OnPipelineModeChanged;
+            buttonConfigHelper.MainLabelText = buildButtonLabel(solar.pipelineMode);
         }
 
-        void Update()
-        {
-
-        }
         public void TogglePipelineMode()
         {
             solar.TogglePipelineMode();

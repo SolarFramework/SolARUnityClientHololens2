@@ -17,7 +17,7 @@
 using UnityEngine;
 
 using Microsoft.MixedReality.Toolkit.UI;
-
+using Com.Bcom.Solar.Gprc;
 
 namespace Com.Bcom.Solar.Ui
 {
@@ -28,7 +28,10 @@ namespace Com.Bcom.Solar.Ui
 
         void Start()
         {
-            solar.OnReset += OnReset;
+            solar.OnPipelineModeChanged += OnPipelineModeChanged;
+            solar.OnConnected += OnConnected;
+            solar.OnDisconnected += OnDisconnected;
+            buttonConfigHelper.gameObject.SetActive(ShouldEnable());
         }
 
         public async void Reset()
@@ -36,8 +39,24 @@ namespace Com.Bcom.Solar.Ui
             await solar.SolARReset();
         }
 
-        private void OnReset(bool result)
+        private void OnPipelineModeChanged(PipelineMode oldMode, PipelineMode newMode)
         {
+            buttonConfigHelper.gameObject.SetActive(ShouldEnable());
+        }
+
+        private void OnConnected()
+        {
+            buttonConfigHelper.gameObject.SetActive(ShouldEnable());
+        }
+
+        private void OnDisconnected()
+        {
+            buttonConfigHelper.gameObject.SetActive(ShouldEnable());
+        }
+
+        private bool ShouldEnable()
+        {
+            return solar.Isregistered() && solar.pipelineMode == PipelineMode.RelocalizationAndMapping;
         }
     }
 }
