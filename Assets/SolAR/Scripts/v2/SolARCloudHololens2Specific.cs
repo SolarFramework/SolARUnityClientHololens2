@@ -129,6 +129,34 @@ namespace Com.Bcom.Solar
         private Vector3 receivedPosePosition;
         private bool poseReceived = false;
 
+        private OneEuroFilter<Vector3> positionFilter;
+        private OneEuroFilter<Quaternion> rotationFilter;
+
+        [SerializeField]
+        private bool smoothReloc = true;
+
+        private struct FilterConfig
+        {
+            public float frequency;
+            public float minCutoff;
+            public float beta;
+            public float dCutoff;
+        };
+
+        private FilterConfig positionFilterConfig = new FilterConfig() {
+            frequency = 10f,
+            minCutoff = 1f,
+            beta = 0.001f,
+            dCutoff = 0.5f
+        };
+        private FilterConfig rotationFilterConfig = new FilterConfig()
+        {
+            frequency = 10f,
+            minCutoff = 1f,
+            beta = 0.001f,
+            dCutoff = 0.5f
+        };
+
 #if ENABLE_WINMD_SUPPORT
         private SpatialCoordinateSystem spatialCoordinateSystem;
         private SolARHololens2ResearchMode researchMode;
@@ -152,6 +180,9 @@ namespace Com.Bcom.Solar
                 solarScene.SetActive(false);
                 solarSceneInitPose = solarScene.transform.localToWorldMatrix;
             }
+
+            positionFilter = new OneEuroFilter<Vector3>(positionFilterConfig.frequency, positionFilterConfig.minCutoff, positionFilterConfig.beta, positionFilterConfig.dCutoff);
+            rotationFilter = new OneEuroFilter<Quaternion>(rotationFilterConfig.frequency, rotationFilterConfig.minCutoff, rotationFilterConfig.beta, rotationFilterConfig.dCutoff);
 
             //solARCloud.StartFetchingFrames += StartSensorsCapture;
             //solARCloud.StopFetchingFrames += StopSensorsCapture;
@@ -199,8 +230,8 @@ namespace Com.Bcom.Solar
                 // Apply corrected pose to scene
                 if (solarScene)
                 {
-                    solarScene.transform.rotation = receivedPoseOrientation;
-                    solarScene.transform.position = receivedPosePosition;
+                    solarScene.transform.rotation = smoothReloc ? rotationFilter.Filter(receivedPoseOrientation) : receivedPoseOrientation;
+                    solarScene.transform.position = smoothReloc ? positionFilter.Filter(receivedPosePosition) : receivedPosePosition;
                     solarScene.SetActive(true);
                 }
                 poseReceived = false;
