@@ -244,6 +244,7 @@ namespace Com.Bcom.Solar
             solarScene = scene;
             solarSceneInitPose = scene.transform.localToWorldMatrix;
             Instantiate(debugPrefab, scene.transform);
+            solarScene.SetActive(false);
         }
 
         public void StartSensorsCapture()
