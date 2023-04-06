@@ -108,6 +108,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6087710904942667864, guid: e85941103be85544bb795d4636e8406f,
         type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[18].Override
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6087710904942667864, guid: e85941103be85544bb795d4636e8406f,
+        type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[1].OverridingTargetPrefab
       value: 
       objectReference: {fileID: 2888393480364398442, guid: 630a7510facf31142bf40deeef0d00c9,
@@ -309,6 +314,18 @@ PrefabInstance:
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[17].SourcePrefabToOverride
       value: 
       objectReference: {fileID: 3747688395823026743, guid: d7f1f9a20eff4a144b1ec223d05c8a78,
+        type: 3}
+    - target: {fileID: 6087710904942667864, guid: e85941103be85544bb795d4636e8406f,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[18].OverridingTargetPrefab
+      value: 
+      objectReference: {fileID: 7111717387280128514, guid: f5cabc94c46a8ca4f9fed6d2ee4b92f9,
+        type: 3}
+    - target: {fileID: 6087710904942667864, guid: e85941103be85544bb795d4636e8406f,
+        type: 3}
+      propertyPath: NetworkConfig.NetworkPrefabs.Array.data[18].SourcePrefabToOverride
+      value: 
+      objectReference: {fileID: 3579705501696656223, guid: 799026347baba4041971a54b1eb506df,
         type: 3}
     - target: {fileID: 6087710904942667865, guid: e85941103be85544bb795d4636e8406f,
         type: 3}
