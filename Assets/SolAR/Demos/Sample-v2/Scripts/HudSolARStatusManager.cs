@@ -88,7 +88,7 @@ namespace Com.Bcom.Solar.Ui
                 }
                 switch (result.Result.PoseStatus)
                 {
-                    case RelocalizationPoseStatus.LatestPose: poseStatus = "LastestPose"; break;
+                    case RelocalizationPoseStatus.LatestPose: poseStatus = "LatestPose"; break;
                     case RelocalizationPoseStatus.NewPose: poseStatus = "NewPose"; break;
                     case RelocalizationPoseStatus.NoPose: poseStatus = "NoPose"; break;
                     default: throw new System.Exception("Unkown pose status");
