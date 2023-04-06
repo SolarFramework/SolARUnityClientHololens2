@@ -145,17 +145,17 @@ namespace Com.Bcom.Solar
         };
 
         private FilterConfig positionFilterConfig = new FilterConfig() {
-            frequency = 10f,
-            minCutoff = 1f,
-            beta = 0.001f,
-            dCutoff = 0.5f
+            frequency = 60f,
+            minCutoff = 0.5f,
+            beta = 0.0001f,
+            dCutoff = 0.1f
         };
         private FilterConfig rotationFilterConfig = new FilterConfig()
         {
-            frequency = 10f,
-            minCutoff = 1f,
-            beta = 0.001f,
-            dCutoff = 0.5f
+            frequency = 60f,
+            minCutoff = 0.5f,
+            beta = 0.0001f,
+            dCutoff = 0.1f
         };
 
 #if ENABLE_WINMD_SUPPORT
@@ -226,16 +226,21 @@ namespace Com.Bcom.Solar
 
         private void Update()
         {
-            if (poseReceived)
+            // Apply corrected pose to scene
+            if (solarScene)
             {
-                // Apply corrected pose to scene
-                if (solarScene)
+                if (poseReceived)
                 {
                     solarScene.transform.rotation = smoothReloc ? rotationFilter.Filter(receivedPoseOrientation) : receivedPoseOrientation;
                     solarScene.transform.position = smoothReloc ? positionFilter.Filter(receivedPosePosition) : receivedPosePosition;
                     solarScene.SetActive(true);
+                    poseReceived = false;
                 }
-                poseReceived = false;
+                else if (smoothReloc)
+                {
+                    solarScene.transform.rotation = rotationFilter.Filter(receivedPoseOrientation);
+                    solarScene.transform.position = positionFilter.Filter(receivedPosePosition);
+                }
             }
         }
 
