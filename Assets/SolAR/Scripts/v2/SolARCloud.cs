@@ -151,7 +151,15 @@ namespace Com.Bcom.Solar
             }
             grpc.OnResultReceived += OnReceivedPoseInternal;
 
-            OnConnect?.Invoke(frontendIp);
+            try
+            {
+                OnConnect?.Invoke(frontendIp);
+            }
+            catch(Exception e)
+            {
+                Log(LogLevel.ERROR, $"SolARCloud.Connect(): {e.Message}");
+            }
+            // Don't consider observer failures as a failure to connect to the services
             return true;
         }
 
@@ -168,7 +176,16 @@ namespace Com.Bcom.Solar
                         return false;
                     }
                 }
-                OnDisconnect?.Invoke();
+
+                try
+                {
+                    OnDisconnect?.Invoke();
+                }
+                catch (Exception e)
+                {
+                    Log(LogLevel.ERROR, $"SolARCloud.Disconnect(): {e.Message}");
+                }
+                // Don't consider observer failures as a failure to disconnect from the services
                 return true;
             }
             finally
