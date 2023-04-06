@@ -49,6 +49,7 @@ namespace Com.Bcom.Solar
         public event Action<bool> OnSensorStarted;
         public event Action OnSensorStopped;
 
+        public GameObject debugPrefab;
         [Tooltip("Top level GO of 3D scene to apply SolAR transform onto")]
         public GameObject solarScene;
         [Tooltip("Select Hololens 2 sensors to capture images")]
@@ -242,6 +243,7 @@ namespace Com.Bcom.Solar
         {
             solarScene = scene;
             solarSceneInitPose = scene.transform.localToWorldMatrix;
+            Instantiate(debugPrefab, scene.transform);
         }
 
         public void StartSensorsCapture()
@@ -341,11 +343,11 @@ namespace Com.Bcom.Solar
                 switch (sensorType)
                 {
                     case Hl2SensorType.STEREO:
-                        solARCloud.OnFrameReceived(GetLeftFrontVlcFrame(), GetRighFrontFrontVlcFrame()); break;
+                        await solARCloud.OnFrameReceived(GetLeftFrontVlcFrame(), GetRighFrontFrontVlcFrame()); break;
                     case Hl2SensorType.RM_LEFT_FRONT:
-                        solARCloud.OnFrameReceived(GetLeftFrontVlcFrame()); break;
+                        await solARCloud.OnFrameReceived(GetLeftFrontVlcFrame()); break;
                     case Hl2SensorType.PV:
-                        solARCloud.OnFrameReceived(getPvFrame()); break;
+                        await solARCloud.OnFrameReceived(getPvFrame()); break;
                     default:
                         throw new ArgumentException($"Unkown sensor type: '{sensorType}'");
                 }

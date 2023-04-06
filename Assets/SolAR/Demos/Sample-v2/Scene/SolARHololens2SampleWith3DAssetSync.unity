@@ -21110,6 +21110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d636ef43998c74989a219a98fb2e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debugPrefab: {fileID: 2372330669795547721, guid: 6372a5cceea69c8458a00f53861e144b,
+    type: 3}
   solarScene: {fileID: 0}
   sensorType: 1
   framerate: 0
