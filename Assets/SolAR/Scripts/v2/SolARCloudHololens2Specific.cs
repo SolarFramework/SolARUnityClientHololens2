@@ -312,12 +312,12 @@ namespace Com.Bcom.Solar
 
             Debug.Log($"Sensors started");
 
-            await solARCloud.SolARSendMessage(
-                $"Config: sensor: {sensorType}, " +
-                $"threadSlots: {solARCloud.advancedGrpcSettings.threadSlots}, " +
-                $"networksSlots: {solARCloud.advancedGrpcSettings.networkSlots}, " +
-                $"compression: {solARCloud.advancedGrpcSettings.imageCompression};" +
-                $"FPS: {framerate}");
+            //await solARCloud.SolARSendMessage(
+            //    $"Config: sensor: {sensorType}, " +
+            //    $"threadSlots: {solARCloud.advancedGrpcSettings.threadSlots}, " +
+            //    $"networksSlots: {solARCloud.advancedGrpcSettings.networkSlots}, " +
+            //    $"compression: {solARCloud.advancedGrpcSettings.imageCompression};" +
+            //    $"FPS: {framerate}");
            
             if (framerate > 0)
             {
