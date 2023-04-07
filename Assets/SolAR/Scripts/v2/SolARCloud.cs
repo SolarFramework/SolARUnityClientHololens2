@@ -20,6 +20,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 using Com.Bcom.Solar.Gprc;
+using System.Diagnostics;
 
 namespace Com.Bcom.Solar
 {
@@ -52,6 +53,10 @@ namespace Com.Bcom.Solar
 
         [Tooltip("Select to preform both mapping and relocalization or only relocalization")]
         public PipelineMode pipelineMode = PipelineMode.RelocalizationOnly;
+        [Tooltip("Frequency at which frames are sent to the services in Relocalization And Mapping mode (<= 0: maximum rate)")]
+        public ushort relocAndMappinSendingRateInFps = 0;
+        [Tooltip("Frequency at which frames are sent to the services in Relocalization Only mode (<= 0: maximum rate)")]
+        public ushort relocOnlySendingRateInFps = 4;
 
         [Serializable]
         public struct GrpcSettings
@@ -79,11 +84,18 @@ namespace Com.Bcom.Solar
         private GrpcManager grpc = null;
         private MappingStatus mappingStatus = MappingStatus.Bootstrap;
         private RelocalizationPoseStatus poseStatus = RelocalizationPoseStatus.NoPose;
+        private Stopwatch stopWatch = new Stopwatch();
+        int timeBetweenFramesMappingAndReloc;
+        int timeBetweenFramesRelocOnly;
+        int timeBetweenFrames;
         #endregion
 
         #region UnityMonoBehaviorLifecycle
         void Start()
         {
+            timeBetweenFramesMappingAndReloc = relocAndMappinSendingRateInFps > 0 ? 1000 / relocAndMappinSendingRateInFps : 0;
+            timeBetweenFramesRelocOnly = relocOnlySendingRateInFps > 0 ? 1000 / relocOnlySendingRateInFps : 0;
+            timeBetweenFrames = (pipelineMode == PipelineMode.RelocalizationAndMapping) ? timeBetweenFramesMappingAndReloc : timeBetweenFramesRelocOnly;
             LoadUserPrefs();
         }
 
@@ -101,6 +113,10 @@ namespace Com.Bcom.Solar
         #region PublicMethods
         async public Task OnFrameReceived(Frame frame)
         {
+            if (stopWatch.ElapsedMilliseconds < timeBetweenFrames) return;
+            stopWatch.Reset();
+            stopWatch.Start();
+
             if (frame == null) { Log(LogLevel.ERROR, "OnFrameReceived(): frame is null"); return; }
 
             var frames = new Frames();
@@ -208,11 +224,13 @@ namespace Com.Bcom.Solar
                 case PipelineMode.RelocalizationAndMapping:
                     {
                         pipelineMode = PipelineMode.RelocalizationOnly;
+                        timeBetweenFrames = timeBetweenFramesRelocOnly;
                         break;
                     }
                 case PipelineMode.RelocalizationOnly:
                     {
                         pipelineMode = PipelineMode.RelocalizationAndMapping;
+                        timeBetweenFrames = timeBetweenFramesMappingAndReloc;
                         break;
                     }
                 default:
@@ -255,6 +273,8 @@ namespace Com.Bcom.Solar
         async private Task<bool> SolARStart()
         {
             Log(LogLevel.INFO, $"SolARStart()");
+            stopWatch.Reset();
+            stopWatch.Start();
             var result = await grpc.Start();
             if (!result.Success) Log(LogLevel.ERROR, $"SolARStart(): {result.ErrMessage}");
             OnStart?.Invoke(result.Success, result.ErrMessage);
@@ -264,6 +284,7 @@ namespace Com.Bcom.Solar
         async public Task<bool> SolARStop()
         {
             Log(LogLevel.INFO, $"SolARStop()");
+            stopWatch.Stop();
             var result = await grpc.Stop();
             if (!result.Success) Log(LogLevel.ERROR, $"SolARStop(): {result.ErrMessage}");
             OnStop?.Invoke();
