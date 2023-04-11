@@ -27,7 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  boundsOverride: {fileID: 0}
+  boundsOverride: {fileID: 7436397263758207514}
   boundsCalculationMethod: 0
   activation: 3
   flattenAxis: 0
@@ -140,6 +140,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTetherWhenManipulating: 0
   IsBoundsHandles: 0
+--- !u!65 &7436397263758207514
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7111717387280128514}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.015, z: 0.01}
+  m_Center: {x: 0, y: 0.007, z: 0}
 --- !u!1001 &5988747885270341981
 PrefabInstance:
   m_ObjectHideFlags: 0
