@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/SolAR/Demos/Sample-v2/Scene/SolARHololens2Sample.unity
+    guid: 62d2ecc30e8992344ad376f2b9d0fa1d
   - enabled: 1
-    path: Assets/SolAR/Demos/Sample/Scenes/SolARHololens2SampleScene.unity
-    guid: 82bd073446d62114eb10e3cb642d22df
+    path: Assets/SolAR/Demos/Sample-v2/Scene/SolARHololens2SampleWith3DAssetSync.unity
+    guid: d274d55c652ef1140af2507007165714
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: bc86b981421586743bee1b33317fbc8a,
       type: 2}

@@ -1,4 +1,10 @@
 # Release Notes
+## v0.11.0
+* Massive refactor to separate code that can be shared with non Holens 2 Unity projects
+* Update SolAR gRPC stubs to support FixedPose and ServiceManager (multi user)
+* Add more info in HUD text field (Mapping/Pose status)
+* Use UTC UNIX timestamps for sent frames
+* Add Playground package for collaborative AR experience in sample scene
 
 ## v0.10.0
 * Add a console prefab to be able to log error messages

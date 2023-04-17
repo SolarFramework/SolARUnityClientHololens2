@@ -34,9 +34,11 @@ using static Bcom.Solar.SolArCloudHololens2;
 
 namespace Com.Bcom.Solar.Gprc
 {
-
+    [Obsolete]
     public class SolARMappingAndRelocalizationGrpcProxyManager
     {
+        // Client UUID given by the SolAR Front End
+        private string clientUUID = "";
         private string gRpcAddress = "<not-set>";
 
         private Empty EMPTY = new Empty();
@@ -54,6 +56,7 @@ namespace Com.Bcom.Solar.Gprc
 
         private long nbSentFrames = 0;
 
+        [Obsolete]
         public class FrameSender
         {
             private SolARMappingAndRelocalizationGrpcProxyManager manager;
@@ -382,6 +385,7 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        [Obsolete]
         public class ResultStatus
         { 
             public bool success = true;
@@ -394,6 +398,7 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        [Obsolete]
         public class RelocAndMappingResult
         {
             public ResultStatus resultStatus;
@@ -406,6 +411,7 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        [Obsolete]
         public class Builder
         {
             private string serviceAddress = "";
@@ -476,6 +482,64 @@ namespace Com.Bcom.Solar.Gprc
             this.relocAndMappingRequestIntervalMs = relocAndMappingRequestIntervalMs;
         }
 
+        public ResultStatus RegisterClient()
+        {
+            SolARMappingAndRelocalizationProxyClient client = null;
+            try
+            {
+                client = clientPool.GetClient();
+                if (client == null)
+                {
+                    return new ResultStatus(false, "Cannot call RegisterClient(): no gRPC client available");
+                }
+
+                var result = client.RegisterClient(EMPTY,
+                                                   deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+
+                // Store the client UUID given by the Front End
+                clientUUID = result.ClientUuid;
+
+                clientPool.ReleaseClient(client);
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                clientPool.DeleteClient(client);
+                return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::RegisterClient(): Error: "
+                    + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);  
+            }
+
+            return SUCCESS;
+        }
+
+        public ResultStatus UnregisterClient()
+        {
+            SolARMappingAndRelocalizationProxyClient client = null;
+            try
+            {
+                client = clientPool.GetClient();
+                if (client == null)
+                {
+                    return new ResultStatus(false, "Cannot call UnregisterClient(): no gRPC client available");
+                }
+
+                client.UnregisterClient(new ClientUUID()
+                                        {
+                                            ClientUuid = clientUUID
+                                        },
+                                        deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+
+                clientPool.ReleaseClient(client);
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                clientPool.DeleteClient(client);
+                return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::UnregisterClient(): Error: "
+                    + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);  
+            }
+
+            return SUCCESS;
+        }
+
         public ResultStatus Init()
         {
             return Init(PipelineMode.RelocalizationAndMapping);
@@ -494,6 +558,7 @@ namespace Com.Bcom.Solar.Gprc
 
                 client.Init(new PipelineModeValue()
                             {
+                                ClientUuid = clientUUID,
                                 PipelineMode = pipelineMode
                             },
                             deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
@@ -521,8 +586,11 @@ namespace Com.Bcom.Solar.Gprc
                     return new ResultStatus(false, "Cannot call Start(): no gRPC client available");
                 }
 
-                client.Start(EMPTY,
-                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+                client.Start(new ClientUUID()
+                            {
+                                ClientUuid = clientUUID
+                            },
+                            deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
                 clientPool.ReleaseClient(client);
             }
@@ -547,8 +615,11 @@ namespace Com.Bcom.Solar.Gprc
                     return new ResultStatus(false, "Cannot call Stop(): no gRPC client available");
                 }
 
-                client.Stop(EMPTY,
-                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+                client.Stop(new ClientUUID()
+                            {
+                                ClientUuid = clientUUID
+                            },
+                            deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
                 clientPool.ReleaseClient(client);
             }
@@ -577,6 +648,7 @@ namespace Com.Bcom.Solar.Gprc
 
                 client.SetCameraParameters(new CameraParameters
                 {
+                    ClientUuid = clientUUID,                    
                     Name = camName,
                     Id = camId,
                     CameraType = camType,
@@ -619,6 +691,94 @@ namespace Com.Bcom.Solar.Gprc
             return SUCCESS;
         }
 
+        public ResultStatus SetCameraParametersStereo(string camName1, uint camId1, CameraType camType1,
+            uint width1, uint height1, double[] intrisincs1, float distortion1_k1, float distortion1_k2,
+            float distortion1_p1, float distortion1_p2, float distortion1_k3,
+            string camName2, uint camId2, CameraType camType2,
+            uint width2, uint height2, double[] intrisincs2, float distortion2_k1, float distortion2_k2,
+            float distortion2_p1, float distortion2_p2, float distortion2_k3)
+        {
+            SolARMappingAndRelocalizationProxyClient client = null;
+            try
+            {
+                client = clientPool.GetClient();
+                if (client == null)
+                {
+                    return new ResultStatus(false, "Cannot call SetCameraParametersStereo(): no gRPC client available");
+                }
+
+                client.SetCameraParametersStereo(new CameraParametersStereo
+                {
+                    ClientUuid = clientUUID,                    
+                    Name1 = camName1,
+                    Id1 = camId1,
+                    CameraType1 = camType1,
+                    Width1 = width1,
+                    Height1 = height1,
+                    Intrinsics1 = new Matrix3x3
+                    {
+                        M11 = (float)intrisincs1[0],
+                        M12 = (float)intrisincs1[1],
+                        M13 = (float)intrisincs1[2],
+
+                        M21 = (float)intrisincs1[3],
+                        M22 = (float)intrisincs1[4],
+                        M23 = (float)intrisincs1[5],
+
+                        M31 = (float)intrisincs1[6],
+                        M32 = (float)intrisincs1[7],
+                        M33 = (float)intrisincs1[8]
+                    },
+                    Distortion1 = new CameraDistortion
+                    {
+                        K1 = distortion1_k1,
+                        K2 = distortion1_k2,
+                        P1 = distortion1_p1,
+                        P2 = distortion1_p2,
+                        K3 = distortion1_k3
+                    },
+                    Name2 = camName2,
+                    Id2 = camId2,
+                    CameraType2 = camType2,
+                    Width2 = width2,
+                    Height2 = height2,
+                    Intrinsics2 = new Matrix3x3
+                    {
+                        M11 = (float)intrisincs2[0],
+                        M12 = (float)intrisincs2[1],
+                        M13 = (float)intrisincs2[2],
+
+                        M21 = (float)intrisincs2[3],
+                        M22 = (float)intrisincs2[4],
+                        M23 = (float)intrisincs2[5],
+
+                        M31 = (float)intrisincs2[6],
+                        M32 = (float)intrisincs2[7],
+                        M33 = (float)intrisincs2[8]
+                    },
+                    Distortion2 = new CameraDistortion
+                    {
+                        K1 = distortion2_k1,
+                        K2 = distortion2_k2,
+                        P1 = distortion2_p1,
+                        P2 = distortion2_p2,
+                        K3 = distortion2_k3
+                    }
+                },
+                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+
+                clientPool.ReleaseClient(client);
+            }
+            catch (Grpc.Core.RpcException e)
+            {
+                clientPool.DeleteClient(client);
+                return makeErrorResult("SolARMappingAndRelocalizationGrpcProxyManager::Stop(): Error: "
+                    + e.Message + "(status: " + e.Status.Detail + ", code: " + e.StatusCode);
+            }
+
+            return SUCCESS;
+        }
+
         public ResultStatus setRectificationParameters(CameraRectification leftCamRectParams,
                                                        CameraRectification rightCamRectParams )
         {
@@ -633,6 +793,7 @@ namespace Com.Bcom.Solar.Gprc
 
                 client.setRectificationParameters(new RectificationParameters
                 {
+                    ClientUuid = clientUUID,                    
                     Cam1Rotation = new Matrix3x3
                     {
                         M11 = leftCamRectParams.rotation.m00,
@@ -823,6 +984,7 @@ namespace Com.Bcom.Solar.Gprc
 
                 // System.Diagnostics.Stopwatch stopWatch = new System.Diagnostics.Stopwatch();
                 // stopWatch.Start();
+                frames.ClientUuid = clientUUID;                
                 var result = client.RelocalizeAndMap(frames,
                     deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
                 // stopWatch.Stop();
@@ -853,8 +1015,12 @@ namespace Com.Bcom.Solar.Gprc
                 }
 
 
-                client.Get3DTransform(EMPTY,
-                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+                client.Get3DTransform(
+                                    new ClientUUID()
+                                    {
+                                        ClientUuid = clientUUID
+                                    },
+                                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
                 clientPool.ReleaseClient(client);
             }
@@ -880,9 +1046,8 @@ namespace Com.Bcom.Solar.Gprc
                     return new ResultStatus(false, "Cannot call Reset(): no gRPC client available");
                 }
 
-                client.Reset(
-                    EMPTY,
-                    deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
+                client.Reset(EMPTY,
+                            deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
                 clientPool.ReleaseClient(client);
             }
@@ -915,7 +1080,7 @@ namespace Com.Bcom.Solar.Gprc
                 }
 
                 client.SendMessage(
-                    new Message { Message_ = message},
+                    new Message { ClientUuid = clientUUID, Message_ = message},
                     deadline: DateTime.UtcNow.AddSeconds(gRpcDeadlineInS));
 
                 clientPool.ReleaseClient(client);

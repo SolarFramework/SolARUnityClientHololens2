@@ -34,6 +34,7 @@ using SolARRpc = Com.Bcom.Solar.Gprc;
 
 namespace Bcom.Solar
 {
+    [Obsolete]
     public class SolArCloudHololens2 : MonoBehaviour
     {
 
@@ -161,6 +162,24 @@ SolARHololens2ResearchMode researchMode;
         {
             name = "LEFT_FRONT",
             id = 0,
+            type = SolARRpc.CameraType.Gray,
+            width = 640,
+            height = 480,
+            focalX = 366.189453125,
+            focalY = 366.47808837890625,
+            centerX = 320.0,
+            centerY = 240.0,
+            distK1 = -0.009463000111281872,
+            distK2 = 0.0030129998922348022,
+            distP1 = -0.0061690001748502254,
+            distP2 = -0.008975000120699406,
+            distK3 = 0.0
+        };
+
+        private CameraParameters rightFrontDefaultParameters = new CameraParameters()
+        {
+            name = "RIGHT_FRONT",
+            id = 1,
             type = SolARRpc.CameraType.Gray,
             width = 640,
             height = 480,
@@ -454,7 +473,7 @@ SolARHololens2ResearchMode researchMode;
         SpatialCoordinateSystem spatialCoordinateSystem;
 #endif
 
-        SolArCloudHololens2()
+        public SolArCloudHololens2()
         {
             pvParameters = new CameraParameters(pvDefaultParameters);
             leftFrontParameters = new CameraParameters(leftFrontDefaultParameters);
@@ -715,6 +734,8 @@ SolARHololens2ResearchMode researchMode;
                 if (relocAndMappingProxy != null)
                 {
                     relocAndMappingProxy.Stop();
+
+                    relocAndMappingProxy.UnregisterClient();                    
                 }
             }
             catch (Exception e)
@@ -759,6 +780,9 @@ SolARHololens2ResearchMode researchMode;
 #if ENABLE_WINMD_SUPPORT
 		        depthBufferData = researchMode.GetDepthData(out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height);
 #endif
+                // TODO: update native plugin to produce this SolAR timestamp format
+                ts = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (depthBufferData == null)
                 {
                     // Error(ErrorKind.PLUGIN, "Depth buffer is null");
@@ -843,18 +867,22 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 }
 
                 ulong ts = 0;
-                double[] cam2WorldTransform = null; ;
+                byte[] vclBufferData = null;
+
+#if ENABLE_WINMD_SUPPORT
+                double[] cam2WorldTransform = null;
                 uint _width = 0;
                 uint _height = 0;
                 float _fx = -1f;
                 float _fy = -1f;
                 uint _pixelBufferSize = 0;
-                byte[] vclBufferData = null;
-
-#if ENABLE_WINMD_SUPPORT
 			    vclBufferData = researchMode.GetVlcData(sensorType, out ts, out cam2WorldTransform, out _fx, out _fy, out _pixelBufferSize, out _width, out _height, /* flip = */ advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None);
                 ts = ts / TimeSpan.TicksPerMillisecond;
 #endif
+
+                // TODO: update native plugin to produce this SolAR timestamp format
+                ts = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (vclBufferData == null)
                 {
                     Error(ErrorKind.PLUGIN, "VLC buffer is null");
@@ -936,6 +964,9 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
                 NotifyOnPvFrame(frameTexture, _timestamp, _PVtoWorldtransform, _width, _height, _fx, _fy, _pixelBufferSize);
 
+                // TODO: update native plugin to produce this SolAR timestamp format
+                _timestamp = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (rpcAvailable)
                 {
                     relocAndMappingFrameSender.AddFrame(sensorIds[Hl2SensorType.PV], _timestamp,
@@ -951,6 +982,8 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
 
         private void relocAndMappingResultReceived(SolARRpc.SolARMappingAndRelocalizationGrpcProxyManager.RelocAndMappingResult result)
         {
+            NotifyOnReceivedPose(result);
+
             if (result.resultStatus.success)
             {
                 // Manage tracking lost icon
@@ -962,9 +995,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 if (result.relocAndMappingResult.PoseStatus == SolARRpc.RelocalizationPoseStatus.NoPose)
                 {
                     return;
-                }
-
-                NotifyOnReceivedPose(result);
+                }                
 
                 if (solarScene != null)
                 {
@@ -1091,41 +1122,93 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                     throw new Exception();
                 }
 
-                var res = relocAndMappingProxy.Init(pipelineMode);
+                var res = relocAndMappingProxy.RegisterClient();
 
+                if (!res.success)
+                {
+                    Error(ErrorKind.GRPC, res.errMessage);
+                    throw new Exception(res.errMessage);
+                }
+
+                res = relocAndMappingProxy.Init(pipelineMode);
+                
                 if (!res.success)
                 {
                     Error(ErrorKind.GRPC, res.errMessage);
                     throw new Exception();
                 }
 
-                res = relocAndMappingProxy.SetCameraParameters(
-                    selectedCameraParameter.name,
-                    selectedCameraParameter.id,
-                    selectedCameraParameter.type,
-                    selectedCameraParameter.width,
-                    selectedCameraParameter.height,
-                    new double[]
+                // Mono camera mode
+                if ((selectedSensor == Hl2SensorTypeEditor.PV) || (selectedSensor == Hl2SensorTypeEditor.RM_LEFT_FRONT))
+                {
+                    res = relocAndMappingProxy.SetCameraParameters(
+                        selectedCameraParameter.name,
+                        selectedCameraParameter.id,
+                        selectedCameraParameter.type,
+                        selectedCameraParameter.width,
+                        selectedCameraParameter.height,
+                        new double[]
+                        {
+                                selectedCameraParameter.focalX, 0, selectedCameraParameter.centerX,
+                                0, selectedCameraParameter.focalY, selectedCameraParameter.centerY,
+                                0, 0, 1
+                        },
+                        (float)selectedCameraParameter.distK1,
+                        (float)selectedCameraParameter.distK2,
+                        (float)selectedCameraParameter.distP1,
+                        (float)selectedCameraParameter.distP2,
+                        (float)selectedCameraParameter.distK3);
+
+                    if (!res.success)
                     {
-                            selectedCameraParameter.focalX, 0, selectedCameraParameter.centerX,
-                            0, selectedCameraParameter.focalY, selectedCameraParameter.centerY,
-                            0, 0, 1
-                    },
-                    (float)selectedCameraParameter.distK1,
-                    (float)selectedCameraParameter.distK2,
-                    (float)selectedCameraParameter.distP1,
-                    (float)selectedCameraParameter.distP2,
-                    (float)selectedCameraParameter.distK3);
-
-                if (!res.success)
-                {
-                    Error(ErrorKind.GRPC, res.errMessage);
-                    throw new Exception();
+                        Error(ErrorKind.GRPC, res.errMessage);
+                        throw new Exception();
+                    }
                 }
 
-                // Stereo mode => set rectification parameters for each camera
+                // Stereo camera mode => set rectification parameters for each camera
                 if (selectedSensor == Hl2SensorTypeEditor.STEREO)
                 {
+                    res = relocAndMappingProxy.SetCameraParametersStereo(
+                        leftFrontDefaultParameters.name,
+                        leftFrontDefaultParameters.id,
+                        leftFrontDefaultParameters.type,
+                        leftFrontDefaultParameters.width,
+                        leftFrontDefaultParameters.height,
+                        new double[]
+                        {
+                                leftFrontDefaultParameters.focalX, 0, leftFrontDefaultParameters.centerX,
+                                0, leftFrontDefaultParameters.focalY, leftFrontDefaultParameters.centerY,
+                                0, 0, 1
+                        },
+                        (float)leftFrontDefaultParameters.distK1,
+                        (float)leftFrontDefaultParameters.distK2,
+                        (float)leftFrontDefaultParameters.distP1,
+                        (float)leftFrontDefaultParameters.distP2,
+                        (float)leftFrontDefaultParameters.distK3,
+                        rightFrontDefaultParameters.name,
+                        rightFrontDefaultParameters.id,
+                        rightFrontDefaultParameters.type,
+                        rightFrontDefaultParameters.width,
+                        rightFrontDefaultParameters.height,
+                        new double[]
+                        {
+                                rightFrontDefaultParameters.focalX, 0, rightFrontDefaultParameters.centerX,
+                                0, rightFrontDefaultParameters.focalY, rightFrontDefaultParameters.centerY,
+                                0, 0, 1
+                        },
+                        (float)rightFrontDefaultParameters.distK1,
+                        (float)rightFrontDefaultParameters.distK2,
+                        (float)rightFrontDefaultParameters.distP1,
+                        (float)rightFrontDefaultParameters.distP2,
+                        (float)rightFrontDefaultParameters.distK3);
+
+                    if (!res.success)
+                    {
+                        Error(ErrorKind.GRPC, res.errMessage);
+                        throw new Exception();
+                    }
+
                     res = relocAndMappingProxy.setRectificationParameters(leftFrontDefaultRectification,
                         rightFrontDefaultRectification);
 
@@ -1159,7 +1242,7 @@ private int GetRmSensorIdForRpc(SolARHololens2UnityPlugin.RMSensorType sensorTyp
                 sensorsStarted = true;
 
             }
-            catch(Exception e)
+            catch (Exception)
             {
                 return;
             }
