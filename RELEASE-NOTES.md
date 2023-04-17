@@ -1,4 +1,6 @@
 # Release Notes
+## v0.12.0
+
 ## v0.11.0
 * Massive refactor to separate code that can be shared with non Holens 2 Unity projects
 * Update SolAR gRPC stubs to support FixedPose and ServiceManager (multi user)
