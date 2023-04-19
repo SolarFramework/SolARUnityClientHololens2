@@ -454,6 +454,9 @@ namespace Com.Bcom.Solar
                     /* flip = */ false /* solARCloud.advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None */);
                 _timestamp = _timestamp / TimeSpan.TicksPerMillisecond;
 #endif
+                // TODO: update native plugin to produce this SolAR timestamp format
+                _timestamp = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (frameTexture == null)
                 {
                     Log(LogLevel.WARNING, "PV buffer is null");
@@ -552,6 +555,9 @@ namespace Com.Bcom.Solar
                     /* flip = */ false /* solARCloud.advancedGrpcSettings.imageCompression != SolARRpc.ImageCompression.None */);
                 ts = ts / TimeSpan.TicksPerMillisecond;
 #endif
+                // TODO: update native plugin to produce this SolAR timestamp format
+                ts = (ulong)((DateTimeOffset)DateTime.UtcNow).ToUnixTimeMilliseconds();
+
                 if (vclBufferData == null)
                 {
                     Log(LogLevel.WARNING, "VLC buffer is null");
