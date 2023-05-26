@@ -1,5 +1,6 @@
 # Release Notes
 ## v0.12.0
+* Add way to get Hololens 2 VLC camera intrinsics from research mode API
 
 ## v0.11.0
 * Massive refactor to separate code that can be shared with non Holens 2 Unity projects

@@ -170,7 +170,7 @@ namespace Com.Bcom.Solar
             solARCloud = GetComponent<SolARCloud>();
             if (solARCloud == null)
             {
-                Debug.LogError("required SolARCloud component not found");
+                Log(LogLevel.ERROR, "required SolARCloud component not found");
                 return;
             }
 
@@ -191,36 +191,69 @@ namespace Com.Bcom.Solar
 
 #if ENABLE_WINMD_SUPPORT
 
-            researchMode = new SolARHololens2ResearchMode();
-
-            spatialCoordinateSystem = PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem;
-            researchMode.SetSpatialCoordinateSystem(spatialCoordinateSystem);
-
-            switch( sensorType )
+            try
             {
-                case Hl2SensorType.PV:
-                {
-                    researchMode.EnablePv();
-                    break;
-                } 
-                case Hl2SensorType.RM_LEFT_FRONT:
-                {
-                    researchMode.EnableVlc(SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT);
-                    break;
-                }
-                case Hl2SensorType.STEREO:
-                {
-                    researchMode.EnableVlc(SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT);
-                    researchMode.EnableVlc(SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT);
-                    break;
-                }
-                default:
-                {
-                    throw new Exception("Unkown sensor type");
-                }
+                researchMode = new SolARHololens2ResearchMode();
+            } catch(Exception e)
+            {
+                Log(LogLevel.ERROR, $"Failed to instantiate RM plugin: {e.Message}");
+                return;
             }
 
-            researchMode.Init();
+            try
+            {
+                spatialCoordinateSystem = PerceptionInterop.GetSceneCoordinateSystem(UnityEngine.Pose.identity) as SpatialCoordinateSystem;
+                researchMode.SetSpatialCoordinateSystem(spatialCoordinateSystem);
+            }
+            catch(Exception e)
+            {
+                Log(LogLevel.ERROR, $"Failed to set coord system: {e.Message}");
+                return;
+            }
+
+
+            try
+            {
+                switch( sensorType )
+                {
+                    case Hl2SensorType.PV:
+                    {
+                        researchMode.EnablePv();
+                        break;
+                    } 
+                    case Hl2SensorType.RM_LEFT_FRONT:
+                    {
+                        researchMode.EnableVlc(SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT);
+                        break;
+                    }
+                    case Hl2SensorType.STEREO:
+                    {
+                        researchMode.EnableVlc(SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT);
+                        researchMode.EnableVlc(SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT);
+                        break;
+                    }
+                    default:
+                    {
+                        throw new Exception("Unkown sensor type");
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                Log(LogLevel.ERROR, $"Failed to enable RM sensor: {e.Message}");
+                return;
+            }
+
+            try
+            {
+                researchMode.Init();
+            }
+            catch(Exception e)
+            {
+                Log(LogLevel.ERROR, $"Failed to init RM sensor: {e.Message}");
+                return;
+            }
+            
 #endif
         }
 
@@ -282,19 +315,103 @@ namespace Com.Bcom.Solar
             switch (sensorType)
             {
                 case Hl2SensorType.STEREO:
-                    res = await solARCloud.StartRelocAndMapping(leftFrontDefaultParameters,
-                                                                rightFrontDefaultParameters,
-                                                                leftFrontDefaultRectification,
-                                                                rightFrontDefaultRectification); break;
+                    {
+                        float cx_left = 0f, cy_left = 0f;
+                        float fx_left = 0f, fy_left = 0f;
+                        float cx_right = 0f, cy_right = 0f;
+                        float fx_right = 0f, fy_right = 0f;
+                        float reprojErrRight = 0f; float reprojErrLeft = 0f;
+#if ENABLE_WINMD_SUPPORT
+			        if (!researchMode.ComputeIntrinsics(SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT, out fx_left, out fy_left, out cx_left, out cy_left, out reprojErrLeft))
+                    {
+                        Log(LogLevel.ERROR, "Couldn't compute intrinsics for LEFT_FRONT camera, falling back to default values");
+                        cx_left = leftFrontDefaultParameters.intrisincs.cx;
+                        cy_left = leftFrontDefaultParameters.intrisincs.cy;
+                        fx_left = leftFrontDefaultParameters.intrisincs.fx;
+                        fy_left = leftFrontDefaultParameters.intrisincs.fy;
+
+                    }
+                    if (!researchMode.ComputeIntrinsics(SolARHololens2UnityPlugin.RMSensorType.RIGHT_FRONT, out fx_right, out fy_right, out cx_right, out cy_right, out reprojErrRight))
+                    {
+                        Log(LogLevel.ERROR, "Couldn't compute intrinsics for RIGHT_FRONT camera, falling back to default values");
+                        cx_right = rightFrontDefaultParameters.intrisincs.cx;
+                        cy_right = rightFrontDefaultParameters.intrisincs.cy;
+                        fx_right = rightFrontDefaultParameters.intrisincs.fx;
+                        fy_right = rightFrontDefaultParameters.intrisincs.fy;
+                    }
+#endif
+                        CamParameters leftFrontParameters = new CamParameters(
+                                    name: leftFrontDefaultParameters.name,
+                                    id: leftFrontDefaultParameters.id,
+                                    type: leftFrontDefaultParameters.type,
+                                    resolution: new CamResolution(width: leftFrontDefaultParameters.resolution.width,
+                                                                  height: leftFrontDefaultParameters.resolution.height),
+                                    intrisincs: new CamIntrinsics(fx: fx_left, fy: fy_left, cx: cx_left, cy: cy_left),
+                                    distortion: new CamDistortion(k1: leftFrontDefaultParameters.distortion.k1,
+                                                                  k2: leftFrontDefaultParameters.distortion.k2,
+                                                                  p1: leftFrontDefaultParameters.distortion.p1,
+                                                                  p2: leftFrontDefaultParameters.distortion.p2,
+                                                                  k3: leftFrontDefaultParameters.distortion.k3));
+
+                        CamParameters rightFrontParameters = new CamParameters(
+                                    name: rightFrontDefaultParameters.name,
+                                    id: rightFrontDefaultParameters.id,
+                                    type: rightFrontDefaultParameters.type,
+                                    resolution: new CamResolution(width: rightFrontDefaultParameters.resolution.width,
+                                                                  height: rightFrontDefaultParameters.resolution.height),
+                                    intrisincs: new CamIntrinsics(fx: fx_right, fy: fy_right, cx: cx_right, cy: cy_right),
+                                    distortion: new CamDistortion(k1: rightFrontDefaultParameters.distortion.k1,
+                                                                  k2: rightFrontDefaultParameters.distortion.k2,
+                                                                  p1: rightFrontDefaultParameters.distortion.p1,
+                                                                  p2: rightFrontDefaultParameters.distortion.p2,
+                                                                  k3: rightFrontDefaultParameters.distortion.k3));
+
+                        res = await solARCloud.StartRelocAndMapping(leftFrontParameters,
+                                                                    rightFrontParameters,
+                                                                    leftFrontDefaultRectification,
+                                                                    rightFrontDefaultRectification);
+                        break;
+                    }
                 case Hl2SensorType.RM_LEFT_FRONT:
-                    res = await solARCloud.StartRelocAndMapping(leftFrontDefaultParameters); break;
+                    {
+                        float cx_left = 0f, cy_left = 0f;
+                        float fx_left = 0f, fy_left = 0f;
+                        float reprojErrLeft = 0f;
+#if ENABLE_WINMD_SUPPORT
+			        if (!researchMode.ComputeIntrinsics(SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT, out fx_left, out fy_left, out cx_left, out cy_left, out reprojErrLeft))
+                    {
+                        Log(LogLevel.ERROR, "Couldn't compute intrinsics for LEFT_FRONT camera, falling back to default values");
+                        cx_left = leftFrontDefaultParameters.intrisincs.cx;
+                        cy_left = leftFrontDefaultParameters.intrisincs.cy;
+                        fx_left = leftFrontDefaultParameters.intrisincs.fx;
+                        fy_left = leftFrontDefaultParameters.intrisincs.fy;
+
+                    }
+#endif
+                        Log(LogLevel.ERROR, $"Calibation: (cx: {cx_left}, cy: {cy_left}, fx: {fx_left}, fy: {fy_left}, reprojErr: {reprojErrLeft})");
+                        CamParameters leftFrontParameters = new CamParameters(
+                            name: leftFrontDefaultParameters.name,
+                            id: leftFrontDefaultParameters.id,
+                            type: leftFrontDefaultParameters.type,
+                            resolution: new CamResolution(width: leftFrontDefaultParameters.resolution.width,
+                                                          height: leftFrontDefaultParameters.resolution.height),
+                            intrisincs: new CamIntrinsics(fx: fx_left, fy: fy_left, cx: cx_left, cy: cy_left),
+                            distortion: new CamDistortion(k1: leftFrontDefaultParameters.distortion.k1,
+                                                          k2: leftFrontDefaultParameters.distortion.k2,
+                                                          p1: leftFrontDefaultParameters.distortion.p1,
+                                                          p2: leftFrontDefaultParameters.distortion.p2,
+                                                          k3: leftFrontDefaultParameters.distortion.k3));
+
+                        res = await solARCloud.StartRelocAndMapping(leftFrontParameters);
+                        break;
+                    }
                 case Hl2SensorType.PV:
                     res = await solARCloud.StartRelocAndMapping(pvDefaultParameters); break;
                 default:
                     throw new ArgumentException($"Unkown sensor type: '{sensorType}'");
             }
 
-            if (!res) { Debug.LogError("Services not started"); ; OnSensorStarted?.Invoke(false); return; }
+            if (!res) { Log(LogLevel.ERROR, "Services not started"); OnSensorStarted?.Invoke(false); return; }
 
             Debug.Log("Services started");
 
@@ -306,7 +423,7 @@ namespace Com.Bcom.Solar
             }
             catch (Exception e)
             {
-                Debug.LogError($"Failed to start sensors: {e.Message}");
+                Log(LogLevel.ERROR, $"Failed to start sensors: {e.Message}");
                 OnSensorStarted?.Invoke(false); return;
             }
 
@@ -534,7 +651,7 @@ namespace Com.Bcom.Solar
                 }
 
                 ulong ts = 0;
-                double[] cam2WorldTransform = null; ;
+                double[] cam2WorldTransform = null;
                 uint _width = 0;
                 uint _height = 0;
                 byte[] vclBufferData = null;
