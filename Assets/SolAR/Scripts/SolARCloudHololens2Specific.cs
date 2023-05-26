@@ -413,7 +413,7 @@ namespace Com.Bcom.Solar
 
             if (!res) { Log(LogLevel.ERROR, "Services not started"); OnSensorStarted?.Invoke(false); return; }
 
-            Debug.Log("Services started");
+            Log(LogLevel.INFO, "Services started");
 
             try
             {
@@ -463,17 +463,20 @@ namespace Com.Bcom.Solar
 		        researchMode.Update();
 #endif
 
-                switch (sensorType)
-                {
-                    case Hl2SensorType.STEREO:
-                        await solARCloud.OnFrameReceived(GetLeftFrontVlcFrame(), GetRighFrontFrontVlcFrame()); break;
-                    case Hl2SensorType.RM_LEFT_FRONT:
-                        await solARCloud.OnFrameReceived(GetLeftFrontVlcFrame()); break;
-                    case Hl2SensorType.PV:
-                        await solARCloud.OnFrameReceived(getPvFrame()); break;
-                    default:
-                        throw new ArgumentException($"Unkown sensor type: '{sensorType}'");
-                }
+// Disable this warning: we want to use our "slots" mechanism to handle multiple simultaneous connections
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+                    switch (sensorType)
+                    {
+                        case Hl2SensorType.STEREO:
+                            solARCloud.OnFrameReceived(GetLeftFrontVlcFrame(), GetRighFrontFrontVlcFrame()); break;
+                        case Hl2SensorType.RM_LEFT_FRONT:
+                            solARCloud.OnFrameReceived(GetLeftFrontVlcFrame()); break;
+                        case Hl2SensorType.PV:
+                            solARCloud.OnFrameReceived(getPvFrame()); break;
+                        default:
+                            throw new ArgumentException($"Unkown sensor type: '{sensorType}'");
+                    }
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             }
         }
 
