@@ -32,6 +32,7 @@ using Com.Bcom.Solar.Gprc;
 
 using SolARRpc = Com.Bcom.Solar.Gprc;
 using SysDiag = System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace Com.Bcom.Solar
 {
@@ -55,7 +56,7 @@ namespace Com.Bcom.Solar
         [Tooltip("Select Hololens 2 sensors to capture images")]
         public Hl2SensorType sensorType = Hl2SensorType.RM_LEFT_FRONT;
         [Tooltip("Number of frame fetched from sensors per seconds")]
-        public int framerate = 30;
+        private int framerate = 0;
         private SysDiag.Stopwatch stopWatch = new SysDiag.Stopwatch();
 
         private CamParameters pvDefaultParameters = new CamParameters(
@@ -290,7 +291,7 @@ namespace Com.Bcom.Solar
             if (fetchFramesThread == null || !fetchFramesThread.IsAlive)
             {
                 fetchFramesThread = new Thread(FetchAndSendFramesThread);
-                fetchFramesThread.Start();              
+                fetchFramesThread.Start();             
             }
         }
 
@@ -459,13 +460,13 @@ namespace Com.Bcom.Solar
                     stopWatch.Start();
                 }
 
+                // Disable this warning: we want to use our "slots" mechanism to handle multiple simultaneous connections
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
+                if (!solARCloud.HasNetworkSlotAvailable()) continue;
 #if ENABLE_WINMD_SUPPORT
 		        researchMode.Update();
 #endif
-
-// Disable this warning: we want to use our "slots" mechanism to handle multiple simultaneous connections
-#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                    switch (sensorType)
+                switch (sensorType)
                     {
                         case Hl2SensorType.STEREO:
                             solARCloud.OnFrameReceived(GetLeftFrontVlcFrame(), GetRighFrontFrontVlcFrame()); break;
@@ -607,7 +608,6 @@ namespace Com.Bcom.Solar
             }
             catch (Exception e)
             {
-                Debug.LogError($"Exception while handling PV frame: {e.Message}");
                 Log(LogLevel.ERROR, $"Exception while handling PV frame: {e.Message}");
                 return null;
             }
@@ -615,9 +615,9 @@ namespace Com.Bcom.Solar
 
         private Frame GetLeftFrontVlcFrame()
         {
-            return getVlcFrame(
+                return getVlcFrame(
 #if ENABLE_WINMD_SUPPORT
-            SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT
+                SolARHololens2UnityPlugin.RMSensorType.LEFT_FRONT
 #endif
                 );
         }
@@ -690,7 +690,8 @@ namespace Com.Bcom.Solar
                     return null;
                 }
 
-                return ImageUtils.ApplyCompression(new Frame() {
+                return ImageUtils.ApplyCompression(new Frame()
+                {
                     SensorId = sensorId,
                     Timestamp = ts,
                     Image = new Image
@@ -707,7 +708,6 @@ namespace Com.Bcom.Solar
             }
             catch (Exception e)
             {
-                Debug.LogError($"Exception while handling PV frame: {e.Message}");
                 Log(LogLevel.ERROR, $"Exception while handling VLC frame: {e.Message}");
                 return null;
             }
