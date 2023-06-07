@@ -293,11 +293,14 @@ namespace Com.Bcom.Solar.Gprc
             }
         }
 
+        public bool HasNetworkSlotAvailable()
+        {
+            return networkSlots > 0;
+        }
+
         async public Task<RelocAndMappingResult> RelocalizeAndMap(Frames frames)
         {
-
             if (networkSlots <= 0) return SKIPPED;
-
             try
             {
                 Interlocked.Decrement(ref networkSlots);
