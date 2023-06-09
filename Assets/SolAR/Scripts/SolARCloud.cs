@@ -62,7 +62,6 @@ namespace Com.Bcom.Solar
         public struct GrpcSettings
         {
             [Tooltip("Max amount off parallel reception of frames from device")]
-            [HideInInspector]
             public volatile int threadSlots;
             [Tooltip("Max amount off parallel requests of reloc and/or mapping to SolAR services")]
             public volatile int networkSlots;
@@ -371,11 +370,6 @@ namespace Com.Bcom.Solar
         public bool Isregistered()
         {
             return grpc != null && grpc.IsRegistered();
-        }
-
-        public bool HasNetworkSlotAvailable()
-        {
-            return grpc.HasNetworkSlotAvailable();
         }
 
         #endregion // PublicMethods
