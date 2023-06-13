@@ -9,6 +9,12 @@
       },
       "hash": "ed653f182505fe117881ca45584c41bc10a9b2fb"
     },
+    "com.b-com.solarcloud": {
+      "version": "file:D:/Dev/ARCAD/SolARUnityPackage",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.microsoft.mixedreality.input": {
       "version": "file:MixedReality/com.microsoft.mixedreality.input-0.9.2006.tgz",
       "depth": 0,
