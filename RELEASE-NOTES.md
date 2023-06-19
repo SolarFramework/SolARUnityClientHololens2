@@ -3,7 +3,7 @@
 ## v0.12.0
 
 * Add way to get HoloLens 2 VLC camera intrinsics from research mode API
-* Refactor scripts in common with other Unity clients to a new SolAR Unity package (TODO link package repository)
+* Refactor scripts in common with other Unity clients to a new [SolARCloud Unity package](https://github.com/SolarFramework/SolARCloudUnityPackage)
 
 ## v0.11.0
 
