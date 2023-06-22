@@ -1,13 +1,20 @@
 {
   "dependencies": {
     "com.b-com.shared-playground": {
-      "version": "git@github.com:SolarFramework/SolARClientPlayground.git",
+      "version": "https://github.com/SolarFramework/SolARClientPlayground.git",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.netcode.gameobjects": "1.2.0"
       },
-      "hash": "ed653f182505fe117881ca45584c41bc10a9b2fb"
+      "hash": "3b960f9753bb6c6aed0dbe0b1287bceb04bb6c18"
+    },
+    "com.b-com.solarcloud": {
+      "version": "https://github.com/SolarFramework/SolARCloudUnityPackage.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "736921b2b0cb7752c9570f1031c86ca3f3bd4f2c"
     },
     "com.microsoft.mixedreality.input": {
       "version": "file:MixedReality/com.microsoft.mixedreality.input-0.9.2006.tgz",
