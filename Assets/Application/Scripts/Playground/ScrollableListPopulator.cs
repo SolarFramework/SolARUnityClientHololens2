@@ -1,10 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using Microsoft.MixedReality.Toolkit.UI;
 using Microsoft.MixedReality.Toolkit.Utilities;
 using System.Collections;
 using UnityEngine;
+using Unity.Netcode;
 
 namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 {
@@ -42,7 +43,7 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 
         [SerializeField]
         [Tooltip("Items to generate")]
-        private Bcom.SharedPlayground.PlaygroundPrefabsScriptableObject objectList;
+        private NetworkPrefabsList objectList;
 
         [SerializeField]
         [Tooltip("Demonstrate lazy loading")]
@@ -153,9 +154,11 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
 
             if (!lazyLoad)
             {
-                foreach (Bcom.SharedPlayground.PrefabType prefabType in System.Enum.GetValues(typeof(Bcom.SharedPlayground.PrefabType)))
+                // Note: start at index 1 to ignore SceneRoot asset
+                for (int i = 1; i < objectList.PrefabList.Count; ++i)
                 {
-                    MakeItem(dynamicItem, prefabType);
+                    MakeItem(dynamicItem, i);
+                    Debug.Log("Make item " + i + " : " + objectList.PrefabList[i].Prefab.name);
                 }
                 scrollView.gameObject.SetActive(true);
                 gridObjectCollection.UpdateCollection();
@@ -190,12 +193,12 @@ namespace Microsoft.MixedReality.Toolkit.Examples.Demos
         //     gridObjectCollection.UpdateCollection();
         // }
 
-        private void MakeItem(GameObject prefab, Bcom.SharedPlayground.PrefabType prefabType)
+        private void MakeItem(GameObject prefab, int assetId)
         {
             GameObject itemInstance = Instantiate(prefab, gridObjectCollection.transform);
             var instantiatePersistentObject = itemInstance.GetComponent<InstantiatePersistentObject>();
-            instantiatePersistentObject.prefabType = prefabType;
-            instantiatePersistentObject.UpdateItemPreview(objectList.prefabs[(int)prefabType]);
+            instantiatePersistentObject.assetId = assetId;
+            instantiatePersistentObject.UpdateItemPreview(objectList.PrefabList[assetId].Prefab);
             itemInstance.SetActive(true);
         }
     }

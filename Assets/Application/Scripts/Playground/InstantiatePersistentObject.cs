@@ -8,7 +8,7 @@ using Bcom.SharedPlayground;
 [RequireComponent(typeof(ButtonConfigHelper))]
 public class InstantiatePersistentObject : MonoBehaviour
 {
-    public PrefabType prefabType;
+    public int assetId;
     public Transform iconAndTextHandle;
     public GameObject itemPreview3D;
 
@@ -21,7 +21,7 @@ public class InstantiatePersistentObject : MonoBehaviour
     {
         if (NetworkManager.Singleton.LocalClient.PlayerObject.TryGetComponent(out PlaygroundPlayer playgroundPlayer))
         {
-            playgroundPlayer.CreateObject(prefabType, FindObjectOfType<ScenePersistency>().gameObject);
+            playgroundPlayer.CreateObject(assetId, FindObjectOfType<ScenePersistency>().gameObject);
         }
     }
 
@@ -30,6 +30,6 @@ public class InstantiatePersistentObject : MonoBehaviour
         GameObject newItemPreview = Instantiate(itemPreview3D, iconAndTextHandle.transform);
         newItemPreview.GetComponent<MeshFilter>().mesh = itemPrefab.GetComponentInChildren<MeshFilter>().sharedMesh;
         newItemPreview.GetComponent<MeshRenderer>().material = itemPrefab.GetComponentInChildren<MeshRenderer>().sharedMaterial;
-        iconAndTextHandle.GetComponentInChildren<TMPro.TextMeshPro>().text = prefabType.ToString();
+        iconAndTextHandle.GetComponentInChildren<TMPro.TextMeshPro>().text = itemPrefab.name;
     }
 }
