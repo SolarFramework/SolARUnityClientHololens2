@@ -1,25 +1,26 @@
-# A Hololens 2 client for SolAR cloud services
+# A HoloLens 2 client for SolAR cloud services
 
 ## Overview
 
-We want to be able to fetch images from PV (RGB) and VLC (tracking) cameras of the Hololens 2, and send them to SolAR mapping and relocalization services in the cloud.
+We want to be able to fetch images from PV (RGB) and VLC (tracking) cameras of the HoloLens 2, and send them to SolAR mapping and relocalization services in the cloud.
 
-This document focuses on how to send the data from the Hololens 2 to a server that will act as a proxy to call the SolAR cloud services, i.e. we will neither describe how to actually get the data from the Hololens sensors, nor will we describe how the C++ proxy server transfers these data to the SolAR cloud services (this is described in the documentation regarding SolAR remoting feature).
+This document focuses on how to send the data from the HoloLens 2 to a server that will act as a proxy to call the SolAR cloud services, i.e. we will neither describe how to actually get the data from the HoloLens sensors, nor will we describe how the C++ proxy server transfers these data to the SolAR cloud services (this is described in the documentation regarding SolAR remoting feature).
 
 The approach is using gRPC because it addresses several requirements:
-- being portable: we should reuse this feature with other devices and toolkit that allow to get camera frames. Being able to do it in C# allows us to theorically addresses the many devices Unity supports.
-- Interact with C++: SolAR remoting is currently accessible mainly in C++. GRPC allows us be called from Hololens 2 Unity C# scripts and call the SolAR cloud services in C++ directly.
+
+- Being portable: we should reuse this feature with other devices and toolkit that allow to get camera frames. Being able to do it in C# allows us to theoretically addresses the many devices Unity supports.
+- Interact with C++: SolAR remoting is currently accessible mainly in C++. GRPC allows us be called from HoloLens 2 Unity C# scripts and call the SolAR cloud services in C++ directly.
 
 ## Architecture
 
-This is the architecture this document will help achieve: a Unity client running on a Hololens 2 device will use portable C# scripts to call SolAR cloud services via a proxy server written in C++ that will route the requests to the SolAR/remoting infrastructure. As explained later, due to lack of support in Unity, gRPC-Web must be used, and it required the presence of an HTTP proxy called Envoy.
+This is the architecture this document will help achieve: a Unity client running on a HoloLens 2 device will use portable C# scripts to call SolAR cloud services via a proxy server written in C++ that will route the requests to the SolAR/remoting infrastructure. As explained later, due to lack of support in Unity, gRPC-Web must be used, and it required the presence of an HTTP proxy called Envoy.
 
 ![Architecture](res/architecture-communication/Architecture.PNG)
 
 ## Grpc.Net.Client
 
 This version is now the officially supported library for writing gRPC client for C# ([nuget](https://www.nuget.org/packages/Grpc.Net.Client/), [github](https://github.com/grpc/grpc-dotnet)), as [gRPC.Core](https://github.com/grpc/grpc/tree/master/src/csharp) is now in maintenance mode ([source](https://grpc.io/blog/grpc-csharp-future/))
-This approach is also more interesting for us, since it is a C# only approach, where the previous implementation relied on the C library, which raises cross platform support concerns. Indeed, the only official support for ARM64 is ARM64/Linux ([source](https://grpc.io/blog/grpc-on-arm64/#official-arm64-support-is-currently-linux-only)), and we need ARM64/Windows to target Hololens 2. Using Grpc.Net.Client thus frees us from this constraint.
+This approach is also more interesting for us, since it is a C# only approach, where the previous implementation relied on the C library, which raises cross platform support concerns. Indeed, the only official support for ARM64 is ARM64/Linux ([source](https://grpc.io/blog/grpc-on-arm64/#official-arm64-support-is-currently-linux-only)), and we need ARM64/Windows to target HoloLens 2. Using Grpc.Net.Client thus frees us from this constraint.
 
 ## gRPC-Web
 
@@ -44,13 +45,13 @@ If so, you can explicitly set this version to be 1.1 by configuring the `GrpcWeb
 ```csharp
 HttpHandler = new GrpcWebHandler(new HttpClientHandler())
 {
-	HttpVersion = new Version("1.1")
+  HttpVersion = new Version("1.1")
 }
 ```
 
 ## Configure Unity
 
-In order to be able to use Grpc.Net.Client package in your Unity scripts, you must have a Visual Studio C# project properly configured to declare the right refrences.
+In order to be able to use Grpc.Net.Client package in your Unity scripts, you must have a Visual Studio C# project properly configured to declare the right references.
 
 Unfortunately, the project cannot directly be configured in Visual Studio, because Unity won't be able to "see" these changes. An attempt to build the project from Unity will result in compilation errors whereas no errors will be visible in the properly configured Visual Studio project.
 
@@ -64,21 +65,21 @@ For Grpc.Net.Client, to our knowledge, no such package has been released. An att
 
 Thankfully, a solution was found: [NuGetForUnity](https://github.com/GlitchEnzo/NuGetForUnity). This project adds to Unity the ability to use the NuGet dependency manager used in Visual Studio to fetch Grpc.Net.Client and all its dependencies.
 
-![NuGetFOrUnity](res/architecture-communication/NuGetForUnity.PNG)
+![NuGetForUnity](res/architecture-communication/NuGetForUnity.PNG)
 
-So to configure Unity to be able to use Gprc.Net.Client in the scripts, simply:
-- install NuGetForUnity by imported the latest released [package](https://github.com/GlitchEnzo/NuGetForUnity/releases).
-- open the newly created NuGet menu and select Manage NuGet packages
-- install Grpc.Net.Client
-- install Grpc.Net.Client.Web (for gRPC-Web support)
-- install Google.Protobuf
+So to configure Unity to be able to use Grpc.Net.Client in the scripts, simply:
+
+- Install NuGetForUnity by imported the latest released: [How to install](https://github.com/GlitchEnzo/NuGetForUnity#unity-20193-or-newer).
+- Open the newly created NuGet menu and select Manage NuGet packages
+- Install Grpc.Net.Client
+- Install Grpc.Net.Client.Web (for gRPC-Web support)
+- Install Google.Protobuf
 
 These libraries should now appear in the `Assets/Packages` directory.
 
 ![NuGetPackagesInUnity](res/architecture-communication/NuGetPackagesInUnity.PNG)
 
 In the generated C# project, the gRPC client code snippet above should compile fine.
-
 
 ## Generate gRPC stubs and services
 
@@ -87,20 +88,23 @@ Visual Studio can generate stubs automatically with Grpc.Tools when a .proto fil
 As we saw, it is not possible to configure the Visual Studio project outside of Unity because the modification won't be taken into account when building the project. So it has been decided not to use Grpc.Tools, but instead generate the C# stubs manually with the protoc CLI and manually add the scripts to the project.
 
 ### Getting the gRPC CLI tools
+
 The gRPC CLI tools can be obtained (for Windows and Linux)
-- by following the instructions of [this tutorial](https://grpc.io/docs/languages/cpp/quickstart/) to build them from source (select the right version tag and don't forget to specify an install directory to easily find the executables)
-- by getting one of the [Official gRPC Releases](https://packages.grpc.io/) using your dependency manager of choice
-- by downloading one of [Daily Builds of `master` Branch](https://packages.grpc.io/) on the same page.
+
+- By following the instructions of [this tutorial](https://grpc.io/docs/languages/cpp/quickstart/) to build them from source (select the right version tag and don't forget to specify an install directory to easily find the executables)
+- By getting one of the [Official gRPC Releases](https://packages.grpc.io/) using your dependency manager of choice
+- By downloading one of [Daily Builds of `master` Branch](https://packages.grpc.io/) on the same page.
 
 ### Building gRPC from source
 
 Reference (for prerequisite):
 
-https://grpc.io/docs/languages/cpp/quickstart/#build-and-install-grpc-and-protocol-buffers
-https://github.com/grpc/grpc/blob/v1.41.0/BUILDING.md
+[Build and install gRPC and Protocol Buffers](https://grpc.io/docs/languages/cpp/quickstart/#build-and-install-grpc-and-protocol-buffers)
 
+[gRPC C++ - Building from source](https://github.com/grpc/grpc/blob/v1.41.0/BUILDING.md)
 
 - Windows
+
 ```bash
 set MY_INSTALL_DIR=C:\Users\jmhenaff\.local\gRPC-v1.41.0
 cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=%MY_INSTALL_DIR% ..\..
@@ -109,6 +113,7 @@ cmake --install . --config Release --prefix C:\Users\jmhenaff\.local\gRPC-v1.41.
 ```
 
 - Linux
+
 ```bash
 export MY_INSTALL_DIR=~/.local/grpc-v1.41.0/
 cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR ../..
@@ -118,8 +123,8 @@ make install
 
 Finally you can add `$MY_INSTALL_DIR`/bin to your PATH to be able to invoke `protoc`.
 
-
 ### Using the CLI tools to generate the C# stubs and C++ services
+
 The command line used to generate the C# stubs and the C++ gRPC service are:
 
 ```bash
@@ -135,7 +140,7 @@ This will also generate `greet.pb. h`, `greet.pb.cc`, `greet.grpc.pb.h` and `gre
 
 To have a gRPC service, just implement the gRPC-generated class for this service with the desired logic.
 
-This is an exemple from the [HelloWorld](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc)) sample:
+This is an example from the [HelloWorld](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc) sample:
 
 ```cpp
 // Logic and data behind the server's behavior.
@@ -182,29 +187,28 @@ To able to receive gRPC-Web requests, an HTTP proxy must be used between the cli
 
 Currently the [recommended](https://grpc.io/blog/grpc-web-ga/) proxy that is used for this task is [Envoy](https://www.envoyproxy.io/).
 
-The roadmap plans to remove this need in the future via [In-process Proxies](https://github.com/grpc/grpc-web/blob/master/doc/roadmap.md#in-process-proxies), but for now it seems like the way to go.
+The road map plans to remove this need in the future via [In-process Proxies](https://github.com/grpc/grpc-web/blob/master/doc/roadmap.md#in-process-proxies), but for now it seems like the way to go.
 
 Envoy is available for many platforms, but I will describe the case where Envoy and the server resides on a WSL, because it allows to run an Envoy instance and the C++ gRPC service on the same physical machine (for Windows, Envoy is deployed via a Docker container).
 
 ### Install
 
-As mentionned earlier, the installation is described for Linux as Windows installation is performed only via a Docker image, which adds some complexity and/or performance issues.
+As mentioned earlier, the installation is described for Linux as Windows installation is performed only via a Docker image, which adds some complexity and/or performance issues.
 
 On Ubuntu Envoy can be installed simply via **apt**, as described in the official [documentation](https://www.envoyproxy.io/docs/envoy/latest/start/install#install-envoy-on-ubuntu-linux).
 
 ### Run and test
+
 Follow the instructions [here](https://www.envoyproxy.io/docs/envoy/v1.19.1/start/quick-start/run-envoy#run-envoy-with-the-demo-configuration) to run Envoy with a default configuration and attempt to connect to it.
 
 ```bash
 envoy -c envoy-demo.yaml
-```
-```bash
 curl -v localhost:10000
 ```
 
 ### Update the configuration
 
-The idea is to configure Envoy with gRPC-Web filters and a listening port corresponding the the one the Hololens 2 client is connected to and a forward port corresponding the the one the gRPC services listens to.
+The idea is to configure Envoy with gRPC-Web filters and a listening port corresponding the the one the HoloLens 2 client is connected to and a forward port corresponding the the one the gRPC services listens to.
 
 The configuration file currently has been built by taking inspiration from the Envoy demo configuration file found [here](https://www.envoyproxy.io/docs/envoy/v1.19.1/start/quick-start/run-envoy#run-envoy-with-the-demo-configuration) and the one used in the gRPC-Web example ([here](https://github.com/grpc/grpc-web/tree/master/net/grpc/gateway/examples/helloworld)).
 
@@ -220,6 +224,7 @@ It listens on port 5001:
 ```
 
 Declares the gRPC-WEb filter
+
 ```yml
           http_filters:
           - name: envoy.filters.http.grpc_web
@@ -228,6 +233,7 @@ Declares the gRPC-WEb filter
 ```
 
 And route to a the port to which the gRPC service listens
+
 ```yml
   clusters:
   - name: echo_service
@@ -317,11 +323,14 @@ static_resources:
                 port_value: 5002
 ```
 
-## Make the HTTP proxy visible from the Hololens 2
+## Make the HTTP proxy visible from the HoloLens 2
 
-If you can connect to the Envoy proxy running on WSL from a Unity app running on the same machine Windows OS but you cannot connect via the Hololens 2, you may need to do the following:
-- create a rule in the Windows firewall for the desired port ((see instructions [here](https://www.nextofwindows.com/allow-server-running-inside-wsl-to-be-accessible-outside-windows-10-host)
+If you can connect to the Envoy proxy running on WSL from a Unity app running on the same machine Windows OS but you cannot connect via the HoloLens 2, you may need to do the following:
+
+- Create a rule in the Windows firewall for the desired port (see instructions [here](https://www.nextofwindows.com/allow-server-running-inside-wsl-to-be-accessible-outside-windows-10-host)
+
 - Follow instructions [here](https://github.com/microsoft/WSL/issues/4150) to forward port
+
 ```bash
 netsh interface portproxy add v4tov4 listenport=<port> listenaddress=0.0.0.0 connectport=<port> connectaddress=<WSL IP>
 ```
@@ -329,7 +338,6 @@ netsh interface portproxy add v4tov4 listenport=<port> listenaddress=0.0.0.0 con
 ## Conclusion
 
 You should now be able to create a gRPC client configured to connect to the IP of the WSL and on the port the Envoy proxy is listening to to call the methods of the C++ proxy gRPC service.
-
 
 ## Discarded solutions
 
@@ -342,32 +350,31 @@ We saw that this was in maintenance mode, but may still work for some time. Ther
 Too old, replaced by WCF
 
 ### WCF
+
 Deprecated as well, no longer supported in .NET5, Windows only ([source](https://docs.microsoft.com/en-us/dotnet/core/porting/net-framework-tech-unavailable#workflow-foundation-and-wcf)).
 
 ### CoreWCF
+
 Cross platform, open source, it appeared as the alternative to using WCF, but it is not supported by Microsoft as they advise to now use gRPC ([source](https://docs.microsoft.com/en-us/dotnet/core/dotnet-five#windows-communication-foundation)).
 
 ### ZeroMQ
 
-Github repo: https://github.com/zeromq
+[Github](https://github.com/zeromq)
 
 The C# version is a wrapper around the native library ([source](https://github.com/zeromq/clrzmq4)).
 But this native library does not seem to be supported for ARM64/Windows ([source](https://github.com/zeromq/libzmq#unsupported-platforms)).
-
 
 ## Viable alternatives
 
 ### StreamJsonRpc
 
-Official site: https://github.com/microsoft/vs-streamjsonrpc
+[Official site](https://github.com/microsoft/vs-streamjsonrpc)
+
 Cited as a mean to replace C# remoting in official [documentation](https://docs.microsoft.com/en-us/dotnet/core/porting/net-framework-tech-unavailable#remoting).
 It is a cross-platform, .NET portable library that implements the JSON-RPC wire protocol that can use custom serialization, e.g. compact binary format via MessagePack.
 
 ### Unity Networking APIs
+
 UNet is [deprecated](https://docs.unity3d.com/Manual/UNetOverview.html) but there is new set of API available called [MLAPI](https://docs-multiplayer.unity3d.com/). It can provide high level APIs dedicated to multiplayer gaming, but also [lower level API](https://docs-multiplayer.unity3d.com/transport/0.8.0/introduction/index.html).
 
-A solution like this would probably require to develop a Unity server between the Hololens and the C++ proxy service, which might not be desirable performance-wise.
-
-
-
-
+A solution like this would probably require to develop a Unity server between the HoloLens and the C++ proxy service, which might not be desirable performance-wise.

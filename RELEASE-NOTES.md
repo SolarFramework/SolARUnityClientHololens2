@@ -4,6 +4,9 @@
 
 * Add way to get HoloLens 2 VLC camera intrinsics from research mode API
 * Refactor scripts in common with other Unity clients to a new [SolARCloud Unity package](https://github.com/SolarFramework/SolARCloudUnityPackage)
+* Update to latest Unity version 2021.3.28 LTS
+* Update MRTK to version 2.8.3
+* Update SharedPlayground package to use [Netcode for GameObjects 1.5.1](https://github.com/Unity-Technologies/com.unity.netcode.gameobjects/tree/ngo/1.5.1)
 
 ## v0.11.0
 
